@@ -1,0 +1,94 @@
+{
+ "state": "S01",
+ "ac": "1",
+ "part": "6",
+ "part_name": "AMINSAHEBPETA",
+ "epics": 315,
+ "rows": 315,
+ "contributing_old_parts": {
+  "5": 315
+ },
+ "mapping_offset": 0,
+ "mapping_offset_calibration": {
+  "probed": [
+   {
+    "epic": "TBG1882372",
+    "national_part": "6"
+   },
+   {
+    "epic": "TBG1881168",
+    "national_part": "6"
+   },
+   {
+    "epic": "TBG1881929",
+    "national_part": "6"
+   }
+  ],
+  "hits": 3,
+  "sample": 3
+ },
+ "mapping_part_used": "6",
+ "old_parts_swept": [
+  "5"
+ ],
+ "discovery": {
+  "1": {
+   "name": "Kedari Puram",
+   "window_recs": 50
+  },
+  "2": {
+   "name": "Muchimdra",
+   "window_recs": 50
+  },
+  "3": {
+   "name": "Purushottapuram",
+   "window_recs": 50
+  },
+  "4": {
+   "name": "Purushottapuram",
+   "window_recs": 50
+  },
+  "5": {
+   "name": "Aminsahebpeta",
+   "window_recs": 50
+  },
+  "6": {
+   "name": "Mamdapalli",
+   "window_recs": 50
+  },
+  "7": {
+   "name": "Mamdapalli",
+   "window_recs": 50
+  },
+  "8": {
+   "name": "Mamdapalli",
+   "window_recs": 50
+  },
+  "9": {
+   "name": "Telukumchi",
+   "window_recs": 50
+  },
+  "10": {
+   "name": "Haripuram",
+   "window_recs": 50
+  },
+  "11": {
+   "name": "Boddabada",
+   "window_recs": 50
+  },
+  "12": {
+   "name": "Koligam",
+   "window_recs": 50
+  },
+  "13": {
+   "name": "Koligam",
+   "window_recs": 50
+  },
+  "14": {
+   "name": "Arakabadra",
+   "window_recs": 50
+  }
+ },
+ "elapsed_s": 8.2,
+ "note": "EPICs of the pre-roll cohort mapped into this part; electors added after that roll are not in this source."
+}

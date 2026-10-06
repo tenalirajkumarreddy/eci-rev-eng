@@ -1,0 +1,14 @@
+/work/__pycache__
+/work/apktool_res
+/work/smali
+/work/unpacked
+
+# live session tokens and raw auth responses - never commit these
+/work/secrets.json
+/work/out/*.bin
+/work/out/refresh_raw.json
+/work/out/eepic_detail.json
+/work/garuda_smali
+*.apk
+*.apk
+*.apk

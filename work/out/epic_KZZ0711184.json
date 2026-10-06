@@ -1,0 +1,10 @@
+{
+  "engine": "epic_engine",
+  "endpoint": "https://gateway-vha.eci.gov.in/api/v1/elastic/search-by-epic-from-national-display-v1",
+  "epic": "KZZ0711184",
+  "http_status": 200,
+  "count": 0,
+  "profile": null,
+  "raw": "[]",
+  "sent_at": "2026-10-06T04:17:29+00:00"
+}

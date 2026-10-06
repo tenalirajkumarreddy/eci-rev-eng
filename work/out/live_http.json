@@ -1,0 +1,95 @@
+{
+  "engine": "live_fetch",
+  "version": "1.0.0",
+  "epic": "SXQ2097129",
+  "started_at": "2026-10-05T15:41:23+00:00",
+  "tls_mode": "app-equivalent (certificate verification disabled)",
+  "public_search": [
+    {
+      "url": "https://electoralsearch.in/api/search?epic_no=SXQ2097129&search_type=epic&page_no=1&passKey=59bf8407d8a45236aaf65f9d80efc2b5af434758acaf3617c798a92aaf9f0ab74833bccca933be16cd647152a0053e4bdf20d30b269f1fc1146a3cf06bb8bfaa",
+      "method": "GET",
+      "sent_at": "2026-10-05T15:41:23+00:00",
+      "status": 200,
+      "bytes": 1748,
+      "content_type": "text/html",
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"/><link rel=\"icon\" href=\"/favicon.ico\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/><meta name=\"theme-color\" content=\"#000000\"/><meta name=\"description\" content=\"Web site created using create-react-app\"/><link rel=\"apple-touch-icon\" href=\"/logo192.png\"/><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap\" rel=\"stylesheet\"><link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css\" integrity=\"sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N\" crossorigin=\"anonymous\"><link rel=\"manifest\" href=\"/manifest.json\"/><title>VOTERS' SERVICES PORTAL</title><script defer=\"defer\" src=\"/static/js/main.aac590f9.js\"></script><link href=\"/static/css/main.0dc84217.css\" rel=\"stylesheet\"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id=\"root\"></div><script src=\"https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js\" integrity=\"sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj\" crossorigin=\"anonymous\"></script><script src=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct\" crossorigin=\"anonymous\"></script><script type=\"TEXT/JAVASCRIPT\" src=\"/Packages/transliteration/js/jquery.js\"></script><script type=\"TEXT/JAVASCRIPT\" src=\"/Packages/transliteration/js/CDAC-Typing.js\"></script></body></html>",
+      "variant": "sha512(epic + empty-secret)",
+      "passKey": "59bf8407d8a45236aaf65f9d80efc2b5af434758acaf3617c798a92aaf9f0ab74833bccca933be16cd647152a0053e4bdf20d30b269f1fc1146a3cf06bb8bfaa"
+    },
+    {
+      "url": "https://electoralsearch.in/api/search?epic_no=SXQ2097129&search_type=epic&page_no=1&passKey=5672799bf03796d605cc5273cfcd3a9a205fbd2fcbf622414e372f40810638493ed566e4a91a7e58064ab256688000c00e954180a3bf86d2206737e196fb7748",
+      "method": "GET",
+      "sent_at": "2026-10-05T15:41:24+00:00",
+      "status": 200,
+      "bytes": 1748,
+      "content_type": "text/html",
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"/><link rel=\"icon\" href=\"/favicon.ico\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/><meta name=\"theme-color\" content=\"#000000\"/><meta name=\"description\" content=\"Web site created using create-react-app\"/><link rel=\"apple-touch-icon\" href=\"/logo192.png\"/><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap\" rel=\"stylesheet\"><link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css\" integrity=\"sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N\" crossorigin=\"anonymous\"><link rel=\"manifest\" href=\"/manifest.json\"/><title>VOTERS' SERVICES PORTAL</title><script defer=\"defer\" src=\"/static/js/main.aac590f9.js\"></script><link href=\"/static/css/main.0dc84217.css\" rel=\"stylesheet\"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id=\"root\"></div><script src=\"https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js\" integrity=\"sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj\" crossorigin=\"anonymous\"></script><script src=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct\" crossorigin=\"anonymous\"></script><script type=\"TEXT/JAVASCRIPT\" src=\"/Packages/transliteration/js/jquery.js\"></script><script type=\"TEXT/JAVASCRIPT\" src=\"/Packages/transliteration/js/CDAC-Typing.js\"></script></body></html>",
+      "variant": "sha512(epic+IPS2062445 + empty-secret)",
+      "passKey": "5672799bf03796d605cc5273cfcd3a9a205fbd2fcbf622414e372f40810638493ed566e4a91a7e58064ab256688000c00e954180a3bf86d2206737e196fb7748"
+    },
+    {
+      "url": "https://electoralsearch.in/api/search?epic_no=SXQ2097129&search_type=epic&page_no=1&passKey=d3d7e449c5742b1c5d222b96506d8f58a36dc4c51253008f713c841d4a8870fcab1195c9e2973421194ff3e612d748d88c263533b6cb3143bdc41e41e21caaef",
+      "method": "GET",
+      "sent_at": "2026-10-05T15:41:25+00:00",
+      "status": 200,
+      "bytes": 1748,
+      "content_type": "text/html",
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"/><link rel=\"icon\" href=\"/favicon.ico\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/><meta name=\"theme-color\" content=\"#000000\"/><meta name=\"description\" content=\"Web site created using create-react-app\"/><link rel=\"apple-touch-icon\" href=\"/logo192.png\"/><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap\" rel=\"stylesheet\"><link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css\" integrity=\"sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N\" crossorigin=\"anonymous\"><link rel=\"manifest\" href=\"/manifest.json\"/><title>VOTERS' SERVICES PORTAL</title><script defer=\"defer\" src=\"/static/js/main.aac590f9.js\"></script><link href=\"/static/css/main.0dc84217.css\" rel=\"stylesheet\"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id=\"root\"></div><script src=\"https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js\" integrity=\"sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj\" crossorigin=\"anonymous\"></script><script src=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct\" crossorigin=\"anonymous\"></script><script type=\"TEXT/JAVASCRIPT\" src=\"/Packages/transliteration/js/jquery.js\"></script><script type=\"TEXT/JAVASCRIPT\" src=\"/Packages/transliteration/js/CDAC-Typing.js\"></script></body></html>",
+      "variant": "sha512(IPS2062445 + empty-secret)",
+      "passKey": "d3d7e449c5742b1c5d222b96506d8f58a36dc4c51253008f713c841d4a8870fcab1195c9e2973421194ff3e612d748d88c263533b6cb3143bdc41e41e21caaef"
+    },
+    {
+      "url": "https://electoralsearch.in/api/search?epic_no=SXQ2097129&search_type=epic&page_no=1",
+      "method": "GET",
+      "sent_at": "2026-10-05T15:41:26+00:00",
+      "status": 200,
+      "bytes": 1748,
+      "content_type": "text/html",
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"/><link rel=\"icon\" href=\"/favicon.ico\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/><meta name=\"theme-color\" content=\"#000000\"/><meta name=\"description\" content=\"Web site created using create-react-app\"/><link rel=\"apple-touch-icon\" href=\"/logo192.png\"/><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap\" rel=\"stylesheet\"><link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css\" integrity=\"sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N\" crossorigin=\"anonymous\"><link rel=\"manifest\" href=\"/manifest.json\"/><title>VOTERS' SERVICES PORTAL</title><script defer=\"defer\" src=\"/static/js/main.aac590f9.js\"></script><link href=\"/static/css/main.0dc84217.css\" rel=\"stylesheet\"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id=\"root\"></div><script src=\"https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js\" integrity=\"sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj\" crossorigin=\"anonymous\"></script><script src=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct\" crossorigin=\"anonymous\"></script><script type=\"TEXT/JAVASCRIPT\" src=\"/Packages/transliteration/js/jquery.js\"></script><script type=\"TEXT/JAVASCRIPT\" src=\"/Packages/transliteration/js/CDAC-Typing.js\"></script></body></html>",
+      "variant": "no-passKey",
+      "passKey": null
+    },
+    {
+      "url": "https://electoralsearch.in/api/search?epic_no=SXQ2097129&search_type=epic&page_no=1&passKey=",
+      "method": "GET",
+      "sent_at": "2026-10-05T15:41:27+00:00",
+      "status": 200,
+      "bytes": 1748,
+      "content_type": "text/html",
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"/><link rel=\"icon\" href=\"/favicon.ico\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/><meta name=\"theme-color\" content=\"#000000\"/><meta name=\"description\" content=\"Web site created using create-react-app\"/><link rel=\"apple-touch-icon\" href=\"/logo192.png\"/><link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link href=\"https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap\" rel=\"stylesheet\"><link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css\" integrity=\"sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N\" crossorigin=\"anonymous\"><link rel=\"manifest\" href=\"/manifest.json\"/><title>VOTERS' SERVICES PORTAL</title><script defer=\"defer\" src=\"/static/js/main.aac590f9.js\"></script><link href=\"/static/css/main.0dc84217.css\" rel=\"stylesheet\"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id=\"root\"></div><script src=\"https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js\" integrity=\"sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj\" crossorigin=\"anonymous\"></script><script src=\"https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct\" crossorigin=\"anonymous\"></script><script type=\"TEXT/JAVASCRIPT\" src=\"/Packages/transliteration/js/jquery.js\"></script><script type=\"TEXT/JAVASCRIPT\" src=\"/Packages/transliteration/js/CDAC-Typing.js\"></script></body></html>",
+      "variant": "empty-passKey",
+      "passKey": ""
+    }
+  ],
+  "gateway_probe": [
+    {
+      "url": "https://gateway-vha.eci.gov.in/api/v1/eepic/GetElectorDetailForEEPIC",
+      "method": "POST",
+      "sent_at": "2026-10-05T15:41:28+00:00",
+      "status": 401,
+      "bytes": 0,
+      "content_type": null,
+      "body": "",
+      "id": "eepic_search"
+    },
+    {
+      "url": "https://gateway-vha.eci.gov.in/eepic/GetEEPICCard",
+      "method": "POST",
+      "sent_at": "2026-10-05T15:41:29+00:00",
+      "status": null,
+      "bytes": 0,
+      "error": "RemoteDisconnected: Remote end closed connection without response",
+      "id": "eepic_card_pdf"
+    },
+    {
+      "url": "https://gateway-vha.eci.gov.in/api/v1/vh_epicno_verify",
+      "method": "POST",
+      "sent_at": "2026-10-05T15:41:29+00:00",
+      "status": 401,
+      "bytes": 0,
+      "content_type": null,
+      "body": "",
+      "id": "verification"
+    }
+  ]
+}

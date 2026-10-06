@@ -1,0 +1,671 @@
+epic,name,gender,age,relation,relative,old_serial,old_part,old_part_name,old_epic_number,mapped_state,mapped_ac,mapped_part,marked_by_blo
+,paramaru bantu singh,M,33,F,joginjar singh,7,3,Purushottapuram,AP010010000000,,,,
+,ambotul ramana,M,28,F,sardhareddi,10,3,Purushottapuram,AP010010000000,,,,
+,pappala chinnayyareddi,M,51,F,tarnaiah,12,3,Purushottapuram,AP010010000000,,,,
+,neyyila meettubehara,M,21,F,gamgadharbehara,17,3,Purushottapuram,AP010010000000,,,,
+,neyyila gamgadharbehara,M,40,F,saggu nadhbehara,16,3,Purushottapuram,AP010010000000,,,,
+,neyyila dillibehara,M,18,F,gamgadharbehara,18,3,Purushottapuram,AP010010000000,,,,
+,mahesh narayana vac,M,70,F,jagat narayana vac,24,3,Purushottapuram,AP010010000000,,,,
+,neyyila chintamani,M,25,F,dudditi,27,3,Purushottapuram,AP010010000000,,,,
+,suggu lakshinarayana,M,56,F,mohananaayudu,34,3,Purushottapuram,AP010010000000,,,,
+,suggu rajesh,M,19,F,darmarao,37,3,Purushottapuram,AP010010000000,,,,
+,gudla jagannadharao,M,60,F,mallanna,42,3,Purushottapuram,AP010010000000,,,,
+,devendara singh,M,40,F,chotan,44,3,Purushottapuram,AP010010000000,,,,
+,neyyila narsimharao,M,35,F,ramarao,43,3,Purushottapuram,AP010010000000,,,,
+,bandaru chandrasekhar,M,60,F,simhachalam,45,3,Purushottapuram,AP010010000000,,,,
+,bandaru srinu,M,30,F,chandrasekhar,46,3,Purushottapuram,AP010010000000,,,,
+,bandaru lakshman,M,28,F,chandrasekhar,47,3,Purushottapuram,AP010010000000,,,,
+,chotu bobbili,M,27,F,ramarao,48,3,Purushottapuram,AP010010000000,,,,
+,raghunadapatro ladi,M,67,F,barata,60,3,Purushottapuram,AP010010000000,,,,
+,baburaopatro ladi,M,37,F,raghunaad,61,3,Purushottapuram,AP010010000000,,,,
+,santosh patro ladi,M,32,F,raghunaad,62,3,Purushottapuram,AP010010000000,,,,
+,jyanesh patro ladi,M,27,F,raghunaad,63,3,Purushottapuram,AP010010000000,,,,
+,sitambaru pappala,M,42,F,peddaiah,64,3,Purushottapuram,000000000000,,,,
+,lachchanna behara,M,37,F,haddi,66,3,Purushottapuram,000000000000,,,,
+,simhachalam behara,M,42,F,narayana,67,3,Purushottapuram,000000000000,,,,
+,darmarao dabbiru,M,69,F,geddanna,70,3,Purushottapuram,000000000000,,,,
+,dabbiru shuresh,M,28,F,dharmarao,71,3,Purushottapuram,AP010010000000,,,,
+,ramamoorthi nistala,M,31,F,krishnamurti,76,3,Purushottapuram,AP010010006880,,,,
+,gali srinu,F,20,F,sekharreddy,78,3,Purushottapuram,AP010010000000,,,,
+,neyyila ramarao,M,54,F,loknadham,81,3,Purushottapuram,AP010010000000,,,,
+,ramana suggu,M,19,F,shyambaabu,80,3,Purushottapuram,AP010010000000,,,,
+,dillesu rao danpan,M,45,F,tarinayya,84,3,Purushottapuram,AP010010000000,,,,
+,santaram patnayuc beg,M,43,F,venkataramana,91,3,Purushottapuram,000000000000,,,,
+,chakrapani sahu bangaram bandi,M,47,F,amb,92,3,Purushottapuram,AP010010000000,,,,
+,shankarpatnayuk nandiga,M,34,F,mohanarao,94,3,Purushottapuram,AP010010000000,,,,
+,tirumalarao nandiga,M,26,F,mohanarao,95,3,Purushottapuram,AP010010000000,,,,
+,krotta kedari,M,43,F,mohanarao,97,3,Purushottapuram,AP010010006731,,,,
+,dinabandu pitta,M,43,F,gandi,98,3,Purushottapuram,000000000000,,,,
+,jidangi dondraou,M,45,F,jagannadhamrao,100,3,Purushottapuram,AP010010000000,,,,
+,jidangi santoshkumar,M,21,F,dondraou,101,3,Purushottapuram,AP010010000000,,,,
+,ketrayya reddy ansan,M,47,F,dalayya,102,3,Purushottapuram,AP010010000000,,,,
+,ramarao neyyal,M,28,F,sita,105,3,Purushottapuram,000000000000,,,,
+,mohanarao neyyila,M,25,F,ramarao,107,3,Purushottapuram,AP010010006379,,,,
+,chinnaiah gali,M,49,F,dulburan,108,3,Purushottapuram,AP010010006732,,,,
+,narsi murthy neyyila,M,28,F,ramarao,106,3,Purushottapuram,AP010010006725,,,,
+,gangarao gali,M,25,F,chinnaiah,109,3,Purushottapuram,000000000000,,,,
+,trinaadhareddi suggu,M,53,F,simh dri,118,3,Purushottapuram,000000000000,,,,
+,ramu lakmireddy,M,37,F,bhimarao,116,3,Purushottapuram,AP010010000000,,,,
+,duryodhanareddy,M,37,F,appanna,121,3,Purushottapuram,000000000000,,,,
+,tirupathireddy suggu,M,37,F,appanna,120,3,Purushottapuram,000000000000,,,,
+,suggu umamaheswari,F,21,F,trinadreddy,123,3,Purushottapuram,AP010010000000,,,,
+,vijay pondara,M,24,F,bhimmo,124,3,Purushottapuram,,,,,
+,badhraiah swamy dupan,M,67,F,appalasami,126,3,Purushottapuram,AP010010006535,,,,
+,rajesh dupan,M,18,F,paradesham,125,3,Purushottapuram,AP010010000000,,,,
+,anand dupan,M,26,F,badhraiah swamy,127,3,Purushottapuram,AP010010006595,,,,
+,narayana dasu,M,31,F,kellodas,130,3,Purushottapuram,AP010010000000,,,,
+,g.janardhanarao,M,40,F,ganapathi,132,3,Purushottapuram,AP010010000000,,,,
+,vakiru danpan,M,34,F,dalayya,131,3,Purushottapuram,AP010010000000,,,,
+,busa reddy gali,M,42,F,tumbhnadhan,136,3,Purushottapuram,AP010010000000,,,,
+,kurmarao anapan,M,42,F,papaaiah,134,3,Purushottapuram,AP010010006591,,,,
+,c.h.danayya,M,18,F,janardhan,140,3,Purushottapuram,AP010010000000,,,,
+,janakirao beena,M,47,F,rajulu,143,3,Purushottapuram,000000000000,,,,
+,aadinaaraayanaraavu chilakalapudi,M,50,F,baiahnna achari,141,3,Purushottapuram,AP010010000000,,,,
+,panpan lakshmanarao,M,35,F,dandasi,146,3,Purushottapuram,AP010010000000,,,,
+,raghunadh panpan,M,49,F,ramasvami,144,3,Purushottapuram,000000000000,,,,
+,narayana danpan,M,39,F,narasaiah,148,3,Purushottapuram,000000000000,,,,
+,gopalu reddy,M,27,F,raajaiah,149,3,Purushottapuram,AP010010000000,,,,
+,panpan ratnakarreddy,M,23,F,dandasi,147,3,Purushottapuram,AP010010000000,,,,
+,venkataramana sadi,M,32,F,sanyasi reddy,155,3,Purushottapuram,AP010010000000,,,,
+,dunnusahu telukala,M,54,F,dasaradhi,153,3,Purushottapuram,000000000000,,,,
+,sanyaasireddi sadi,M,58,F,kanakaiah,156,3,Purushottapuram,AP010010006353,,,,
+,bhagavan ashi,M,49,F,balaje,157,3,Purushottapuram,000000000000,,,,
+,domburu dukka,M,42,F,tataiah,162,3,Purushottapuram,000000000000,,,,
+,arjuna neyyila,M,67,F,sonyo,166,3,Purushottapuram,000000000000,,,,
+,pathan aribondu,M,35,F,tumbayya,165,3,Purushottapuram,AP010010000000,,,,
+,siva pondara,M,37,F,raju,170,3,Purushottapuram,000000000000,,,,
+,dhilleshwarrao kattula,M,32,F,jagannadham,172,3,Purushottapuram,000000000000,,,,
+,dandasi raulo,M,47,F,boodya raulo,176,3,Purushottapuram,000000000000,,,,
+,haliasing,M,18,F,chikpalmaniy,179,3,Purushottapuram,AP010010000000,,,,
+,jagannadham,M,45,F,neelapu harikrishna,177,3,Purushottapuram,AP010010000000,,,,
+,rajesh,M,19,F,parvateesam,181,3,Purushottapuram,AP010010000000,,,,
+,bhimmo raulo,M,20,F,bairagi,187,3,Purushottapuram,AP010010000000,,,,
+,krishnarao behara,M,32,F,ramarao,191,3,Purushottapuram,000000000000,,,,
+,venkataramanamurthi behara,M,33,F,ramarao,190,3,Purushottapuram,AP010010006825,,,,
+,ravi subuddi,M,20,F,raghunadh,193,3,Purushottapuram,AP010010000000,,,,
+,danaiah anapan,M,41,F,busayya,196,3,Purushottapuram,000000000000,,,,
+,puroshottam katil,M,62,F,trinadh,197,3,Purushottapuram,000000000000,,,,
+,dillirao,M,30,F,chinnaiah,204,3,Purushottapuram,AP010010000000,,,,
+,balavan singh,M,32,F,jaggenandar,203,3,Purushottapuram,AP010010000000,,,,
+,hari danpan,M,47,F,tammaiah,205,3,Purushottapuram,000000000000,,,,
+,uppada krishanamurthy,M,35,F,krishna,208,3,Purushottapuram,AP010010000000,,,,
+,krishanamurthy uppada,M,38,F,raajaiah,209,3,Purushottapuram,AP010010000000,,,,
+,ganesh komtala,M,22,F,dalayya,213,3,Purushottapuram,AP010010000000,,,,
+,dalayya komtala,M,49,F,saradhi,215,3,Purushottapuram,000000000000,,,,
+,srinivasarao suggu,M,27,F,vallabharao,216,3,Purushottapuram,000000000000,,,,
+,sundararao kuvasi,M,29,F,nookaiah,218,3,Purushottapuram,AP010010006520,,,,
+,mashani vulas,M,35,F,nookaiah,219,3,Purushottapuram,AP010010006480,,,,
+,vallabharao suggu,M,60,F,vallabharao,217,3,Purushottapuram,AP010010000000,,,,
+,mohana behara,M,77,F,boodya,220,3,Purushottapuram,000000000000,,,,
+,mohanarao behara,M,77,F,boodya,221,3,Purushottapuram,000000000000,,,,
+,chintamani nandiki,M,37,F,tataiah,226,3,Purushottapuram,AP010010000000,,,,
+,sekhar nandiki,M,32,F,tataiah,227,3,Purushottapuram,AP010010000000,,,,
+,a.venkatarao,M,35,F,ramarao,229,3,Purushottapuram,AP010010000000,,,,
+,gopal nandiki,M,55,F,karreyya,231,3,Purushottapuram,000000000000,,,,
+,v.k.satyanarayana,M,32,F,lingarajusahu,238,3,Purushottapuram,AP010010000000,,,,
+,polaiah danpan,M,69,F,tammaiah,240,3,Purushottapuram,000000000000,,,,
+,duryodhana suggu,M,39,F,kuramayya,239,3,Purushottapuram,000000000000,,,,
+,rushayya danpan,M,43,F,polaiah,241,3,Purushottapuram,000000000000,,,,
+,gangaiah danpan,M,37,F,polaiah,242,3,Purushottapuram,AP010010000000,,,,
+,balaraju pappala,M,25,F,chandraiah,246,3,Purushottapuram,AP010010006275,,,,
+,chandraiah pappala,M,52,F,simmaiah,245,3,Purushottapuram,AP010010006496,,,,
+,balaraju danpan,M,35,F,harikrishna,250,3,Purushottapuram,000000000000,,,,
+,gopal vullasi,M,42,F,chinnaiah,253,3,Purushottapuram,AP010010000000,,,,
+,lingaraju vullasi,M,47,F,chinnaiah,254,3,Purushottapuram,AP010010000000,,,,
+,lakshmanarao ulasi,M,18,F,lingaraju,256,3,Purushottapuram,AP010010000000,,,,
+,sundararao vullasi,M,32,F,nookaiah,257,3,Purushottapuram,AP010010000000,,,,
+,delhirao vullasi,M,27,F,lingaraju,255,3,Purushottapuram,AP010010000000,,,,
+,bairagi danpan,M,37,F,parasayya,260,3,Purushottapuram,AP010010006525,,,,
+,sanjayakumar appikonda,M,26,F,venkatabhimarao,265,3,Purushottapuram,AP010010000000,,,,
+,dharmaraju pothala,M,28,F,chandraiah,268,3,Purushottapuram,000000000000,,,,
+,krishnaji wandrangi,M,37,F,chiranjeevulu,267,3,Purushottapuram,AP010010006529,,,,
+,krishnarao suggu,M,43,F,balaje,270,3,Purushottapuram,000000000000,,,,
+,appanna pothala,M,57,F,appalaswami,271,3,Purushottapuram,000000000000,,,,
+,dalayya reddy pappala,M,65,F,tarinayya,274,3,Purushottapuram,AP010010006238,,,,
+,devaraju pappala,M,36,F,dalayya,275,3,Purushottapuram,000000000000,,,,
+,gangaiah katil,M,52,F,appalaswami,276,3,Purushottapuram,000000000000,,,,
+,appanna neyyila,M,63,F,sukhatadu,278,3,Purushottapuram,000000000000,,,,
+,kanakaraju gali,M,37,F,kamaiah,281,3,Purushottapuram,000000000000,,,,
+,tulasayyareddy gali,M,69,F,dandasi,280,3,Purushottapuram,000000000000,,,,
+,pitambaru maddi,M,47,F,erraiah,285,3,Purushottapuram,AP010010000000,,,,
+,ramu maddi,M,25,F,pitambaru,286,3,Purushottapuram,AP010010000000,,,,
+,kurmarao danpan,M,52,F,papamma,290,3,Purushottapuram,AP010010000000,,,,
+,lokanaadareddi danpan,M,30,F,bheemaiah,293,3,Purushottapuram,AP010010000000,,,,
+,parasayya danpan,M,43,F,dalayya,294,3,Purushottapuram,AP010010000000,,,,
+,kamesu danpan,M,32,F,parshuram,296,3,Purushottapuram,AP010010000000,,,,
+,krishnarao gali,M,42,F,ramasvami,299,3,Purushottapuram,AP010010006325,,,,
+,jaggarao danpan,M,27,F,parshuram,298,3,Purushottapuram,AP010010006275,,,,
+,kuradiyya danpan,M,57,F,krishanamurthy,300,3,Purushottapuram,AP010010006353,,,,
+,mohanarao danpan,M,25,F,kuarmayya,301,3,Purushottapuram,000000000000,,,,
+,domburu gali,M,87,F,dandasi,304,3,Purushottapuram,000000000000,,,,
+,sahdeo neyyila,M,47,F,bhagavan,303,3,Purushottapuram,000000000000,,,,
+,byra parusuram,M,19,F,gopalabhiram,309,3,Purushottapuram,AP010010000000,,,,
+,byra baskar,M,18,F,gopalbiran,310,3,Purushottapuram,AP010010000000,,,,
+,vasudevaravu gali,M,37,F,tumbhnadhan,311,3,Purushottapuram,000000000000,,,,
+,kristarao gali,M,30,F,ramamoorthi,313,3,Purushottapuram,000000000000,,,,
+,thirupathi neyyila,M,26,F,bimmo,314,3,Purushottapuram,AP010010000000,,,,
+,ramamoorthi gali,M,77,F,malayya,312,3,Purushottapuram,000000000000,,,,
+,ravindrababu,M,19,F,prabhakar,315,3,Purushottapuram,AP010010000000,,,,
+,arjunarao gali,M,69,F,malayya,316,3,Purushottapuram,000000000000,,,,
+,somaiah gali,M,42,F,arjunarao,318,3,Purushottapuram,000000000000,,,,
+,krishnarao gali,M,35,F,arjunarao,319,3,Purushottapuram,000000000000,,,,
+,chandraiah katin,M,69,F,appalaswami,321,3,Purushottapuram,AP010010006375,,,,
+,krishnarao katin,M,29,F,chandraiah,322,3,Purushottapuram,AP010010000000,,,,
+,devaraju katin,M,29,F,puroshottam,324,3,Purushottapuram,000000000000,,,,
+,gunnaiah pappala,M,32,F,bairagi,328,3,Purushottapuram,000000000000,,,,
+,sankararao asumurthy,M,37,F,subbarao,332,3,Purushottapuram,000000000000,,,,
+,makaiah danpan,M,57,F,baiahnna,333,3,Purushottapuram,AP010010006238,,,,
+,krishnarao panpan,M,43,F,erraiah,335,3,Purushottapuram,AP010010006421,,,,
+,ramamoorthi pappala,M,63,F,dandasi,336,3,Purushottapuram,000000000000,,,,
+,kedari suggu,M,67,F,raajaiah,340,3,Purushottapuram,000000000000,,,,
+,khiramani baditya,M,49,F,dasaradhi,341,3,Purushottapuram,000000000000,,,,
+,lakshman behara,M,49,F,dashrdhi,344,3,Purushottapuram,AP010010000000,,,,
+,pondari kumari,F,20,H,viswanadhpatro,345,3,Purushottapuram,AP010010000000,,,,
+,siva behara,M,37,F,chandrasekhar,348,3,Purushottapuram,000000000000,,,,
+,vijaykumar baditya,F,25,H,bhannu,351,3,Purushottapuram,AP010010000000,,,,
+,krishna behara,M,35,F,narsangu behara,350,3,Purushottapuram,AP010010000000,,,,
+,gopalkumar baditya,M,20,F,bhannu,352,3,Purushottapuram,AP010010000000,,,,
+,sitaram baditya,M,57,F,parshuram,354,3,Purushottapuram,000000000000,,,,
+,mohana baditya,M,33,F,sitaram,355,3,Purushottapuram,000000000000,,,,
+,pondar arjuna baditya,M,52,F,appadu,357,3,Purushottapuram,AP010010000000,,,,
+,krishnarao danpan,M,47,F,sitayya,360,3,Purushottapuram,AP010010006535,,,,
+,suggu duryodan,M,35,F,appanna,361,3,Purushottapuram,AP010010000000,,,,
+,dharmarao danpan,M,32,F,balaje,364,3,Purushottapuram,000000000000,,,,
+,busayya danpan,M,59,F,laleetamma,367,3,Purushottapuram,AP010010000000,,,,
+,tarini baditya,M,27,F,narayana,371,3,Purushottapuram,AP010010000000,,,,
+,dinabandu baditya,M,37,F,arjuna,378,3,Purushottapuram,000000000000,,,,
+,rajendar pondari,M,27,F,kirmani,381,3,Purushottapuram,AP010010000000,,,,
+,buddaiah baditya,M,67,F,tonku,385,3,Purushottapuram,AP010010006381,,,,
+,abhimanyu pondara,M,39,F,kodho,389,3,Purushottapuram,AP010010000000,,,,
+,raghunadh pondara,M,52,F,koddo,388,3,Purushottapuram,000000000000,,,,
+,abhimanyu pondara,M,37,F,kaliya,387,3,Purushottapuram,000000000000,,,,
+,krashnaravu danpan,M,47,F,seetayya,391,3,Purushottapuram,AP010010000000,,,,
+,madavaravu danpan,M,42,F,seetayya,392,3,Purushottapuram,000000000000,,,,
+,domburayyadanapana,M,72,F,ramasvami,394,3,Purushottapuram,000000000000,,,,
+,mohanarao danpan,M,42,F,dombarayya,395,3,Purushottapuram,000000000000,,,,
+,chendrareddy danpan,M,33,F,dombarayya,396,3,Purushottapuram,000000000000,,,,
+,appalasvami danpan,M,67,F,parasayya,397,3,Purushottapuram,000000000000,,,,
+,vasantaravu danpan,M,65,F,jangamaiah,401,3,Purushottapuram,000000000000,,,,
+,narayana danpan,M,67,F,jangamaiah,400,3,Purushottapuram,000000000000,,,,
+,parasayya danpan,M,47,F,vasantayya,402,3,Purushottapuram,000000000000,,,,
+,somaiah danpan,M,67,F,simmaiah,403,3,Purushottapuram,000000000000,,,,
+,jaggarao danpan,M,37,F,kurmaiah,405,3,Purushottapuram,000000000000,,,,
+,kirmohan panpan,M,19,F,kurrayya,406,3,Purushottapuram,AP010010000000,,,,
+,tataiah danpan,M,19,F,narayana,407,3,Purushottapuram,AP010010000000,,,,
+,seetaramu suggu,M,77,F,raajaiah,408,3,Purushottapuram,000000000000,,,,
+,narasimhulu danpan,M,40,F,chandraiah,413,3,Purushottapuram,AP010010000000,,,,
+,somaiah paila,M,29,F,erraiah,414,3,Purushottapuram,AP010010000000,,,,
+,somaiah danpan,M,30,F,jaggarao,416,3,Purushottapuram,AP010010000000,,,,
+,raajaiah danpan,M,42,F,appaiah,417,3,Purushottapuram,000000000000,,,,
+,lakshmanarao uppada,M,32,F,chalamaiah,418,3,Purushottapuram,000000000000,,,,
+,umapathi uppada,M,27,F,chalamaiah,419,3,Purushottapuram,000000000000,,,,
+,somaiah danpan,M,62,F,erraiah,421,3,Purushottapuram,000000000000,,,,
+,kamaraju danpan,M,67,F,erraiah,424,3,Purushottapuram,AP010010000000,,,,
+,ramaiah komtala,M,72,F,raajaiah,427,3,Purushottapuram,000000000000,,,,
+,devaraju gali,M,22,F,pakiru,429,3,Purushottapuram,AP010010000000,,,,
+,kameshwararao komtala,M,26,F,suarayya,431,3,Purushottapuram,AP010010006375,,,,
+,mohanarao komtala,M,28,F,suarayya,433,3,Purushottapuram,000000000000,,,,
+,haribabu suggu,M,30,F,bheemaiah,436,3,Purushottapuram,AP010010000000,,,,
+,sanyasi suggu,M,37,F,erraiah,435,3,Purushottapuram,AP010010006379,,,,
+,balaiah suggu,M,20,F,bheemaiah,437,3,Purushottapuram,AP010010000000,,,,
+,pakiru katili,M,25,F,parasayya,441,3,Purushottapuram,000000000000,,,,
+,kanakaraju katil,M,32,F,parasayya,439,3,Purushottapuram,AP010010000000,,,,
+,mohanarao danpan,M,57,F,makaiah,442,3,Purushottapuram,AP010010006382,,,,
+,sanyasi neyyila,M,63,F,mangalo,448,3,Purushottapuram,000000000000,,,,
+,chinnalingadu komtala,M,42,F,saradhi,449,3,Purushottapuram,000000000000,,,,
+,pedda angadu komtala,M,42,F,saradhi,451,3,Purushottapuram,AP010010000000,,,,
+,appanna neyiredla,M,67,F,appannaswamy,454,3,Purushottapuram,000000000000,,,,
+,apparao loya,M,77,F,bishambaru,455,3,Purushottapuram,000000000000,,,,
+,babaiah pradhan,M,27,F,madhava,466,3,Purushottapuram,000000000000,,,,
+,pitambaru pradhan,M,30,F,madhava,465,3,Purushottapuram,000000000000,,,,
+,duryodhana raulo,M,41,F,shatrughn raulo,470,3,Purushottapuram,000000000000,,,,
+,thirupathi danpan,M,22,F,saradi,473,3,Purushottapuram,AP010010000000,,,,
+,purnachandra sahu neelagiri,M,42,F,dandasi,476,3,Purushottapuram,AP010010000000,,,,
+,dandasi neelagiri,M,68,F,madhavarao,477,3,Purushottapuram,AP010010000000,,,,
+,appanna danpan,M,19,F,saradi,474,3,Purushottapuram,AP010010000000,,,,
+,krishna neelagiri,M,39,F,dandasi,478,3,Purushottapuram,AP010010006376,,,,
+,devadu uppada,M,42,F,saradhi,481,3,Purushottapuram,AP010010006372,,,,
+,dharna sahu,M,36,F,arjunarao,484,3,Purushottapuram,,,,,
+,janardana danpan,M,67,F,jaggaiah,490,3,Purushottapuram,000000000000,,,,
+,mukundareddi danpan,M,39,F,simmaiah,489,3,Purushottapuram,000000000000,,,,
+,sekhar reddy gali,M,47,F,lakshmanaaraayana reddy,496,3,Purushottapuram,AP010010000000,,,,
+,devaraju gali,M,43,F,lakshmanaaraayana reddy,497,3,Purushottapuram,AP010010000000,,,,
+,chendrareddy gali,M,57,F,lakshmanaaraayana reddy,498,3,Purushottapuram,AP010010000000,,,,
+,babuaravu shasnapuri,M,47,F,apparao,499,3,Purushottapuram,000000000000,,,,
+,mashani ashi,M,62,F,appalaswami,505,3,Purushottapuram,000000000000,,,,
+,bhaskararao neyyila,M,47,F,raghu,513,3,Purushottapuram,AP010010006002,,,,
+,raghu neyyila,M,77,F,sonya,517,3,Purushottapuram,AP010010000000,,,,
+,juttu neyyila,M,25,F,surendra,518,3,Purushottapuram,AP010010000000,,,,
+,narayana nagaspu,M,67,F,gukunadhan,520,3,Purushottapuram,000000000000,,,,
+,pothaiah nagaspu,M,77,F,barikayya,523,3,Purushottapuram,000000000000,,,,
+,chandraiah pappula,M,32,F,venkatasvaami,525,3,Purushottapuram,AP010010006155,,,,
+,parashuraamu katil,M,47,F,trinadh,527,3,Purushottapuram,AP010010006214,,,,
+,gangarao danpan,M,62,F,raajaiah,529,3,Purushottapuram,AP010010006152,,,,
+,seshu ponnaganti,M,32,F,balaji,538,3,Purushottapuram,AP010010006127,,,,
+,dalayya danpan,M,47,F,jammaiah,536,3,Purushottapuram,AP010010006072,,,,
+,kamaraju nilapu,M,62,F,ramasvami,537,3,Purushottapuram,000000000000,,,,
+,mohanarao suggu,M,47,F,kamaiah,539,3,Purushottapuram,AP010010006173,,,,
+,chandramuni,M,32,F,ulasi,545,3,Purushottapuram,AP010010006123,,,,
+,danesu nandika,M,67,F,balaji,548,3,Purushottapuram,AP010010000000,,,,
+,dhillisu nandika,M,35,F,balaje,549,3,Purushottapuram,AP010010006288,,,,
+,giri ratnala,M,47,F,siva,550,3,Purushottapuram,AP010010006312,,,,
+,vasu katil,M,29,F,gopalam,555,3,Purushottapuram,AP010010006185,,,,
+,gopalam katil,M,67,F,erraiah,554,3,Purushottapuram,AP010010006172,,,,
+,neyiredla narayana,M,47,F,appanna,557,3,Purushottapuram,AP010010006174,,,,
+,saradhi danpan,M,37,F,nacchayya,565,3,Purushottapuram,AP010010006145,,,,
+,danpani mashani,M,55,F,lacchaiah,564,3,Purushottapuram,AP010010000000,,,,
+,darmadu aasi,M,57,F,mashani,580,3,Purushottapuram,000000000000,,,,
+,narasimhulu chatal,M,42,F,chinnaiah,587,3,Purushottapuram,000000000000,,,,
+,bairagi chatal,M,25,F,krushnarao,595,3,Purushottapuram,AP010010006420,,,,
+,bhagirdhi chatal,M,47,F,lakmonarayana,599,3,Purushottapuram,000000000000,,,,
+,chandramuni koramuti,M,47,F,chinnaiah,603,3,Purushottapuram,000000000000,,,,
+,neeladri chatal,M,45,F,dombaru,604,3,Purushottapuram,000000000000,,,,
+,kamudu danpan,M,47,F,narasinaidu,607,3,Purushottapuram,000000000000,,,,
+,krishna danpan,M,26,F,gurunadham,609,3,Purushottapuram,000000000000,,,,
+,kamaraju ashi,M,29,F,mashani,610,3,Purushottapuram,000000000000,,,,
+,lakshmanarao,M,21,F,lingamurthi,613,3,Purushottapuram,AP010010000000,,,,
+,jaggay neyiredla,M,47,F,domburu,614,3,Purushottapuram,AP010010000000,,,,
+,guraiah paila,M,47,F,ellaiah,618,3,Purushottapuram,000000000000,,,,
+,gopi nandiki,M,45,F,erraiah,624,3,Purushottapuram,AP010010000000,,,,
+,mohanarao nilapu,M,47,F,narayana,623,3,Purushottapuram,000000000000,,,,
+,bhushaiah nilapu,M,45,F,narayana,626,3,Purushottapuram,AP010010000000,,,,
+,guraiah nilapu,M,32,F,narayana,628,3,Purushottapuram,000000000000,,,,
+,dilli neyyila,M,42,F,buddadu,630,3,Purushottapuram,AP010010000000,,,,
+,nookaiah anapan,M,37,F,erraiah,632,3,Purushottapuram,000000000000,,,,
+,busayya nilapu,M,47,F,narayana,631,3,Purushottapuram,000000000000,,,,
+,bairi neyyila,M,35,F,chudamani,637,3,Purushottapuram,AP010010006529,,,,
+,duryodhana nilapu,M,67,F,ramasvami,635,3,Purushottapuram,000000000000,,,,
+,murali neyyila,M,20,F,bairi,636,3,Purushottapuram,AP010010000000,,,,
+,pitambaru danpan,M,52,F,tammaiah,638,3,Purushottapuram,AP010010006370,,,,
+,konthala nookaraju,M,40,F,krishnudu [letu],642,3,Purushottapuram,AP010010000000,,,,
+,srinu ulasi,M,23,F,sathaiah,641,3,Purushottapuram,AP010010000000,,,,
+,konthala pakiru,M,38,F,krishnudu [letu],643,3,Purushottapuram,AP010010000000,,,,
+,konthala gopalu,M,27,F,krishnudu [letu],644,3,Purushottapuram,AP010010000000,,,,
+,danpan pothaiah,M,18,F,bendu,647,3,Purushottapuram,AP010010000000,,,,
+,balaje gali,M,37,F,ramaiah,649,3,Purushottapuram,AP010010000000,,,,
+,danpan bairagi,M,19,F,bendu,648,3,Purushottapuram,AP010010000000,,,,
+,sankararao pasumurti,M,37,F,subbarao,651,3,Purushottapuram,AP010010000000,,,,
+,gali ramaiah,M,82,F,venkaiah,650,3,Purushottapuram,AP010010000000,,,,
+,kuberu chalapakala,M,57,F,sambamurthy,654,3,Purushottapuram,000000000000,,,,
+,kedari chalapakala,M,27,F,kuberu,655,3,Purushottapuram,000000000000,,,,
+,jaggaiahreddy,M,30,F,appanna,657,3,Purushottapuram,AP010010000000,,,,
+,raajaiah reddy,M,37,F,appanna,658,3,Purushottapuram,000000000000,,,,
+,venkatasvaami anapan,M,52,F,erraiah,663,3,Purushottapuram,AP010010006239,,,,
+,gopalu reddy,M,27,F,domburu,662,3,Purushottapuram,000000000000,,,,
+,erraiah anapan,M,72,F,pottaiah,661,3,Purushottapuram,000000000000,,,,
+,papayya anapan,M,62,F,dandasi,664,3,Purushottapuram,AP010010006348,,,,
+,jaggaiah anapan,M,27,F,papayya,665,3,Purushottapuram,000000000000,,,,
+,chandramuni anapan,M,42,F,mohanarao,666,3,Purushottapuram,000000000000,,,,
+,dillesu anapan,M,25,F,narayana,669,3,Purushottapuram,000000000000,,,,
+ACK8757072,anilkumar shukla,M,19,F,satyanarayana,9,3,Purushottapuram,AP010010000000,S01,23,10,Y
+XTE6080873,subash baditya,M,29,F,sitaram,356,3,Purushottapuram,AP010010000000,S10,150,101,Y
+ACK0140368,bhimarao vulasi,M,62,F,raajaiah,258,3,Purushottapuram,AP010010000000,S01,23,103,Y
+TRK2013506,erraiah nandiki,M,20,F,gopi,625,3,Purushottapuram,AP010010000000,S01,143,108,Y
+WJU4102778,ganapathi telukula,M,27,F,seetaramu,462,3,Purushottapuram,000000000000,S01,25,117,Y
+BCW6724017,nookaiah buddal,M,43,F,lakshmaiah,591,3,Purushottapuram,000000000000,S10,160,12,Y
+ZUI0507830,daya setti,M,37,F,domburu,533,3,Purushottapuram,AP010010006233,S10,160,12,Y
+ZUI0855841,balaiah kontal,M,18,F,lacchaiah,573,3,Purushottapuram,AP010010000000,S10,160,12,Y
+ZUI2046308,rajesh neyyila,M,20,F,chandracharanabehara sahu,512,3,Purushottapuram,AP010010000000,S10,160,12,Y
+ZUI2048825,tufan rao gali,M,33,F,tumbanadhan,500,3,Purushottapuram,AP010010000000,S10,160,12,Y
+ZUI2048999,nagapu gurunadham,M,18,F,narayana,521,3,Purushottapuram,AP010010000000,S10,160,12,Y
+ZUI2049229,pakiru komtala,M,52,F,chandraiah,568,3,Purushottapuram,000000000000,S10,160,12,Y
+ZUI2049294,ramulu gali,M,47,F,dimburu,570,3,Purushottapuram,000000000000,S10,160,12,Y
+ZUI2049302,chinnaiah danpan,M,25,F,saradhi,566,3,Purushottapuram,AP010010000000,S10,160,12,Y
+ZUI2049310,jaggaiah danpan,M,30,F,nookaiah,579,3,Purushottapuram,AP010010000000,S10,160,12,Y
+ZUI2049351,nookaiah komtala,M,32,F,chandraiah,562,3,Purushottapuram,AP010010000000,S10,160,12,Y
+ZUI2049997,lakshmana buddala,M,20,F,nookaiah,592,3,Purushottapuram,AP010010000000,S10,160,12,Y
+ZUI2050029,bmulu reyyi,M,37,F,lakshmaiah,588,3,Purushottapuram,AP010010000000,S10,160,12,Y
+ZUI2050052,paparavu danpan,M,42,F,ramajogi,584,3,Purushottapuram,000000000000,S10,160,12,Y
+ZUI4001319,pondara simhadri,M,32,F,domburu,581,3,Purushottapuram,AP010010000000,S10,160,12,Y
+ZUI4116489,chinnarao,M,20,F,krishnarao,593,3,Purushottapuram,AP010010000000,S10,160,12,Y
+ZUI4488466,dharmarao danpan,M,26,F,kurmayya,559,3,Purushottapuram,AP010010000000,S10,160,12,Y
+ZUI4508388,duryodhanareddy danpan,M,33,F,mohanarao,501,3,Purushottapuram,000000000000,S10,160,12,Y
+ZUI4512000,trinadu komtala,M,27,F,lacchaiah,575,3,Purushottapuram,000000000000,S10,160,12,Y
+ZUI4512174,neyiredla mohanarao,M,37,F,appanna,558,3,Purushottapuram,AP010010000000,S10,160,12,Y
+ZUI4515920,simmadu suggu,M,37,F,bheemaiah,560,3,Purushottapuram,000000000000,S10,160,12,Y
+ZUI4518221,madadu suggu,M,32,F,bheemaiah,561,3,Purushottapuram,000000000000,S10,160,12,Y
+ZUI4735031,thirupathi ashi,M,20,F,mashani,507,3,Purushottapuram,AP010010000000,S10,160,12,Y
+ZUI5003876,parasu anapan,M,37,F,mualramudu,576,3,Purushottapuram,000000000000,S10,160,12,Y
+ZUI5130281,chinnaiah katil,M,47,F,erraiah,544,3,Purushottapuram,AP010010006131,S10,160,12,Y
+ZUI5431325,santosh neyyila,M,19,F,baskararao,519,3,Purushottapuram,AP010010000000,S10,160,12,Y
+ZUI5586581,dharma neyyila,M,28,F,raghu,516,3,Purushottapuram,AP010010006153,S10,160,12,Y
+ZUI5639414,ramulu nandika,M,52,F,karraiah,541,3,Purushottapuram,AP010010006136,S10,160,12,Y
+ZUI5687868,bairadu chatal,M,27,F,krashnaravu,594,3,Purushottapuram,AP010010006234,S10,160,12,Y
+ZUI5687975,raajaiah katil,M,37,F,mamaiah,458,3,Purushottapuram,000000000000,S10,160,12,Y
+ZUI6507834,gopi komtala,M,47,F,chandraiah,567,3,Purushottapuram,AP010010006271,S10,160,12,Y
+ZUI6507982,dillirao kontal,M,22,F,pakiru,569,3,Purushottapuram,AP010010000000,S10,160,12,Y
+ZUI6774939,kamesu jami,M,32,F,kuarmayya,552,3,Purushottapuram,AP010010006216,S10,160,12,Y
+ZUI6789994,srinivasarao pasupatti,M,27,F,subbarao,597,3,Purushottapuram,000000000000,S10,160,12,Y
+ZUI6912802,suryanarain ashi,M,18,F,mashani,508,3,Purushottapuram,AP010010000000,S10,160,12,Y
+ZUI6951214,haribabu suggu,M,25,F,simmaiah,503,3,Purushottapuram,,S10,160,12,Y
+ZUI7286560,balaraju ponnaganti,M,32,F,koyirayya,534,3,Purushottapuram,AP010010006171,S10,160,12,Y
+RBV0063099,paramaru jagadeesh,M,23,F,joginjar singh,6,3,Purushottapuram,AP010010000000,S01,150,125,Y
+RBV0591024,budayyal gali,M,25,F,gangarao,4,3,Purushottapuram,AP010010000000,S01,150,125,Y
+RBV0760488,sadi ramarao,M,25,F,narayana,32,3,Purushottapuram,AP010010000000,S01,150,125,Y
+RBV1146605,putta ramana,M,28,F,dalayya,1,3,Purushottapuram,AP010010000000,S01,150,125,Y
+RBV1310564,palakonda sekhar,M,36,F,venkatswamy,2,3,Purushottapuram,AP010010000000,S01,150,125,Y
+RBV2155703,savarasi raju,M,25,F,arjun,29,3,Purushottapuram,AP010010000000,S01,150,125,Y
+RBV2423457,narsing sattuva,M,36,F,natavru,113,3,Purushottapuram,000000000000,S01,150,125,Y
+TRO0590182,kalidas pondara,M,34,F,dunnu,384,3,Purushottapuram,000000000000,S01,5,126,Y
+ACK0179532,anand reddy kormati,M,35,F,harikrushna,86,3,Purushottapuram,000000000000,S01,23,159,Y
+ACK9048489,niranjan kormati,M,31,F,harikrushna,87,3,Purushottapuram,000000000000,S01,23,159,Y
+ZJQ1806819,santosh kumar appikonda,M,25,F,venkatabhimarao,266,3,Purushottapuram,AP010010000000,S01,22,175,Y
+XBO2416915,mohana telukula,M,25,F,seetaramu,463,3,Purushottapuram,000000000000,S01,24,201,Y
+JPT2598746,vimnad behara,M,52,F,chandrasekhar,347,3,Purushottapuram,000000000000,S01,91,212,Y
+RYZ1027235,santoshi reddy danpan,M,22,F,dillisurao,3,3,Purushottapuram,AP010010000000,S01,4,224,Y
+RYZ1187087,govindkumar jah,M,40,F,chandradevsingh,50,3,Purushottapuram,AP010010000000,S01,4,224,Y
+RYZ2275386,venkataramana dabbiru,M,49,F,suryanarayana,20,3,Purushottapuram,AP010010000000,S01,4,224,Y
+FLP3344348,suggu mahesh,M,18,F,darmarao,38,3,Purushottapuram,AP010010000000,S01,3,23,Y
+ZUI2103745,byra sathyanarayanareddy,M,20,F,gopalabhiram,308,3,Purushottapuram,AP010010000000,S10,160,24,Y
+ACK2181337,subramanyam nistala,M,27,F,krishnamuarti,75,3,Purushottapuram,000000000000,S01,23,240,Y
+WJU0926493,venu pappala,M,36,F,chinnayyareddi,13,3,Purushottapuram,AP010010000000,S01,25,249,Y
+XTE5276969,sures dabbiru,M,32,F,darmarao,68,3,Purushottapuram,000000000000,S10,150,266,Y
+XTE6014518,jaggaiah paila,M,37,F,kushani,163,3,Purushottapuram,000000000000,S10,150,266,Y
+NJX2506624,lakmayya danpan,M,37,F,pasarayya,495,3,Purushottapuram,000000000000,S01,20,268,Y
+NJX2113207,gopalu beera,M,40,F,bhagavan,306,3,Purushottapuram,000000000000,S01,20,271,Y
+WJU3783529,dupan chalapathi,M,32,F,tulasayya,52,3,Purushottapuram,AP010010000000,S01,25,272,Y
+MBL3323581,panpan tejeswarireddy,M,28,F,dandasi,145,3,Purushottapuram,AP010010000000,S01,126,273,Y
+XBO2342400,dalayya danpan,M,32,F,harikrishna,252,3,Purushottapuram,000000000000,S01,24,28,Y
+ZGF2475028,dalayya komtala,M,45,F,saradhi,212,3,Purushottapuram,AP010010000000,S01,137,28,Y
+SVF1299551,appalachari patnana,M,42,F,kamaiah,77,3,Purushottapuram,000000000000,S10,174,299,Y
+TOQ0251827,ramaiah anapan,M,21,F,jogulu,5,3,Purushottapuram,AP010010000000,S01,27,32,Y
+ZUI6418701,devamma kormati,M,40,F,chinnaiah,602,3,Purushottapuram,AP010010000000,S10,160,33,Y
+GND4312914,shyamgan setty,M,39,F,dannusetty,563,3,Purushottapuram,AP010010000000,S01,118,35,Y
+HGB3120466,krishna baditya,M,42,F,bheema,369,3,Purushottapuram,000000000000,S10,174,391,Y
+SVF3889102,balaje nistala,M,36,F,krishnamuarti,74,3,Purushottapuram,AP010010006427,S10,174,394,Y
+KZZ0660159,kristarao gali,M,42,F,arjunareddi,202,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ0660407,mohanarao suggu,M,25,F,kamaraju,338,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ0660415,dabbiru suryaprasadh,M,22,F,venkataramana,40,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0660464,kuppili koteshwararao,M,32,F,harikrishna,51,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0660589,trinadh baditya,M,52,F,kurda,383,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ0660670,krishna ponnaganti,M,25,F,lingaraju,114,3,Purushottapuram,,S01,1,4,Y
+KZZ0660696,danpan somaiah,M,28,F,domburu,201,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0660704,satyanarayana danpan,M,45,F,chinnaiah,233,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ0660738,pondari kirmani,M,45,F,dasu,382,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0660761,jogarao vaddin,M,45,F,dandasi,206,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ0660795,suggu damodar,M,22,F,lakshinarayana,36,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0660894,venkata reddivaddin,M,36,F,dandasi reddy,103,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0660928,narayana neyyila,M,30,F,sundararao,289,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ0660936,krishnarao gali,M,33,F,kamaiah,282,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ0661017,jagannadham,M,19,F,gangulureddi,284,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0661074,danpan cacojeereddi,M,35,F,domburu,200,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0661199,dalayya beera,M,35,F,bhagavan,307,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ0661223,nandika prema kumarreddy,M,21,F,gopal,230,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0661272,ashi bairagi,M,20,F,misani,612,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0661314,lom bnnusahu,M,38,F,apparao,53,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0661322,ganesh komtala,M,19,F,dalayya,211,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0661363,pappala devaraju,M,38,F,komayya,65,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0661512,narayanarao pappala,M,39,F,chandramani,330,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0661603,nageswararao uppada,M,32,F,raajaiah,73,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ0661637,krishanamurthy uppada,M,38,F,raajaiah,164,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ0661652,krishna suggu,M,27,F,erraiah,434,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ0661827,neyyila quodanda,M,21,F,ramarao,83,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0661868,dabbiru venkataramana,M,48,F,suryanarain,39,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0661959,lingaraju ponnaganti,M,39,F,balaji,115,3,Purushottapuram,,S01,1,4,Y
+KZZ0662015,sitaram baditya,M,42,F,dasaradhi,343,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0662023,uppada janakirao,M,26,F,narayanareddy,89,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0662031,tumbanadhan nandhiki,M,34,F,tataiah,225,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ0662130,dillirao dunna,M,36,F,jagannadhu,185,3,Purushottapuram,,S01,1,4,Y
+KZZ0662148,parusuram danpan,M,52,F,bheemaiah,295,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ1939065,danpan himagiri,M,21,F,chandraiah,11,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ1939099,ganapathi nandika,M,25,F,babaiah,234,3,Purushottapuram,,S01,1,4,Y
+KZZ1939198,janakirao pappala,M,29,F,chandramani,331,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ1939586,neyyila joggraou,M,23,F,ramarao,82,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ1939594,tulasayya ambati,M,21,F,balaji,90,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ1939727,kura behara,M,57,F,buapali,224,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ1939792,jagannadareddy ambati,M,42,F,ramaiah,99,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ1939826,janarjanreddi pitta,M,28,F,guraiah,111,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ1939875,danpan vashudev,M,25,F,appana,129,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ1939958,vullasi chandraiah,M,26,F,saradhi,154,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ1939966,puroshottam anapan,M,28,F,mohanarao,158,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2080026,purnachandra raulo,M,25,F,dandasi,175,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2080091,thirupathi suggu,M,40,F,appanna,182,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2080117,simhadri,M,20,F,appanna,184,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2080141,ramesh raulo,M,26,F,bairagi,189,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ2080166,mashani katil,M,23,F,puroshottam,199,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2080257,buvuni behara,M,37,F,behara,223,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ2080265,prasanth behara,M,20,F,nethranand behara,8,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2080281,lakshmanaaraayana nandiki,M,30,F,tataiah,228,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2080349,madhavarao ponnaganti,M,19,F,pitamburu,243,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2080356,mohanarao danpan,M,34,F,harikrishna,251,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ2080372,lingaraju pothala,M,25,F,chandraiah,269,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ2080406,sataiyya danpan,M,32,F,kuarmayya,291,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ2080497,danpan dalayya,M,35,F,narsaiah,326,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2080513,chandramani pappala,M,67,F,bairagi,329,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2080554,kundana devendar,M,25,F,arjunabaditya,358,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2080562,suggu thirupathi,M,25,F,maadavayya,359,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2080596,lingaraju kuppili,M,19,F,ramasvami,366,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2080612,ramesh baditya,M,34,F,arjuna,377,3,Purushottapuram,000000000000,S01,1,4,Y
+KZZ2080653,bhagavan baditya,M,32,F,buddaya,386,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2862100,neyyila mohanarao,M,28,F,ramarao,33,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2862159,suryanarain palla pothala,M,27,F,sudarsanarao,169,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2862167,saradhi anapan,M,20,F,dhanayya,195,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2862175,jaggarao ganjapu,M,22,F,balaiah,19,3,Purushottapuram,AP010010000000,S01,1,4,Y
+KZZ2862365,bhagirdhi danpan,M,37,F,seetayya,411,3,Purushottapuram,AP010010006378,S01,1,4,Y
+KZZ2862456,loybahennu sahu,M,33,F,apparao,457,3,Purushottapuram,,S01,1,4,Y
+KZZ2863611,parvateesam duapan,M,47,F,badhraiahswamy,180,3,Purushottapuram,AP010010006223,S01,1,4,Y
+TBG0346759,bubbuni sahu,M,20,F,chakrapani,93,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG0346858,trinadhu komtala,M,30,F,saradhi,450,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG0347021,mukunda telukula,M,30,F,seetaramu,461,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG0431353,krishna bhina,M,20,F,janakirao,142,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG0526723,ramasvami kuppili,M,49,F,appaiah,365,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG0526731,lingaraju danpan,M,49,F,narayana,362,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG0566844,jagannadam ulasi,M,25,F,sathaiah,640,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG0566943,pitambaru ponnaganti,M,47,F,koyirayya,244,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG0566968,gangulu reddy gali,M,57,F,kamaiah,283,3,Purushottapuram,AP010010006387,S01,1,4,Y
+TBG0662668,kesavarao,M,22,F,ellaiah,210,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG0749202,pondari jyothi,F,18,H,wishnupathro,346,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG0749269,jogarao katil,M,32,F,puroshottam,198,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG0754680,niranjan telukala,M,37,F,dinbandu,510,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG0761727,delhirao neyyila,M,33,F,raghu,514,3,Purushottapuram,AP010010006338,S01,1,4,Y
+TBG0776924,kamaraju suggu,M,57,F,nookaiah,339,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG0776965,ganesu saggu,M,25,F,appanna,183,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG0855421,suraiah nandiki,M,47,F,karraiah letu,540,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG0856056,premakumar suggu,M,31,F,trinadhredde,119,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG0927816,raghunadh subuddi,M,55,F,ramrao,192,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG0969867,shantirao suggu,M,42,F,balaje,237,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG0970260,narayana gali,M,45,F,arjunarao,317,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG0970476,geethanjali bahrani,F,20,H,pondarikrushna,349,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG0971557,bairagi raulo,M,48,F,narayana,188,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG0975948,duryodan buddepu,M,38,F,somaiah,59,3,Purushottapuram,AP010010006221,S01,1,4,Y
+TBG1041912,katil raajaiah,M,45,F,bheemaiah,574,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1041946,vishvambareddi danpan,M,35,F,bheemaiah,292,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1136572,bairagi reddygali,M,33,F,tulasayyareddy,55,3,Purushottapuram,AP010010006374,S01,1,4,Y
+TBG1155564,suggu raamaamurthy,M,26,F,laxminarayana,35,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1155580,shyambaabusuggu,M,39,F,balaiah,79,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1155598,vulasakumar behara,M,25,F,chandra,135,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1193226,rajayya reddy,M,42,F,appanna,645,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1208512,dehivureddi danpan,M,24,F,mashani,23,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1284066,sankar behara,M,35,F,kamal,112,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1313196,parsaiah komtala,M,19,F,dalayya,214,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1333467,vaddeen santosh,M,20,F,jogarao,207,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1387752,tarnayya danpan,M,42,F,seetayya,410,3,Purushottapuram,AP010010006377,S01,1,4,Y
+TBG1427350,krishna uppada,M,33,F,narayana,468,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1449917,meghanadh danpan,M,43,F,dunnayya,261,3,Purushottapuram,AP010010006380,S01,1,4,Y
+TBG1559566,saradhi komtala,M,31,F,suarayya,432,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1559756,balaiah reddy,M,27,F,appanna,659,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1854371,dilleshvarraou gali,M,37,F,ramurti,58,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1854397,ganapathisahu,M,42,F,narayanasahu,69,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1854405,raajaiah uppada,M,60,F,simmaiah,72,3,Purushottapuram,AP010010006935,S01,1,4,Y
+TBG1854439,kamesu reddy jeeru,M,37,F,appannareddi,88,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1854504,ddillesu gali,M,32,F,arjunarao,320,3,Purushottapuram,AP010010006428,S01,1,4,Y
+TBG1854512,chandraiah suggu,M,34,F,kedari,96,3,Purushottapuram,AP010010006875,S01,1,4,Y
+TBG1854553,premayya nakka,M,37,F,saradhi,104,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1854579,prakasarao neyyila,M,30,F,sundararao,288,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1854587,gopal suggu,M,42,F,kedari,110,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1854637,kamesu suggu,M,26,F,trinaadhareddi,122,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1854645,dudishti dukka,M,40,F,madaiah,133,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1854678,subaschandra sahu,M,43,F,dondapani,137,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1854686,janardana achari chilakalapudi,M,42,F,baiahnna,138,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1854728,sahdeo achari chilakalapudi,M,45,F,baiahnna,150,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1854744,puarnchandrasahu telukala,M,26,F,dunnu,151,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1854751,muralisahu telukala,M,28,F,dunnu,152,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1854769,kuramayya sadi,M,42,F,guraiah,159,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1854785,dharmarao krotta,M,32,F,venkatasvaami,161,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1854793,krishna krotta,M,30,F,venkatasvaami,160,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1854843,nakula neyyila,M,37,F,arjuna,167,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1854876,kumar anapan,M,29,F,erraiah,173,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1854892,ganesh anapan,M,27,F,erraiah,174,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1854934,mohanarao nandiki,M,30,F,gopal,232,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1854959,babaiah nandiki,M,47,F,mashani,236,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1854983,jagannadham danpan,M,39,F,chinnaiah,247,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1855006,chandraiah danpan,M,44,F,harikrishna,249,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1855055,somaiah nandika,M,27,F,danesu,547,3,Purushottapuram,AP010010006373,S01,1,4,Y
+TBG1858877,harikrushta vulasi,M,34,F,bhimarao,259,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1858893,sridhar appikonda,M,28,F,venkatabhimarao,263,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1858927,venkata bhimarao appikonda,M,66,F,sanjeevarao,264,3,Purushottapuram,AP010010006620,S01,1,4,Y
+TBG1858935,srinivasarao appikonda,M,29,F,venkatabhimarao,262,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1858968,pitambarureddi tala,M,39,F,suraiah,430,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG1859016,bairi pothala,M,25,F,appanna,272,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1859057,bhagavan katil,M,30,F,gangaiah,277,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1859073,arjuna neyyila,M,69,F,appanna,279,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1859149,sundararao neyyila,M,57,F,sukhatadu,287,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1859156,mohanarao danran,M,30,F,parshuram,297,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1859248,puroshottam katin,M,49,F,judishta,323,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1859255,sahdeo katin,M,32,F,puroshottam,325,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1859263,puroshottam danpan,M,37,F,makaiah,334,3,Purushottapuram,AP010010006378,S01,1,4,Y
+TBG1859313,lakshmaiah gali,M,47,F,ramamoorthi,337,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1859354,rajendra baditya,M,28,F,khiramani,342,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1859370,bhannu baditya,M,57,F,parshuram,353,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1859420,surendra baditya,M,43,F,komtaru,370,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1859453,shuresh baditya,M,26,F,arjuna,379,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1859461,kesava baditya,M,47,F,dasaradhi,380,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG1859511,prakash neyyila,M,33,F,raghu,515,3,Purushottapuram,AP010010006059,S01,1,4,Y
+TBG1859560,vivvanadhan chalapakala,M,25,F,mohanarao,653,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG2350858,nagabhooshanam dupan,M,43,F,badhraiah,128,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG2363638,balaiah ganjapu,M,47,F,dasaiah,504,3,Purushottapuram,AP010010006082,S01,1,4,Y
+TBG2365583,chandracharana behara neyyiu,M,47,F,arjuna,511,3,Purushottapuram,AP010010006256,S01,1,4,Y
+TBG2372423,sankararao kattula,M,37,F,jagannadham,171,3,Purushottapuram,000000000000,S01,1,4,Y
+TBG2515633,visvanad patro pondari,M,23,F,chandrasekhar patro,14,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG2522498,raghavudu uppada,M,42,F,narayana,467,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG2582211,satayya uppada,M,20,F,devudu,480,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG2609519,kamesu ponnaganti,M,20,F,lingaraju,117,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG2661585,gali kanakaiah,M,40,F,komayya,56,3,Purushottapuram,AP010010000000,S01,1,4,Y
+TBG2443190,narasing subuddi,M,18,F,raghunadh,194,3,Purushottapuram,AP010010000000,S01,1,40,Y
+XRR8267270,ramamoorthi komtala,M,32,F,narsaiah,633,3,Purushottapuram,AP010010000000,S10,153,417,Y
+SOH5649421,pakiru nandiki,M,19,F,babaiah,235,3,Purushottapuram,AP010010000000,S10,152,438,Y
+YER1033539,trinada danpan,M,39,F,tarinayya,85,3,Purushottapuram,000000000000,S10,176,494,Y
+YER2687994,sundam baditya,M,18,F,krishna,368,3,Purushottapuram,AP010010000000,S10,176,494,Y
+YER4003695,mohanarao chalapakala,M,47,F,krishnamurti,652,3,Purushottapuram,000000000000,S10,176,494,Y
+KZZ0660043,mohanarao suggu,M,20,F,damodar,464,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ0660050,jagannadham loya,M,32,F,apparao,456,3,Purushottapuram,000000000000,S01,1,5,Y
+KZZ0660118,harichandrudu danpan,M,19,F,madhavarao,393,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ0660209,chintamani,M,34,F,lakshmaiah,589,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ0660506,bheemaiah deenapana,M,52,F,kamaiah,420,3,Purushottapuram,000000000000,S01,1,5,Y
+KZZ0660522,mukunda jidi,M,24,F,ruckkudu,459,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ0660662,jagannayukulu danpan,M,32,F,babaiah,374,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ0660753,erraiah danpan,M,30,F,jaggaiah,583,3,Purushottapuram,000000000000,S01,1,5,Y
+KZZ0660787,baalaji jidi,M,25,F,ruckkudu,460,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ0660910,thirapathi neyyila,M,27,F,bhimmo,453,3,Purushottapuram,000000000000,S01,1,5,Y
+KZZ0660993,mohanarao pansan,M,32,F,jagannadham,54,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ0661025,pappala giri,M,21,F,balaraju,532,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ0661173,darmaraju gali,M,23,F,ramulu,572,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ0661769,bhagavan reddy nandika,M,22,F,suraiah,21,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ0661785,yadav anapan,M,27,F,chandramuni,667,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ0661876,dinabandu neyyila,M,22,F,bimme,25,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ1939024,murali neyyila,M,28,F,sanyasi,447,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ1939057,chandramani neyyila,M,30,F,sanyasi,446,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ1939115,janakraou chadal,M,25,F,narsimhulu,586,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ1939172,saradhi danpan,M,67,F,sirapayya,475,3,Purushottapuram,000000000000,S01,1,5,Y
+KZZ1939222,lingaraju danpan,M,27,F,darmadu,482,3,Purushottapuram,000000000000,S01,1,5,Y
+KZZ1939230,thirupathi rayddi danpan,M,23,F,mashani,22,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ1939263,chandraiah danpan,M,55,F,erraiah,375,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ1939271,panpan jagannadam,M,20,F,krishnarao,26,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ1939362,savarasi ramarao,M,30,F,sunniyya,28,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ1939388,soanbari behara,M,40,F,bairagi,30,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ1939396,savarasi mohanarao,M,28,F,chintanako,31,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ2080604,tataiah danpan,M,35,F,babaiah,376,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ2862274,santosh pondara,M,20,F,abhivanya,390,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ2862316,mohanarao danpan,M,25,F,kurmaiah,404,3,Purushottapuram,000000000000,S01,1,5,Y
+KZZ2862373,somaiah danpan,M,20,F,narasimhulu,412,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ2862399,narayana danpan,M,21,F,somaiah,422,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ2862407,jagannadham danpan,M,27,F,kamaraju,426,3,Purushottapuram,000000000000,S01,1,5,Y
+KZZ2862449,raghu neyyila,M,42,F,dandasi,273,3,Purushottapuram,000000000000,S01,1,5,Y
+KZZ2862472,bairagi danpan,M,52,F,sirapayya,471,3,Purushottapuram,000000000000,S01,1,5,Y
+KZZ2862480,mohanarao danpan,M,22,F,bairagi,472,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ2862522,narasimha pathana,M,42,F,simhadri,488,3,Purushottapuram,000000000000,S01,1,5,Y
+KZZ2862530,ramu pathana,M,20,F,narasimhulu,486,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ2862647,harikrishna nagaspu,M,62,F,pothaiah,524,3,Purushottapuram,AP010010006348,S01,1,5,Y
+KZZ2862654,paparao gali,M,19,F,jaggaiah,526,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ2862696,danpan somanadham,M,18,F,gangarao,528,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ2862704,krishnarao pappula,M,29,F,balaraju,530,3,Purushottapuram,000000000000,S01,1,5,Y
+KZZ2862738,santosh ratnalu,M,23,F,giri,551,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ2862753,dharmaraju danpan,M,29,F,kuarmayya,302,3,Purushottapuram,000000000000,S01,1,5,Y
+KZZ2862829,kirmani kamtala,M,38,F,narasaiah,577,3,Purushottapuram,,S01,1,5,Y
+KZZ2862845,lingaraju renyu,M,26,F,gopalam,590,3,Purushottapuram,000000000000,S01,1,5,Y
+KZZ2862860,dudishti,M,19,F,bhagirdhi,598,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ2862878,vigneshu koryiti,M,20,F,chandramuni,601,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ2862886,dhillesu sadi,M,20,F,erraiah,605,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ2862902,eswararao ankarboyin,M,21,F,nageswararao,608,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ2862910,madhusudhana,M,30,F,bhagavan redy,616,3,Purushottapuram,000000000000,S01,1,5,Y
+KZZ2862928,srinivasu daila,M,26,F,bhagavan reddy,617,3,Purushottapuram,000000000000,S01,1,5,Y
+KZZ2862951,narayana chatal,M,37,F,kedari,620,3,Purushottapuram,AP010010006529,S01,1,5,Y
+KZZ2862969,parasayya chatal,M,25,F,bheemaiah,622,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ2862993,veeraiah neelapu,M,25,F,duryodan,634,3,Purushottapuram,AP010010000000,S01,1,5,Y
+KZZ2863017,pitambaru anapan,M,32,F,narayana,668,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG0346791,pratapu pappula,M,25,F,balaraju,531,3,Purushottapuram,AP010010006221,S01,1,5,Y
+TBG0431338,yallaiahreddy dhanpan,M,28,F,hari,399,3,Purushottapuram,,S01,1,5,Y
+TBG0526822,krishnareddy danpan,M,22,F,mohanarao,443,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG0566877,jaggaiah neyiredla,M,47,F,appanna,553,3,Purushottapuram,AP010010006141,S01,1,5,Y
+TBG0613463,bairaiah suggu,M,37,F,seetaramu,409,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG0681734,chandraiah,M,22,F,paparao,585,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG0755217,bendu danpan,M,52,F,narasaiah,646,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG0965147,narayana rao neelagiri,M,41,F,dandasi,479,3,Purushottapuram,AP010010006585,S01,1,5,Y
+TBG1043041,chatal parusuram,M,23,F,guraiah,535,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG1044502,bheemaiah chatal,M,42,F,ramaiah,621,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG1155663,devendra loya,M,42,F,bairagi,629,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG1215632,nandika mohanarao,M,18,F,ramulu,543,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG1229039,komtala ramesh,M,19,F,tulasayya,398,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG1229302,neyiredla devaraju,M,37,F,appanna,556,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG1474303,ramamoorthi komtala,M,37,F,narasaiah,578,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG1627165,mohanarao gudiya,M,25,F,nirakrraou,627,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG1733138,danpan bhagasvami,M,35,F,seetayya,49,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG1861723,gangarao gali,M,42,F,domburu,305,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG1861913,shyamsunder danpan,M,29,F,kamaraju,425,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG1861947,parasayya katil,M,57,F,erraiah,440,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG1861962,kesavarao danpan,M,31,F,thumbarao,444,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG1862572,dalayya danpan,M,37,F,venkatasvaami,493,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG1862598,parasayya danpan,M,67,F,pottithatha,494,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG1862630,mahendra neyyila,M,35,F,jonnamalle,502,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG1862655,lingaraju danpan,M,32,F,chinnaiah,506,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG1862671,dondapani sahu telukala,M,47,F,dinbandu,509,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG1862721,mamaiah nagaspu,M,50,F,narayana,522,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG1862846,saradi ali,M,27,F,ramulu,571,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG1862853,narasimhulu nandiki,M,29,F,ramulu,542,3,Purushottapuram,AP010010006228,S01,1,5,Y
+TBG1862978,simma baditya,M,33,F,domburu,372,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG1862986,sahukaari chinna,M,37,F,madhavachowdary,611,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG1862994,ramasvami danpan,M,26,F,jaggaiah,582,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG1863059,shesharao chatal,M,32,F,laxminarayana,600,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG1863083,venkataramana pasupatti,M,29,F,subbarao,596,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG1863158,arjuna gali,M,52,F,balaje,606,3,Purushottapuram,AP010010006585,S01,1,5,Y
+TBG1880632,bhagavan reddy paila,M,55,F,venkatasvaami,615,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG1880657,rukmungadhraou nanduri,M,44,F,neelakanta,619,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG1880756,balaraju chalapakala,M,25,F,kuberu,656,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG1880780,dalayya anapan,M,37,F,erraiah,660,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG1880848,ramana ponnaganti,M,32,F,balaji,670,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG2501120,bairagi danpan,M,37,F,janardana,491,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG2514792,narasimha paila,M,18,F,somaiah,415,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG2609253,mamaiah danpan,M,57,F,venkatasvaami,492,3,Purushottapuram,000000000000,S01,1,5,Y
+TBG2653004,sathaiah ulasi,M,47,F,raajaiah,639,3,Purushottapuram,AP010010000000,S01,1,5,Y
+TBG2673887,jaggarao reddy,M,32,F,appanna,546,3,Purushottapuram,AP010010006333,S01,1,5,Y
+YER9316159,duryodhana danpan,M,33,F,chinnaiah,248,3,Purushottapuram,000000000000,S10,176,566,Y
+YER3599487,gudla mallikharjunarao,M,30,F,jagannadhamrao,41,3,Purushottapuram,AP010010000000,S10,176,576,Y
+QLP0077230,krishanamurthy pathana,M,25,F,narasimha,487,3,Purushottapuram,000000000000,S10,176,582,Y
+YER1852904,ramulu gali,M,35,F,mamaiah,186,3,Purushottapuram,AP010010000000,S10,176,582,Y
+YER1855725,ganeshreddy katil,M,20,F,domburu,438,3,Purushottapuram,AP010010000000,S10,176,582,Y
+YER1855766,bilandarsing parumaru,M,25,F,jogindarsingh,178,3,Purushottapuram,AP010010000000,S10,176,582,Y
+YER1855857,somubabu,M,20,F,sudarsanarao,168,3,Purushottapuram,AP010010000000,S10,176,582,Y
+YER2682730,bhavanee sahu,M,33,F,gudiya sahu,469,3,Purushottapuram,000000000000,S10,176,582,Y
+YER2735074,harikrushta baditya,M,28,F,domburu,373,3,Purushottapuram,000000000000,S10,176,582,Y
+YER2861730,kumar danpan,M,22,F,darmadu,483,3,Purushottapuram,AP010010000000,S10,176,582,Y
+YER3188463,mamaiah merugu,M,35,F,sanyasi,485,3,Purushottapuram,AP010010000000,S10,176,582,Y
+YER5598479,raghu neyyila,M,25,F,dandasi,445,3,Purushottapuram,AP010010000000,S10,176,582,Y
+YER5605365,makaiah komtala,M,39,F,ramaiah,428,3,Purushottapuram,AP010010000000,S10,176,582,Y
+YER5612593,darmarao danpan,M,20,F,kamaraju,423,3,Purushottapuram,AP010010000000,S10,176,582,Y
+YER8084717,c.h.krishna,M,19,F,janardhan,139,3,Purushottapuram,AP010010000000,S10,176,582,Y
+YER8256489,dinabandu neyyila,M,23,F,bhimme,452,3,Purushottapuram,AP010010000000,S10,176,582,Y
+BCW1653559,jagannadham pappala,M,62,F,lakshmaiah,327,3,Purushottapuram,000000000000,S10,150,63,Y
+XTE0304543,gali kanakaiah,M,40,F,komayya,57,3,Purushottapuram,AP010010000000,S10,150,63,Y
+ZJQ0157529,dullabu behara,M,32,F,haddi,222,3,Purushottapuram,000000000000,S01,22,68,Y
+ZJQ1861442,janakirao uppada,M,26,F,narayana,15,3,Purushottapuram,AP010010000000,S01,22,68,Y
+NJX2688356,danpan duryodan,M,20,F,balaji,363,3,Purushottapuram,AP010010000000,S01,20,84,Y

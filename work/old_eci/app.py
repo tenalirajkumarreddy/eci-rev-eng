@@ -1,0 +1,431 @@
+"""Web app for the old_eci collector.
+
+Run:  python -m uvicorn app:app --host 127.0.0.1 --port 8008     (from work/old_eci)
+"""
+from __future__ import annotations
+
+import csv
+import io
+import json
+import os
+from contextlib import asynccontextmanager
+
+from fastapi import FastAPI, HTTPException, Query
+from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
+
+import client
+import db
+import worker
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+WEB = os.path.join(HERE, "web")
+
+
+@asynccontextmanager
+async def lifespan(_app):
+    db.init()
+    worker.start_background()
+    yield
+    worker.STOP.set()
+
+
+app = FastAPI(title="old_eci collector", version="1.0",
+              description="Old-roll (SIR/2003) EPIC harvest for every state / AC / part",
+              lifespan=lifespan)
+
+
+def enqueue(kind, payload, mode="manual", priority=100):
+    row = db.q("insert into jobs(kind, payload, mode, priority) values (%s,%s,%s,%s) "
+               "returning id, kind, status", (kind, json.dumps(payload), mode, priority),
+               fetch="one")
+    db.event("api", "queued #%s %s %s" % (row["id"], kind, json.dumps(payload)[:120]))
+    return row
+
+
+# ----------------------------------------------------------------------- pages
+
+@app.get("/")
+def index():
+    return FileResponse(os.path.join(WEB, "index.html"))
+
+
+# ------------------------------------------------------------------- dashboard
+
+@app.get("/api/summary")
+def summary():
+    overall = db.q("select * from v_overall", fetch="one")
+    jobs = db.q("""select id, kind, status, mode, progress, result, error, created_at,
+                          started_at, finished_at from jobs
+                   where status in ('queued','running') order by id desc limit 8""")
+    states = db.q("""select s.state_cd, s.name, s.has_old_data,
+                            (select count(*) from acs a where a.state_cd=s.state_cd) acs,
+                            (select count(*) from old_parts p where p.state_cd=s.state_cd) parts,
+                            (select count(*) from old_parts p where p.state_cd=s.state_cd
+                              and p.status='done') done
+                     from states s order by s.state_cd limit 60""")
+    return {
+        "overall": overall,
+        "jobs": jobs,
+        "states": states,
+        "worker": worker.worker_status(),
+        "settings": {k: db.setting(k) for k in ("auto_enabled", "workers",
+                                                "discover_max_part",
+                                                "calibrate_offset")},
+    }
+
+
+@app.get("/api/events")
+def events(limit: int = 50):
+    return db.q("select id, ts, level, source, message from events "
+                "order by id desc limit %s", (min(limit, 500),))
+
+
+# --------------------------------------------------------------------- catalog
+
+@app.get("/api/states")
+def states():
+    return db.q("""select s.state_cd, s.name, s.has_old_data,
+                          (select count(*) from acs a where a.state_cd=s.state_cd) acs,
+                          (select count(*) from old_parts p where p.state_cd=s.state_cd) parts,
+                          (select count(*) from old_parts p where p.state_cd=s.state_cd
+                            and p.status='done') done
+                   from states s order by s.state_cd""")
+
+
+@app.post("/api/states/seed")
+def seed_states():
+    return enqueue("seed_states", {})
+
+
+@app.get("/api/acs")
+def acs(state: str):
+    return db.q("""select a.state_cd, a.ac_no, a.name, a.ac_type, a.district_cd, a.discover_status,
+                          a.old_parts_found, a.discover_max, a.discovered_at, a.last_error,
+                          (a.discover_max is not null
+                            and a.old_parts_found >= a.discover_max) maybe_truncated,
+                          (select count(*) from old_parts p
+                            where p.state_cd=a.state_cd and p.ac_no=a.ac_no) parts,
+                          (select count(*) from old_parts p
+                            where p.state_cd=a.state_cd and p.ac_no=a.ac_no
+                              and p.status='done') done
+                   from acs a where a.state_cd=%s order by a.ac_no""", (state,))
+
+
+@app.post("/api/acs/seed")
+def seed_acs(payload: dict):
+    return enqueue("seed_acs", {"state_cd": payload["state_cd"]})
+
+
+@app.post("/api/acs/seed_all")
+def seed_acs_all():
+    """Log every AC of every state at once (one batched write, no ECI traffic)."""
+    return enqueue("seed_acs_all", {})
+
+
+@app.post("/api/acs/discover")
+def discover(payload: dict):
+    return enqueue("discover_parts", {
+        "state_cd": payload["state_cd"], "ac_no": int(payload["ac_no"]),
+        "max_part": int(payload.get("max_part") or db.setting("discover_max_part", 400))})
+
+
+@app.get("/api/parts")
+def parts(state: str, ac: int, status: str | None = None,
+          q: str | None = None, limit: int = 300, offset: int = 0):
+    where = ["p.state_cd=%s", "p.ac_no=%s"]
+    params = [state, ac]
+    if status:
+        where.append("p.status=%s")
+        params.append(status)
+    if q:
+        where.append("(p.name ilike %s or p.part_no::text = %s)")
+        params += ["%" + q + "%", q]
+    limit = min(limit, 2000)
+    rows = db.q("""select p.*, p.mapping_offset as "offset",
+                          cp.part_name as cur_part_name, cp.part_name_l1,
+                          (select count(*) from electors e
+                            where e.state_cd=p.state_cd and e.ac_no=p.ac_no
+                              and e.part_no=p.part_no) electors,
+                          (select count(distinct e.cur_epic) from electors e
+                            where e.state_cd=p.state_cd and e.ac_no=p.ac_no
+                              and e.part_no=p.part_no) unique_epics
+                   from old_parts p
+                   left join current_parts cp
+                     on cp.state_cd=p.state_cd and cp.ac_no=p.ac_no
+                    and cp.part_no=p.cur_part_mode
+                   where %s order by p.part_no limit %s offset %s"""
+                % (" and ".join(where), limit, offset), params)
+    total = db.q("select count(*) c from old_parts p where %s" % " and ".join(where),
+                 params, fetch="one")["c"]
+    return {"rows": rows, "total": total}
+
+
+@app.get("/api/current_parts")
+def current_parts(state: str, ac: int, refresh: bool = False):
+    """Current-roll parts of an AC (names/ids), cached in the DB."""
+    cached = db.q("select count(*) c from current_parts where state_cd=%s and ac_no=%s",
+                  (state, ac), fetch="one")["c"]
+    if refresh or not cached:
+        rows = client.current_parts(state, ac)
+        for r in rows:
+            db.q("""insert into current_parts(state_cd, ac_no, part_no, part_name,
+                        part_name_l1, part_id, district_cd, ps_type, ps_caty,
+                        old_pdf_url, fetched_at)
+                    values (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s, now())
+                    on conflict (state_cd, ac_no, part_no) do update set
+                      part_name=excluded.part_name, part_name_l1=excluded.part_name_l1,
+                      part_id=excluded.part_id, district_cd=excluded.district_cd,
+                      ps_type=excluded.ps_type, ps_caty=excluded.ps_caty,
+                      old_pdf_url=excluded.old_pdf_url,
+                      fetched_at=now()""",
+                 (state, ac, r.get("partNumber"), r.get("partName"), r.get("partNameL1"),
+                  r.get("partId"), r.get("districtCd"), r.get("psType"), r.get("psCaty"),
+                  r.get("oldPdfUrl")), fetch=None)
+    return db.q("select * from current_parts where state_cd=%s and ac_no=%s order by part_no",
+                (state, ac))
+
+
+@app.get("/api/part")
+def part_detail(state: str, ac: int, part: int):
+    row = db.q("""select *, mapping_offset as "offset" from old_parts
+                   where state_cd=%s and ac_no=%s and part_no=%s""",
+               (state, ac, part), fetch="one")
+    if not row:
+        raise HTTPException(404, "part not collected/discovered")
+    by_cur = db.q("""select cur_state_cd, cur_ac_no, cur_part_no, count(*) n,
+                            count(distinct cur_epic) epics
+                     from electors where state_cd=%s and ac_no=%s and part_no=%s
+                     group by 1,2,3 order by n desc""", (state, ac, part))
+    sample = db.q("""select serial_no, full_name, full_name_l1, relative_name,
+                            relative_name_l1, relation_type, gender, age_snapshot,
+                            epic_2003, cur_epic, cur_ac_no, cur_part_no, marked_by_blo
+                     from electors where state_cd=%s and ac_no=%s and part_no=%s
+                     order by serial_no limit 30""", (state, ac, part))
+    for r in sample:
+        r["relation_label"] = client.relation_label(r["relation_type"])
+        r["gender_label"] = client.gender_label(r["gender"])
+    by_relation = db.q("""select relation_type, count(*) n,
+                                 count(*) filter (where cur_epic is not null
+                                                  and cur_epic <> '') mapped
+                          from electors where state_cd=%s and ac_no=%s and part_no=%s
+                          group by 1 order by n desc""", (state, ac, part))
+    for r in by_relation:
+        r["label"] = client.relation_label(r["relation_type"])
+    return {"part": row, "by_current_part": by_cur, "by_relation": by_relation,
+            "sample": sample}
+
+
+# ------------------------------------------------------------------ collection
+
+@app.post("/api/collect")
+def collect(payload: dict):
+    return enqueue("collect_part", {
+        "state_cd": payload["state_cd"], "ac_no": int(payload["ac_no"]),
+        "part_no": int(payload["part_no"]), "force": bool(payload.get("force"))},
+        priority=int(payload.get("priority", 100)))
+
+
+@app.post("/api/collect_auto")
+def collect_auto(payload: dict):
+    return enqueue("collect_auto", {
+        "state_cd": payload.get("state_cd"), "ac_no": payload.get("ac_no"),
+        "max_parts": int(payload.get("max_parts", 25)),
+        "force": bool(payload.get("force"))}, mode="auto")
+
+
+@app.post("/api/auto")
+def auto(payload: dict):
+    db.set_setting("auto_enabled", bool(payload.get("enabled")))
+    db.event("api", "auto mode %s" % ("on" if payload.get("enabled") else "off"))
+    return {"auto_enabled": db.setting("auto_enabled")}
+
+
+@app.post("/api/settings")
+def set_settings(payload: dict):
+    for k, v in (payload or {}).items():
+        if k in ("workers", "discover_max_part", "calibrate_offset", "collect_serial_cap",
+                 "request_pause_ms"):
+            db.set_setting(k, v)
+    return {k: db.setting(k) for k in ("auto_enabled", "workers", "discover_max_part",
+                                       "calibrate_offset", "collect_serial_cap")}
+
+
+@app.get("/api/jobs")
+def jobs(status: str | None = None, limit: int = 50):
+    if status:
+        return db.q("""select * from jobs where status=%s order by id desc limit %s""",
+                    (status, min(limit, 500)))
+    return db.q("select * from jobs order by id desc limit %s", (min(limit, 500),))
+
+
+@app.post("/api/jobs/{job_id}/cancel")
+def cancel(job_id: int):
+    db.q("update jobs set cancel=true where id=%s and status in ('queued','running')",
+         (job_id,), fetch=None)
+    db.event("api", "cancel requested for job #%s" % job_id)
+    return {"cancelled": job_id}
+
+
+# ------------------------------------------------------------------ data + EPIC
+
+@app.get("/api/electors")
+def electors(state: str | None = None, ac: int | None = None, part: int | None = None,
+             cur_part: int | None = None, epic: str | None = None, q: str | None = None,
+             limit: int = 100, offset: int = 0):
+    where, params = ["true"], []
+    for col, val in (("state_cd", state), ("ac_no", ac), ("part_no", part),
+                     ("cur_part_no", cur_part)):
+        if val is not None:
+            where.append("%s=%%s" % col)
+            params.append(val)
+    if epic:
+        where.append("cur_epic ilike %s")
+        params.append("%" + epic + "%")
+    if q:
+        where.append("(full_name ilike %s or relative_name ilike %s)")
+        params += ["%" + q + "%", "%" + q + "%"]
+    where_sql = " and ".join(where)
+    rows = db.q("""select source_id, state_cd, ac_no, part_no, serial_no, full_name,
+                          full_name_l1, relative_name, relative_name_l1, relation_type,
+                          gender, age_snapshot, epic_2003, marked_by_blo, cur_state_cd,
+                          cur_ac_no, cur_part_no, cur_epic, last_seen
+                   from electors where %s order by state_cd, ac_no, part_no, serial_no
+                   limit %s offset %s""" % (where_sql, min(limit, 1000), offset), params)
+    # The route stores single-letter relation/gender codes; decode for display.
+    for r in rows:
+        r["relation_label"] = client.relation_label(r["relation_type"])
+        r["gender_label"] = client.gender_label(r["gender"])
+    total = db.q("select count(*) c from electors where %s" % where_sql, params,
+                 fetch="one")["c"]
+    return {"rows": rows, "total": total}
+
+
+@app.get("/api/breakdown")
+def breakdown(state: str | None = None, ac: int | None = None):
+    """Value domains actually present in the harvest.
+
+    This is the answer to "are we missing any relation type": every code the route
+    returned is listed with its decoded label, so an unrecognised code shows up as
+    itself instead of vanishing.
+    """
+    where, params = ["true"], []
+    if state:
+        where.append("state_cd=%s")
+        params.append(state)
+    if ac is not None:
+        where.append("ac_no=%s")
+        params.append(ac)
+    w = " and ".join(where)
+    rel = db.q("""select relation_type code, count(*) n,
+                         count(*) filter (where cur_epic is not null
+                                          and cur_epic <> '') mapped
+                  from electors where %s group by 1 order by n desc""" % w, params)
+    gen = db.q("""select gender code, count(*) n,
+                         count(*) filter (where cur_epic is not null
+                                          and cur_epic <> '') mapped
+                  from electors where %s group by 1 order by n desc""" % w, params)
+    cov = db.q("""select count(*) total,
+                        count(*) filter (where cur_epic is not null
+                                         and cur_epic <> '') with_epic,
+                        count(*) filter (where relative_name is null
+                                         or relative_name = '') no_relative,
+                        count(*) filter (where full_name is null
+                                         or full_name = '') no_name
+                 from electors where %s""" % w, params, fetch="one")
+    return {
+        "relation": [dict(r, label=client.relation_label(r["code"]),
+                          short=client.relation_label(r["code"], short=True))
+                     for r in rel],
+        "gender": [dict(r, label=client.gender_label(r["code"])) for r in gen],
+        "coverage": cov,
+    }
+
+
+@app.get("/api/export.csv")
+def export_csv(state: str, ac: int, part: int | None = None, cur_part: int | None = None,
+               epics_only: bool = True):
+    where, params = ["state_cd=%s", "ac_no=%s"], [state, ac]
+    if part is not None:
+        where.append("part_no=%s")
+        params.append(part)
+    if cur_part is not None:
+        where.append("cur_part_no=%s")
+        params.append(cur_part)
+    if epics_only:
+        where.append("cur_epic is not null and cur_epic <> ''")
+    rows = db.q("""select cur_epic, full_name, full_name_l1, relative_name,
+                          relative_name_l1, relation_type, gender, age_snapshot,
+                          epic_2003, serial_no, part_no, cur_ac_no, cur_part_no
+                   from electors where %s
+                   order by cur_ac_no, cur_part_no, cur_epic""" % " and ".join(where),
+                params)
+    buf = io.StringIO()
+    w = csv.writer(buf)
+    w.writerow(["epic", "name", "name_local", "relation_type", "relation",
+                "relation_local", "gender", "age_2003", "epic_2003", "old_serial",
+                "old_part", "cur_ac", "cur_part"])
+    for r in rows:
+        w.writerow([r["cur_epic"], r["full_name"], r["full_name_l1"],
+                    client.relation_label(r["relation_type"]), r["relative_name"],
+                    r["relative_name_l1"], client.gender_label(r["gender"]),
+                    r["age_snapshot"], r["epic_2003"], r["serial_no"],
+                    r["part_no"], r["cur_ac_no"], r["cur_part_no"]])
+    name = "epics_%s_AC%s%s.csv" % (state, ac, ("_P%s" % part) if part else "")
+    return StreamingResponse(io.BytesIO(buf.getvalue().encode("utf-8-sig")),
+                             media_type="text/csv",
+                             headers={"Content-Disposition": 'attachment; filename="%s"' % name})
+
+
+@app.post("/api/epic")
+def epic_run(payload: dict):
+    epic = "".join(str(payload["epic"]).split()).upper()
+    if not epic:
+        raise HTTPException(400, "epic required")
+    cached = db.q("select * from epic_lookups where epic=%s", (epic,), fetch="one")
+    if cached and not payload.get("refresh"):
+        return {"cached": True, "row": cached}
+    out = worker.epic_lookup_job(db.connect(), None, epic)
+    row = db.q("select * from epic_lookups where epic=%s", (epic,), fetch="one")
+    return {"cached": False, "result": out, "row": row}
+
+
+@app.get("/api/epic/{epic}")
+def epic_get(epic: str):
+    row = db.q("select * from epic_lookups where epic=%s", (epic.strip().upper(),),
+               fetch="one")
+    if not row:
+        raise HTTPException(404, "not looked up yet")
+    return row
+
+
+@app.get("/api/epics")
+def epics(limit: int = 50):
+    return db.q("""select epic, found, http_status, name, part_no, part_name, ac_name,
+                          serial_no, fetched_at from epic_lookups
+                   order by fetched_at desc limit %s""", (min(limit, 500),))
+
+
+@app.post("/api/worker/restart")
+def restart_worker():
+    """Revive the worker thread when it is missing or stalled.
+
+    A stuck remote connection used to leave the worker looking healthy while
+    queued jobs went nowhere; this is the recovery path that does not need an
+    app restart.
+    """
+    return worker.ensure_worker()
+
+
+@app.get("/api/health")
+def health():
+    st = worker.worker_status()
+    return {"ok": True, "schema": db.SCHEMA, "db": db.DSN.split("@")[-1],
+            "auto": db.setting("auto_enabled"), "worker_alive": st["alive"],
+            "worker_tick_age": st["tick_age"], "worker_error": st["error"]}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    db.init()
+    print("serving on http://127.0.0.1:8008")
+    uvicorn.run(app, host="127.0.0.1", port=8008, log_level="info")

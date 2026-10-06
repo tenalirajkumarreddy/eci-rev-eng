@@ -1,0 +1,455 @@
+==============================================================================
+com.eci.citizen.features.eepic.EdigitalEpic
+==============================================================================
+  lines: 3359   file: smali_classes13\com\eci\citizen\features\eepic\EdigitalEpic.smali
+
+  -- declared methods --
+      public static synthetic $r8$lambda$OI4gDqdf_y991TUuK4mDezUSanw(Lcom/eci/citizen/features/eepic/EdigitalEpic;Landroid/vie
+      public static synthetic $r8$lambda$RmKBjUewvQANKg45AnknX6HnyvE(Lcom/eci/citizen/features/eepic/EdigitalEpic;Landroid/vie
+      public static synthetic $r8$lambda$Z2Tr0Iu9MHhBarFYUEDT0vsX6N8(Lcom/eci/citizen/features/eepic/EdigitalEpic;Landroid/vie
+      public static synthetic $r8$lambda$bzHGzOV3sNaFl5xcFAazykrt65o(Lcom/eci/citizen/features/eepic/EdigitalEpic;Landroid/wid
+      public static synthetic $r8$lambda$ugEAbaa9R9JthirSstap1kEFqT0(Lcom/eci/citizen/features/eepic/EdigitalEpic;Landroid/vie
+      static bridge synthetic -$$Nest$fgetepicNumber(Lcom/eci/citizen/features/eepic/EdigitalEpic;)Ljava/lang/String;
+      static bridge synthetic -$$Nest$fgetisEpic(Lcom/eci/citizen/features/eepic/EdigitalEpic;)Z
+      static bridge synthetic -$$Nest$fgetmFirebaseAnalytics(Lcom/eci/citizen/features/eepic/EdigitalEpic;)Lcom/google/firebas
+      static bridge synthetic -$$Nest$fgetmSTATECODE(Lcom/eci/citizen/features/eepic/EdigitalEpic;)Ljava/lang/String;
+      static bridge synthetic -$$Nest$fgetpreviewPopUpWindow1(Lcom/eci/citizen/features/eepic/EdigitalEpic;)Landroid/widget/Po
+      static bridge synthetic -$$Nest$fgettTState(Lcom/eci/citizen/features/eepic/EdigitalEpic;)Ljava/util/List;
+      static bridge synthetic -$$Nest$fputepicNumber(Lcom/eci/citizen/features/eepic/EdigitalEpic;Ljava/lang/String;)V
+      static bridge synthetic -$$Nest$fputmSTATECODE(Lcom/eci/citizen/features/eepic/EdigitalEpic;Ljava/lang/String;)V
+      static bridge synthetic -$$Nest$mcallSendOtptoRegisteredMobileNoTrial(Lcom/eci/citizen/features/eepic/EdigitalEpic;Ljava
+      static bridge synthetic -$$Nest$minitializeTimer(Lcom/eci/citizen/features/eepic/EdigitalEpic;)V
+      static bridge synthetic -$$Nest$msaveToDisk(Lcom/eci/citizen/features/eepic/EdigitalEpic;Lokhttp3/ResponseBody;Ljava/lan
+      static bridge synthetic -$$Nest$msaveToDiskString(Lcom/eci/citizen/features/eepic/EdigitalEpic;Ljava/lang/String;Ljava/l
+      static bridge synthetic -$$Nest$mshowPreviewMessage(Lcom/eci/citizen/features/eepic/EdigitalEpic;Ljava/lang/String;)V
+      public constructor <init>()V
+      private ClearRefrenceValue()V
+      private callEpicSearchDetailTrial(Ljava/lang/String;Ljava/lang/String;)V
+      private callPdfDownloadTrial()V
+      private callSendOtptoRegisteredMobileNoTrial(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;)V
+      private clearEpicValue()V
+      private getStateList()V
+      private gotoForm8(Landroid/view/View;)V
+      private initializeTimer()V
+      private synthetic lambda$onCreate$0(Landroid/view/View;)V
+      private synthetic lambda$onCreate$1(Landroid/widget/RadioGroup;I)V
+      private synthetic lambda$showPreviewMessage$2(Landroid/view/View;)V
+      private synthetic lambda$showPreviewMessage$3(Landroid/view/View;)V
+      private saveToDisk(Lokhttp3/ResponseBody;Ljava/lang/String;)V
+      private saveToDiskString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      private showPreviewMessage(Ljava/lang/String;)V
+      public OnClick(Landroid/view/View;)V
+      public clearAll()V
+      varargs doProgress([Landroid/util/Pair;)V
+      public isValid()Z
+      public isValidation()Z
+      protected onCreate(Landroid/os/Bundle;)V
+      protected onDestroy()V
+      protected onResume()V
+      public onTimerComplete()V
+      public onTimerStart()V
+      public onTimerTextChange(Ljava/lang/String;)V
+
+  -- const-strings --
+      ''
+      'EPIC_NO'
+      'REF_NO'
+      'citizen'
+      '-1'
+      'Select State'
+      'form8'
+      'epic_download_tcs'
+      'item_name'
+      'item_id'
+      'EpicdownloadTCS'
+      '/DigitalEpic'
+      '.pdf'
+      'layout_inflater'
+      'is_ngs_user_login'
+      'notification'
+      'android.intent.extra.INTENT'
+      'SearchEpicNo'
+      'Epicdownloadcount'
+      'epic_download_count'
+      'Timer :- ( '
+      ' )'
+
+  -- calls into app/network/crypto --
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->gotoForm8(Landroid/view/View;)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->lambda$onCreate$0(Landroid/view/View;)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->lambda$showPreviewMessage$3(Landroid/view/View;)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->lambda$onCreate$1(Landroid/widget/RadioGroup;I)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->lambda$showPreviewMessage$2(Landroid/view/View;)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->callSendOtptoRegisteredMobileNoTrial(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->initializeTimer()V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->saveToDisk(Lokhttp3/ResponseBody;Ljava/lang/String;)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->saveToDiskString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->showPreviewMessage(Ljava/lang/String;)V
+
+
+     Lcom/eci/citizen/BaseActivity;-><init>()V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->showProgressDialog()V
+
+
+     Lin/gov/eci/garuda/model/formsModel/ChangeRequest;-><init>()V
+
+
+     Lin/gov/eci/garuda/e2/repo/TApiClient;->getRetroFormsClient(Lcom/eci/citizen/BaseActivity;)Lretrofit2/Retrofit;
+
+
+     Lretrofit2/Retrofit;->create(Ljava/lang/Class;)Ljava/lang/Object;
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->getTUserDetails()Lin/gov/eci/garuda/e2/models/AuthFlowResponse;
+
+
+     Lin/gov/eci/garuda/e2/models/AuthFlowResponse;->getAccess_token()Ljava/lang/String;
+
+
+     Lin/gov/eci/garuda/e2/models/AuthFlowResponse;->getAtknBnd()Ljava/lang/String;
+
+
+     Lin/gov/eci/garuda/e2/models/AuthFlowResponse;->getRtknBbnd()Ljava/lang/String;
+
+
+     Lin/gov/eci/garuda/e2/repo/TRestClient;->getDetail(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/model/formsModel/ChangeRequest;)Lretrofit2/Call;
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic$6;-><init>(Lcom/eci/citizen/features/eepic/EdigitalEpic;)V
+
+
+     Lretrofit2/Call;->enqueue(Lretrofit2/Callback;)V
+
+
+     Lin/gov/eci/garuda/e2/repo/TRestClient;->getDetailEpic(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/model/formsModel/ChangeRequest;)Lretrofit2/Call;
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic$3;-><init>(Lcom/eci/citizen/features/eepic/EdigitalEpic;)V
+
+
+     Lin/gov/eci/garuda/e2/repo/TRestClient;->getDetailOtp(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/model/formsModel/ChangeRequest;)Lretrofit2/Call;
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic$5;-><init>(Lcom/eci/citizen/features/eepic/EdigitalEpic;Ljava/lang/Boolean;)V
+
+
+     Lcom/eci/citizen/offline/db/TState;-><init>()V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->getApplicationContext()Landroid/content/Context;
+
+
+     Lcom/eci/citizen/offline/db/DBClient;->getInstance(Landroid/content/Context;)Lcom/eci/citizen/offline/db/DBClient;
+
+
+     Lcom/eci/citizen/offline/db/DBClient;->getAppDatabase()Lcom/eci/citizen/offline/db/AppDatabase;
+
+
+     Lcom/eci/citizen/offline/db/AppDatabase;->masterDAO()Lcom/eci/citizen/offline/db/MasterDAO;
+
+
+     Lcom/eci/citizen/offline/db/MasterDAO;->getStates()Ljava/util/List;
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->gotoActivityWithFinish(Ljava/lang/Class;Landroid/os/Bundle;)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->context()Landroid/content/Context;
+
+
+     Lcom/eci/citizen/utility/customTimer/CustomRunnable;-><init>(Landroid/os/Handler;JLandroid/content/Context;)V
+
+
+     Lcom/eci/citizen/utility/customTimer/CustomRunnable;->setOnTimerTextChangeListener(Lcom/eci/citizen/features/home/mcc/OnTimerTextChangeListener;)V
+
+
+     Lcom/eci/citizen/utility/Utils;->isNetworkAvailable(Landroid/content/Context;)Z
+
+
+     Lcom/eci/citizen/utility/Utils;->displayAlert(Landroid/content/Context;)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->ClearRefrenceValue()V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->goToActivity(Ljava/lang/Class;Landroid/os/Bundle;)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->clearEpicValue()V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->getString(I)Ljava/lang/String;
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->callPdfDownloadTrial()V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->clearAll()V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->getFilesDir()Ljava/io/File;
+
+
+     Lokhttp3/ResponseBody;->byteStream()Ljava/io/InputStream;
+
+
+     Lokhttp3/ResponseBody;->contentLength()J
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic$DownloadZipFileTask;->doProgress(Landroid/util/Pair;)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic$DownloadZipFileTask;->doProgress(Landroid/util/Pair;)V
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->getResources()Landroid/content/res/Resources;
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic$4;-><init>(Lcom/eci/citizen/features/eepic/EdigitalEpic;)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic$$ExternalSyntheticLambda3;-><init>(Lcom/eci/citizen/features/eepic/EdigitalEpic;)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic$$ExternalSyntheticLambda4;-><init>(Lcom/eci/citizen/features/eepic/EdigitalEpic;)V
+
+
+     Lcom/eci/citizen/utility/PreferenceHelper;->getBooleanPreference(Landroid/content/Context;Ljava/lang/String;)Z
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->isValid()Z
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->callEpicSearchDetailTrial(Ljava/lang/String;Ljava/lang/String;)V
+
+
+     Lcom/eci/citizen/utility/SharedPreferenceManager;->checkAndStoreEpic(Landroid/content/Context;Ljava/lang/String;)Z
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->hideProgressDialog()V
+
+
+     Lcom/eci/citizen/BaseActivity;->showToastMessage(Ljava/lang/String;)V
+
+
+     Lcom/eci/citizen/BaseActivity;->onCreate(Landroid/os/Bundle;)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->setContentView(I)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->getIntent()Landroid/content/Intent;
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->getStateList()V
+
+
+     Lcom/eci/citizen/utility/Utils;->displayAlertWithActivityFinish(Landroid/content/Context;)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic$1;-><init>(Lcom/eci/citizen/features/eepic/EdigitalEpic;)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic$2;-><init>(Lcom/eci/citizen/features/eepic/EdigitalEpic;)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic$$ExternalSyntheticLambda0;-><init>(Lcom/eci/citizen/features/eepic/EdigitalEpic;)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic;->setUpToolbar(Ljava/lang/String;Z)V
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic$$ExternalSyntheticLambda1;-><init>(Lcom/eci/citizen/features/eepic/EdigitalEpic;)V
+
+
+     Lcom/eci/citizen/utility/SharedPreferenceManager;->checkAndGetEpic(Landroid/content/Context;)Ljava/lang/String;
+
+
+     Lcom/eci/citizen/features/eepic/EdigitalEpic$$ExternalSyntheticLambda2;-><init>(Lcom/eci/citizen/features/eepic/EdigitalEpic;)V
+
+
+     Lcom/eci/citizen/BaseActivity;->onDestroy()V
+
+
+     Lcom/eci/citizen/BaseActivity;->onResume()V
+
+
+
+==============================================================================
+com.eci.citizen.DataRepository.RestClient
+==============================================================================
+  lines: 6669   file: smali_classes13\com\eci\citizen\DataRepository\RestClient.smali
+
+  -- declared methods --
+      public abstract Newlogin(Lokhttp3/RequestBody;)Lretrofit2/Call;
+      public abstract absenteeVoterRequest(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract getAllArticles(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lretrofit2/Call;
+      public abstract getAllAssembly(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract getAllBlogs(Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getAllDistrict(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract getAllECICurrentIssues(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lretrofit2/Call;
+      public abstract getAllECIGalleryImages(Ljava/lang/String;IILjava/lang/String;)Lretrofit2/Call;
+      public abstract getAllECIGalleryImages(Ljava/lang/String;ILjava/lang/String;)Lretrofit2/Call;
+      public abstract getAllECIGalleryImagesByCatID(Ljava/lang/String;IILjava/lang/String;)Lretrofit2/Call;
+      public abstract getAllECIGallerySubCategory(Ljava/lang/String;IILjava/lang/String;)Lretrofit2/Call;
+      public abstract getAllECILockedIssues(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lretrofit2/Call;
+      public abstract getAllForum(Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getAllGalleryCategory(Ljava/lang/String;I)Lretrofit2/Call;
+      public abstract getAllGalleryImages(Ljava/lang/String;IILjava/lang/String;)Lretrofit2/Call;
+      public abstract getAllGalleryImagesByCatID(Ljava/lang/String;IILjava/lang/String;I)Lretrofit2/Call;
+      public abstract getAllGallerySubCategory(Ljava/lang/String;IILjava/lang/String;)Lretrofit2/Call;
+      public abstract getAllMCCHistory(Lokhttp3/RequestBody;)Lretrofit2/Call;
+      public abstract getAllMCCHistoryActionStatus(Lokhttp3/RequestBody;)Lretrofit2/Call;
+      public abstract getAllNews(Ljava/lang/String;I)Lretrofit2/Call;
+      public abstract getAllQuiz(Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getAllQuotes(Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getAllStates()Lretrofit2/Call;
+      public abstract getAllStatesList(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Cal
+      public abstract getAllSveepGalleryImages(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretr
+      public abstract getAllSveepGalleryImagesOne(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lr
+      public abstract getAllTopics(Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getAllTopicsByForumId(Ljava/lang/String;Ljava/lang/String;I)Lretrofit2/Call;
+      public abstract getApplicationStatus(Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getApplicationStatusWithToken(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lj
+      public abstract getAvailableIndexCard()Lretrofit2/Call;
+      public abstract getBannerCdn()Lretrofit2/Call;
+      public abstract getByeTabularSummary(Ljava/lang/String;Lokhttp3/RequestBody;)Lretrofit2/Call;
+      public abstract getByeTabularSummaryAc()Lretrofit2/Call;
+      public abstract getByeTabularSummaryPc()Lretrofit2/Call;
+      public abstract getCandidateList(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Stri
+      public abstract getCdacAllAssembly(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/St
+      public abstract getCdacAllDistrict(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/St
+      public abstract getCertificate(Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getCircularList(Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getComplaintSubCategories(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract getComplaintSubject(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract getConstituencyWiseData(Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getConstituencyWiseDataPC()Lretrofit2/Call;
+      public abstract getCount(Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getDashboardResponse(Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getDigilokerEncodedDoc(Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call;
+      public abstract getDigilokerFecthDoc(Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getDigilokerLogin(Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getDigilokerMobileCode(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract getDigilokerMobileToken(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract getDownloadFilesList(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)Lretrofit2/Call;
+      public abstract getDownloadLink(Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getDownloadLinkSveep(Ljava/lang/String;I)Lretrofit2/Call;
+      public abstract getECIDownloadFileDetail(Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getEciAboutHonableCommission(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getEciCvigil(Ljava/lang/String;I)Lretrofit2/Call;
+      public abstract getEciFaqOnEvm(Ljava/lang/String;ILjava/lang/String;)Lretrofit2/Call;
+      public abstract getEciTrainingFilms(Ljava/lang/String;ILjava/lang/String;)Lretrofit2/Call;
+      public abstract getElectionStateAcCdn()Lretrofit2/Call;
+      public abstract getElectionText(Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getElectorsDetailsApi(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util
+      public abstract getEpicElectorDetail(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Ca
+      public abstract getFinalizeResponse(Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getFormAuthenticationToken(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrof
+      public abstract getForumDetails(ILjava/lang/String;)Lretrofit2/Call;
+      public abstract getIndexCard(Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getLoginDetail(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract getMPMLA(Ljava/lang/String;Ljava/lang/String;Lcom/eci/citizen/DataRepository/ServerRequestEntity/mpmla/M
+      public abstract getNews(IILjava/lang/String;)Lretrofit2/Call;
+      public abstract getNews(ILjava/lang/String;)Lretrofit2/Call;
+      public abstract getNewsComments(IILjava/lang/String;)Lretrofit2/Call;
+      public abstract getNvspUserDetails(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/St
+      public abstract getNvspUserDetails1(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/S
+      public abstract getOtpDetail(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract getPSDetailsAcWise(Lokhttp3/RequestBody;)Lretrofit2/Call;
+      public abstract getPSList(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getPSQueueDetails(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getPartyVoteShareData(Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getPartyWinData(Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getPartyWinDataPC()Lretrofit2/Call;
+      public abstract getPcSummary(Ljava/lang/String;Lokhttp3/RequestBody;)Lretrofit2/Call;
+      public abstract getPcSummaryLara(Ljava/lang/String;Lokhttp3/RequestBody;)Lretrofit2/Call;
+      public abstract getPollingStationList(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getPresentationOnEVM(Ljava/lang/String;Ljava/lang/String;I)Lretrofit2/Call;
+      public abstract getQuestion()Lretrofit2/Call;
+      public abstract getRelationList(Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getResultCandidateWise(Ljava/lang/String;Lokhttp3/RequestBody;)Lretrofit2/Call;
+      public abstract getResultCandidateWiseData(Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getResultCandidateWiseDataPC()Lretrofit2/Call;
+      public abstract getResultCandidateWiseLara(Ljava/lang/String;Lokhttp3/RequestBody;)Lretrofit2/Call;
+      public abstract getResultTotalTrends(Ljava/lang/String;Lokhttp3/RequestBody;)Lretrofit2/Call;
+      public abstract getResultTotalTrendsLara(Ljava/lang/String;Lokhttp3/RequestBody;)Lretrofit2/Call;
+      public abstract getRevisionYear(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Strin
+      public abstract getSchedule(Ljava/lang/String;Ljava/lang/String;Lcom/eci/citizen/DataRepository/ServerRequestEntity/mpml
+      public abstract getStateByLatLong(Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getStatesDistAcJson()Lretrofit2/Call;
+      public abstract getStatusPaperOnEVM(Ljava/lang/String;Ljava/lang/String;I)Lretrofit2/Call;
+      public abstract getSveepDownloadFileDetail(ILjava/lang/String;)Lretrofit2/Call;
+      public abstract getTrendingForum(Ljava/lang/String;)Lretrofit2/Call;
+      public abstract getUserStatus(Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+      public abstract login(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+      public abstract login(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/la
+      public abstract login(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract modelRVoterTurnout(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract nvspCoreDocument(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Stri
+      public abstract nvspForgot(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretr
+      public abstract nvspNewRegistration(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/M
+      public abstract nvspRegistration(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;
+      public abstract nvspSendOtp(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)L
+      public abstract nvspSendProOtp(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String
+      public abstract postNewQuestion(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract postNewTopic(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract postNewsComment(ILjava/util/Map;)Lretrofit2/Call;
+      public abstract register(Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call;
+      public abstract saveFormDetailsOnServer(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract saveSuggestion(Ldad/droid/lizz/ChecksumRequest;)Lretrofit2/Call;
+      public abstract saveTransaction(Lcom/eci/citizen/DataRepository/Model/RozorpayRequest;)Lretrofit2/Call;
+      public abstract searchElectoral(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+      public abstract searchElectoralElectroleDetail(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract searchElectoralOne(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract searchElectoralPdf(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call
+      public abstract searchOfficerDetail(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract sendFeedback(Ljava/lang/String;I)Lretrofit2/Call;
+      public abstract sendMCCResponse(Ljava/lang/String;I)Lretrofit2/Call;
+      public abstract sendOtpVerify(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call;
+      public abstract sendOtpVerifyReference(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/
+      public abstract sendQuestionFeedback(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/
+      public abstract submitComplaint(Ljava/lang/String;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp
+      public abstract submitComplaint(Lokhttp3/RequestBody;)Lretrofit2/Call;
+      public abstract submitComplaintAnonymously(Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/Reque
+      public abstract submitEditvalue(Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/MultipartBody$Pa
+      public abstract submitMember(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract submitNewVoterRegistationWithToken(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Stri
+      public abstract submitVoterMarking(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Ma
+      public abstract submitdetails(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;
+      public abstract transliteration(Ljava/lang/String;)Lretrofit2/Call;
+      public abstract updateLocation(Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call;
+      public abstract updatedoc(Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/R
+      public abstract uploadFile(Ljava/util/List;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/Reque
+      public abstract uploadPdf(Lokhttp3/MultipartBody$Part;)Lretrofit2/Call;
+      public abstract uploadVelfie(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract verifyElectoral(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract verifyOtp(Ljava/util/Map;)Lretrofit2/Call;
+      public abstract volinteerRequest(Ljava/util/Map;)Lretrofit2/Call;
+
+  -- const-strings --
+
+  -- calls into app/network/crypto --
+

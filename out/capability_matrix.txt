@@ -1,0 +1,34 @@
+WebView usage	110
+JS bridge (@JavascriptInterface)	5
+SSL/TLS custom	101
+Trust-all / bypass	23
+Cleartext opt-in code	0
+Crypto primitives	194
+AES/GCM/RSA usage	139
+Android Keystore	15
+SharedPreferences	117
+EncryptedSharedPrefs	23
+SQLite / Room	490
+Firebase Auth	231
+Firestore	684
+Crashlytics	3769
+FCM	133
+Google Sign-In	59
+Maps SDK	515
+Places API	2243
+Facebook SDK	1160
+Twitter SDK	1
+WhatsApp integration	3
+Razorpay	2
+Location/Fused	201
+Biometric / OTP	318
+Camera/Capture	87
+Barcode/QR	398
+Dagger/Hilt	549
+WorkManager	440
+Pdf/Office rendering	2620
+Excel/POI	3337
+Fresco image	119
+AnyChart	718
+PAIRIP VM encryption	50
+Accessibility concern	4

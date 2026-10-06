@@ -1,0 +1,131 @@
+{
+ "state": "S01",
+ "ac": "1",
+ "part": "12",
+ "part_name": "MANDAPALLI",
+ "epics": 235,
+ "rows": 235,
+ "contributing_old_parts": {
+  "6": 6,
+  "7": 215,
+  "8": 14
+ },
+ "mapping_offset": 1,
+ "mapping_offset_calibration": {
+  "probed": [
+   {
+    "epic": "TBG0016022",
+    "national_part": "12"
+   },
+   {
+    "epic": "TBG0016303",
+    "national_part": "12"
+   },
+   {
+    "epic": "TBG0336966",
+    "national_part": "12"
+   }
+  ],
+  "hits": 3,
+  "sample": 3
+ },
+ "mapping_part_used": "11",
+ "old_parts_swept": [
+  "6",
+  "7",
+  "8"
+ ],
+ "discovery": {
+  "1": {
+   "name": "Kedari Puram",
+   "window_recs": 50
+  },
+  "2": {
+   "name": "Muchimdra",
+   "window_recs": 50
+  },
+  "3": {
+   "name": "Purushottapuram",
+   "window_recs": 50
+  },
+  "4": {
+   "name": "Purushottapuram",
+   "window_recs": 50
+  },
+  "5": {
+   "name": "Aminsahebpeta",
+   "window_recs": 50
+  },
+  "6": {
+   "name": "Mamdapalli",
+   "window_recs": 50
+  },
+  "7": {
+   "name": "Mamdapalli",
+   "window_recs": 50
+  },
+  "8": {
+   "name": "Mamdapalli",
+   "window_recs": 50
+  },
+  "9": {
+   "name": "Telukumchi",
+   "window_recs": 50
+  },
+  "10": {
+   "name": "Haripuram",
+   "window_recs": 50
+  },
+  "11": {
+   "name": "Boddabada",
+   "window_recs": 50
+  },
+  "12": {
+   "name": "Koligam",
+   "window_recs": 50
+  },
+  "13": {
+   "name": "Koligam",
+   "window_recs": 50
+  },
+  "14": {
+   "name": "Arakabadra",
+   "window_recs": 50
+  },
+  "15": {
+   "name": "Birlamgi",
+   "window_recs": 50
+  },
+  "16": {
+   "name": "Birlamgi",
+   "window_recs": 50
+  },
+  "17": {
+   "name": "Rattakanna",
+   "window_recs": 50
+  },
+  "18": {
+   "name": "Rattakanna",
+   "window_recs": 50
+  },
+  "19": {
+   "name": "Ichchapuram",
+   "window_recs": 50
+  },
+  "20": {
+   "name": "Ichchapuram",
+   "window_recs": 50
+  }
+ },
+ "elapsed_s": 18.1,
+ "note": "EPICs of the pre-roll cohort mapped into this part; electors added after that roll are not in this source.",
+ "verify": {
+  "checked": 4,
+  "part_match": 3,
+  "part_mismatch": 1,
+  "issues": [
+   "KZZ0690909 name 'vagad satyanarayana' vs 'vagada sathyanarayan'",
+   "TBG0742965 part= (expected 12)"
+  ]
+ }
+}

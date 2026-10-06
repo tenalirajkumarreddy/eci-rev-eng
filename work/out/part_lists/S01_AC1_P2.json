@@ -1,0 +1,22 @@
+{
+ "state": "S01",
+ "ac": "1",
+ "part": "2",
+ "part_name": "KEDARIPURAM",
+ "epics": 171,
+ "rows": 171,
+ "contributing_old_parts": {
+  "1": 171
+ },
+ "mapping_offset": 0,
+ "mapping_offset_calibration": {
+  "reason": "explicit --offset"
+ },
+ "mapping_part_used": "2",
+ "old_parts_swept": [
+  "1"
+ ],
+ "discovery": "skipped (explicit --old-parts)",
+ "elapsed_s": 1.2,
+ "note": "EPICs of the pre-roll cohort mapped into this part; electors added after that roll are not in this source."
+}

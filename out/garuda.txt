@@ -1,0 +1,40 @@
+============================================================================
+TRestClient.getDetail
+============================================================================
+  signature : public abstract getDetail(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/model/formsModel/ChangeRequest;)Lretrofit2/Call;
+  paramName : "authorization", "atknBand", "rtknBand", "cRole", "hState", "body"
+  verb      : POST
+  path      : e-epic/get-epic-detail
+  headers   : ['Authorization', 'atkn_bnd', 'rtkn_bnd', 'currentRole', 'state']
+  @Body     : True    @QueryMap: False
+  returns   : java/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Lin/gov/eci/garuda/model/formsModel/ChangeRequest; ) Lretrofit2/Call< Lin/gov/eci/garuda/e2/models/TEEpicSearchResponse; >; } 
+
+============================================================================
+TRestClient.getDetail
+============================================================================
+  signature : public abstract getDetailEpic(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/model/formsModel/ChangeRequest;)Lretrofit2/Call;
+  paramName : "authorization", "atknBand", "rtknBand", "cRole", "hState", "body"
+  verb      : POST
+  path      : e-epic/verify-otp
+  headers   : ['Authorization', 'atkn_bnd', 'rtkn_bnd', 'currentRole', 'state']
+  @Body     : True    @QueryMap: False
+  returns   :  ( Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Lin/gov/eci/garuda/model/formsModel/ChangeRequest; ) Lretrofit2/Call< Lin/gov/eci/garuda/e2/models/TResponse; >; } 
+
+============================================================================
+TRestClient.getDetail
+============================================================================
+  signature : public abstract getDetailOtp(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/model/formsModel/ChangeRequest;)Lretrofit2/Call;
+  paramName : "authorization", "atknBand", "rtknBand", "cRole", "hState", "body"
+  verb      : POST
+  path      : e-epic/send-otp
+  headers   : ['Authorization', 'atkn_bnd', 'rtkn_bnd', 'currentRole', 'state']
+  @Body     : True    @QueryMap: False
+  returns   :  ( Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Ljava/lang/String; Lin/gov/eci/garuda/model/formsModel/ChangeRequest; ) Lretrofit2/Call< Lin/gov/eci/garuda/e2/models/TResponse; >; } 
+
+============================================================================
+TApiClient base URLs
+============================================================================
+    https://gateway-vha.eci.gov.in
+    https://gateway-vha.eci.gov.in/api/v1/
+    https://gateway-s2-blo.eci.gov.in/api/v1/
+    https://gateway-vha.eci.gov.in/api/eci/v1/external/

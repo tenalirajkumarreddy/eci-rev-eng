@@ -1,0 +1,156 @@
+scanning 75901 files...
+
+==========================================================================
+APP-OWNED NAMESPACE MAP (top 45 by class count)
+==========================================================================
+  6305  com
+  4604  org
+  4503  
+  4078  com/eci
+  4048  com/eci/citizen
+  3596  org/openxmlformats
+  3596  org/openxmlformats/schemas
+  2802  in
+  1509  in/gov
+  1509  in/gov/eci
+  1293  in/nic
+  1293  in/nic/eci
+  1221  io
+  1061  io/grpc
+   942  rx
+   866  con
+   621  con/eci
+   621  con/eci/candidateapp
+   614  rx/internal
+   516  com/microsoft
+   516  com/microsoft/schemas
+   477  io/grpc/internal
+   458  rx/internal/operators
+   371  com/parse
+   360  org/checkerframework
+   263  com/googlecode
+   263  com/googlecode/mp4parser
+   256  org/checkerframework/checker
+   245  con/avcoding
+   245  con/avcoding/core
+   244  org/jsoup
+   232  dagger
+   165  dagger/hilt
+   154  io/socket
+   147  suvidha
+   147  suvidha/eci
+   147  suvidha/eci/gov
+   134  com/coremedia
+   134  com/coremedia/iso
+   133  com/caverock
+   133  com/caverock/androidsvg
+   133  io/grpc/okhttp
+   132  com/smarteist
+   132  com/smarteist/autoimageslider
+   129  com/android
+
+==========================================================================
+CAPABILITY / SDK MATRIX
+==========================================================================
+  [YES] WebView usage                      classes=110
+  [YES] JS bridge (@JavascriptInterface)   classes=5
+          Lcom/anychart/chart/common/listener/ListenersInterface;
+          Lcom/eci/citizen/features/esign/ESignActivity$WebAppInterface;
+          Lcom/eci/citizen/features/esign/ESignActivitySir$WebAppInterface;
+          Lcom/google/android/recaptcha/internal/zzeq;
+          Lin/gov/eci/encore/ui/WebViewActivity$WebAppInterface;
+  [YES] SSL/TLS custom                     classes=101
+          Lcom/eci/citizen/DataRepository/ApiClient$$ExternalSyntheticLambda0;
+          Lcom/eci/citizen/DataRepository/ApiClient$1;
+          Lcom/eci/citizen/DataRepository/ApiClient;
+          Lcom/eci/citizen/DataRepository/ServerPakage/FormsMethod;
+          Lcom/eci/citizen/DataRepository/sslclasses/CustomSSLSocketFactory;
+          Lcom/eci/citizen/DataRepository/sslclasses/TLSSocketFactory;
+  [YES] Trust-all / bypass                 classes=23
+          Lcom/eci/citizen/DataRepository/ApiClient$1;
+          Lcom/eci/citizen/DataRepository/ApiClient;
+          Lcom/eci/citizen/DataRepository/ServerPakage/FormsMethod;
+          Lcom/google/firebase/crashlytics/buildtools/reloc/org/apache/http/conn/ssl/AllowAllHostnameVerifier;
+          Lcom/google/firebase/crashlytics/buildtools/reloc/org/apache/http/conn/ssl/SSLConnectionSocketFactory;
+          Lcom/google/firebase/crashlytics/buildtools/reloc/org/apache/http/conn/ssl/SSLContextBuilder$TrustManagerDelegate;
+  [no ] Cleartext opt-in code              classes=0
+  [YES] Crypto primitives                  classes=194
+  [YES] AES/GCM/RSA usage                  classes=139
+  [YES] Android Keystore                   classes=15
+  [YES] SharedPreferences                  classes=117
+  [YES] EncryptedSharedPrefs               classes=23
+  [YES] SQLite / Room                      classes=490
+  [YES] Firebase Auth                      classes=231
+  [YES] Firestore                          classes=684
+  [YES] Crashlytics                        classes=3769
+  [YES] FCM                                classes=133
+  [YES] Google Sign-In                     classes=59
+  [YES] Maps SDK                           classes=515
+  [YES] Places API                         classes=2243
+  [YES] Facebook SDK                       classes=1160
+  [YES] Twitter SDK                        classes=1
+  [YES] WhatsApp integration               classes=3
+  [YES] Razorpay                           classes=2
+  [YES] Location/Fused                     classes=201
+  [YES] Biometric / OTP                    classes=318
+  [YES] Camera/Capture                     classes=87
+  [YES] Barcode/QR                         classes=398
+  [YES] Dagger/Hilt                        classes=549
+  [YES] WorkManager                        classes=440
+  [YES] Pdf/Office rendering               classes=2620
+  [YES] Excel/POI                          classes=3337
+  [YES] Fresco image                       classes=119
+  [YES] AnyChart                           classes=718
+  [YES] PAIRIP VM encryption               classes=50
+  [YES] Accessibility concern              classes=4
+
+==========================================================================
+NATIVE LIBRARIES
+==========================================================================
+
+==========================================================================
+ASSETS (top-level)
+==========================================================================
+  total asset files: 75
+        2336 KB  anychart-android.min.js
+         358 KB  pzJUrwDeSkVvv08h
+         346 KB  font/Ubuntu-R.ttf
+         217 KB  font/OpenSans-ExtraBold.ttf
+         217 KB  OpenSans-Light.ttf
+         217 KB  font/OpenSans-Light.ttf
+         212 KB  OpenSans-Regular.ttf
+         212 KB  font/OpenSans-Regular.ttf
+         186 KB  xLgRuYE75IlUluXw
+         185 KB  ggaYVpdoGMLfiwWO
+         184 KB  InT2xXNrIBmSCHpM
+         183 KB  yBhEb007EpH7Zcjh
+         159 KB  font/roboto_light.ttf
+         155 KB  Lca2oIhHv6ukYpw4
+         155 KB  font/Roboto_Regular_0.ttf
+         155 KB  font/roboto_regular.ttf
+         155 KB  YO7ZNExQKsrVwkTM
+         155 KB  UYnPMHMo8uVmbDfv
+         154 KB  GAau1YWr9jE90VQW
+         153 KB  font/Poppins.ttf
+         152 KB  font/poppinssemibold.ttf
+         151 KB  GpjPdFoTzaWj6Nlr
+         151 KB  ZOpaZejGlyrFoCJF
+         150 KB  9cfQxKlkdU62DM1w
+         149 KB  SBLGawbftoifS6dD
+         149 KB  dPzgpTmOYp01yyIx
+         148 KB  D34zrnZexQuX3lKQ
+         148 KB  fciVGIqANIAfYzOD
+         147 KB  9G3WUpeAOMZcUsFO
+         147 KB  NDDpYjClEo0GOx8e
+         147 KB  2foHchS53FIS7VOo
+         147 KB  U9XkmhJOiqYmqQWr
+         147 KB  T070yqL0LljEuIMQ
+         147 KB  eBt5Rv3tYaVkld77
+         147 KB  pWr3cjcnyl8BjurT
+         146 KB  D0nBYhyn5Gje08TR
+         146 KB  llVigrUcs1isNBVA
+         146 KB  ozZKl9xSwQ5BbqG1
+         146 KB  Myih45NcPIZ3tNF6
+         146 KB  VOP5NeM2ZMytuJtU
+
+saved capability_matrix.txt + package_map.txt

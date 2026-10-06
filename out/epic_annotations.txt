@@ -1,0 +1,95 @@
+==============================================================================
+METHOD: public abstract getElectorsDetailsApi(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call;
+==============================================================================
+  .method public abstract getElectorsDetailsApi(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call;
+       value = "Accept"
+       value = "X-API-KEY"
+       value = "AuthorizedVHA"
+       value = "Content-Type"
+       value = {
+       value = "GetElectorsDetails"
+  .end method
+
+==============================================================================
+METHOD: public abstract getEpicElectorDetail(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call;
+==============================================================================
+  .method public abstract getEpicElectorDetail(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call;
+       value = "Content-Type"
+       value = "Accept"
+       value = "X-API-KEY"
+       value = {
+       value = "eepic/GetElectorDetailForEEPIC"
+  .end method
+
+==============================================================================
+METHOD: public abstract getNvspUserDetails(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+==============================================================================
+  .method public abstract getNvspUserDetails(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+       value = "Accept"
+       value = "X-API-KEY"
+       value = "Authorization"
+       value = "Content-Type"
+       value = "MOBILE_NO"
+       value = {
+       value = "IsRegisteredUser"
+  .end method
+
+==============================================================================
+METHOD: public abstract getNvspUserDetails1(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+==============================================================================
+  .method public abstract getNvspUserDetails1(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+       value = "Accept"
+       value = "X-API-KEY"
+       value = "Authorization"
+       value = "Content-Type"
+       value = "MobileNumber"
+       value = {
+       value = "IsRegisteredUser2"
+  .end method
+
+==============================================================================
+METHOD: public abstract searchElectoral(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+==============================================================================
+  .method public abstract searchElectoral(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+       value = "search_type"
+       value = "epic_no"
+       value = "passKey"
+       value = {
+       value = "api/search"
+  .end method
+
+==============================================================================
+METHOD: public abstract searchElectoralElectroleDetail(Ljava/util/Map;)Lretrofit2/Call;
+==============================================================================
+  .method public abstract searchElectoralElectroleDetail(Ljava/util/Map;)Lretrofit2/Call;
+       value = {
+       value = "mservices/api/EVP/GetEVPElectorDetails"
+  .end method
+
+==============================================================================
+METHOD: public abstract searchElectoralOne(Ljava/util/Map;)Lretrofit2/Call;
+==============================================================================
+  .method public abstract searchElectoralOne(Ljava/util/Map;)Lretrofit2/Call;
+       value = {
+       value = "api/search"
+  .end method
+
+==============================================================================
+METHOD: public abstract searchElectoralPdf(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call;
+==============================================================================
+  .method public abstract searchElectoralPdf(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call;
+       value = "Content-Type"
+       value = "Accept"
+       value = "X-API-KEY"
+       value = {
+       value = "eepic/GetEEPICCard"
+  .end method
+
+==============================================================================
+METHOD: public abstract verifyElectoral(Ljava/util/Map;)Lretrofit2/Call;
+==============================================================================
+  .method public abstract verifyElectoral(Ljava/util/Map;)Lretrofit2/Call;
+       value = {
+       value = "vh_epicno_verify"
+  .end method
+

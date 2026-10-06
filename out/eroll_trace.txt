@@ -1,0 +1,805 @@
+============================================================================
+EPIC SEARCH UI:  com/eci/citizen/features/eRoll/SearchbyElectorSir
+============================================================================
+-- const-strings --
+    'Select Assembly in Last SIR'
+    'Select District in Last SIR'
+    'Select PS No. and name in Last SIR'
+    'Select Section no. and name in Last SIR'
+    'Select State in Last SIR'
+    'ABC'
+    'Select Age in Last SIR'
+    'Elector Full Name in last SIR'
+    'Rahul'
+
+-- outbound calls (app-owned / network / crypto) --
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->lambda$onCreate$0(Landroid/view/View;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->lambda$spinnerSetup$4(Landroid/view/View;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->SpinnerAssambly(Ljava/util/List;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->SpinnerDistrict(Ljava/util/List;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->SpinnerPartName(Ljava/util/List;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->SpinnerSectionNumber(Ljava/util/List;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->SpinnerStateList(Ljava/util/List;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->fetchAssermblyAPI(Ljava/lang/String;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->getAssably(Ljava/lang/String;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->getDistrict(Ljava/lang/String;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->getPartNumber(Ljava/lang/String;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->getSectionNumber(Ljava/lang/String;)V
+
+
+    Lcom/eci/citizen/BaseActivity;-><init>()V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$1;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;)V
+
+
+    Ljava/util/ArrayList;-><init>()V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$$ExternalSyntheticLambda1;-><init>()V
+
+
+    Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V
+
+
+    Lin/gov/eci/garuda/e2/models/AssamblyPayload;-><init>()V
+
+
+    Lin/gov/eci/garuda/e2/models/AssamblyPayload;->setAcNo(Ljava/lang/String;)V
+
+
+    Lin/gov/eci/garuda/e2/models/AssamblyPayload;->setAcName(Ljava/lang/String;)V
+
+
+    Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+
+    Ljava/util/List;->addAll(Ljava/util/Collection;)Z
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$10;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;Landroid/content/Context;ILjava/util/List;)V
+
+
+    Landroid/widget/ArrayAdapter;->setDropDownViewResource(I)V
+
+
+    Landroidx/appcompat/widget/AppCompatSpinner;->setAdapter(Landroid/widget/SpinnerAdapter;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$$ExternalSyntheticLambda0;-><init>()V
+
+
+    Lin/gov/eci/garuda/e2/models/DistrictPayload;-><init>()V
+
+
+    Lin/gov/eci/garuda/e2/models/DistrictPayload;->setDistrictNo(Ljava/lang/String;)V
+
+
+    Lin/gov/eci/garuda/e2/models/DistrictPayload;->setDistrictNameHN(Ljava/lang/String;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$19;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;Landroid/content/Context;ILjava/util/List;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$$ExternalSyntheticLambda6;-><init>()V
+
+
+    Lin/gov/eci/garuda/e2/models/PartPayload;-><init>()V
+
+
+    Lin/gov/eci/garuda/e2/models/PartPayload;->setPartNumber(Ljava/lang/String;)V
+
+
+    Lin/gov/eci/garuda/e2/models/PartPayload;->setPartName(Ljava/lang/String;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$8;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;Landroid/content/Context;ILjava/util/List;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$$ExternalSyntheticLambda4;-><init>()V
+
+
+    Lin/gov/eci/garuda/e2/models/StationNumberResponse$SectionNumber;-><init>()V
+
+
+    Lin/gov/eci/garuda/e2/models/StationNumberResponse$SectionNumber;->setSectionNo(Ljava/lang/String;)V
+
+
+    Lin/gov/eci/garuda/e2/models/StationNumberResponse$SectionNumber;->setSectionName(Ljava/lang/String;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$9;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;Landroid/content/Context;ILjava/util/List;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$$ExternalSyntheticLambda3;-><init>()V
+
+
+    Lin/gov/eci/garuda/e2/models/TStateResponse;-><init>()V
+
+
+    Lin/gov/eci/garuda/e2/models/TStateResponse;->setStateCd(Ljava/lang/String;)V
+
+
+    Lin/gov/eci/garuda/e2/models/TStateResponse;->setStateName(Ljava/lang/String;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$20;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;Landroid/content/Context;ILjava/util/List;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->showToast(Ljava/lang/String;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->showProgressDialog()V
+
+
+    Lin/gov/eci/garuda/e2/repo/TApiClient;->getRetroClient()Lretrofit2/Retrofit;
+
+
+    Lretrofit2/Retrofit;->create(Ljava/lang/Class;)Ljava/lang/Object;
+
+
+    Lin/gov/eci/garuda/e2/repo/TRestClient;->getAssemblyListIndWithOutToken(Ljava/lang/String;)Lretrofit2/Call;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$7;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;)V
+
+
+    Lretrofit2/Call;->enqueue(Lretrofit2/Callback;)V
+
+
+    Lin/gov/eci/garuda/e2/repo/TRestClient;->getAssamblyWithOutToken(Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$2;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;)V
+
+
+    Lin/gov/eci/garuda/e2/repo/TRestClient;->getEnumDistrictWithOutToken(Ljava/lang/String;)Lretrofit2/Call;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$6;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;)V
+
+
+    Lin/gov/eci/garuda/e2/repo/TRestClient;->getStateswithoutToken()Lretrofit2/Call;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$5;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;)V
+
+
+    Lin/gov/eci/garuda/e2/repo/TRestClient;->getParNameWithOutToken(Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$3;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;)V
+
+
+    Lin/gov/eci/garuda/e2/models/SectionNumberRequest;-><init>()V
+
+
+    Lin/gov/eci/garuda/e2/repo/TRestClient;->getSectionNumberWithOutToken(Ljava/lang/String;Lin/gov/eci/garuda/e2/models/SectionNumberRequest;)Lretrofit2/Call;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$4;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;)V
+
+
+    Lin/gov/eci/garuda/e2/models/AssamblyPayload;->getAcNo()Ljava/lang/String;
+
+
+    Ljava/lang/String;->trim()Ljava/lang/String;
+
+
+    Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+
+
+    Ljava/lang/Integer;->compare(II)I
+
+
+    Lin/gov/eci/garuda/e2/models/DistrictPayload;->getDistrictNo()Ljava/lang/String;
+
+
+    Lin/gov/eci/garuda/e2/models/PartPayload;->getPartNumber()Ljava/lang/String;
+
+
+    Lin/gov/eci/garuda/e2/models/StationNumberResponse$SectionNumber;->getSectionNo()Ljava/lang/String;
+
+
+    Lin/gov/eci/garuda/e2/models/TStateResponse;->getStateName()Ljava/lang/String;
+
+
+    Ljava/lang/String;->compareToIgnoreCase(Ljava/lang/String;)I
+
+
+    Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->startActivity(Landroid/content/Intent;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->context()Landroid/content/Context;
+
+
+    Lcom/eci/citizen/utility/Utils;->isNetworkAvailable(Landroid/content/Context;)Z
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->validateMandatoryFields()Z
+
+
+    Lin/gov/eci/garuda/e2/models/SirInputRequest;-><init>()V
+
+
+    Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+
+
+    Ljava/lang/String;->isEmpty()Z
+
+
+    Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+
+    Ljava/lang/String;->charAt(I)C
+
+
+    Ljava/lang/Character;->toUpperCase(C)C
+
+
+    Ljava/lang/String;->valueOf(C)Ljava/lang/String;
+
+
+    Landroid/widget/EditText;->getText()Landroid/text/Editable;
+
+
+    Ljava/lang/Object;->toString()Ljava/lang/String;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->callValidateSirElectorDetails(Lin/gov/eci/garuda/e2/models/SirInputRequest;)V
+
+
+    Lcom/eci/citizen/utility/Utils;->displayAlert(Landroid/content/Context;)V
+
+
+    Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+
+    Landroid/widget/ArrayAdapter;-><init>(Landroid/content/Context;ILjava/util/List;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$11;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;)V
+
+
+    Landroidx/appcompat/widget/AppCompatSpinner;->setOnItemSelectedListener(Landroid/widget/AdapterView$OnItemSelectedListener;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$12;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$13;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$14;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$15;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$16;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$17;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$$ExternalSyntheticLambda5;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;)V
+
+
+    Landroidx/appcompat/widget/AppCompatButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+
+    Landroidx/appcompat/widget/AppCompatSpinner;->getSelectedItemPosition()I
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->getString(I)Ljava/lang/String;
+
+
+    Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
+
+
+    Landroid/widget/Toast;->show()V
+
+
+    Landroid/widget/EditText;->requestFocus()Z
+
+
+    Lcom/google/gson/Gson;-><init>()V
+
+
+    Lcom/google/gson/Gson;->toJson(Ljava/lang/Object;)Ljava/lang/String;
+
+
+    Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+
+    Lin/gov/eci/garuda/e2/repo/TRestClient;->searchByOldDetails(Lin/gov/eci/garuda/e2/models/SirInputRequest;)Lretrofit2/Call;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$18;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;)V
+
+
+    Lcom/eci/citizen/BaseActivity;->onCreate(Landroid/os/Bundle;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->getLayoutInflater()Landroid/view/LayoutInflater;
+
+
+    Lcom/eci/citizen/databinding/SearchByElectorDetailsBinding;->inflate(Landroid/view/LayoutInflater;)Lcom/eci/citizen/databinding/SearchByElectorDetailsBinding;
+
+
+    Lcom/eci/citizen/databinding/SearchByElectorDetailsBinding;->getRoot()Landroid/widget/LinearLayout;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->setContentView(Landroid/view/View;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->setSupportActionBar(Landroidx/appcompat/widget/Toolbar;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->getSupportActionBar()Landroidx/appcompat/app/ActionBar;
+
+
+    Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+
+
+    Landroidx/appcompat/app/ActionBar;->setDisplayShowTitleEnabled(Z)V
+
+
+    Landroidx/appcompat/app/ActionBar;->setDisplayHomeAsUpEnabled(Z)V
+
+
+    Landroidx/appcompat/widget/Toolbar;->findViewById(I)Landroid/view/View;
+
+
+    Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->getEnumStateLoad()V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->spinnerSetup()V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;->setElectoralAge()V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchbyElectorSir$$ExternalSyntheticLambda2;-><init>(Lcom/eci/citizen/features/eRoll/SearchbyElectorSir;)V
+
+
+    Landroid/widget/Button;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+
+
+============================================================================
+LAST-NAME SEARCH UI:  com/eci/citizen/features/eRoll/SearchByLastSir
+============================================================================
+-- const-strings --
+    'https://erms.gujarat.gov.in/ceo-gujarat/master/voterlist2002.aspx'
+    'S06'
+    'https://ceo.karnataka.gov.in/363/electoral-roll--2002/en'
+    'S10'
+    'https://ceouttarpradesh.nic.in/rollpdf/rollpdf.aspx'
+    'S24'
+    'https://ceowestbengal.wb.gov.in/roll_dist'
+    'S25'
+    'https://ceojh.jharkhand.gov.in/mrollpdf1/aceng.aspx'
+    'S27'
+    'https://ceochandigarh.gov.in/pages/intensive'
+    'U02'
+    'https://ceodaman.nic.in/IntensiveSR2002.aspx'
+    'U03'
+    'https://ceo.jk.gov.in/namesearch'
+    'U08'
+    'https://election.uk.gov.in/search2003uk'
+    'S28'
+    'S02'
+    'S03'
+    'S04'
+    'S05'
+    'S07'
+    'S08'
+    'S11'
+    'S12'
+    'S13'
+    'S14'
+    'S15'
+    'S16'
+    'S17'
+    'S19'
+    'S20'
+    'S21'
+    'S22'
+    'S23'
+    'S26'
+    'S29'
+    'U01'
+    'U05'
+    'U06'
+    'U07'
+    'U09'
+    'https://www.eci.gov.in/sir/{phase}/{state}/data/OLDSIRROLL/{state}/{ac}/{state}_{ac}_{part}.pdf'
+    'Select Assembly in Last SIR'
+    'Select District in Last SIR'
+    'Select Part Name in Last SIR'
+    'Select State in Last SIR'
+    's04'
+    'http://election.bihar.gov.in/electorsearch2003/index.aspx'
+    '\\\\{phase\\\\}'
+    '\\\\{state\\\\}'
+    '\\\\{ac\\\\}'
+    '\\\\{part\\\\}'
+
+-- outbound calls (app-owned / network / crypto) --
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->lambda$spinnerSetup$2(Landroid/view/View;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->SpinnerAssambly(Ljava/util/List;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->SpinnerDistrict(Ljava/util/List;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->SpinnerPartName(Ljava/util/List;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->SpinnerStateList(Ljava/util/List;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->fetchAssermblyAPI(Ljava/lang/String;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->getAssably(Ljava/lang/String;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->getDistrict(Ljava/lang/String;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->getPartNumber(Ljava/lang/String;)V
+
+
+    Ljava/util/HashMap;-><init>()V
+
+
+    Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+
+    Lcom/eci/citizen/BaseActivity;-><init>()V
+
+
+    Ljava/util/ArrayList;-><init>()V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$$ExternalSyntheticLambda1;-><init>()V
+
+
+    Ljava/util/Collections;->sort(Ljava/util/List;Ljava/util/Comparator;)V
+
+
+    Lin/gov/eci/garuda/e2/models/AssamblyPayload;-><init>()V
+
+
+    Lin/gov/eci/garuda/e2/models/AssamblyPayload;->setAcNo(Ljava/lang/String;)V
+
+
+    Lin/gov/eci/garuda/e2/models/AssamblyPayload;->setAcName(Ljava/lang/String;)V
+
+
+    Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+
+    Ljava/util/List;->addAll(Ljava/util/Collection;)Z
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$7;-><init>(Lcom/eci/citizen/features/eRoll/SearchByLastSir;Landroid/content/Context;ILjava/util/List;)V
+
+
+    Landroid/widget/ArrayAdapter;->setDropDownViewResource(I)V
+
+
+    Landroidx/appcompat/widget/AppCompatSpinner;->setAdapter(Landroid/widget/SpinnerAdapter;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$$ExternalSyntheticLambda0;-><init>()V
+
+
+    Lin/gov/eci/garuda/e2/models/DistrictPayload;-><init>()V
+
+
+    Lin/gov/eci/garuda/e2/models/DistrictPayload;->setDistrictNo(Ljava/lang/String;)V
+
+
+    Lin/gov/eci/garuda/e2/models/DistrictPayload;->setDistrictNameHN(Ljava/lang/String;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$13;-><init>(Lcom/eci/citizen/features/eRoll/SearchByLastSir;Landroid/content/Context;ILjava/util/List;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$$ExternalSyntheticLambda4;-><init>()V
+
+
+    Lin/gov/eci/garuda/e2/models/PartPayload;-><init>()V
+
+
+    Lin/gov/eci/garuda/e2/models/PartPayload;->setPartNumber(Ljava/lang/String;)V
+
+
+    Lin/gov/eci/garuda/e2/models/PartPayload;->setPartName(Ljava/lang/String;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$6;-><init>(Lcom/eci/citizen/features/eRoll/SearchByLastSir;Landroid/content/Context;ILjava/util/List;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$$ExternalSyntheticLambda3;-><init>()V
+
+
+    Lin/gov/eci/garuda/e2/models/TStateResponse;-><init>()V
+
+
+    Lin/gov/eci/garuda/e2/models/TStateResponse;->setStateCd(Ljava/lang/String;)V
+
+
+    Lin/gov/eci/garuda/e2/models/TStateResponse;->setStateName(Ljava/lang/String;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$12;-><init>(Lcom/eci/citizen/features/eRoll/SearchByLastSir;Landroid/content/Context;ILjava/util/List;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->showProgressDialog()V
+
+
+    Lin/gov/eci/garuda/e2/repo/TApiClient;->getRetroClient()Lretrofit2/Retrofit;
+
+
+    Lretrofit2/Retrofit;->create(Ljava/lang/Class;)Ljava/lang/Object;
+
+
+    Lin/gov/eci/garuda/e2/repo/TRestClient;->getAssemblyListIndWithOutToken(Ljava/lang/String;)Lretrofit2/Call;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$5;-><init>(Lcom/eci/citizen/features/eRoll/SearchByLastSir;)V
+
+
+    Lretrofit2/Call;->enqueue(Lretrofit2/Callback;)V
+
+
+    Lin/gov/eci/garuda/e2/repo/TRestClient;->getAssamblyWithOutToken(Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$1;-><init>(Lcom/eci/citizen/features/eRoll/SearchByLastSir;)V
+
+
+    Lin/gov/eci/garuda/e2/repo/TRestClient;->getEnumDistrictWithOutToken(Ljava/lang/String;)Lretrofit2/Call;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$4;-><init>(Lcom/eci/citizen/features/eRoll/SearchByLastSir;)V
+
+
+    Lin/gov/eci/garuda/e2/repo/TRestClient;->getStateswithoutToken()Lretrofit2/Call;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$3;-><init>(Lcom/eci/citizen/features/eRoll/SearchByLastSir;)V
+
+
+    Lin/gov/eci/garuda/e2/repo/TRestClient;->getParNameWithOutToken(Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$2;-><init>(Lcom/eci/citizen/features/eRoll/SearchByLastSir;)V
+
+
+    Lin/gov/eci/garuda/e2/models/AssamblyPayload;->getAcNo()Ljava/lang/String;
+
+
+    Ljava/lang/String;->trim()Ljava/lang/String;
+
+
+    Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+
+
+    Ljava/lang/Integer;->compare(II)I
+
+
+    Lin/gov/eci/garuda/e2/models/DistrictPayload;->getDistrictNo()Ljava/lang/String;
+
+
+    Lin/gov/eci/garuda/e2/models/PartPayload;->getPartNumber()Ljava/lang/String;
+
+
+    Lin/gov/eci/garuda/e2/models/TStateResponse;->getStateName()Ljava/lang/String;
+
+
+    Ljava/lang/String;->compareToIgnoreCase(Ljava/lang/String;)I
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->validateMandatoryFields()Z
+
+
+    Landroid/widget/LinearLayout;->isShown()Z
+
+
+    Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+
+
+    Landroidx/appcompat/widget/AppCompatSpinner;->getSelectedItem()Ljava/lang/Object;
+
+
+    Lin/gov/eci/garuda/e2/models/PartPayload;->getOldPdfUrl()Ljava/lang/String;
+
+
+    Lcom/eci/citizen/utility/Utils;->redirectUsingCustomTab(Landroid/content/Context;Ljava/lang/String;)V
+
+
+    Ljava/lang/String;->replaceAll(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$8;-><init>(Lcom/eci/citizen/features/eRoll/SearchByLastSir;)V
+
+
+    Landroidx/appcompat/widget/AppCompatSpinner;->setOnItemSelectedListener(Landroid/widget/AdapterView$OnItemSelectedListener;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$9;-><init>(Lcom/eci/citizen/features/eRoll/SearchByLastSir;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$10;-><init>(Lcom/eci/citizen/features/eRoll/SearchByLastSir;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$11;-><init>(Lcom/eci/citizen/features/eRoll/SearchByLastSir;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir$$ExternalSyntheticLambda2;-><init>(Lcom/eci/citizen/features/eRoll/SearchByLastSir;)V
+
+
+    Landroidx/appcompat/widget/AppCompatButton;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+
+    Landroidx/appcompat/widget/AppCompatSpinner;->getSelectedItemPosition()I
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->getString(I)Ljava/lang/String;
+
+
+    Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
+
+
+    Landroid/widget/Toast;->show()V
+
+
+    Lcom/eci/citizen/BaseActivity;->onCreate(Landroid/os/Bundle;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->getLayoutInflater()Landroid/view/LayoutInflater;
+
+
+    Lcom/eci/citizen/databinding/SearchByLastSirBinding;->inflate(Landroid/view/LayoutInflater;)Lcom/eci/citizen/databinding/SearchByLastSirBinding;
+
+
+    Lcom/eci/citizen/databinding/SearchByLastSirBinding;->getRoot()Landroid/widget/LinearLayout;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->setContentView(Landroid/view/View;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->setSupportActionBar(Landroidx/appcompat/widget/Toolbar;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->getSupportActionBar()Landroidx/appcompat/app/ActionBar;
+
+
+    Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+
+
+    Landroidx/appcompat/app/ActionBar;->setDisplayShowTitleEnabled(Z)V
+
+
+    Landroidx/appcompat/app/ActionBar;->setDisplayHomeAsUpEnabled(Z)V
+
+
+    Landroidx/appcompat/widget/Toolbar;->findViewById(I)Landroid/view/View;
+
+
+    Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->getEnumStateLoad()V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchByLastSir;->spinnerSetup()V
+
+
+
+============================================================================
+DETAILS SCREEN:  com/eci/citizen/features/eRoll/SearchLastElectorDetails
+============================================================================
+-- const-strings --
+    'LIST_DATA'
+
+-- outbound calls (app-owned / network / crypto) --
+    Lcom/eci/citizen/features/eRoll/SearchLastElectorDetails;->lambda$onCreate$0(Landroid/widget/CompoundButton;Z)V
+
+
+    Lcom/eci/citizen/BaseActivity;-><init>()V
+
+
+    Lcom/eci/citizen/adapter/EnumLastSirSearchAdapter;->setLocalLanguage(Z)V
+
+
+    Lcom/eci/citizen/BaseActivity;->onCreate(Landroid/os/Bundle;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchLastElectorDetails;->getLayoutInflater()Landroid/view/LayoutInflater;
+
+
+    Lcom/eci/citizen/databinding/SearchElectorPucDetailsBinding;->inflate(Landroid/view/LayoutInflater;)Lcom/eci/citizen/databinding/SearchElectorPucDetailsBinding;
+
+
+    Lcom/eci/citizen/databinding/SearchElectorPucDetailsBinding;->getRoot()Landroid/widget/LinearLayout;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchLastElectorDetails;->setContentView(Landroid/view/View;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchLastElectorDetails;->setSupportActionBar(Landroidx/appcompat/widget/Toolbar;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchLastElectorDetails;->getSupportActionBar()Landroidx/appcompat/app/ActionBar;
+
+
+    Landroidx/appcompat/app/ActionBar;->setTitle(I)V
+
+
+    Landroidx/appcompat/app/ActionBar;->setDisplayHomeAsUpEnabled(Z)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchLastElectorDetails;->getIntent()Landroid/content/Intent;
+
+
+    Landroid/content/Intent;->getSerializableExtra(Ljava/lang/String;)Ljava/io/Serializable;
+
+
+    Lcom/eci/citizen/features/eRoll/SearchLastElectorDetails;->context()Landroid/content/Context;
+
+
+    Landroidx/recyclerview/widget/LinearLayoutManager;-><init>(Landroid/content/Context;IZ)V
+
+
+    Landroidx/recyclerview/widget/RecyclerView;->setLayoutManager(Landroidx/recyclerview/widget/RecyclerView$LayoutManager;)V
+
+
+    Lcom/eci/citizen/adapter/EnumLastSirSearchAdapter;-><init>(Ljava/util/List;Landroid/content/Context;)V
+
+
+    Landroidx/recyclerview/widget/RecyclerView;->setAdapter(Landroidx/recyclerview/widget/RecyclerView$Adapter;)V
+
+
+    Lcom/eci/citizen/features/eRoll/SearchLastElectorDetails$$ExternalSyntheticLambda0;-><init>(Lcom/eci/citizen/features/eRoll/SearchLastElectorDetails;)V
+
+
+    Landroid/widget/ToggleButton;->setOnCheckedChangeListener(Landroid/widget/CompoundButton$OnCheckedChangeListener;)V
+
+
+

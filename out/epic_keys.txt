@@ -1,0 +1,247 @@
+==============================================================================
+EPIC-SEARCH API CONTRACTS (verb + path + headers)
+==============================================================================
+
+  public abstract getElectorsDetailsApi
+      verb  : GET
+      path  : ['Accept', 'X-API-KEY', 'AuthorizedVHA', 'Content-Type', 'GetElectorsDetails']
+
+  public abstract getEpicElectorDetail
+      verb  : POST
+      path  : ['Content-Type', 'Accept', 'X-API-KEY', 'eepic/GetElectorDetailForEEPIC']
+
+  public abstract getNvspUserDetails
+      verb  : GET
+      path  : ['Accept', 'X-API-KEY', 'Authorization', 'Content-Type', 'MOBILE_NO', 'IsRegisteredUser']
+      query : ['MOBILE_NO']
+
+  public abstract getNvspUserDetails1
+      verb  : POST
+      path  : ['Accept', 'X-API-KEY', 'Authorization', 'Content-Type', 'MobileNumber', 'IsRegisteredUser2']
+
+  public abstract searchElectoral
+      verb  : GET
+      path  : ['search_type', 'epic_no', 'passKey', 'api/search']
+      query : ['search_type', 'epic_no', 'passKey']
+
+  public abstract searchElectoralElectroleDetail
+      verb  : GET
+      path  : ['mservices/api/EVP/GetEVPElectorDetails']
+
+  public abstract searchElectoralOne
+      verb  : GET
+      path  : ['api/search']
+
+  public abstract searchElectoralPdf
+      verb  : POST
+      path  : ['Content-Type', 'Accept', 'X-API-KEY', 'eepic/GetEEPICCard']
+
+  public abstract verifyElectoral
+      verb  : POST
+      path  : ['vh_epicno_verify']
+
+==============================================================================
+X-API-KEY / Authorization HEADER VALUES (app-owned classes)
+==============================================================================
+  'ARG_PS_SEARCH_TITLE'
+       <- com.eci.citizen.features.electoralSearch.ElectoralSearchActivity
+  'DIGITAL_PHOTO_VOTER_SLIP_'
+       <- com.eci.citizen.features.home.evp.DigitalEpicActivity
+  'EVPTREESEARCH'
+       <- com.eci.citizen.features.electoralSearch.ElectoralSearchActivity
+  'IS_LOCOMOTOR_DISABLED'
+       <- com.eci.citizen.features.pwd.PwdVoterMarking
+  'IS_POLLING_STATION_QUERY'
+       <- com.eci.citizen.features.electoralSearch.ElectoralSearchActivity
+  'IS_SPEECH_HEARING_DISABLED'
+       <- com.eci.citizen.features.pwd.PwdVoterMarking
+  'IS_VISUALLY_IMPAIRED'
+       <- com.eci.citizen.features.pwd.PwdVoterMarking
+  'MainActivity'
+       <- com.eci.citizen.features.home.mcc.SearchPSActivity
+  'OTHER_DISABLITY'
+       <- com.eci.citizen.features.pwd.PwdVoterMarking
+  'REQUESTFORWHEELCHAIR'
+       <- com.eci.citizen.features.pwd.PwdVoterMarking
+  'ResultByBarcodeActivity'
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNew.ResultByBarcodeActivity
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNewAc.ResultByBarcodeActivity
+  'SHOWCASE_ID_CANDIDATE'
+       <- com.eci.citizen.features.home.ECI_Home.CANDIDATE.CandidateAffidavitActivity
+  'candidate_affidavite_api_base_url_pref_key'
+       <- com.eci.citizen.features.home.ECI_Home.CANDIDATE.CandidateAffidavitActivity
+  'district_code'
+       <- com.eci.citizen.features.electoralSearch.ElectoralSearchActivity
+       <- com.eci.citizen.features.home.mcc.SearchPSActivity
+  'election_type'
+       <- com.eci.citizen.features.home.ECI_Home.CANDIDATE.CandidateAffidavitActivity
+  'electoral_search'
+       <- com.eci.citizen.features.electoralSearch.ElectoralSearchActivity
+  'evp_electoral_search'
+       <- com.eci.citizen.features.electoralSearch.ElectoralSearchActivity
+  'isWheelchair'
+       <- com.eci.citizen.features.pwd.PwdVoterMarking
+  'is_candidate_showcase_show'
+       <- com.eci.citizen.features.home.ECI_Home.CANDIDATE.CandidateAffidavitActivity
+  'is_ngs_user_login'
+       <- com.eci.citizen.features.electoralSearch.ElectoralSearchActivity
+       <- com.eci.citizen.features.home.evp.DigitalEpicActivity
+  'layout_inflater'
+       <- com.eci.citizen.features.electoralSearch.ElectoralSearchActivity
+       <- com.eci.citizen.features.home.ECI_Home.CANDIDATE.CandidateAffidavitActivity
+       <- com.eci.citizen.features.home.mcc.SearchPSActivity
+  'ngs_user_mobile_number'
+       <- com.eci.citizen.features.electoralSearch.ElectoralSearchActivity
+       <- com.eci.citizen.features.home.evp.DigitalEpicActivity
+       <- com.eci.citizen.features.home.evp.EVPDashboard
+  'param_bookmarked_candidate'
+       <- com.eci.citizen.features.home.ECI_Home.CANDIDATE.CandidateAffidavitActivity
+  'param_is_elector_verify'
+       <- com.eci.citizen.features.electoralSearch.ElectoralSearchActivity
+  'passKey'
+       <- com.eci.citizen.features.electoralSearch.ElectoralSearchActivity
+       <- com.eci.citizen.features.home.ECI_Home.CANDIDATE.CandidateAffidavitActivity
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNew.ResultByBarcodeActivity
+  'searchByEpic'
+       <- com.eci.citizen.features.home.ECI_Home.CANDIDATE.CandidateAffidavitActivity
+  'selectedCandidateName'
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNew.ResultByBarcodeActivity
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNewAc.ResultByBarcodeActivity
+  'selectedConstituencyId'
+       <- com.eci.citizen.features.home.ECI_Home.CANDIDATE.CandidateAffidavitActivity
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNew.ResultByBarcodeActivity
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNewAc.ResultByBarcodeActivity
+  'selectedConstituencyName'
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNew.ResultByBarcodeActivity
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNewAc.ResultByBarcodeActivity
+  'selectedElectionTypeId'
+       <- com.eci.citizen.features.home.ECI_Home.CANDIDATE.CandidateAffidavitActivity
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNew.ResultByBarcodeActivity
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNewAc.ResultByBarcodeActivity
+  'selectedPartyId'
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNew.ResultByBarcodeActivity
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNewAc.ResultByBarcodeActivity
+  'selectedPhaseId'
+       <- com.eci.citizen.features.home.ECI_Home.CANDIDATE.CandidateAffidavitActivity
+  'selectedStateId'
+       <- com.eci.citizen.features.home.ECI_Home.CANDIDATE.CandidateAffidavitActivity
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNew.ResultByBarcodeActivity
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNewAc.ResultByBarcodeActivity
+  'selectedStateName'
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNew.ResultByBarcodeActivity
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNewAc.ResultByBarcodeActivity
+  'selectedStatusId'
+       <- com.eci.citizen.features.home.ECI_Home.CANDIDATE.CandidateAffidavitActivity
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNew.ResultByBarcodeActivity
+       <- com.eci.citizen.features.home.ECI_Home.ELECTION.resultNewAc.ResultByBarcodeActivity
+  'unique_generated_id'
+       <- com.eci.citizen.features.home.evp.DigitalEpicActivity
+
+==============================================================================
+ApiClient: Retrofit .baseUrl(...) wiring
+==============================================================================
+
+  baseUrl: https://suvidha.eci.gov.in/suvidhaac/public/api/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://www.eci.gov.in/eci-backend/public/VHA_Banner/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://results.eci.gov.in/staticFileGenerate/ACBye/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://results.eci.gov.in/staticFileGenerate/ACGen/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://results.eci.gov.in/staticFileGenerate/prepoll/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://results.eci.gov.in/staticFileGenerate/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://results.eci.gov.in/staticFileGenerate/PCGen/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://nvspservices.ecinet.in/api/master/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://nvspservices.ecinet.in/api/master/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://ecisveep.nic.in/api/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://old.eci.gov.in/api/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://affidavit.eci.gov.in/api/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://api.digitallocker.gov.in/public/oauth2/1/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://old.eci.gov.in/api/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://ems.eci.gov.in/api/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://resultapi.eci.gov.in/api/new/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://nvspservices.ecinet.in/api/NvspAccount/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://electoralsearch.in/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://eronetservices.ecinet.in/api/ERONet/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://msdgweb.mgov.gov.in/esms/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://results.eci.gov.in/staticFileGenerate/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: http://0.0.0.0/ngspapi/service.svc/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: http://0.0.0.0/ngspapi/service.svc/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://voterportal.eci.gov.in/api/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://resultapi.eci.gov.in/api/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://nvspservices.ecinet.in/api/login/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://nvspservices.ecinet.in/api/pwdAPI/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://Nvsp.in/Forms/FormsAPI/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://nvspservices.ecinet.in/api/FormsAPI/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://www.eci.gov.in/eci-backend/public/api/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://boothapp.eci.gov.in/api/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://affidavit.eci.gov.in/api/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: http://0.0.0.0/suvidhaac/public/api/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: https://gateway-officials.eci.gov.in/CDAC-EnhanceTransliterationAPI/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;
+
+  baseUrl: http://0.0.0.0/suvidhaac/public/api/
+        nearby: Lcom/eci/citizen/DataRepository/ApiClient;

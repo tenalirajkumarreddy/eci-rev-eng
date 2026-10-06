@@ -1,0 +1,217 @@
+========================================================================
+EXPORTED COMPONENTS  (attack surface)
+========================================================================
+[activity] com.eci.citizen.features.splash.Splash
+    exported = true
+    action  = ['android.intent.action.MAIN']
+    category= ['android.intent.category.LAUNCHER']
+
+[activity] com.eci.citizen.features.home.search.AdvanceSearchActivity
+    exported = false
+    action  = ['android.intent.action.SEARCH']
+
+[activity] com.eci.citizen.features.home.ECI_Home.search.ECISearchResultsActivity
+    exported = false
+    action  = ['android.intent.action.SEARCH']
+
+[activity] com.google.firebase.auth.internal.GenericIdpActivity
+    exported = true
+    action  = ['android.intent.action.VIEW']
+    category= ['android.intent.category.DEFAULT', 'android.intent.category.BROWSABLE']
+    data    = {"scheme": "genericidp", "host": "firebase.auth", "path": "/"}
+
+[activity] com.google.firebase.auth.internal.RecaptchaActivity
+    exported = true
+    action  = ['android.intent.action.VIEW']
+    category= ['android.intent.category.DEFAULT', 'android.intent.category.BROWSABLE']
+    data    = {"scheme": "recaptcha", "host": "firebase.auth", "path": "/"}
+
+[service] com.eci.citizen.fcm.MyFirebaseMessagingService
+    exported = false
+    action  = ['com.google.firebase.MESSAGING_EVENT']
+
+[service] in.gov.eci.encore.utils.MyInstanceServiceId
+    exported = false
+    action  = ['com.google.firebase.MESSAGING_EVENT']
+
+[service] com.google.firebase.messaging.FirebaseMessagingService
+    exported = false
+    action  = ['com.google.firebase.MESSAGING_EVENT']
+
+[service] androidx.work.impl.background.systemjob.SystemJobService
+    exported = true
+    permission = android.permission.BIND_JOB_SERVICE
+
+[service] com.google.android.gms.auth.api.signin.RevocationBoundService
+    exported = true
+    permission = com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION
+
+[service] com.eci.enetra.fcm.MyFirebaseMessagingService
+    exported = false
+    action  = ['com.google.firebase.MESSAGING_EVENT']
+
+[service] com.pairip.vmencryption.KeyImportService
+    exported = true
+
+[receiver] suvidha.eci.gov.in.nodalofficerapp.features.activity.PermissionDetailActivity
+    exported = false
+    action  = ['com.example.broadcast.ACTION']
+
+[receiver] com.google.firebase.iid.FirebaseInstanceIdReceiver
+    exported = true
+    permission = com.google.android.c2dm.permission.SEND
+    action  = ['com.google.android.c2dm.intent.RECEIVE']
+
+[receiver] androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy
+    exported = false
+    action  = ['android.intent.action.ACTION_POWER_CONNECTED', 'android.intent.action.ACTION_POWER_DISCONNECTED']
+
+[receiver] androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy
+    exported = false
+    action  = ['android.intent.action.BATTERY_OKAY', 'android.intent.action.BATTERY_LOW']
+
+[receiver] androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy
+    exported = false
+    action  = ['android.intent.action.DEVICE_STORAGE_LOW', 'android.intent.action.DEVICE_STORAGE_OK']
+
+[receiver] androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy
+    exported = false
+    action  = ['android.net.conn.CONNECTIVITY_CHANGE']
+
+[receiver] androidx.work.impl.background.systemalarm.RescheduleReceiver
+    exported = false
+    action  = ['android.intent.action.BOOT_COMPLETED', 'android.intent.action.TIME_SET', 'android.intent.action.TIMEZONE_CHANGED']
+
+[receiver] androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver
+    exported = false
+    action  = ['androidx.work.impl.background.systemalarm.UpdateProxies']
+
+[receiver] androidx.work.impl.diagnostics.DiagnosticsReceiver
+    exported = true
+    permission = android.permission.DUMP
+    action  = ['androidx.work.diagnostics.REQUEST_DIAGNOSTICS']
+
+[receiver] androidx.profileinstaller.ProfileInstallReceiver
+    exported = true
+    permission = android.permission.DUMP
+    action  = ['androidx.profileinstaller.action.INSTALL_PROFILE']
+    action  = ['androidx.profileinstaller.action.SKIP_FILE']
+    action  = ['androidx.profileinstaller.action.SAVE_PROFILE']
+    action  = ['androidx.profileinstaller.action.BENCHMARK_OPERATION']
+
+
+========================================================================
+DEEPLINK SCHEMES (all)
+========================================================================
+     1  genericidp://
+     1  recaptcha://
+
+--- deeplink routes ---
+  genericidp://firebase.auth/   ->  com.google.firebase.auth.internal.GenericIdpActivity
+  recaptcha://firebase.auth/   ->  com.google.firebase.auth.internal.RecaptchaActivity
+
+========================================================================
+PROVIDERS
+========================================================================
+  androidx.core.content.FileProvider
+      authorities=in.gov.eci.app.fileprovider exported=false grantUri=true perm=None
+  androidx.startup.InitializationProvider
+      authorities=in.gov.eci.app.androidx-startup exported=false grantUri=None perm=None
+  com.github.drjacky.imagepicker.ImagePickerFileProvider
+      authorities=in.gov.eci.app.imagepicker.provider exported=false grantUri=true perm=None
+  com.squareup.picasso.PicassoProvider
+      authorities=in.gov.eci.app.com.squareup.picasso exported=false grantUri=None perm=None
+  com.google.firebase.provider.FirebaseInitProvider
+      authorities=in.gov.eci.app.firebaseinitprovider exported=false grantUri=None perm=None
+  com.pairip.vmencryption.KeyImportReplacementProvider
+      authorities=in.gov.eci.app.com.pairip.vmencryption.KeyImportReplacementProvider exported=false grantUri=None perm=None
+
+========================================================================
+SERVICES
+========================================================================
+  com.eci.citizen.features.home.downloads.DownloadService  exported=None perm=None fg=None
+  com.eci.citizen.fcm.MyFirebaseMessagingService  exported=false perm=None fg=None
+  in.gov.eci.encore.utils.MyInstanceServiceId  exported=false perm=None fg=None
+  in.gov.eci.encore.vm.FireStoreListenerService  exported=false perm=None fg=dataSync
+  com.google.firebase.components.ComponentDiscoveryService  exported=false perm=None fg=None
+  com.google.firebase.messaging.FirebaseMessagingService  exported=false perm=None fg=None
+  androidx.work.impl.background.systemalarm.SystemAlarmService  exported=false perm=None fg=None
+  androidx.work.impl.background.systemjob.SystemJobService  exported=true perm=android.permission.BIND_JOB_SERVICE fg=None
+  androidx.work.impl.foreground.SystemForegroundService  exported=false perm=None fg=None
+  androidx.room.MultiInstanceInvalidationService  exported=false perm=None fg=None
+  com.google.android.gms.auth.api.signin.RevocationBoundService  exported=true perm=com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION fg=None
+  com.google.android.gms.measurement.AppMeasurementService  exported=false perm=None fg=None
+  com.google.android.gms.measurement.AppMeasurementJobService  exported=false perm=android.permission.BIND_JOB_SERVICE fg=None
+  com.google.firebase.sessions.SessionLifecycleService  exported=false perm=None fg=None
+  com.google.android.datatransport.runtime.backends.TransportBackendDiscovery  exported=false perm=None fg=None
+  com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService  exported=false perm=android.permission.BIND_JOB_SERVICE fg=None
+  com.eci.enetra.fcm.MyFirebaseMessagingService  exported=false perm=None fg=None
+  com.pairip.vmencryption.KeyImportService  exported=true perm=None fg=None
+
+========================================================================
+RECEIVERS
+========================================================================
+  in.gov.eci.encore.utils.AlarmReceiver  exported=false perm=None enabled=true
+  suvidha.eci.gov.in.nodalofficerapp.features.activity.PermissionDetailActivity  exported=false perm=None enabled=None
+      action: ['com.example.broadcast.ACTION']
+  com.google.firebase.iid.FirebaseInstanceIdReceiver  exported=true perm=com.google.android.c2dm.permission.SEND enabled=None
+      action: ['com.google.android.c2dm.intent.RECEIVE']
+  androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver  exported=false perm=None enabled=true
+  androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy  exported=false perm=None enabled=false
+      action: ['android.intent.action.ACTION_POWER_CONNECTED', 'android.intent.action.ACTION_POWER_DISCONNECTED']
+  androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy  exported=false perm=None enabled=false
+      action: ['android.intent.action.BATTERY_OKAY', 'android.intent.action.BATTERY_LOW']
+  androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy  exported=false perm=None enabled=false
+      action: ['android.intent.action.DEVICE_STORAGE_LOW', 'android.intent.action.DEVICE_STORAGE_OK']
+  androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy  exported=false perm=None enabled=false
+      action: ['android.net.conn.CONNECTIVITY_CHANGE']
+  androidx.work.impl.background.systemalarm.RescheduleReceiver  exported=false perm=None enabled=false
+      action: ['android.intent.action.BOOT_COMPLETED', 'android.intent.action.TIME_SET', 'android.intent.action.TIMEZONE_CHANGED']
+  androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver  exported=false perm=None enabled=@bool/enable_system_alarm_service_default
+      action: ['androidx.work.impl.background.systemalarm.UpdateProxies']
+  androidx.work.impl.diagnostics.DiagnosticsReceiver  exported=true perm=android.permission.DUMP enabled=true
+      action: ['androidx.work.diagnostics.REQUEST_DIAGNOSTICS']
+  com.google.android.gms.measurement.AppMeasurementReceiver  exported=false perm=None enabled=true
+  com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver  exported=false perm=None enabled=None
+  androidx.profileinstaller.ProfileInstallReceiver  exported=true perm=android.permission.DUMP enabled=true
+      action: ['androidx.profileinstaller.action.INSTALL_PROFILE']
+      action: ['androidx.profileinstaller.action.SKIP_FILE']
+      action: ['androidx.profileinstaller.action.SAVE_PROFILE']
+      action: ['androidx.profileinstaller.action.BENCHMARK_OPERATION']
+
+========================================================================
+META-DATA
+========================================================================
+  com.google.android.geo.API_KEY = @string/google_maps_key  (resource=None)
+  com.google.android.gms.version = @integer/google_play_services_version  (resource=None)
+  io.fabric.ApiKey = 356d829fe21f4f34ee7718c2866699649a5726bf  (resource=None)
+  com.google.firebase.messaging.default_notification_icon = None  (resource=@drawable/obs_toggleobs)
+  com.google.firebase.messaging.default_notification_color = None  (resource=@color/obs_colorAccent)
+  firebase_crashlytics_collection_enabled = false  (resource=None)
+  com.bumptech.glide.integration.okhttp3.OkHttpGlideModule = GlideModule  (resource=None)
+  com.facebook.soloader.enabled = false  (resource=None)
+  com.android.vending.splits.required = true  (resource=None)
+  com.android.stamp.source = https://play.google.com/store  (resource=None)
+  com.android.stamp.type = STAMP_TYPE_DISTRIBUTION_APK  (resource=None)
+  com.android.vending.splits = None  (resource=@xml/splits0)
+  com.android.vending.derived.apk.id = 3  (resource=None)
+
+========================================================================
+QUERIES (package visibility)
+========================================================================
+  package: com.whatsapp
+  package: org.telegram.messenger
+  package: com.google.android.apps.maps
+  intent: ['com.google.android.youtube.api.service.START']
+  intent: ['android.intent.action.GET_CONTENT']
+  intent: ['android.intent.action.PICK']
+  intent: ['android.intent.action.CHOOSER']
+  intent: ['android.media.action.IMAGE_CAPTURE']
+  intent: ['android.intent.action.VIEW']
+  package: com.whatsapp
+  package: com.whatsapp.w4b
+
+========================================================================
+CUSTOM PERMISSIONS DECLARED
+========================================================================
+  in.gov.eci.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION  protectionLevel=signature

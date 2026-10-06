@@ -1,0 +1,173 @@
+epic,name,gender,age,relation,relative,old_serial,old_part,old_part_name,current_state,current_ac,current_part,marked_by_blo
+KZZ0650044,bairy chetty,M,33,F,narayana,283,1,Kedari Puram,S01,1,2,Y
+KZZ0650051,budyachetti chakali,M,29,F,narayana,281,1,Kedari Puram,S01,1,2,Y
+KZZ0650101,meena jeeru,F,28,H,rajesu,175,1,Kedari Puram,S01,1,2,Y
+KZZ0650275,hemavathi chukka,F,33,H,aadinarayana,23,1,Kedari Puram,S01,1,2,Y
+KZZ0650333,gunnamma ratti,F,20,H,umasamkar,50,1,Kedari Puram,S01,1,2,Y
+KZZ0650358,kanakamma chukka,F,58,H,simmaiah,67,1,Kedari Puram,S01,1,2,Y
+KZZ0650374,sujata kakinada,F,29,H,tejeswararao,165,1,Kedari Puram,S01,1,2,Y
+KZZ0650440,hemalatha bhukta,F,19,H,kanakaiah,377,1,Kedari Puram,S01,1,2,Y
+KZZ0650465,seethasetty,F,50,H,shimmashetti,153,1,Kedari Puram,S01,1,2,Y
+KZZ0650507,jaggaiah potnuru,M,53,F,bairagi,53,1,Kedari Puram,S01,1,2,Y
+KZZ0650630,sarojini kakinada,F,50,H,krishnarao,163,1,Kedari Puram,S01,1,2,Y
+KZZ0650671,jagannadham,M,48,F,domburu,264,1,Kedari Puram,S01,1,2,Y
+KZZ0650820,valfaravu kakinada,M,23,F,krishnarao,167,1,Kedari Puram,S01,1,2,Y
+KZZ0650911,ramarao jeeru,M,26,F,bhagavan,124,1,Kedari Puram,S01,1,2,Y
+KZZ0651224,shayam chetty,F,38,H,ekadashi,129,1,Kedari Puram,S01,1,2,Y
+KZZ1937051,damayanthi setty,F,28,H,shimmashetti,154,1,Kedari Puram,S01,1,2,Y
+KZZ1937093,kesavarao ratti,M,29,F,kanakaiah,40,1,Kedari Puram,S01,1,2,Y
+KZZ1937101,rakmini thara,F,19,F,narasimhulu,277,1,Kedari Puram,S01,1,2,Y
+KZZ1937119,bairi chetty,M,28,F,,159,1,Kedari Puram,S01,1,2,Y
+KZZ1937127,sajani chetty,F,33,H,bairi,72,1,Kedari Puram,S01,1,2,Y
+KZZ1937135,tilo chetty,F,28,H,murali,131,1,Kedari Puram,S01,1,2,Y
+KZZ1937200,dalamma konda,F,48,H,damodaram,2,1,Kedari Puram,S01,1,2,Y
+KZZ1937242,venkatarao ratti,M,20,F,lokanadam,42,1,Kedari Puram,S01,1,2,Y
+KZZ1937259,lingamurthi potnuru,M,26,F,jaggaiah,55,1,Kedari Puram,S01,1,2,Y
+KZZ1937291,chetty,F,33,H,,70,1,Kedari Puram,S01,1,2,Y
+KZZ1937309,kalyani chetty,F,20,F,chandrachetty,74,1,Kedari Puram,S01,1,2,Y
+KZZ1937317,chetty,M,50,F,behara,80,1,Kedari Puram,S01,1,2,Y
+KZZ1937382,savitri raulo,F,25,H,maloj kumar,385,1,Kedari Puram,S01,1,2,Y
+KZZ1937440,chetty,F,19,F,simmachetty,152,1,Kedari Puram,S01,1,2,Y
+KZZ1937457,ramchandra chetty,M,26,F,kaliya,155,1,Kedari Puram,S01,1,2,Y
+KZZ1937465,chitra chetty,F,20,H,bairichetty,156,1,Kedari Puram,S01,1,2,Y
+KZZ1937473,rajini chetty,F,19,H,,157,1,Kedari Puram,S01,1,2,Y
+KZZ1937481,tejeswararao kakinada,M,31,F,krishnarao,164,1,Kedari Puram,S01,1,2,Y
+KZZ1937507,ravnamma jeeru,F,22,H,vasudevu,181,1,Kedari Puram,S01,1,2,Y
+KZZ1937572,appanna ponnaganti,M,53,F,madavaravu,221,1,Kedari Puram,S01,1,2,Y
+KZZ1937580,janakamma ponnaganti,F,48,H,appanna,222,1,Kedari Puram,S01,1,2,Y
+KZZ1937614,mahalakshmi chetla,F,20,F,domburu,233,1,Kedari Puram,S01,1,2,Y
+KZZ1937648,yasodha muli,F,18,F,raghnadham,243,1,Kedari Puram,S01,1,2,Y
+KZZ1937663,sashamma naradi,F,27,H,tataiah,268,1,Kedari Puram,S01,1,2,Y
+KZZ1937671,dinabandu chakali,M,20,F,narayana,278,1,Kedari Puram,S01,1,2,Y
+KZZ2859809,dillirao pitta,M,19,F,jagannadham,235,1,Kedari Puram,S01,1,2,Y
+KZZ2859841,divakar chetty,M,18,F,chandru chetty,102,1,Kedari Puram,S01,1,2,Y
+TBG0342055,yarramma dalli,F,33,H,balaje,528,1,Kedari Puram,S01,1,2,Y
+TBG0342071,duragayya ummadi,M,41,F,ramaiah,193,1,Kedari Puram,S01,1,2,Y
+TBG0342295,mahalakshmi jeeru,F,58,H,bhagavan,121,1,Kedari Puram,S01,1,2,Y
+TBG0342345,ramaiah,M,28,F,narayana,29,1,Kedari Puram,S01,1,2,Y
+TBG0342360,balaram chetty,M,33,F,gopi,87,1,Kedari Puram,S01,1,2,Y
+TBG0427765,rajendra chetty,M,33,F,ganapathi,92,1,Kedari Puram,S01,1,2,Y
+TBG0427930,keshwar konda,M,19,F,shayamnaya,14,1,Kedari Puram,S01,1,2,Y
+TBG0428151,appalamma bora,F,48,H,ramaiah,214,1,Kedari Puram,S01,1,2,Y
+TBG0428193,jagannadham pitta,M,50,F,narayana,236,1,Kedari Puram,S01,1,2,Y
+TBG0463240,dillemma ashi,F,28,H,krishnarao,614,1,Kedari Puram,S01,1,2,Y
+TBG0523803,dillaravu thara,M,20,F,narasimhulu,276,1,Kedari Puram,S01,1,2,Y
+TBG0524017,ramaiah bora,M,54,F,tulasayya,213,1,Kedari Puram,S01,1,2,Y
+TBG0524033,dillemma pitta,F,41,H,jogendra,306,1,Kedari Puram,S01,1,2,Y
+TBG0524058,lakshmaiah dalli,M,33,F,bankayya,531,1,Kedari Puram,S01,1,2,Y
+TBG0524124,chetty,M,20,F,,108,1,Kedari Puram,S01,1,2,Y
+TBG0524140,suri ponniganti,M,38,F,raajaiah,226,1,Kedari Puram,S01,1,2,Y
+TBG0524256,duryodhana suggu,M,48,F,dalayya,185,1,Kedari Puram,S01,1,2,Y
+TBG0576744,neelavathi thara,F,38,H,guruvulu,172,1,Kedari Puram,S01,1,2,Y
+TBG0576777,chandramma dalli,F,28,H,lakshmaiah,532,1,Kedari Puram,S01,1,2,Y
+TBG0576975,gopalu chukka,M,46,F,narasimhulu,250,1,Kedari Puram,S01,1,2,Y
+TBG0577064,narasimhulu mooli,M,33,F,ketro,519,1,Kedari Puram,S01,1,2,Y
+TBG0577130,kamaiah kaya,M,38,F,pasarayya,197,1,Kedari Puram,S01,1,2,Y
+TBG0577163,kanakaiah bhukta,M,26,F,divakar,379,1,Kedari Puram,S01,1,2,Y
+TBG0577197,puroshottam konda,M,18,F,shayamnaya,15,1,Kedari Puram,S01,1,2,Y
+TBG0577205,danalaxmi ratti,F,26,H,kesavarao,41,1,Kedari Puram,S01,1,2,Y
+TBG0577288,varalakshmi dalli,F,21,H,manaiah,534,1,Kedari Puram,S01,1,2,Y
+TBG0577296,bhanu kakinada,F,19,H,valfaravu,166,1,Kedari Puram,S01,1,2,Y
+TBG0737742,bulakshmi jeeru,F,19,F,chandraiah,182,1,Kedari Puram,S01,1,2,Y
+TBG0765257,sattemma chukka,F,33,H,danaiah,255,1,Kedari Puram,S01,1,2,Y
+TBG0911371,neelamma bingi,F,36,H,dudishti,490,1,Kedari Puram,S01,1,2,Y
+TBG0950551,rishyasahu kadambala,M,26,F,raghavulu,349,1,Kedari Puram,S01,1,2,Y
+TBG0969420,parvathi chatla,F,44,H,domburu,231,1,Kedari Puram,S01,1,2,Y
+TBG1031012,nayikni chakali,F,33,H,arambo,289,1,Kedari Puram,S01,1,2,Y
+TBG1031202,dalamma bhukta,F,31,H,kamaraju,720,1,Kedari Puram,S01,1,2,Y
+TBG1041268,kamaraju bhukta,M,34,F,yarrayya,719,1,Kedari Puram,S01,1,2,Y
+TBG1228932,boodamma odni,F,27,H,raghunadh,406,1,Kedari Puram,S01,1,2,Y
+TBG1236281,ravnamma buddala,F,24,H,shyambaabu,511,1,Kedari Puram,S01,1,2,Y
+TBG1236372,umapathi nilapu,M,31,F,mashani,427,1,Kedari Puram,S01,1,2,Y
+TBG1243450,kunni chetty,F,28,H,ganapathi,94,1,Kedari Puram,S01,1,2,Y
+TBG1251354,bairi chetty,M,36,F,ganapathi,71,1,Kedari Puram,S01,1,2,Y
+TBG1251438,loknadham ratti,M,48,F,kanakaiah,38,1,Kedari Puram,S01,1,2,Y
+TBG1292630,neelamma kakinada,F,38,H,ananthu,162,1,Kedari Puram,S01,1,2,Y
+TBG1298646,gopalu jeeru,M,29,F,bhagavan,123,1,Kedari Puram,S01,1,2,Y
+TBG1311281,uma nilapu,F,33,H,apparao,557,1,Kedari Puram,S01,1,2,Y
+TBG1351485,narayanarao chetty,F,34,H,simma,144,1,Kedari Puram,S01,1,2,Y
+TBG1633338,gunnamma anapan,F,33,H,jogulaiah,745,1,Kedari Puram,S01,1,2,Y
+TBG1637412,devamma jeeru,F,19,H,tulasayya,593,1,Kedari Puram,S01,1,2,Y
+TBG1643766,janakirao nilapu,M,26,F,parushuram,545,1,Kedari Puram,S01,1,2,Y
+TBG1688902,jayanthi chetty,F,28,H,simma,143,1,Kedari Puram,S01,1,2,Y
+TBG1712686,chetty,M,48,F,,78,1,Kedari Puram,S01,1,2,Y
+TBG1714138,chettychakali,F,28,H,neelakantachetty,68,1,Kedari Puram,S01,1,2,Y
+TBG1755768,moahan raulo,M,55,F,minna raulo,819,1,Kedari Puram,S01,1,2,Y
+TBG1823970,chetty,F,43,H,mohana,100,1,Kedari Puram,S01,1,2,Y
+TBG1846807,mohini konda,F,33,H,arambo konda,6,1,Kedari Puram,S01,1,2,Y
+TBG1846815,kesavarao konda,M,36,F,shukra,16,1,Kedari Puram,S01,1,2,Y
+TBG1846823,chandramma konda,F,31,H,kesavarao,17,1,Kedari Puram,S01,1,2,Y
+TBG1846831,revathi konda,F,38,H,,13,1,Kedari Puram,S01,1,2,Y
+TBG1846849,ratnalu konda,F,28,H,,19,1,Kedari Puram,S01,1,2,Y
+TBG1846856,yarramma,F,68,H,narayana,26,1,Kedari Puram,S01,1,2,Y
+TBG1846864,jaggarao anapan,M,26,F,mashanireddi,35,1,Kedari Puram,S01,1,2,Y
+TBG1846872,shantamma chukka,F,73,H,appalaswami,20,1,Kedari Puram,S01,1,2,Y
+TBG1846880,varalakshmi ratti,F,29,H,lingamurthi,48,1,Kedari Puram,S01,1,2,Y
+TBG1846898,seetamma ratti,F,43,H,loknadham,39,1,Kedari Puram,S01,1,2,Y
+TBG1846906,umashankar ratti,M,28,F,polaiah,49,1,Kedari Puram,S01,1,2,Y
+TBG1846914,narayanarao potnuru,M,29,F,jaggaiah,56,1,Kedari Puram,S01,1,2,Y
+TBG1846922,sanyasamma potnuru,F,53,H,appaiah,59,1,Kedari Puram,S01,1,2,Y
+TBG1846930,yellamma badea,F,30,H,lakshmanarao,57,1,Kedari Puram,S01,1,2,Y
+TBG1846948,bhagavathi potnuru,F,33,H,apparao,64,1,Kedari Puram,S01,1,2,Y
+TBG1846963,chetty,M,38,F,haribandu,69,1,Kedari Puram,S01,1,2,Y
+TBG1846971,kaanchanamma konda,F,38,H,thrinadha,11,1,Kedari Puram,S01,1,2,Y
+TBG1846989,janakamma konda,F,36,H,thrinadha,10,1,Kedari Puram,S01,1,2,Y
+TBG1846997,gunnamma kuna,F,43,H,bankeyya,7,1,Kedari Puram,S01,1,2,Y
+TBG1847003,chandra chetty,F,43,H,narasimham,73,1,Kedari Puram,S01,1,2,Y
+TBG1847011,byra chetty,M,54,F,sambaru,75,1,Kedari Puram,S01,1,2,Y
+TBG1847029,padma chetty,F,48,H,byra,76,1,Kedari Puram,S01,1,2,Y
+TBG1847037,jamma chetty,F,26,H,byra,77,1,Kedari Puram,S01,1,2,Y
+TBG1847045,chaviti chetty,F,43,H,,79,1,Kedari Puram,S01,1,2,Y
+TBG1847052,duryodhana chetty,M,26,F,gopi,89,1,Kedari Puram,S01,1,2,Y
+TBG1847060,eswari chetty,M,43,F,bhagavan,116,1,Kedari Puram,S01,1,2,Y
+TBG1847086,chetty,F,28,H,balaram,88,1,Kedari Puram,S01,1,2,Y
+TBG1847094,usha chetty,F,53,H,ekadashi,125,1,Kedari Puram,S01,1,2,Y
+TBG1847128,saduvani chetty,F,26,H,haribandhu,138,1,Kedari Puram,S01,1,2,Y
+TBG1847144,parvathi chetty,F,33,H,,106,1,Kedari Puram,S01,1,2,Y
+TBG1847169,santhi chetty,F,31,H,simma,142,1,Kedari Puram,S01,1,2,Y
+TBG1847177,vasantha chetty,F,43,H,moahan,114,1,Kedari Puram,S01,1,2,Y
+TBG1847185,kuramma chetty,F,28,H,,115,1,Kedari Puram,S01,1,2,Y
+TBG1847193,chetty,M,38,F,haribandu,137,1,Kedari Puram,S01,1,2,Y
+TBG1847201,damayanthi chetty,F,33,H,borja chetty,139,1,Kedari Puram,S01,1,2,Y
+TBG1847219,chetty,M,53,F,donnu,132,1,Kedari Puram,S01,1,2,Y
+TBG1847227,eswararao jeeru,M,38,F,bhagavan,122,1,Kedari Puram,S01,1,2,Y
+TBG1847243,rasa chetty,F,48,H,lokkuno,130,1,Kedari Puram,S01,1,2,Y
+TBG1848084,gowri chetty,F,38,H,eswararao,117,1,Kedari Puram,S01,1,2,Y
+TBG1848092,bagirdhi paila,M,58,F,narayana,191,1,Kedari Puram,S01,1,2,Y
+TBG1848100,yellamma paila,F,53,H,bagirdhi,192,1,Kedari Puram,S01,1,2,Y
+TBG1848118,radha chetty,F,31,H,,160,1,Kedari Puram,S01,1,2,Y
+TBG1848126,reyyamma ummadi,F,43,H,kanakaiah,202,1,Kedari Puram,S01,1,2,Y
+TBG1848134,kanakaiah ummadi,M,48,F,balaji,201,1,Kedari Puram,S01,1,2,Y
+TBG1848142,mohanarao bora,M,35,F,bimarao,209,1,Kedari Puram,S01,1,2,Y
+TBG1848159,suggu,F,43,H,duryodhana,186,1,Kedari Puram,S01,1,2,Y
+TBG1848167,domburu pitta,M,33,F,mamaiah,219,1,Kedari Puram,S01,1,2,Y
+TBG1848175,mohini pitta,F,28,H,domburu,220,1,Kedari Puram,S01,1,2,Y
+TBG1848183,vasudevu jeeru,M,26,F,chandraiah,180,1,Kedari Puram,S01,1,2,Y
+TBG1848191,ummadi,F,33,H,duragayya,194,1,Kedari Puram,S01,1,2,Y
+TBG1848209,kuramma nilapu,F,38,H,babulu,199,1,Kedari Puram,S01,1,2,Y
+TBG1848225,ammanna ponnaganti,F,21,H,suri,225,1,Kedari Puram,S01,1,2,Y
+TBG1848233,danaiah chatla,M,53,F,parashuram,228,1,Kedari Puram,S01,1,2,Y
+TBG1848241,janakamma chatla,F,48,H,danaiah,229,1,Kedari Puram,S01,1,2,Y
+TBG1848258,damayanthi pitta,F,48,H,jagannadham,237,1,Kedari Puram,S01,1,2,Y
+TBG1848266,bangari chukka,F,54,H,duryodhana,245,1,Kedari Puram,S01,1,2,Y
+TBG1848274,dinbandu chukka,M,33,F,duryodhana,246,1,Kedari Puram,S01,1,2,Y
+TBG1848282,hema chukka,F,30,H,dinbandu,247,1,Kedari Puram,S01,1,2,Y
+TBG1848290,ravnamma chukka,F,43,H,gopalu,251,1,Kedari Puram,S01,1,2,Y
+TBG1848308,gauramma sadi,F,48,H,puroshottam,256,1,Kedari Puram,S01,1,2,Y
+TBG1848316,,M,38,F,saradhi,260,1,Kedari Puram,S01,1,2,Y
+TBG1848324,danamma,F,33,H,,261,1,Kedari Puram,S01,1,2,Y
+TBG1848332,ramulu,F,46,H,jagannadham,265,1,Kedari Puram,S01,1,2,Y
+TBG1848357,mahalakshmi thara,F,53,H,duryodhana,271,1,Kedari Puram,S01,1,2,Y
+TBG1848365,boodamma thara,F,48,H,narasimhulu,274,1,Kedari Puram,S01,1,2,Y
+TBG1848373,krishnarao thara,M,26,F,narasimhulu,275,1,Kedari Puram,S01,1,2,Y
+TBG1848381,trinadhu chakali,M,26,F,narayana,280,1,Kedari Puram,S01,1,2,Y
+TBG1848399,jambusetty,F,27,H,budyachetti,282,1,Kedari Puram,S01,1,2,Y
+TBG1848407,janaki chetty,F,28,H,bairi,284,1,Kedari Puram,S01,1,2,Y
+TBG1848423,tarinamma chukka,F,29,H,neelaiah,286,1,Kedari Puram,S01,1,2,Y
+TBG1848431,chetty,F,46,H,,81,1,Kedari Puram,S01,1,2,Y
+TBG2336733,jagannadham nilapu,M,27,F,raajaiah,562,1,Kedari Puram,S01,1,2,Y
+TBG2457596,nuknadhan pitta,M,21,F,jagannadham,234,1,Kedari Puram,S01,1,2,Y
+TBG2601722,annapoorna chetty,F,30,H,,107,1,Kedari Puram,S01,1,2,Y
+TBG2614097,dalamma chetty,F,53,H,raghu,149,1,Kedari Puram,S01,1,2,Y
+TBG2651826,dinbandu chetty,M,33,F,ekadashi,127,1,Kedari Puram,S01,1,2,Y
+ZJQ1759778,raghunadh,M,28,F,kogayya,407,1,Kedari Puram,S01,22,2,Y

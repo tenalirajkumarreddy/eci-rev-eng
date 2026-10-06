@@ -1,0 +1,825 @@
+{
+  "sources": [
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libaes_util.so",
+      "bytes": 4296
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libandroidx.graphics.path.so",
+      "bytes": 10096
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libc++_shared.so",
+      "bytes": 1005520
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libdatastore_shared_counter.so",
+      "bytes": 7784
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libimagepipeline.so",
+      "bytes": 8544
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libjniPdfium.so",
+      "bytes": 55144
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libmodft2.so",
+      "bytes": 554880
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libmodpdfium.so",
+      "bytes": 5216024
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libmodpng.so",
+      "bytes": 280448
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libnative-filters.so",
+      "bytes": 23624
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libnative-imagetranscoder.so",
+      "bytes": 475392
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libnative-lib-dec.so",
+      "bytes": 5952
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libnative-lib-inv.so",
+      "bytes": 5952
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libnative-lib-mon.so",
+      "bytes": 5952
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libnative_lib.so",
+      "bytes": 67440
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libnative_secrets.so",
+      "bytes": 5008
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libpairipcore.so",
+      "bytes": 608112
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libpl_droidsonroids_gif.so",
+      "bytes": 42928
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libsqlcipher.so",
+      "bytes": 3598056
+    },
+    {
+      "path": "C:\\Users\\rajku\\AppData\\Local\\Temp\\tmpddppkda5\\libtoolChecker.so",
+      "bytes": 5512
+    }
+  ],
+  "hits": [
+    {
+      "jni_names": [],
+      "candidates": [],
+      "source": "libaes_util.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [],
+      "source": "libandroidx.graphics.path.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [],
+      "source": "libc++_shared.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [],
+      "source": "libdatastore_shared_counter.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [],
+      "source": "libimagepipeline.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [],
+      "source": "libjniPdfium.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [],
+      "source": "libmodft2.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [],
+      "source": "libmodpdfium.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [],
+      "source": "libmodpng.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [],
+      "source": "libnative-filters.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [],
+      "source": "libnative-imagetranscoder.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [
+        {
+          "token": "YTJRNFkyWXdPR0ZpWXpWaVpEWTBZUQ",
+          "decoded": "a2Q4Y2YwOGFiYzViZDY0YQ"
+        },
+        {
+          "token": "TnpCalltSm1ObUkzTm1aaFlqUTBNUQ",
+          "decoded": "NzBjYmJmNmI3NmZhYjQ0MQ"
+        },
+        {
+          "token": "TUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUFyYjcrK0J4TC9ZTjhPSWxuKzZGTDlHbnc1RE5tUS9WRlpYc3MrSitUdVF5SmM4OTFKYnFiaWp4WVFORWluMmMydStDbnBYcG9HUS8xZ1VTekRNSmVOUzNzTlNsSVV5a3AyZHQ3eEltL2NtVjRzWi9jNzY5dkN4VlJvc01mUmFaSm5CQWFoK20xWDI2bEVobk9vMHdwQUI5VHhyOFJJeUJlNmg3UGlRV3lrZUplaDZVYWNPQkJYMjhrZ2txNyt2SmhXOEhnQjM4bHQzMlhSb2N6blJZd1M5THFSN1p3ZUZtUWhUcjErRUdycWlFS0NPQ3hNWWdIUjJTUWNrYjk2aFo5a1d6ZnpldW40YlVPNW9YS0pjaUxraVMxSWdLaWVBREV2WUxndTEyOVpJcG4xSCs4SCs4aWtOTlZFVHFFRERNdHFjUWNRbVdwcEp2Y1dIYVhBcytmOFFJREFRQUI",
+          "decoded": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArb7++BxL/YN8OIln+6FL9Gnw5DNmQ/VFZXss+J+TuQyJc891JbqbijxYQNEin2c2u+CnpXpoGQ/1gUSzDMJeNS3sNSlIUykp2dt7xIm/cmV4sZ/c769vCxVRosMfRaZJnBAah+m1X26lEhnOo0wpAB9Txr8RIyBe6h7PiQWykeJeh6UacOBBX28kgkq7+vJhW8HgB38lt32XRocznRYwS9LqR7ZweFmQhTr1+EGrqiEKCOCxMYgHR2SQckb96hZ9kWzfzeun4bUO5oXKJciLkiS1IgKieADEvYLgu129ZIpn1H+8H+8ikNNVETqEDDMtqcQcQmWppJvcWHaXAs+f8QIDAQAB"
+        }
+      ],
+      "source": "libnative-lib-dec.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [
+        {
+          "token": "WldRNFkyWXdPR1ZrWXpWaVpEWTBZUQ",
+          "decoded": "ZWQ4Y2YwOGVkYzViZDY0YQ"
+        },
+        {
+          "token": "TXpCalltSm1ObUU1T0daaFlqUTBNUQ",
+          "decoded": "MzBjYmJmNmE5OGZhYjQ0MQ"
+        }
+      ],
+      "source": "libnative-lib-inv.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [
+        {
+          "token": "YTJRNFkyWXdPR0ZpWXpWaVpUVTVjdw",
+          "decoded": "a2Q4Y2YwOGFiYzViZTU5cw"
+        },
+        {
+          "token": "TnpCalltSm1ObUkzTm1aaGRqTTBPQQ",
+          "decoded": "NzBjYmJmNmI3NmZhdjM0OA"
+        }
+      ],
+      "source": "libnative-lib-mon.so"
+    },
+    {
+      "jni_names": [
+        {
+          "name": "getNTc",
+          "offset": 2849,
+          "nearby": [
+            {
+              "token": "NzQ0ODdBNDg3NDQzNjM0NDY0MzM1NjM2NzA1RjM5NjQ0RjZFNzM2NTdDNUY1MzU4NUYzNDZCMjQ3NTcxMzIzMzJFNzE1NDJFNEMyRTI4NEQ2Nzc5NEEzNzU1NDgzNDZFMzkzMjMxNEEzNjU1NkM0QjY1NjM2QjVGNTMzMDRBNkMzMjdBNkU1NTU5Mzg0MzY5NEQ0Qjc5NkI2QzU3NjYzMg==",
+              "decoded": "74487A487443634464335636705F39644F6E73657C5F53585F346B24757132332E71542E4C2E284D67794A375548346E3932314A36556C4B65636B5F53304A6C327A6E55593843694D4B796B6C576632"
+            },
+            {
+              "token": "YTU2ZGM1Y2ViZjBhY2Y1MmU5NjRhNTJiN2ZhNjc0M2E=",
+              "decoded": "a56dc5cebf0acf52e964a52b7fa6743a"
+            },
+            {
+              "token": "NmNmZDY4YzJlYy1hN2NWSEE0NWFmLWRiMmYyNWM4Zg==",
+              "decoded": "6cfd68c2ec-a7cVHA45af-db2f25c8f"
+            },
+            {
+              "token": "NEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQyd0JEQUFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJQbURHOXk4YWlVM0h2MkZreDhBSEVRY1N3M0cyRHlaVzFGZWxSTGllZzNSbE5ZaHJRc3dXR1JCc29kRkhFNThDTUxPdGdhYzk4dXRRSThTVTdIWmhWNFlnSkhod09LMjN0WUV3SGs5MkhBYmpMa2lhc3diWFN0NWt0TkI4NThvMlJEYllwcUR4VjRmMlNFME4yYllMY094R01TM3p1eDZMc2lvMXRqbWluOUVveW15ZE9tamppckZKRDZFeUtJ",
+              "decoded": "4AAQSkZJRgABAQAAAQABAAD2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBPmDG9y8aiU3Hv2Fkx8AHEQcSw3G2DyZW1FelRLieg3RlNYhrQswWGRBsodFHE58CMLOtgac98utQI8SU7HZhV4YgJHhwOK23tYEwHk92HAbjLkiaswbXSt5ktNB858o2RDbYpqDxV4f2SE0N2bYLcOxGMS3zux6Lsio1tjmin9EoymydOmjjirFJD6EyKI"
+            },
+            {
+              "token": "RUNJTkFUSU9OQUxFTEVDVE9SQUxTRUFSQ0gjMTIzNE1PQklMRUFQUEtFWQ==",
+              "decoded": "ECINATIONALELECTORALSEARCH#1234MOBILEAPPKEY"
+            },
+            {
+              "token": "OTU2N2I5ODA1NmU5MjUwYw",
+              "decoded": "9567b98056e9250c"
+            },
+            {
+              "token": "SDc2JHN1cTIzX3BvKDhzRA==",
+              "decoded": "H76$suq23_po(8sD"
+            },
+            {
+              "token": "QUl6YVN5Q2hjU1R2Q2pGS1UxQ2J6cUN2a29OeDJFcXlTRVVsRWRv",
+              "decoded": "AIzaSyChcSTvCjFKU1CbzqCvkoNx2EqySEUlEdo"
+            }
+          ]
+        },
+        {
+          "name": "getNTExternal",
+          "offset": 2801,
+          "nearby": [
+            {
+              "token": "NzQ0ODdBNDg3NDQzNjM0NDY0MzM1NjM2NzA1RjM5NjQ0RjZFNzM2NTdDNUY1MzU4NUYzNDZCMjQ3NTcxMzIzMzJFNzE1NDJFNEMyRTI4NEQ2Nzc5NEEzNzU1NDgzNDZFMzkzMjMxNEEzNjU1NkM0QjY1NjM2QjVGNTMzMDRBNkMzMjdBNkU1NTU5Mzg0MzY5NEQ0Qjc5NkI2QzU3NjYzMg==",
+              "decoded": "74487A487443634464335636705F39644F6E73657C5F53585F346B24757132332E71542E4C2E284D67794A375548346E3932314A36556C4B65636B5F53304A6C327A6E55593843694D4B796B6C576632"
+            },
+            {
+              "token": "YTU2ZGM1Y2ViZjBhY2Y1MmU5NjRhNTJiN2ZhNjc0M2E=",
+              "decoded": "a56dc5cebf0acf52e964a52b7fa6743a"
+            },
+            {
+              "token": "NmNmZDY4YzJlYy1hN2NWSEE0NWFmLWRiMmYyNWM4Zg==",
+              "decoded": "6cfd68c2ec-a7cVHA45af-db2f25c8f"
+            },
+            {
+              "token": "NEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQyd0JEQUFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJQbURHOXk4YWlVM0h2MkZreDhBSEVRY1N3M0cyRHlaVzFGZWxSTGllZzNSbE5ZaHJRc3dXR1JCc29kRkhFNThDTUxPdGdhYzk4dXRRSThTVTdIWmhWNFlnSkhod09LMjN0WUV3SGs5MkhBYmpMa2lhc3diWFN0NWt0TkI4NThvMlJEYllwcUR4VjRmMlNFME4yYllMY094R01TM3p1eDZMc2lvMXRqbWluOUVveW15ZE9tamppckZKRDZFeUtJ",
+              "decoded": "4AAQSkZJRgABAQAAAQABAAD2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBPmDG9y8aiU3Hv2Fkx8AHEQcSw3G2DyZW1FelRLieg3RlNYhrQswWGRBsodFHE58CMLOtgac98utQI8SU7HZhV4YgJHhwOK23tYEwHk92HAbjLkiaswbXSt5ktNB858o2RDbYpqDxV4f2SE0N2bYLcOxGMS3zux6Lsio1tjmin9EoymydOmjjirFJD6EyKI"
+            },
+            {
+              "token": "RUNJTkFUSU9OQUxFTEVDVE9SQUxTRUFSQ0gjMTIzNE1PQklMRUFQUEtFWQ==",
+              "decoded": "ECINATIONALELECTORALSEARCH#1234MOBILEAPPKEY"
+            },
+            {
+              "token": "OTU2N2I5ODA1NmU5MjUwYw",
+              "decoded": "9567b98056e9250c"
+            },
+            {
+              "token": "SDc2JHN1cTIzX3BvKDhzRA==",
+              "decoded": "H76$suq23_po(8sD"
+            },
+            {
+              "token": "QUl6YVN5Q2hjU1R2Q2pGS1UxQ2J6cUN2a29OeDJFcXlTRVVsRWRv",
+              "decoded": "AIzaSyChcSTvCjFKU1CbzqCvkoNx2EqySEUlEdo"
+            }
+          ]
+        },
+        {
+          "name": "getNativeOfficialDetailSecureKey",
+          "offset": 4103,
+          "nearby": [
+            {
+              "token": "NzQ0ODdBNDg3NDQzNjM0NDY0MzM1NjM2NzA1RjM5NjQ0RjZFNzM2NTdDNUY1MzU4NUYzNDZCMjQ3NTcxMzIzMzJFNzE1NDJFNEMyRTI4NEQ2Nzc5NEEzNzU1NDgzNDZFMzkzMjMxNEEzNjU1NkM0QjY1NjM2QjVGNTMzMDRBNkMzMjdBNkU1NTU5Mzg0MzY5NEQ0Qjc5NkI2QzU3NjYzMg==",
+              "decoded": "74487A487443634464335636705F39644F6E73657C5F53585F346B24757132332E71542E4C2E284D67794A375548346E3932314A36556C4B65636B5F53304A6C327A6E55593843694D4B796B6C576632"
+            },
+            {
+              "token": "YTU2ZGM1Y2ViZjBhY2Y1MmU5NjRhNTJiN2ZhNjc0M2E=",
+              "decoded": "a56dc5cebf0acf52e964a52b7fa6743a"
+            },
+            {
+              "token": "NmNmZDY4YzJlYy1hN2NWSEE0NWFmLWRiMmYyNWM4Zg==",
+              "decoded": "6cfd68c2ec-a7cVHA45af-db2f25c8f"
+            },
+            {
+              "token": "NEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQyd0JEQUFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJQbURHOXk4YWlVM0h2MkZreDhBSEVRY1N3M0cyRHlaVzFGZWxSTGllZzNSbE5ZaHJRc3dXR1JCc29kRkhFNThDTUxPdGdhYzk4dXRRSThTVTdIWmhWNFlnSkhod09LMjN0WUV3SGs5MkhBYmpMa2lhc3diWFN0NWt0TkI4NThvMlJEYllwcUR4VjRmMlNFME4yYllMY094R01TM3p1eDZMc2lvMXRqbWluOUVveW15ZE9tamppckZKRDZFeUtJ",
+              "decoded": "4AAQSkZJRgABAQAAAQABAAD2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBPmDG9y8aiU3Hv2Fkx8AHEQcSw3G2DyZW1FelRLieg3RlNYhrQswWGRBsodFHE58CMLOtgac98utQI8SU7HZhV4YgJHhwOK23tYEwHk92HAbjLkiaswbXSt5ktNB858o2RDbYpqDxV4f2SE0N2bYLcOxGMS3zux6Lsio1tjmin9EoymydOmjjirFJD6EyKI"
+            },
+            {
+              "token": "RUNJTkFUSU9OQUxFTEVDVE9SQUxTRUFSQ0gjMTIzNE1PQklMRUFQUEtFWQ==",
+              "decoded": "ECINATIONALELECTORALSEARCH#1234MOBILEAPPKEY"
+            },
+            {
+              "token": "OTU2N2I5ODA1NmU5MjUwYw",
+              "decoded": "9567b98056e9250c"
+            },
+            {
+              "token": "SDc2JHN1cTIzX3BvKDhzRA==",
+              "decoded": "H76$suq23_po(8sD"
+            },
+            {
+              "token": "QUl6YVN5Q2hjU1R2Q2pGS1UxQ2J6cUN2a29OeDJFcXlTRVVsRWRv",
+              "decoded": "AIzaSyChcSTvCjFKU1CbzqCvkoNx2EqySEUlEdo"
+            }
+          ]
+        },
+        {
+          "name": "getNativeElectorsDetailSecureKey",
+          "offset": 3605,
+          "nearby": [
+            {
+              "token": "NzQ0ODdBNDg3NDQzNjM0NDY0MzM1NjM2NzA1RjM5NjQ0RjZFNzM2NTdDNUY1MzU4NUYzNDZCMjQ3NTcxMzIzMzJFNzE1NDJFNEMyRTI4NEQ2Nzc5NEEzNzU1NDgzNDZFMzkzMjMxNEEzNjU1NkM0QjY1NjM2QjVGNTMzMDRBNkMzMjdBNkU1NTU5Mzg0MzY5NEQ0Qjc5NkI2QzU3NjYzMg==",
+              "decoded": "74487A487443634464335636705F39644F6E73657C5F53585F346B24757132332E71542E4C2E284D67794A375548346E3932314A36556C4B65636B5F53304A6C327A6E55593843694D4B796B6C576632"
+            },
+            {
+              "token": "YTU2ZGM1Y2ViZjBhY2Y1MmU5NjRhNTJiN2ZhNjc0M2E=",
+              "decoded": "a56dc5cebf0acf52e964a52b7fa6743a"
+            },
+            {
+              "token": "NmNmZDY4YzJlYy1hN2NWSEE0NWFmLWRiMmYyNWM4Zg==",
+              "decoded": "6cfd68c2ec-a7cVHA45af-db2f25c8f"
+            },
+            {
+              "token": "NEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQyd0JEQUFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJQbURHOXk4YWlVM0h2MkZreDhBSEVRY1N3M0cyRHlaVzFGZWxSTGllZzNSbE5ZaHJRc3dXR1JCc29kRkhFNThDTUxPdGdhYzk4dXRRSThTVTdIWmhWNFlnSkhod09LMjN0WUV3SGs5MkhBYmpMa2lhc3diWFN0NWt0TkI4NThvMlJEYllwcUR4VjRmMlNFME4yYllMY094R01TM3p1eDZMc2lvMXRqbWluOUVveW15ZE9tamppckZKRDZFeUtJ",
+              "decoded": "4AAQSkZJRgABAQAAAQABAAD2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBPmDG9y8aiU3Hv2Fkx8AHEQcSw3G2DyZW1FelRLieg3RlNYhrQswWGRBsodFHE58CMLOtgac98utQI8SU7HZhV4YgJHhwOK23tYEwHk92HAbjLkiaswbXSt5ktNB858o2RDbYpqDxV4f2SE0N2bYLcOxGMS3zux6Lsio1tjmin9EoymydOmjjirFJD6EyKI"
+            },
+            {
+              "token": "RUNJTkFUSU9OQUxFTEVDVE9SQUxTRUFSQ0gjMTIzNE1PQklMRUFQUEtFWQ==",
+              "decoded": "ECINATIONALELECTORALSEARCH#1234MOBILEAPPKEY"
+            },
+            {
+              "token": "OTU2N2I5ODA1NmU5MjUwYw",
+              "decoded": "9567b98056e9250c"
+            },
+            {
+              "token": "SDc2JHN1cTIzX3BvKDhzRA==",
+              "decoded": "H76$suq23_po(8sD"
+            },
+            {
+              "token": "QUl6YVN5Q2hjU1R2Q2pGS1UxQ2J6cUN2a29OeDJFcXlTRVVsRWRv",
+              "decoded": "AIzaSyChcSTvCjFKU1CbzqCvkoNx2EqySEUlEdo"
+            }
+          ]
+        },
+        {
+          "name": "getNativeElectorsDetailEpic",
+          "offset": 3543,
+          "nearby": [
+            {
+              "token": "NzQ0ODdBNDg3NDQzNjM0NDY0MzM1NjM2NzA1RjM5NjQ0RjZFNzM2NTdDNUY1MzU4NUYzNDZCMjQ3NTcxMzIzMzJFNzE1NDJFNEMyRTI4NEQ2Nzc5NEEzNzU1NDgzNDZFMzkzMjMxNEEzNjU1NkM0QjY1NjM2QjVGNTMzMDRBNkMzMjdBNkU1NTU5Mzg0MzY5NEQ0Qjc5NkI2QzU3NjYzMg==",
+              "decoded": "74487A487443634464335636705F39644F6E73657C5F53585F346B24757132332E71542E4C2E284D67794A375548346E3932314A36556C4B65636B5F53304A6C327A6E55593843694D4B796B6C576632"
+            },
+            {
+              "token": "YTU2ZGM1Y2ViZjBhY2Y1MmU5NjRhNTJiN2ZhNjc0M2E=",
+              "decoded": "a56dc5cebf0acf52e964a52b7fa6743a"
+            },
+            {
+              "token": "NmNmZDY4YzJlYy1hN2NWSEE0NWFmLWRiMmYyNWM4Zg==",
+              "decoded": "6cfd68c2ec-a7cVHA45af-db2f25c8f"
+            },
+            {
+              "token": "NEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQyd0JEQUFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJQbURHOXk4YWlVM0h2MkZreDhBSEVRY1N3M0cyRHlaVzFGZWxSTGllZzNSbE5ZaHJRc3dXR1JCc29kRkhFNThDTUxPdGdhYzk4dXRRSThTVTdIWmhWNFlnSkhod09LMjN0WUV3SGs5MkhBYmpMa2lhc3diWFN0NWt0TkI4NThvMlJEYllwcUR4VjRmMlNFME4yYllMY094R01TM3p1eDZMc2lvMXRqbWluOUVveW15ZE9tamppckZKRDZFeUtJ",
+              "decoded": "4AAQSkZJRgABAQAAAQABAAD2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBPmDG9y8aiU3Hv2Fkx8AHEQcSw3G2DyZW1FelRLieg3RlNYhrQswWGRBsodFHE58CMLOtgac98utQI8SU7HZhV4YgJHhwOK23tYEwHk92HAbjLkiaswbXSt5ktNB858o2RDbYpqDxV4f2SE0N2bYLcOxGMS3zux6Lsio1tjmin9EoymydOmjjirFJD6EyKI"
+            },
+            {
+              "token": "RUNJTkFUSU9OQUxFTEVDVE9SQUxTRUFSQ0gjMTIzNE1PQklMRUFQUEtFWQ==",
+              "decoded": "ECINATIONALELECTORALSEARCH#1234MOBILEAPPKEY"
+            },
+            {
+              "token": "OTU2N2I5ODA1NmU5MjUwYw",
+              "decoded": "9567b98056e9250c"
+            },
+            {
+              "token": "SDc2JHN1cTIzX3BvKDhzRA==",
+              "decoded": "H76$suq23_po(8sD"
+            },
+            {
+              "token": "QUl6YVN5Q2hjU1R2Q2pGS1UxQ2J6cUN2a29OeDJFcXlTRVVsRWRv",
+              "decoded": "AIzaSyChcSTvCjFKU1CbzqCvkoNx2EqySEUlEdo"
+            }
+          ]
+        },
+        {
+          "name": "getNativeECISITEAPIKEY",
+          "offset": 3167,
+          "nearby": [
+            {
+              "token": "NzQ0ODdBNDg3NDQzNjM0NDY0MzM1NjM2NzA1RjM5NjQ0RjZFNzM2NTdDNUY1MzU4NUYzNDZCMjQ3NTcxMzIzMzJFNzE1NDJFNEMyRTI4NEQ2Nzc5NEEzNzU1NDgzNDZFMzkzMjMxNEEzNjU1NkM0QjY1NjM2QjVGNTMzMDRBNkMzMjdBNkU1NTU5Mzg0MzY5NEQ0Qjc5NkI2QzU3NjYzMg==",
+              "decoded": "74487A487443634464335636705F39644F6E73657C5F53585F346B24757132332E71542E4C2E284D67794A375548346E3932314A36556C4B65636B5F53304A6C327A6E55593843694D4B796B6C576632"
+            },
+            {
+              "token": "YTU2ZGM1Y2ViZjBhY2Y1MmU5NjRhNTJiN2ZhNjc0M2E=",
+              "decoded": "a56dc5cebf0acf52e964a52b7fa6743a"
+            },
+            {
+              "token": "NmNmZDY4YzJlYy1hN2NWSEE0NWFmLWRiMmYyNWM4Zg==",
+              "decoded": "6cfd68c2ec-a7cVHA45af-db2f25c8f"
+            },
+            {
+              "token": "NEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQyd0JEQUFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJQbURHOXk4YWlVM0h2MkZreDhBSEVRY1N3M0cyRHlaVzFGZWxSTGllZzNSbE5ZaHJRc3dXR1JCc29kRkhFNThDTUxPdGdhYzk4dXRRSThTVTdIWmhWNFlnSkhod09LMjN0WUV3SGs5MkhBYmpMa2lhc3diWFN0NWt0TkI4NThvMlJEYllwcUR4VjRmMlNFME4yYllMY094R01TM3p1eDZMc2lvMXRqbWluOUVveW15ZE9tamppckZKRDZFeUtJ",
+              "decoded": "4AAQSkZJRgABAQAAAQABAAD2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBPmDG9y8aiU3Hv2Fkx8AHEQcSw3G2DyZW1FelRLieg3RlNYhrQswWGRBsodFHE58CMLOtgac98utQI8SU7HZhV4YgJHhwOK23tYEwHk92HAbjLkiaswbXSt5ktNB858o2RDbYpqDxV4f2SE0N2bYLcOxGMS3zux6Lsio1tjmin9EoymydOmjjirFJD6EyKI"
+            },
+            {
+              "token": "RUNJTkFUSU9OQUxFTEVDVE9SQUxTRUFSQ0gjMTIzNE1PQklMRUFQUEtFWQ==",
+              "decoded": "ECINATIONALELECTORALSEARCH#1234MOBILEAPPKEY"
+            },
+            {
+              "token": "OTU2N2I5ODA1NmU5MjUwYw",
+              "decoded": "9567b98056e9250c"
+            },
+            {
+              "token": "SDc2JHN1cTIzX3BvKDhzRA==",
+              "decoded": "H76$suq23_po(8sD"
+            },
+            {
+              "token": "QUl6YVN5Q2hjU1R2Q2pGS1UxQ2J6cUN2a29OeDJFcXlTRVVsRWRv",
+              "decoded": "AIzaSyChcSTvCjFKU1CbzqCvkoNx2EqySEUlEdo"
+            }
+          ]
+        },
+        {
+          "name": "getNativeEciTechAPIKEY",
+          "offset": 3224,
+          "nearby": [
+            {
+              "token": "NzQ0ODdBNDg3NDQzNjM0NDY0MzM1NjM2NzA1RjM5NjQ0RjZFNzM2NTdDNUY1MzU4NUYzNDZCMjQ3NTcxMzIzMzJFNzE1NDJFNEMyRTI4NEQ2Nzc5NEEzNzU1NDgzNDZFMzkzMjMxNEEzNjU1NkM0QjY1NjM2QjVGNTMzMDRBNkMzMjdBNkU1NTU5Mzg0MzY5NEQ0Qjc5NkI2QzU3NjYzMg==",
+              "decoded": "74487A487443634464335636705F39644F6E73657C5F53585F346B24757132332E71542E4C2E284D67794A375548346E3932314A36556C4B65636B5F53304A6C327A6E55593843694D4B796B6C576632"
+            },
+            {
+              "token": "YTU2ZGM1Y2ViZjBhY2Y1MmU5NjRhNTJiN2ZhNjc0M2E=",
+              "decoded": "a56dc5cebf0acf52e964a52b7fa6743a"
+            },
+            {
+              "token": "NmNmZDY4YzJlYy1hN2NWSEE0NWFmLWRiMmYyNWM4Zg==",
+              "decoded": "6cfd68c2ec-a7cVHA45af-db2f25c8f"
+            },
+            {
+              "token": "NEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQyd0JEQUFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJQbURHOXk4YWlVM0h2MkZreDhBSEVRY1N3M0cyRHlaVzFGZWxSTGllZzNSbE5ZaHJRc3dXR1JCc29kRkhFNThDTUxPdGdhYzk4dXRRSThTVTdIWmhWNFlnSkhod09LMjN0WUV3SGs5MkhBYmpMa2lhc3diWFN0NWt0TkI4NThvMlJEYllwcUR4VjRmMlNFME4yYllMY094R01TM3p1eDZMc2lvMXRqbWluOUVveW15ZE9tamppckZKRDZFeUtJ",
+              "decoded": "4AAQSkZJRgABAQAAAQABAAD2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBPmDG9y8aiU3Hv2Fkx8AHEQcSw3G2DyZW1FelRLieg3RlNYhrQswWGRBsodFHE58CMLOtgac98utQI8SU7HZhV4YgJHhwOK23tYEwHk92HAbjLkiaswbXSt5ktNB858o2RDbYpqDxV4f2SE0N2bYLcOxGMS3zux6Lsio1tjmin9EoymydOmjjirFJD6EyKI"
+            },
+            {
+              "token": "RUNJTkFUSU9OQUxFTEVDVE9SQUxTRUFSQ0gjMTIzNE1PQklMRUFQUEtFWQ==",
+              "decoded": "ECINATIONALELECTORALSEARCH#1234MOBILEAPPKEY"
+            },
+            {
+              "token": "OTU2N2I5ODA1NmU5MjUwYw",
+              "decoded": "9567b98056e9250c"
+            },
+            {
+              "token": "SDc2JHN1cTIzX3BvKDhzRA==",
+              "decoded": "H76$suq23_po(8sD"
+            },
+            {
+              "token": "QUl6YVN5Q2hjU1R2Q2pGS1UxQ2J6cUN2a29OeDJFcXlTRVVsRWRv",
+              "decoded": "AIzaSyChcSTvCjFKU1CbzqCvkoNx2EqySEUlEdo"
+            }
+          ]
+        },
+        {
+          "name": "getNativeSveepAPIKEY",
+          "offset": 4296,
+          "nearby": [
+            {
+              "token": "NzQ0ODdBNDg3NDQzNjM0NDY0MzM1NjM2NzA1RjM5NjQ0RjZFNzM2NTdDNUY1MzU4NUYzNDZCMjQ3NTcxMzIzMzJFNzE1NDJFNEMyRTI4NEQ2Nzc5NEEzNzU1NDgzNDZFMzkzMjMxNEEzNjU1NkM0QjY1NjM2QjVGNTMzMDRBNkMzMjdBNkU1NTU5Mzg0MzY5NEQ0Qjc5NkI2QzU3NjYzMg==",
+              "decoded": "74487A487443634464335636705F39644F6E73657C5F53585F346B24757132332E71542E4C2E284D67794A375548346E3932314A36556C4B65636B5F53304A6C327A6E55593843694D4B796B6C576632"
+            },
+            {
+              "token": "YTU2ZGM1Y2ViZjBhY2Y1MmU5NjRhNTJiN2ZhNjc0M2E=",
+              "decoded": "a56dc5cebf0acf52e964a52b7fa6743a"
+            },
+            {
+              "token": "NmNmZDY4YzJlYy1hN2NWSEE0NWFmLWRiMmYyNWM4Zg==",
+              "decoded": "6cfd68c2ec-a7cVHA45af-db2f25c8f"
+            },
+            {
+              "token": "NEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQyd0JEQUFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJQbURHOXk4YWlVM0h2MkZreDhBSEVRY1N3M0cyRHlaVzFGZWxSTGllZzNSbE5ZaHJRc3dXR1JCc29kRkhFNThDTUxPdGdhYzk4dXRRSThTVTdIWmhWNFlnSkhod09LMjN0WUV3SGs5MkhBYmpMa2lhc3diWFN0NWt0TkI4NThvMlJEYllwcUR4VjRmMlNFME4yYllMY094R01TM3p1eDZMc2lvMXRqbWluOUVveW15ZE9tamppckZKRDZFeUtJ",
+              "decoded": "4AAQSkZJRgABAQAAAQABAAD2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBPmDG9y8aiU3Hv2Fkx8AHEQcSw3G2DyZW1FelRLieg3RlNYhrQswWGRBsodFHE58CMLOtgac98utQI8SU7HZhV4YgJHhwOK23tYEwHk92HAbjLkiaswbXSt5ktNB858o2RDbYpqDxV4f2SE0N2bYLcOxGMS3zux6Lsio1tjmin9EoymydOmjjirFJD6EyKI"
+            },
+            {
+              "token": "RUNJTkFUSU9OQUxFTEVDVE9SQUxTRUFSQ0gjMTIzNE1PQklMRUFQUEtFWQ==",
+              "decoded": "ECINATIONALELECTORALSEARCH#1234MOBILEAPPKEY"
+            },
+            {
+              "token": "OTU2N2I5ODA1NmU5MjUwYw",
+              "decoded": "9567b98056e9250c"
+            },
+            {
+              "token": "SDc2JHN1cTIzX3BvKDhzRA==",
+              "decoded": "H76$suq23_po(8sD"
+            },
+            {
+              "token": "QUl6YVN5Q2hjU1R2Q2pGS1UxQ2J6cUN2a29OeDJFcXlTRVVsRWRv",
+              "decoded": "AIzaSyChcSTvCjFKU1CbzqCvkoNx2EqySEUlEdo"
+            }
+          ]
+        },
+        {
+          "name": "getNativeLocalLoginClientAPIKEY",
+          "offset": 3851,
+          "nearby": [
+            {
+              "token": "NzQ0ODdBNDg3NDQzNjM0NDY0MzM1NjM2NzA1RjM5NjQ0RjZFNzM2NTdDNUY1MzU4NUYzNDZCMjQ3NTcxMzIzMzJFNzE1NDJFNEMyRTI4NEQ2Nzc5NEEzNzU1NDgzNDZFMzkzMjMxNEEzNjU1NkM0QjY1NjM2QjVGNTMzMDRBNkMzMjdBNkU1NTU5Mzg0MzY5NEQ0Qjc5NkI2QzU3NjYzMg==",
+              "decoded": "74487A487443634464335636705F39644F6E73657C5F53585F346B24757132332E71542E4C2E284D67794A375548346E3932314A36556C4B65636B5F53304A6C327A6E55593843694D4B796B6C576632"
+            },
+            {
+              "token": "YTU2ZGM1Y2ViZjBhY2Y1MmU5NjRhNTJiN2ZhNjc0M2E=",
+              "decoded": "a56dc5cebf0acf52e964a52b7fa6743a"
+            },
+            {
+              "token": "NmNmZDY4YzJlYy1hN2NWSEE0NWFmLWRiMmYyNWM4Zg==",
+              "decoded": "6cfd68c2ec-a7cVHA45af-db2f25c8f"
+            },
+            {
+              "token": "NEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQyd0JEQUFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJQbURHOXk4YWlVM0h2MkZreDhBSEVRY1N3M0cyRHlaVzFGZWxSTGllZzNSbE5ZaHJRc3dXR1JCc29kRkhFNThDTUxPdGdhYzk4dXRRSThTVTdIWmhWNFlnSkhod09LMjN0WUV3SGs5MkhBYmpMa2lhc3diWFN0NWt0TkI4NThvMlJEYllwcUR4VjRmMlNFME4yYllMY094R01TM3p1eDZMc2lvMXRqbWluOUVveW15ZE9tamppckZKRDZFeUtJ",
+              "decoded": "4AAQSkZJRgABAQAAAQABAAD2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBPmDG9y8aiU3Hv2Fkx8AHEQcSw3G2DyZW1FelRLieg3RlNYhrQswWGRBsodFHE58CMLOtgac98utQI8SU7HZhV4YgJHhwOK23tYEwHk92HAbjLkiaswbXSt5ktNB858o2RDbYpqDxV4f2SE0N2bYLcOxGMS3zux6Lsio1tjmin9EoymydOmjjirFJD6EyKI"
+            },
+            {
+              "token": "RUNJTkFUSU9OQUxFTEVDVE9SQUxTRUFSQ0gjMTIzNE1PQklMRUFQUEtFWQ==",
+              "decoded": "ECINATIONALELECTORALSEARCH#1234MOBILEAPPKEY"
+            },
+            {
+              "token": "OTU2N2I5ODA1NmU5MjUwYw",
+              "decoded": "9567b98056e9250c"
+            },
+            {
+              "token": "SDc2JHN1cTIzX3BvKDhzRA==",
+              "decoded": "H76$suq23_po(8sD"
+            },
+            {
+              "token": "QUl6YVN5Q2hjU1R2Q2pGS1UxQ2J6cUN2a29OeDJFcXlTRVVsRWRv",
+              "decoded": "AIzaSyChcSTvCjFKU1CbzqCvkoNx2EqySEUlEdo"
+            }
+          ]
+        },
+        {
+          "name": "getNativeLocalRegistrationClientAPIKEY",
+          "offset": 3917,
+          "nearby": [
+            {
+              "token": "NzQ0ODdBNDg3NDQzNjM0NDY0MzM1NjM2NzA1RjM5NjQ0RjZFNzM2NTdDNUY1MzU4NUYzNDZCMjQ3NTcxMzIzMzJFNzE1NDJFNEMyRTI4NEQ2Nzc5NEEzNzU1NDgzNDZFMzkzMjMxNEEzNjU1NkM0QjY1NjM2QjVGNTMzMDRBNkMzMjdBNkU1NTU5Mzg0MzY5NEQ0Qjc5NkI2QzU3NjYzMg==",
+              "decoded": "74487A487443634464335636705F39644F6E73657C5F53585F346B24757132332E71542E4C2E284D67794A375548346E3932314A36556C4B65636B5F53304A6C327A6E55593843694D4B796B6C576632"
+            },
+            {
+              "token": "YTU2ZGM1Y2ViZjBhY2Y1MmU5NjRhNTJiN2ZhNjc0M2E=",
+              "decoded": "a56dc5cebf0acf52e964a52b7fa6743a"
+            },
+            {
+              "token": "NmNmZDY4YzJlYy1hN2NWSEE0NWFmLWRiMmYyNWM4Zg==",
+              "decoded": "6cfd68c2ec-a7cVHA45af-db2f25c8f"
+            },
+            {
+              "token": "NEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQyd0JEQUFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJQbURHOXk4YWlVM0h2MkZreDhBSEVRY1N3M0cyRHlaVzFGZWxSTGllZzNSbE5ZaHJRc3dXR1JCc29kRkhFNThDTUxPdGdhYzk4dXRRSThTVTdIWmhWNFlnSkhod09LMjN0WUV3SGs5MkhBYmpMa2lhc3diWFN0NWt0TkI4NThvMlJEYllwcUR4VjRmMlNFME4yYllMY094R01TM3p1eDZMc2lvMXRqbWluOUVveW15ZE9tamppckZKRDZFeUtJ",
+              "decoded": "4AAQSkZJRgABAQAAAQABAAD2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBPmDG9y8aiU3Hv2Fkx8AHEQcSw3G2DyZW1FelRLieg3RlNYhrQswWGRBsodFHE58CMLOtgac98utQI8SU7HZhV4YgJHhwOK23tYEwHk92HAbjLkiaswbXSt5ktNB858o2RDbYpqDxV4f2SE0N2bYLcOxGMS3zux6Lsio1tjmin9EoymydOmjjirFJD6EyKI"
+            },
+            {
+              "token": "RUNJTkFUSU9OQUxFTEVDVE9SQUxTRUFSQ0gjMTIzNE1PQklMRUFQUEtFWQ==",
+              "decoded": "ECINATIONALELECTORALSEARCH#1234MOBILEAPPKEY"
+            },
+            {
+              "token": "OTU2N2I5ODA1NmU5MjUwYw",
+              "decoded": "9567b98056e9250c"
+            },
+            {
+              "token": "SDc2JHN1cTIzX3BvKDhzRA==",
+              "decoded": "H76$suq23_po(8sD"
+            },
+            {
+              "token": "QUl6YVN5Q2hjU1R2Q2pGS1UxQ2J6cUN2a29OeDJFcXlTRVVsRWRv",
+              "decoded": "AIzaSyChcSTvCjFKU1CbzqCvkoNx2EqySEUlEdo"
+            }
+          ]
+        },
+        {
+          "name": "getNativeAuthenticationTokenCredentials",
+          "offset": 2890,
+          "nearby": [
+            {
+              "token": "NzQ0ODdBNDg3NDQzNjM0NDY0MzM1NjM2NzA1RjM5NjQ0RjZFNzM2NTdDNUY1MzU4NUYzNDZCMjQ3NTcxMzIzMzJFNzE1NDJFNEMyRTI4NEQ2Nzc5NEEzNzU1NDgzNDZFMzkzMjMxNEEzNjU1NkM0QjY1NjM2QjVGNTMzMDRBNkMzMjdBNkU1NTU5Mzg0MzY5NEQ0Qjc5NkI2QzU3NjYzMg==",
+              "decoded": "74487A487443634464335636705F39644F6E73657C5F53585F346B24757132332E71542E4C2E284D67794A375548346E3932314A36556C4B65636B5F53304A6C327A6E55593843694D4B796B6C576632"
+            },
+            {
+              "token": "YTU2ZGM1Y2ViZjBhY2Y1MmU5NjRhNTJiN2ZhNjc0M2E=",
+              "decoded": "a56dc5cebf0acf52e964a52b7fa6743a"
+            },
+            {
+              "token": "NmNmZDY4YzJlYy1hN2NWSEE0NWFmLWRiMmYyNWM4Zg==",
+              "decoded": "6cfd68c2ec-a7cVHA45af-db2f25c8f"
+            },
+            {
+              "token": "NEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQyd0JEQUFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJQbURHOXk4YWlVM0h2MkZreDhBSEVRY1N3M0cyRHlaVzFGZWxSTGllZzNSbE5ZaHJRc3dXR1JCc29kRkhFNThDTUxPdGdhYzk4dXRRSThTVTdIWmhWNFlnSkhod09LMjN0WUV3SGs5MkhBYmpMa2lhc3diWFN0NWt0TkI4NThvMlJEYllwcUR4VjRmMlNFME4yYllMY094R01TM3p1eDZMc2lvMXRqbWluOUVveW15ZE9tamppckZKRDZFeUtJ",
+              "decoded": "4AAQSkZJRgABAQAAAQABAAD2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBPmDG9y8aiU3Hv2Fkx8AHEQcSw3G2DyZW1FelRLieg3RlNYhrQswWGRBsodFHE58CMLOtgac98utQI8SU7HZhV4YgJHhwOK23tYEwHk92HAbjLkiaswbXSt5ktNB858o2RDbYpqDxV4f2SE0N2bYLcOxGMS3zux6Lsio1tjmin9EoymydOmjjirFJD6EyKI"
+            },
+            {
+              "token": "RUNJTkFUSU9OQUxFTEVDVE9SQUxTRUFSQ0gjMTIzNE1PQklMRUFQUEtFWQ==",
+              "decoded": "ECINATIONALELECTORALSEARCH#1234MOBILEAPPKEY"
+            },
+            {
+              "token": "OTU2N2I5ODA1NmU5MjUwYw",
+              "decoded": "9567b98056e9250c"
+            },
+            {
+              "token": "SDc2JHN1cTIzX3BvKDhzRA==",
+              "decoded": "H76$suq23_po(8sD"
+            },
+            {
+              "token": "QUl6YVN5Q2hjU1R2Q2pGS1UxQ2J6cUN2a29OeDJFcXlTRVVsRWRv",
+              "decoded": "AIzaSyChcSTvCjFKU1CbzqCvkoNx2EqySEUlEdo"
+            }
+          ]
+        },
+        {
+          "name": "getNativeElectionResultTokenKey",
+          "offset": 3407,
+          "nearby": [
+            {
+              "token": "NzQ0ODdBNDg3NDQzNjM0NDY0MzM1NjM2NzA1RjM5NjQ0RjZFNzM2NTdDNUY1MzU4NUYzNDZCMjQ3NTcxMzIzMzJFNzE1NDJFNEMyRTI4NEQ2Nzc5NEEzNzU1NDgzNDZFMzkzMjMxNEEzNjU1NkM0QjY1NjM2QjVGNTMzMDRBNkMzMjdBNkU1NTU5Mzg0MzY5NEQ0Qjc5NkI2QzU3NjYzMg==",
+              "decoded": "74487A487443634464335636705F39644F6E73657C5F53585F346B24757132332E71542E4C2E284D67794A375548346E3932314A36556C4B65636B5F53304A6C327A6E55593843694D4B796B6C576632"
+            },
+            {
+              "token": "YTU2ZGM1Y2ViZjBhY2Y1MmU5NjRhNTJiN2ZhNjc0M2E=",
+              "decoded": "a56dc5cebf0acf52e964a52b7fa6743a"
+            },
+            {
+              "token": "NmNmZDY4YzJlYy1hN2NWSEE0NWFmLWRiMmYyNWM4Zg==",
+              "decoded": "6cfd68c2ec-a7cVHA45af-db2f25c8f"
+            },
+            {
+              "token": "NEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQyd0JEQUFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJQbURHOXk4YWlVM0h2MkZreDhBSEVRY1N3M0cyRHlaVzFGZWxSTGllZzNSbE5ZaHJRc3dXR1JCc29kRkhFNThDTUxPdGdhYzk4dXRRSThTVTdIWmhWNFlnSkhod09LMjN0WUV3SGs5MkhBYmpMa2lhc3diWFN0NWt0TkI4NThvMlJEYllwcUR4VjRmMlNFME4yYllMY094R01TM3p1eDZMc2lvMXRqbWluOUVveW15ZE9tamppckZKRDZFeUtJ",
+              "decoded": "4AAQSkZJRgABAQAAAQABAAD2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBPmDG9y8aiU3Hv2Fkx8AHEQcSw3G2DyZW1FelRLieg3RlNYhrQswWGRBsodFHE58CMLOtgac98utQI8SU7HZhV4YgJHhwOK23tYEwHk92HAbjLkiaswbXSt5ktNB858o2RDbYpqDxV4f2SE0N2bYLcOxGMS3zux6Lsio1tjmin9EoymydOmjjirFJD6EyKI"
+            },
+            {
+              "token": "RUNJTkFUSU9OQUxFTEVDVE9SQUxTRUFSQ0gjMTIzNE1PQklMRUFQUEtFWQ==",
+              "decoded": "ECINATIONALELECTORALSEARCH#1234MOBILEAPPKEY"
+            },
+            {
+              "token": "OTU2N2I5ODA1NmU5MjUwYw",
+              "decoded": "9567b98056e9250c"
+            },
+            {
+              "token": "SDc2JHN1cTIzX3BvKDhzRA==",
+              "decoded": "H76$suq23_po(8sD"
+            },
+            {
+              "token": "QUl6YVN5Q2hjU1R2Q2pGS1UxQ2J6cUN2a29OeDJFcXlTRVVsRWRv",
+              "decoded": "AIzaSyChcSTvCjFKU1CbzqCvkoNx2EqySEUlEdo"
+            }
+          ]
+        },
+        {
+          "name": "getNativeDigitalApiSecureKey",
+          "offset": 3039,
+          "nearby": [
+            {
+              "token": "NzQ0ODdBNDg3NDQzNjM0NDY0MzM1NjM2NzA1RjM5NjQ0RjZFNzM2NTdDNUY1MzU4NUYzNDZCMjQ3NTcxMzIzMzJFNzE1NDJFNEMyRTI4NEQ2Nzc5NEEzNzU1NDgzNDZFMzkzMjMxNEEzNjU1NkM0QjY1NjM2QjVGNTMzMDRBNkMzMjdBNkU1NTU5Mzg0MzY5NEQ0Qjc5NkI2QzU3NjYzMg==",
+              "decoded": "74487A487443634464335636705F39644F6E73657C5F53585F346B24757132332E71542E4C2E284D67794A375548346E3932314A36556C4B65636B5F53304A6C327A6E55593843694D4B796B6C576632"
+            },
+            {
+              "token": "YTU2ZGM1Y2ViZjBhY2Y1MmU5NjRhNTJiN2ZhNjc0M2E=",
+              "decoded": "a56dc5cebf0acf52e964a52b7fa6743a"
+            },
+            {
+              "token": "NmNmZDY4YzJlYy1hN2NWSEE0NWFmLWRiMmYyNWM4Zg==",
+              "decoded": "6cfd68c2ec-a7cVHA45af-db2f25c8f"
+            },
+            {
+              "token": "NEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQyd0JEQUFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJQbURHOXk4YWlVM0h2MkZreDhBSEVRY1N3M0cyRHlaVzFGZWxSTGllZzNSbE5ZaHJRc3dXR1JCc29kRkhFNThDTUxPdGdhYzk4dXRRSThTVTdIWmhWNFlnSkhod09LMjN0WUV3SGs5MkhBYmpMa2lhc3diWFN0NWt0TkI4NThvMlJEYllwcUR4VjRmMlNFME4yYllMY094R01TM3p1eDZMc2lvMXRqbWluOUVveW15ZE9tamppckZKRDZFeUtJ",
+              "decoded": "4AAQSkZJRgABAQAAAQABAAD2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBPmDG9y8aiU3Hv2Fkx8AHEQcSw3G2DyZW1FelRLieg3RlNYhrQswWGRBsodFHE58CMLOtgac98utQI8SU7HZhV4YgJHhwOK23tYEwHk92HAbjLkiaswbXSt5ktNB858o2RDbYpqDxV4f2SE0N2bYLcOxGMS3zux6Lsio1tjmin9EoymydOmjjirFJD6EyKI"
+            },
+            {
+              "token": "RUNJTkFUSU9OQUxFTEVDVE9SQUxTRUFSQ0gjMTIzNE1PQklMRUFQUEtFWQ==",
+              "decoded": "ECINATIONALELECTORALSEARCH#1234MOBILEAPPKEY"
+            },
+            {
+              "token": "OTU2N2I5ODA1NmU5MjUwYw",
+              "decoded": "9567b98056e9250c"
+            },
+            {
+              "token": "SDc2JHN1cTIzX3BvKDhzRA==",
+              "decoded": "H76$suq23_po(8sD"
+            },
+            {
+              "token": "QUl6YVN5Q2hjU1R2Q2pGS1UxQ2J6cUN2a29OeDJFcXlTRVVsRWRv",
+              "decoded": "AIzaSyChcSTvCjFKU1CbzqCvkoNx2EqySEUlEdo"
+            }
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "token": "NzQ0ODdBNDg3NDQzNjM0NDY0MzM1NjM2NzA1RjM5NjQ0RjZFNzM2NTdDNUY1MzU4NUYzNDZCMjQ3NTcxMzIzMzJFNzE1NDJFNEMyRTI4NEQ2Nzc5NEEzNzU1NDgzNDZFMzkzMjMxNEEzNjU1NkM0QjY1NjM2QjVGNTMzMDRBNkMzMjdBNkU1NTU5Mzg0MzY5NEQ0Qjc5NkI2QzU3NjYzMg==",
+          "decoded": "74487A487443634464335636705F39644F6E73657C5F53585F346B24757132332E71542E4C2E284D67794A375548346E3932314A36556C4B65636B5F53304A6C327A6E55593843694D4B796B6C576632"
+        },
+        {
+          "token": "YTU2ZGM1Y2ViZjBhY2Y1MmU5NjRhNTJiN2ZhNjc0M2E=",
+          "decoded": "a56dc5cebf0acf52e964a52b7fa6743a"
+        },
+        {
+          "token": "NmNmZDY4YzJlYy1hN2NWSEE0NWFmLWRiMmYyNWM4Zg==",
+          "decoded": "6cfd68c2ec-a7cVHA45af-db2f25c8f"
+        },
+        {
+          "token": "NEFBUVNrWkpSZ0FCQVFBQUFRQUJBQUQyd0JEQUFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJBUUVCQVFFQkFRRUJQbURHOXk4YWlVM0h2MkZreDhBSEVRY1N3M0cyRHlaVzFGZWxSTGllZzNSbE5ZaHJRc3dXR1JCc29kRkhFNThDTUxPdGdhYzk4dXRRSThTVTdIWmhWNFlnSkhod09LMjN0WUV3SGs5MkhBYmpMa2lhc3diWFN0NWt0TkI4NThvMlJEYllwcUR4VjRmMlNFME4yYllMY094R01TM3p1eDZMc2lvMXRqbWluOUVveW15ZE9tamppckZKRDZFeUtJ",
+          "decoded": "4AAQSkZJRgABAQAAAQABAAD2wBDAAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBPmDG9y8aiU3Hv2Fkx8AHEQcSw3G2DyZW1FelRLieg3RlNYhrQswWGRBsodFHE58CMLOtgac98utQI8SU7HZhV4YgJHhwOK23tYEwHk92HAbjLkiaswbXSt5ktNB858o2RDbYpqDxV4f2SE0N2bYLcOxGMS3zux6Lsio1tjmin9EoymydOmjjirFJD6EyKI"
+        },
+        {
+          "token": "RUNJTkFUSU9OQUxFTEVDVE9SQUxTRUFSQ0gjMTIzNE1PQklMRUFQUEtFWQ==",
+          "decoded": "ECINATIONALELECTORALSEARCH#1234MOBILEAPPKEY"
+        },
+        {
+          "token": "OTU2N2I5ODA1NmU5MjUwYw",
+          "decoded": "9567b98056e9250c"
+        },
+        {
+          "token": "SDc2JHN1cTIzX3BvKDhzRA==",
+          "decoded": "H76$suq23_po(8sD"
+        },
+        {
+          "token": "QUl6YVN5Q2hjU1R2Q2pGS1UxQ2J6cUN2a29OeDJFcXlTRVVsRWRv",
+          "decoded": "AIzaSyChcSTvCjFKU1CbzqCvkoNx2EqySEUlEdo"
+        },
+        {
+          "token": "NTU4ZmFkYjJjNjRjMjVlYw",
+          "decoded": "558fadb2c64c25ec"
+        },
+        {
+          "token": "YjI0ZEcmNUkkV2UhZGxmQCpkMnNEZjgzayc=",
+          "decoded": "b24dG&5I$We!dlf@*d2sDf83k'"
+        },
+        {
+          "token": "Y2EzZGQ4ZDcwZmIzY2RhOGM0NWMyYTVkNTE0NzFiNTA=",
+          "decoded": "ca3dd8d70fb3cda8c45c2a5d51471b50"
+        },
+        {
+          "token": "TUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUFyYjcrK0J4TC9ZTjhPSWxuKzZGTDlHbnc1RE5tUS9WRlpYc3MrSitUdVF5SmM4OTFKYnFiaWp4WVFORWluMmMydStDbnBYcG9HUS8xZ1VTekRNSmVOUzNzTlNsSVV5a3AyZHQ3eEltL2NtVjRzWi9jNzY5dkN4VlJvc01mUmFaSm5CQWFoK20xWDI2bEVobk9vMHdwQUI5VHhyOFJJeUJlNmg3UGlRV3lrZUplaDZVYWNPQkJYMjhrZ2txNyt2SmhXOEhnQjM4bHQzMlhSb2N6blJZd1M5THFSN1p3ZUZtUWhUcjErRUdycWlFS0NPQ3hNWWdIUjJTUWNrYjk2aFo5a1d6ZnpldW40YlVPNW9YS0pjaUxraVMxSWdLaWVBREV2WUxndTEyOVpJcG4xSCs4SCs4aWtOTlZFVHFFRERNdHFjUWNRbVdwcEp2Y1dIYVhBcytmOFFJREFRQUI",
+          "decoded": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArb7++BxL/YN8OIln+6FL9Gnw5DNmQ/VFZXss+J+TuQyJc891JbqbijxYQNEin2c2u+CnpXpoGQ/1gUSzDMJeNS3sNSlIUykp2dt7xIm/cmV4sZ/c769vCxVRosMfRaZJnBAah+m1X26lEhnOo0wpAB9Txr8RIyBe6h7PiQWykeJeh6UacOBBX28kgkq7+vJhW8HgB38lt32XRocznRYwS9LqR7ZweFmQhTr1+EGrqiEKCOCxMYgHR2SQckb96hZ9kWzfzeun4bUO5oXKJciLkiS1IgKieADEvYLgu129ZIpn1H+8H+8ikNNVETqEDDMtqcQcQmWppJvcWHaXAs+f8QIDAQAB"
+        },
+        {
+          "token": "UDc5dnROdGsvV1phQVhzUUtDSENsQT09",
+          "decoded": "P79vtNtk/WZaAXsQKCHClA=="
+        },
+        {
+          "token": "Y0RBY0dpc3RFQ0kvQ2RhY0dpc3RAQCQxOA==",
+          "decoded": "cDAcGistECI/CdacGist@@$18"
+        },
+        {
+          "token": "QUJDRDEyMzQjMTIzNTIxR0lTVEVDSUtFWQ==",
+          "decoded": "ABCD1234#123521GISTECIKEY"
+        },
+        {
+          "token": "WENWRkRHR0hSVDE4NDZFUlRTREVORzdL",
+          "decoded": "XCVFDGGHRT1846ERTSDENG7K"
+        },
+        {
+          "token": "M2FjN2E0MGIxYmM2ZmM3OTBiMzRkNzI1Ng==",
+          "decoded": "3ac7a40b1bc6fc790b34d7256"
+        },
+        {
+          "token": "VkhBVXNlci9AQFZ2IWhoQEBfIyQhNQ==",
+          "decoded": "VHAUser/@@Vv!hh@@_#$!5"
+        },
+        {
+          "token": "QTQxMDM5NTMzMDQzN0RFOA",
+          "decoded": "A410395330437DE8"
+        },
+        {
+          "token": "MDIvMDYvMjAyNCAwODowMCBBTQ",
+          "decoded": "02/06/2024 08:00 AM"
+        },
+        {
+          "token": "WF80ayR1cTQ4Rkt3VC5xVA==",
+          "decoded": "X_4k$uq48FKwT.qT"
+        },
+        {
+          "token": "VkhBLUI1REY0OTFGRVFCOEFCRTVFMjREQjlFNUQ4UVk0UFgz",
+          "decoded": "VHA-B5DF491FEQB8ABE5E24DB9E5D8QY4PX3"
+        },
+        {
+          "token": "NFdTODg1MVc4MjRQUkE0NQ",
+          "decoded": "4WS8851W824PRA45"
+        },
+        {
+          "token": "ZDYxODg4YjVmNzM3OWEzNTJkY2EzMDI3NTI4MzNhMDQ=",
+          "decoded": "d61888b5f7379a352dca302752833a04"
+        },
+        {
+          "token": "ZDFmZmM1ZDM0NTg1NWQzZGVjMDk4N2QxMGRmZjY5MWQ=",
+          "decoded": "d1ffc5d345855d3dec0987d10dff691d"
+        },
+        {
+          "token": "QmFzaWMgV1VkVWJEazJhV3RXVHpOaE9HSTRWVEk2V0dSelpITnFYMmhrYW5Ob1huTm5hSE5rTWc9PQ==",
+          "decoded": "Basic WUdUbDk2aWtWTzNhOGI4VTI6WGRzZHNqX2hkanNoXnNnaHNkMg=="
+        },
+        {
+          "token": "MDQvMDYvMjAyNCAwODowMCBBTQ",
+          "decoded": "04/06/2024 08:00 AM"
+        },
+        {
+          "token": "RUNJIVBST0QjMTIzNTIxRUNJLVNFQ0tFWQ==",
+          "decoded": "ECI!PROD#123521ECI-SECKEY"
+        }
+      ],
+      "source": "libnative_lib.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [],
+      "source": "libnative_secrets.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [],
+      "source": "libpairipcore.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [],
+      "source": "libpl_droidsonroids_gif.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [],
+      "source": "libsqlcipher.so"
+    },
+    {
+      "jni_names": [],
+      "candidates": [],
+      "source": "libtoolChecker.so"
+    }
+  ]
+}

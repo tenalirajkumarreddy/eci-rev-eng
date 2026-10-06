@@ -1,0 +1,246 @@
+{
+  "engine": "epic_engine",
+  "version": "1.0.0",
+  "epic": "123456789012",
+  "requests": [
+    {
+      "id": "public_voter_search",
+      "name": "Public voter record search (weak auth)",
+      "verb": "GET",
+      "host": "https://electoralsearch.in/",
+      "path": "api/search",
+      "query": [
+        [
+          "epic_no",
+          "123456789012"
+        ],
+        [
+          "search_type",
+          "epic"
+        ],
+        [
+          "pass_key",
+          "056d2d5030c9d8814130ee8fd300702facfac15447026fe75d3f89b90388f2297920ca9cbcd4e5b3516d34a8ec6a2c9b3dd7344157931d58b99f98023184ab66"
+        ],
+        [
+          "page_no",
+          "1"
+        ]
+      ],
+      "note": "pass_key is client-computed and identical for every installation. No per-user authentication.",
+      "evidences": [
+        "smali_classes13/com/eci/citizen/features/home/evp/DigitalEpicActivity.smali",
+        "callSearchApi: GET api/search?epic_no=...&search_type=epic&passKey=...&page_no=..."
+      ]
+    },
+    {
+      "id": "eepic_eepic_search",
+      "name": "EEPIC detail search (authenticated)",
+      "verb": "POST",
+      "host": "https://gateway-vha.eci.gov.in/api/v1/",
+      "path": "eepic/GetElectorDetailForEEPIC",
+      "query": [],
+      "headers": [
+        [
+          "Content-Type",
+          "application/json"
+        ],
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "X-API-KEY",
+          "<from binary>"
+        ]
+      ],
+      "body": {
+        "fields": [
+          "Accept",
+          "Content-Type",
+          "X-API-KEY",
+          "GetElectorDetailForEEPIC"
+        ],
+        "example": {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "X-API-KEY": "<from binary>",
+          "GetElectorDetailForEEPIC": "123456789012"
+        }
+      },
+      "response_model": "ElectorDetails",
+      "evidences": [
+        "smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+        "POST eepic/GetElectorDetailForEEPIC",
+        "response type: Lcom/eci/citizen/DataRepository/Model/ElectorDetails;"
+      ]
+    },
+    {
+      "id": "eepic_eepic_card_pdf",
+      "name": "EEPIC card PDF download",
+      "verb": "POST",
+      "host": "https://gateway-vha.eci.gov.in/api/v1/",
+      "path": "eepic/GetEEPICCard",
+      "query": [],
+      "headers": [
+        [
+          "Content-Type",
+          "application/json"
+        ],
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "X-API-KEY",
+          "<from binary>"
+        ]
+      ],
+      "body": {
+        "fields": [
+          "Content-Type",
+          "Accept",
+          "X-API-KEY",
+          "GetEEPICCard"
+        ],
+        "example": {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "X-API-KEY": "<from binary>",
+          "GetEEPICCard": "123456789012"
+        }
+      },
+      "response_model": "ResponseBody (EPIC card PDF)",
+      "evidences": [
+        "smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+        "POST eepic/GetEEPICCard",
+        "response type: Lokhttp3/ResponseBody;"
+      ]
+    },
+    {
+      "id": "eepic_verification",
+      "name": "EEPIC verification lookup",
+      "verb": "POST",
+      "host": "https://gateway-vha.eci.gov.in/api/v1/",
+      "path": "vh_epicno_verify",
+      "query": [],
+      "headers": [
+        [
+          "Content-Type",
+          "application/json"
+        ],
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "X-API-KEY",
+          "<from binary>"
+        ]
+      ],
+      "body": {
+        "fields": [
+          "Content-Type",
+          "Accept",
+          "X-API-KEY",
+          "vh_epicno_verify"
+        ],
+        "example": {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "X-API-KEY": "<from binary>",
+          "vh_epicno_verify": "123456789012"
+        }
+      },
+      "response_model": "VerifyEVPResponse",
+      "evidences": [
+        "smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+        "POST vh_epicno_verify",
+        "response type: verifyEVPResponse;"
+      ]
+    },
+    {
+      "id": "eepic_card_pdf_s2",
+      "name": "EEPIC card PDF download (S2-BLO gateway)",
+      "verb": "POST",
+      "host": "https://gateway-s2-blo.eci.gov.in/api/v1/",
+      "path": "eepic/GetEEPICCard",
+      "query": [],
+      "headers": [
+        [
+          "Content-Type",
+          "application/json"
+        ],
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "X-API-KEY",
+          "<from binary>"
+        ]
+      ],
+      "body": {
+        "fields": [
+          "Content-Type",
+          "Accept",
+          "X-API-KEY",
+          "GetEEPICCard"
+        ],
+        "example": {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "X-API-KEY": "<from binary>",
+          "GetEEPICCard": "123456789012"
+        }
+      },
+      "response_model": "ResponseBody (EPIC card PDF)",
+      "evidences": [
+        "smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+        "POST eepic/GetEEPICCard",
+        "response type: Lokhttp3/ResponseBody;"
+      ]
+    }
+  ],
+  "endpoints": [
+    {
+      "id": "eepic_search",
+      "name": "EEPIC detail search (authenticated)",
+      "verb": "POST",
+      "path": "eepic/GetElectorDetailForEEPIC",
+      "host": "https://gateway-vha.eci.gov.in/api/v1/",
+      "headers": [
+        "Content-Type",
+        "Accept",
+        "X-API-KEY"
+      ],
+      "response_model": "ElectorDetails"
+    },
+    {
+      "id": "eepic_card_pdf",
+      "name": "EEPIC card PDF download",
+      "verb": "POST",
+      "path": "eepic/GetEEPICCard",
+      "host": "https://gateway-vha.eci.gov.in/api/v1/",
+      "headers": [
+        "Content-Type",
+        "Accept",
+        "X-API-KEY"
+      ],
+      "response_model": "ResponseBody (EPIC card PDF)"
+    },
+    {
+      "id": "verification",
+      "name": "EEPIC verification lookup",
+      "verb": "POST",
+      "path": "vh_epicno_verify",
+      "host": "https://gateway-vha.eci.gov.in/api/v1/",
+      "headers": [
+        "Content-Type",
+        "Accept",
+        "X-API-KEY"
+      ],
+      "response_model": "VerifyEVPResponse"
+    }
+  ]
+}

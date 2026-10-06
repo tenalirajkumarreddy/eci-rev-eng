@@ -1,0 +1,92 @@
+--- com/eci/citizen/features/home/evp/DigitalEpicActivity::getOfficialDetailSecureKey not found ---
+============================================================================
+Utils::.method public static GetHashNew(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+============================================================================
+  .method public static GetHashNew(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  .locals 3
+  .annotation system Ldalvik/annotation/MethodParameters;
+  accessFlags = {
+  0x0,
+  0x0
+  }
+  names = {
+  "input",
+  "secureKey"
+  }
+  .end annotation
+  :try_start_0
+  const-string v0, "SHA-512"
+  invoke-static {v0}, Ljava/security/MessageDigest;->getInstance(Ljava/lang/String;)Ljava/security/MessageDigest;
+  move-result-object v0
+  :try_end_0
+  .catch Ljava/security/NoSuchAlgorithmException; {:try_start_0 .. :try_end_0} :catch_0
+  goto :goto_0
+  :catch_0
+  const/4 v0, 0x0
+  :goto_0
+  new-instance v1, Ljava/lang/StringBuilder;
+  invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+  invoke-virtual {p0}, Ljava/lang/String;->trim()Ljava/lang/String;
+  move-result-object p0
+  invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  move-result-object p0
+  invoke-virtual {p1}, Ljava/lang/String;->trim()Ljava/lang/String;
+  move-result-object p1
+  invoke-virtual {p0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  move-result-object p0
+  invoke-virtual {p0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+  move-result-object p0
+  const-string p1, "UTF-8"
+  invoke-static {p1}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
+  move-result-object p1
+  invoke-virtual {p0, p1}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
+  move-result-object p0
+  invoke-virtual {v0, p0}, Ljava/security/MessageDigest;->digest([B)[B
+  move-result-object p0
+  new-instance p1, Ljava/lang/StringBuilder;
+  invoke-direct {p1}, Ljava/lang/StringBuilder;-><init>()V
+  const/4 v0, 0x0
+  :goto_1
+  array-length v1, p0
+  if-ge v0, v1, :cond_0
+  aget-byte v1, p0, v0
+  and-int/lit16 v1, v1, 0xff
+  add-int/lit16 v1, v1, 0x100
+  const/16 v2, 0x10
+  invoke-static {v1, v2}, Ljava/lang/Integer;->toString(II)Ljava/lang/String;
+  move-result-object v1
+  const/4 v2, 0x1
+  invoke-virtual {v1, v2}, Ljava/lang/String;->substring(I)Ljava/lang/String;
+  move-result-object v1
+  invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  add-int/lit8 v0, v0, 0x1
+  goto :goto_1
+  :cond_0
+  sget-object p0, Ljava/lang/System;->out:Ljava/io/PrintStream;
+  invoke-virtual {p0, p1}, Ljava/io/PrintStream;->println(Ljava/lang/Object;)V
+  invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+  move-result-object p0
+  return-object p0
+  .end method
+
+============================================================================
+Utils: hashing / crypto helpers present
+============================================================================
+   public static GetHash(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+   public static GetHashNew(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+   public static RSAEncrypt(Ljava/lang/String;Landroid/content/Context;)Ljava/lang/String;
+   public static convertBase64ToBitmap(Ljava/lang/String;)[B
+   public static convertToBase64([B)Ljava/lang/String;
+   public static getAuthKey(Landroid/content/Context;)Ljava/lang/String;
+   public static getSHA(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+   public static hideSoftKeyboard(Landroid/content/Context;)V
+   public static resizeBase64Image(Ljava/lang/String;)Ljava/lang/String;
+   public static shareApp(Landroid/content/Context;)V
+   public static shareOnFacebook(Landroid/content/Context;Ljava/lang/String;Landroid/net/Uri;)V
+   public static shareOnGmail(Landroid/content/Context;Ljava/lang/String;Landroid/net/Uri;)V
+   public static shareOnInstagram(Landroid/content/Context;Ljava/lang/String;Landroid/net/Uri;)V
+   public static shareOnWhatsApp(Landroid/content/Context;Ljava/lang/String;Landroid/net/Uri;)V
+   public static shareTheApp(Landroid/content/Context;)V
+   public static shareTwitter(Landroid/content/Context;Ljava/lang/String;Landroid/net/Uri;)V
+   public static shareWithOthers(Landroid/content/Context;Ljava/lang/String;Landroid/net/Uri;)V
+   public static showSoftKeyboard(Landroid/content/Context;Landroid/view/View;)V

@@ -1,0 +1,3856 @@
+[
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "uploadFile",
+    "params": "Ljava/util/List;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "/pdf_generate/mcc.php",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "sendMCCResponse",
+    "params": "Ljava/lang/String;I",
+    "verb": "POST",
+    "url": "/pdf_generate/test.php",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/voterTurnout/Apis.smali",
+    "klass": "Apis",
+    "method": "getSelectedAc",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "AC_PT",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/voterTurnout/Apis.smali",
+    "klass": "Apis",
+    "method": "getAcFinalPoll",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "AC_PhaseWise",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/voterTurnout/Apis.smali",
+    "klass": "Apis",
+    "method": "getACWsie",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "ACwise_PT",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/voterTurnout/Apis.smali",
+    "klass": "Apis",
+    "method": "getSelectedAC",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "ACwise_PT",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/voterTurnout/Apis.smali",
+    "klass": "Apis",
+    "method": "getAssembly",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "AcList_PT",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/dataRepository/RestClientForms.smali",
+    "klass": "RestClientForms",
+    "method": "getFormAuthenticationTokenRx",
+    "params": "Ljava/lang/String;Ljava/util/Map;",
+    "verb": "POST",
+    "url": "Authenticate",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getFormAuthenticationToken",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;",
+    "verb": "POST",
+    "url": "Authenticate2",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/dataRepository/RestClientForms.smali",
+    "klass": "RestClientForms",
+    "method": "getFormAuthenticationToken",
+    "params": "Ljava/lang/String;Ljava/util/Map;",
+    "verb": "POST",
+    "url": "Authenticate2",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "nvspForgot",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;",
+    "verb": "POST",
+    "url": "ForgotPasswordVHA2",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "absenteeVoterRequest",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "Form12D",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllMCCHistoryActionStatus",
+    "params": "Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "GET_COMPLAINT_ACTION_STATUS",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllMCCHistory",
+    "params": "Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "GET_USER_APPLICATION",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getCdacAllAssembly",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "GetAcListByDist",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getCdacAllDistrict",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "GetDistlist",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getElectorsDetailsApi",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;",
+    "verb": "GET",
+    "url": "GetElectorsDetails",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/dataRepository/RestClientForms.smali",
+    "klass": "RestClientForms",
+    "method": "getElectoralDetailsReference",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "GetForm6DetailsByName",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getApplicationStatus",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "GetFormStatus",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getApplicationStatusWithToken",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "GetFormStatus",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getPSDetailsAcWise",
+    "params": "Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "GetPSDetailsAcWise",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getPSList",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "GetPollingStationBYACVHL/{stateId}/{acno}/{key}",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/dataRepository/RestClientForms.smali",
+    "klass": "RestClientForms",
+    "method": "getRevisionYear",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "GetRevisionDate",
+    "headers": [
+      "Content-Type: application/x-www-form-urlencoded",
+      "Accept: application/json"
+    ]
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getRevisionYear",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "GetRevisionYear",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllStatesList",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "GetStatelist",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/voterTurnout/Apis.smali",
+    "klass": "Apis",
+    "method": "getElectionPollResults",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "Home_PT",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "nvspCoreDocument",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "IsCoreDocumentEnabled",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/dataRepository/RestClientForms.smali",
+    "klass": "RestClientForms",
+    "method": "getERONETStatus",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "IsFormSubmissionEnabled",
+    "headers": [
+      "Content-Type: application/x-www-form-urlencoded",
+      "Accept: application/json"
+    ]
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getNvspUserDetails",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "IsRegisteredUser",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getNvspUserDetails1",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "IsRegisteredUser2",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/voterTurnout/Apis.smali",
+    "klass": "Apis",
+    "method": "getPcFinalPoll",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "PC_PhaseWise",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/voterTurnout/Apis.smali",
+    "klass": "Apis",
+    "method": "getElectionPcResults",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "PCwise_PT",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/voterTurnout/Apis.smali",
+    "klass": "Apis",
+    "method": "getSelectedResponse",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "PCwise_PT",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getLoginDetail",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "PWD_LOGIN",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getResultTotalTrends",
+    "params": "Ljava/lang/String;Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "PartyWinData",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getResultTotalTrendsLara",
+    "params": "Ljava/lang/String;Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "PartyWinData",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getPartyWinDataPC",
+    "params": "",
+    "verb": "GET",
+    "url": "PartyWinData.txt",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/voterTurnout/Apis.smali",
+    "klass": "Apis",
+    "method": "getACListingDetails",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "PcList_PT",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/electionResult/Apis.smali",
+    "klass": "Apis",
+    "method": "getCandidateDetails",
+    "params": "Ljava/lang/String;Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "PersonalDetails",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "submitNewVoterRegistationWithToken",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;",
+    "verb": "POST",
+    "url": "PostForm",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/dataRepository/RestClientForms.smali",
+    "klass": "RestClientForms",
+    "method": "submitNewVoterRegistrationWithToken",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;",
+    "verb": "POST",
+    "url": "PostForm",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "uploadPdf",
+    "params": "Lokhttp3/MultipartBody$Part;",
+    "verb": "POST",
+    "url": "PostImage",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "submitVoterMarking",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;",
+    "verb": "POST",
+    "url": "PwdMarkingRequest",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "nvspRegistration",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;",
+    "verb": "POST",
+    "url": "RegisterVHA",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "nvspNewRegistration",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;",
+    "verb": "POST",
+    "url": "RegisterVHA2",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/dataRepository/RestClientForms.smali",
+    "klass": "RestClientForms",
+    "method": "getAuthOTP",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "SendAadhaarOtp",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "nvspSendOtp",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "SendOTP",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "nvspSendProOtp",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z",
+    "verb": "POST",
+    "url": "SendOTPver2",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/voterTurnout/Apis.smali",
+    "klass": "Apis",
+    "method": "getStateDetails",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "StateList_PT",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/voterTurnout/Apis.smali",
+    "klass": "Apis",
+    "method": "getPollPercent",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "State_PhaseWise",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "modelRVoterTurnout",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "VHA_TurnOut",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/dataRepository/RestClientForms.smali",
+    "klass": "RestClientForms",
+    "method": "verifyAuthOTP",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "VerifyAadhaarOtp",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "initiateESignSir",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TESignRequest;",
+    "verb": "POST",
+    "url": "aadhaar-esign-nsdl/initiate",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "initiateESignNotice",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TNoticeDocumentResponse;",
+    "verb": "POST",
+    "url": "aadhaar-esign-nsdl/signed_pdf",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "initiateESign",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TESignRequest;",
+    "verb": "POST",
+    "url": "aadhaar-esign/initiate",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "initiateESignAppeal",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TESignRequest;",
+    "verb": "POST",
+    "url": "aadhaar-esign/initiateAppeal",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "initiateSecondAppeal",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TESignRequest;",
+    "verb": "POST",
+    "url": "aadhaar-esign/initiateSecondAppeal",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getAadhaarReferenceNumber",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "aadhar-connector/get-aadhar-refno/{aadhaar}",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "getChallan",
+    "params": "Ljava/lang/String;Lin/gov/eci/seizure/model/ChecksumRequest;",
+    "verb": "POST",
+    "url": "allowed-seizure",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "submitComplaintAnonymously",
+    "params": "Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/MultipartBody$Part;",
+    "verb": "POST",
+    "url": "anonymouscomplaint",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "searchOfficerDetail",
+    "params": "Ljava/util/Map;",
+    "verb": "GET",
+    "url": "api/GetOfficialsDetails",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "searchElectoral",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "api/search",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "searchElectoralOne",
+    "params": "Ljava/util/Map;",
+    "verb": "GET",
+    "url": "api/search",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/dataRepository/RestClientForms.smali",
+    "klass": "RestClientForms",
+    "method": "searchElectoralOne",
+    "params": "Ljava/util/Map;",
+    "verb": "GET",
+    "url": "api/search",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "officerLogout",
+    "params": "Ldad/droid/lizz/ChecksumRequest;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "authn-sso/logout",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "officerOtp",
+    "params": "Ldad/droid/lizz/ChecksumRequest;",
+    "verb": "POST",
+    "url": "authn-sso/otp-flow-send",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "officerLogin",
+    "params": "Ldad/droid/lizz/ChecksumRequest;",
+    "verb": "POST",
+    "url": "authn-sso/otp-flow-verify",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "doLogout",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "authn-voter/logout",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "otpFLow",
+    "params": "Lin/gov/eci/garuda/e2/models/ChecksumRequest;",
+    "verb": "POST",
+    "url": "authn-voter/otp-flow-send",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "otpVerifyFLow",
+    "params": "Lin/gov/eci/garuda/e2/models/ChecksumRequest;",
+    "verb": "POST",
+    "url": "authn-voter/otp-flow-verify",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "refreshToken",
+    "params": "Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/AuthFlowRequest;",
+    "verb": "POST",
+    "url": "authn-voter/refresh",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getDocumentList",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "bloapp-h2h/getAllspecialRevisionDocuments",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB",
+      "currentRole: citizen"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getRelationType",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "bloapp-h2h/getRelationType",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB",
+      "currentRole: citizen"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "bookBLORequest",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TBLOBookRequest;",
+    "verb": "POST",
+    "url": "bloapp/saveDetails",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "bookBLORequestP",
+    "params": "Lin/gov/eci/garuda/e2/models/TBLOBookRequest;",
+    "verb": "POST",
+    "url": "bloapp/saveDetails",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "checkUser",
+    "params": "Ldad/droid/lizz/ChecksumRequest;",
+    "verb": "POST",
+    "url": "check-user-role",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "fetchDetailsByEpicIdOrReferenceNo",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/model/formsModel/ChangeRequest;",
+    "verb": "POST",
+    "url": "citizen-hearing/fetchDetailsByEpicIdOrReferenceNo",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "submitNoticeDocument",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TNoticeDocumentRequest;",
+    "verb": "POST",
+    "url": "citizen-hearing/submitCitizenDocDeatils",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "verifyDetailsByEpicIdOrReferenceNo",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/model/formsModel/ChangeRequest;",
+    "verb": "POST",
+    "url": "citizen-hearing/verifyDetailsByEpicIdOrReferenceNo",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getAssemblyList",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "citizen/sir/getAsmbly",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getAssemblyListInd",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "citizen/sir/getAsmbly",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getAssemblyListIndWithOutToken",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "citizen/sir/getAsmbly",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getAssambly",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "citizen/sir/getAsmblyByDist",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB",
+      "currentRole: citizen"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getAssamblyWithOutToken",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "citizen/sir/getAsmblyByDist",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB",
+      "currentRole: citizen"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getSearchERoll",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "citizen/sir/getDetailsByEpicNo",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB",
+      "currentRole: citizen"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getSearchDetails",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "citizen/sir/getDetailsByEroll",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB",
+      "currentRole: citizen"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getEnumDistrict",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "citizen/sir/getDistrict",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB",
+      "currentRole: citizen"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getEnumDistrictWithOutToken",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "citizen/sir/getDistrict",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB",
+      "currentRole: citizen"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getAssemblyViaPartList",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "citizen/sir/getPartByAc",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getParName",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "citizen/sir/getPartByAc",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB",
+      "currentRole: citizen"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getParNameWithOutToken",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "citizen/sir/getPartByAc",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB",
+      "currentRole: citizen"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getSectionNumberWithOutToken",
+    "params": "Ljava/lang/String;Lin/gov/eci/garuda/e2/models/SectionNumberRequest;",
+    "verb": "POST",
+    "url": "citizen/sir/getSectionByAcAndPart",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getEnumSendOTP",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/ChecksumRequest;",
+    "verb": "POST",
+    "url": "citizen/sir/newSendOtp",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getEnumLoadedSendOTP",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/ChecksumRequest;",
+    "verb": "POST",
+    "url": "citizen/sir/sendOtpForFillingEf",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getEnumerationState",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "citizen/sir/stopEnumerationFormNew",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB",
+      "currentRole: citizen"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getEnumVerifyOtp",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/ChecksumRequest;",
+    "verb": "POST",
+    "url": "citizen/sir/verifyOtpForFillingEf",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "postNewQuestion",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "cms/comments/1",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "postNewsComment",
+    "params": "ILjava/util/Map;",
+    "verb": "POST",
+    "url": "cms/comments/{database_id}",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllArticles",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I",
+    "verb": "GET",
+    "url": "cms/records/1",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllBlogs",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "cms/records/1",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllGalleryCategory",
+    "params": "Ljava/lang/String;I",
+    "verb": "GET",
+    "url": "cms/records/1",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getCircularList",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "cms/records/1",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllNews",
+    "params": "Ljava/lang/String;I",
+    "verb": "GET",
+    "url": "cms/records/2",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getNews",
+    "params": "ILjava/lang/String;",
+    "verb": "GET",
+    "url": "cms/records/2/{record_id}",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllQuiz",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "cms/records/3",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllQuotes",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "cms/records/4",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getNews",
+    "params": "IILjava/lang/String;",
+    "verb": "GET",
+    "url": "cms/records/{database_id}/{record_id}",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getNewsComments",
+    "params": "IILjava/lang/String;",
+    "verb": "GET",
+    "url": "cms/records/{database_id}/{record_id}/comments",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getDigilokerMobileCode",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "code",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/TERestClient.smali",
+    "klass": "TERestClient",
+    "method": "getAcFree",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "common/acs/{dist_code}",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getAssemblies",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "common/acs/{full_dist_code}",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "doAcSearchNewSir",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "common/constituenciesUnique",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/vnd.common.api.v2+json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/TERestClient.smali",
+    "klass": "TERestClient",
+    "method": "getDistrict",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "common/districts/{st_code}",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/TERestClient.smali",
+    "klass": "TERestClient",
+    "method": "getDistrictFree",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "common/districts/{st_code}",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getDistrict",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "common/districts/{st_code}",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getCountries",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "common/overseasCountries",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "state: master",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/TERestClient.smali",
+    "klass": "TERestClient",
+    "method": "doPartNoSearchP",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "common/part/get/bystatecd/districtcd/acNumber",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "doPartNoSearch",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;",
+    "verb": "GET",
+    "url": "common/part/get/bystatecd/districtcd/acNumber",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "doPartNoSearchP",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "common/part/get/bystatecd/districtcd/acNumber",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "doPartNoSearchNew",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "common/part/get/bystatecd/districtcd/acNumberBypartNumber",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/TERestClient.smali",
+    "klass": "TERestClient",
+    "method": "getStates",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "common/states",
+    "headers": [
+      "Content-Type: application/json",
+      "channelidobo: BACK_OFFICE_APP",
+      "applicationName: BACK_OFFICE_APP",
+      "credentials: include",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getStates",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "common/states",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getStateswithoutToken",
+    "params": "",
+    "verb": "GET",
+    "url": "common/states",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "sendFeedback",
+    "params": "Ljava/lang/String;I",
+    "verb": "POST",
+    "url": "complaint_feedback",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "getIDToken",
+    "params": "Ljava/lang/String;",
+    "verb": "POST",
+    "url": "create-f-token",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getImageFromObjectStore",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "document-adhoc/getPresignedFile",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB",
+      "currentRole: citizen"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "uploadNoticeDocument",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/MultipartBody$Part;",
+    "verb": "POST",
+    "url": "document-adhoc/uploadFile",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getDocumentFromStore",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "document/getFile",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB",
+      "currentRole: citizen"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "mediaUpload",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/MultipartBody$Part;",
+    "verb": "POST",
+    "url": "document/uploadFile",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "mediaUploadCall",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/MultipartBody$Part;",
+    "verb": "POST",
+    "url": "document/uploadFile",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "mediaUploadCallNgs",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/MultipartBody$Part;",
+    "verb": "POST",
+    "url": "document/uploadFile",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "uploadAppealDocument",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/MultipartBody$Part;",
+    "verb": "POST",
+    "url": "document/uploadFile",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getSveepDownloadFileDetail",
+    "params": "ILjava/lang/String;",
+    "verb": "GET",
+    "url": "downloads/files/{id}",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getDownloadLinkSveep",
+    "params": "Ljava/lang/String;I",
+    "verb": "GET",
+    "url": "downloads/files/{id}/download/&hidden=0",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getDownloadFilesList",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I",
+    "verb": "GET",
+    "url": "downloads/files?&hidden=0",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "doBLOSearch",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TBLOSearchRequest;",
+    "verb": "POST",
+    "url": "druid/userDetails",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getDetail",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/model/formsModel/ChangeRequest;",
+    "verb": "POST",
+    "url": "e-epic/get-epic-detail",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getDetailOtp",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/model/formsModel/ChangeRequest;",
+    "verb": "POST",
+    "url": "e-epic/send-otp",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getDetailEpic",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/model/formsModel/ChangeRequest;",
+    "verb": "POST",
+    "url": "e-epic/verify-otp",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "saveSuggestion",
+    "params": "Ldad/droid/lizz/ChecksumRequest;",
+    "verb": "POST",
+    "url": "ecinet/v1/add-suggestion",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "searchElectoralPdf",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;",
+    "verb": "POST",
+    "url": "eepic/GetEEPICCard",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getEpicElectorDetail",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;",
+    "verb": "POST",
+    "url": "eepic/GetElectorDetailForEEPIC",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "sendOtpVerify",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;",
+    "verb": "POST",
+    "url": "eepic/SendOTP",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "sendOtpVerifyReference",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;",
+    "verb": "POST",
+    "url": "eepic/SendOTP",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "doMobileSearch",
+    "params": "Lin/gov/eci/garuda/e2/models/ChecksumRequest;",
+    "verb": "POST",
+    "url": "elastic-otp/send-otp-search-v1",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getSearchErollDetails",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/SirSearchRequest;",
+    "verb": "POST",
+    "url": "elastic-sir-citizen/get-eroll-data-2003",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getSearchErollDetails2025",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/eci/citizen/DataRepository/Model/SirSearchRequest2025;",
+    "verb": "POST",
+    "url": "elastic-sir-citizen/get-eroll-data-final",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getSearchErollDetailsFinal",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/SirSearchRequest;",
+    "verb": "POST",
+    "url": "elastic-sir-citizen/get-eroll-data-final",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "searchByOldDetails",
+    "params": "Lin/gov/eci/garuda/e2/models/SirInputRequest;",
+    "verb": "POST",
+    "url": "elastic-sir-citizen/search-by-old-details-2003",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "checkSIRData",
+    "params": "Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TSirDataRequest;",
+    "verb": "POST",
+    "url": "elastic-sir/get-sir-activity-uncollectable-data",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "doEpicSearchDetailsForm",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TElasticSearchRequest;",
+    "verb": "POST",
+    "url": "elastic/get-by-details-for-form",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "doEpicSearchForm",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TElasticSearchRequest;",
+    "verb": "POST",
+    "url": "elastic/get-by-epic-for-form",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "doEpicSearchDetails",
+    "params": "Lin/gov/eci/garuda/e2/models/ChecksumRequest;",
+    "verb": "POST",
+    "url": "elastic/search-by-details-from-state-display-v1",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "doEpicSearch",
+    "params": "Lin/gov/eci/garuda/e2/models/ChecksumRequest;",
+    "verb": "POST",
+    "url": "elastic/search-by-epic-from-national-display-v1",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "doEpicSearchMobile",
+    "params": "Lin/gov/eci/garuda/e2/models/ChecksumRequest;",
+    "verb": "POST",
+    "url": "elastic/search-by-mobile-from-state-search-display-v1",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getEnumOtp",
+    "params": "Lin/gov/eci/garuda/model/formsModel/ChangeRequest;",
+    "verb": "POST",
+    "url": "enumeration-form/sendOtpNew",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "verifyEnumOtp",
+    "params": "Lin/gov/eci/garuda/model/formsModel/ChangeRequest;",
+    "verb": "POST",
+    "url": "enumeration-form/verifyOtpNew",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "submitAppealNoticePdf",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TAppealPdfRequest;",
+    "verb": "POST",
+    "url": "enumerationPdfGen/appealNoticePdf",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getDOPStatus",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "eroll/getDopStatus",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "imageUpload",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/MultipartBody$Part;",
+    "verb": "POST",
+    "url": "face-detection/new-check-face",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "submitMember",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "family_tree",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getDigilokerFecthDoc",
+    "params": "Ljava/lang/String;",
+    "verb": "POST",
+    "url": "files/issued",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getFinalizeResponse",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "final_submit",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "checkSIREpicValidity",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "form6/getEpicNumber/uncollectableSir",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "appName: VHA",
+      "applicationName: VHA",
+      "channelidobo: VHA",
+      "currentRole: citizen",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "submitForm6",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TForm6Request;",
+    "verb": "POST",
+    "url": "form6/submitForm6",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getQualifyingDate",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "form6a/checkqualifydate",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "generateForm6ARefNumber",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "form6a/getFormRefNumber",
+    "headers": [
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "generateForm7RefNumber",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "form6a/getFormRefNumber",
+    "headers": [
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "generateForm8RefNumber",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "form6a/getFormRefNumber",
+    "headers": [
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "generateFormRefNumber",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "form6a/getFormRefNumber",
+    "headers": [
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "submitForm6a",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TForm6ARequest;",
+    "verb": "POST",
+    "url": "form6a/submitNewForm6a",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "checkAadhaarStatusForm6B",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "form6b/get/checkEpicHasAdhar/{epic}",
+    "headers": [
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "submitForm6b",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TForm6bRequest;",
+    "verb": "POST",
+    "url": "form6b/submitNewForm6b",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getForm6ReferenceForInclusion",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "form7/getForm7byfirstNameAndlastName",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getForm6ReferenceForInclusionWithoutLastName",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "form7/getForm7byfirstNameAndlastName",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "submitForm7",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TForm7Request;",
+    "verb": "POST",
+    "url": "form7/submitForm7",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "submitForm8",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TForm8Request;",
+    "verb": "POST",
+    "url": "form8/submitForm8",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "checkSirAgeCutoff",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "form8/validateAgeWithSirAgeCutOff",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "appName: VHAAPP",
+      "applicationName: VHA",
+      "channelidobo: VHA",
+      "currentRole: citizen",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "doBLOSearchNew",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;",
+    "verb": "POST",
+    "url": "formProcessingService/getBloDetails",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "doReferenceNoSearch",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "formProcessingService/getFormbyFormRefId/{ref_id}",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "doReferenceNoSearchP",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "formProcessingService/getFormbyFormRefId/{ref_id}",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "saveFormDetailsOnServer",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "form_upload",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/dataRepository/RestClientForms.smali",
+    "klass": "RestClientForms",
+    "method": "saveFormDetailsOnServer",
+    "params": "Ljava/lang/String;Ljava/util/Map;",
+    "verb": "POST",
+    "url": "form_upload_new",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getTrendingForum",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "forum/top_rated",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getForumDetails",
+    "params": "ILjava/lang/String;",
+    "verb": "GET",
+    "url": "forum/{id}",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllForum",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "forums/forums",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllTopics",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "forums/topics",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllTopicsByForumId",
+    "params": "Ljava/lang/String;Ljava/lang/String;I",
+    "verb": "GET",
+    "url": "forums/topics",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "postNewTopic",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "forums/topics",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllGallerySubCategory",
+    "params": "Ljava/lang/String;IILjava/lang/String;",
+    "verb": "GET",
+    "url": "gallery/albums",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllGalleryImages",
+    "params": "Ljava/lang/String;IILjava/lang/String;",
+    "verb": "GET",
+    "url": "gallery/images",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllGalleryImagesByCatID",
+    "params": "Ljava/lang/String;IILjava/lang/String;I",
+    "verb": "GET",
+    "url": "gallery/images",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllSveepGalleryImages",
+    "params": "Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "gallery/images",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "uploadVelfie",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "gallery/images",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAvailableIndexCard",
+    "params": "",
+    "verb": "GET",
+    "url": "get-all-index-card",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "doPing2API",
+    "params": "Ljava/lang/String;Ldad/droid/lizz/ChecksumRequest;",
+    "verb": "POST",
+    "url": "get-dashboard-count",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getDigilokerEncodedDoc",
+    "params": "Ljava/lang/String;Ljava/util/Map;",
+    "verb": "POST",
+    "url": "get-encoded-doc",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getIndexCard",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "get-index-card-details",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json"
+    ]
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/VoterRestClient.smali",
+    "klass": "VoterRestClient",
+    "method": "getOfficerDirectory",
+    "params": "Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "get-officer-directory",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "doPing",
+    "params": "Ljava/lang/String;",
+    "verb": "POST",
+    "url": "get-ps-records-v4",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "doPingSuperUser",
+    "params": "Ljava/lang/String;Ldad/droid/lizz/ChecksumRequest;",
+    "verb": "POST",
+    "url": "get-ps-records-v4",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllAssembly",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "getAcList",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getOfficers",
+    "params": "Lin/gov/eci/garuda/e2/models/ChecksumRequest;",
+    "verb": "POST",
+    "url": "getAllOfficerTypes",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getAssemblyExt",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "getAsmblyByDist",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getCertificate",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "getCertificate",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getDistrictExt",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "getDistrict",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllDistrict",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "getDistrictList",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/Apis.smali",
+    "klass": "Apis",
+    "method": "getElectionDetails",
+    "params": "",
+    "verb": "GET",
+    "url": "getElectionByDate",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getSchedule",
+    "params": "Ljava/lang/String;Ljava/lang/String;Lcom/eci/citizen/DataRepository/ServerRequestEntity/mpmla/MpMlaRequest;",
+    "verb": "POST",
+    "url": "getElectionSchedule",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "getERollPhoto",
+    "params": "Lin/gov/eci/encore/model/CommonRequest;",
+    "verb": "POST",
+    "url": "getFile",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "getMasterData",
+    "params": "Ljava/lang/String;",
+    "verb": "POST",
+    "url": "getMasterDataSeizure",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/TERestClient.smali",
+    "klass": "TERestClient",
+    "method": "getObservers",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "getObservers",
+    "headers": [
+      "Content-Type: application/json",
+      "OMS-API-KEY: 9a60cfccf8e6d03a708e680429fcb3349e2599bc6a076b9e67a9d01de84e9bac"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getPartExt",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "getPartByAc",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getPcSummary",
+    "params": "Ljava/lang/String;Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "getPcSummary",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getPcSummaryLara",
+    "params": "Ljava/lang/String;Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "getPcSummary",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getConstituencyWiseDataPC",
+    "params": "",
+    "verb": "GET",
+    "url": "getPcSummary.txt",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getElectionStateAcCdn",
+    "params": "",
+    "verb": "GET",
+    "url": "getStateAc.txt",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getStatesDistAcJson",
+    "params": "",
+    "verb": "GET",
+    "url": "getStateAcVha.json",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "getStatesDistAcJson",
+    "params": "",
+    "verb": "GET",
+    "url": "getStateDistAcL.json",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllStates",
+    "params": "",
+    "verb": "POST",
+    "url": "getStateList",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getByeTabularSummaryAc",
+    "params": "",
+    "verb": "GET",
+    "url": "getTabularAcSummary.txt",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getByeTabularSummary",
+    "params": "Ljava/lang/String;Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "getTabularPcSummary",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getByeTabularSummaryPc",
+    "params": "",
+    "verb": "GET",
+    "url": "getTabularPcSummary.txt",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getElectionText",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "getText",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "volinteerRequest",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "get_all_Volunteer",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getDashboardResponse",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "get_dashboard_details",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getComplaintSubject",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "get_ddlsubject",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getComplaintSubCategories",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "get_ddlsubsubject",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "submitEditvalue",
+    "params": "Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/MultipartBody$Part;Lokhttp3/MultipartBody$Part;Lokhttp3/MultipartBody$Part;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "get_form_values",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getPollingStationList",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "get_ps",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getQuestion",
+    "params": "",
+    "verb": "GET",
+    "url": "get_questions",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getRelationList",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "get_tabular_values",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getUserStatus",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "get_user_status",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/Apis.smali",
+    "klass": "Apis",
+    "method": "getACListingDetails",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "getaclisting",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/voterTurnout/Apis.smali",
+    "klass": "Apis",
+    "method": "getACListingValur",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "getaclisting",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/Apis.smali",
+    "klass": "Apis",
+    "method": "getActiveElection",
+    "params": "",
+    "verb": "GET",
+    "url": "getactiveelction",
+    "headers": [
+      "mismatchtoken: gdxXmdeD97zpTHbEeQsLyPLDiK82gFRCIA=="
+    ]
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getCount",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "getallcount",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/Apis.smali",
+    "klass": "Apis",
+    "method": "getCandidateDetails",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "getcandidatedetails",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/Apis.smali",
+    "klass": "Apis",
+    "method": "getCandidateList",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "getcandidatelist",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getCandidateList",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "getcandidatelist",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/Apis.smali",
+    "klass": "Apis",
+    "method": "getCandidatePublic",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "getcapublication",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/Apis.smali",
+    "klass": "Apis",
+    "method": "getElectionTime",
+    "params": "Ljava/lang/String;",
+    "verb": "POST",
+    "url": "getelectionbydate",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/Apis.smali",
+    "klass": "Apis",
+    "method": "getElectionScheduleDates",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "getelectionschedul",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/Apis.smali",
+    "klass": "Apis",
+    "method": "getElectionTypeDetails",
+    "params": "",
+    "verb": "GET",
+    "url": "getelectiontypedetails",
+    "headers": [
+      "Content-Type: application/x-www-form-urlencoded;charset=utf-8",
+      "Accept: application/json"
+    ]
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/voterTurnout/Apis.smali",
+    "klass": "Apis",
+    "method": "getElectionTypeDetails",
+    "params": "",
+    "verb": "POST",
+    "url": "getelectiontypedetailsVT",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/electionResult/Apis.smali",
+    "klass": "Apis",
+    "method": "getACListingDetails",
+    "params": "Ljava/lang/String;Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "getpclisting",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/electionResultLara/Apis.smali",
+    "klass": "Apis",
+    "method": "getACListingDetails",
+    "params": "Ljava/lang/String;Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "getpclistings",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/voterTurnout/Apis.smali",
+    "klass": "Apis",
+    "method": "getPhaseList",
+    "params": "Ljava/lang/String;",
+    "verb": "POST",
+    "url": "getphaselisting",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/Apis.smali",
+    "klass": "Apis",
+    "method": "getStateDetails",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "getstate",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/voterTurnout/Apis.smali",
+    "klass": "Apis",
+    "method": "getStateValue",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "getstate",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getStateByLatLong",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "getstatedata",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/electionResultLara/Apis.smali",
+    "klass": "Apis",
+    "method": "getStateDetails",
+    "params": "Ljava/lang/String;Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "getstates",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "Newlogin",
+    "params": "Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "https://voterportal.eci.gov.in/api/mobile_otp_send",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getEciCvigil",
+    "params": "Ljava/lang/String;I",
+    "verb": "GET",
+    "url": "index.php?/cms/records/13",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getEciFaqOnEvm",
+    "params": "Ljava/lang/String;ILjava/lang/String;",
+    "verb": "GET",
+    "url": "index.php?/cms/records/2",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getEciAboutHonableCommission",
+    "params": "Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "index.php?/cms/records/3",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getEciTrainingFilms",
+    "params": "Ljava/lang/String;ILjava/lang/String;",
+    "verb": "GET",
+    "url": "index.php?/cms/records/4",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "login",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "index.php?/core/login",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "register",
+    "params": "Ljava/lang/String;Ljava/util/Map;",
+    "verb": "POST",
+    "url": "index.php?/core/members",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllECICurrentIssues",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I",
+    "verb": "GET",
+    "url": "index.php?/downloads/files/&hidden=0",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllECILockedIssues",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I",
+    "verb": "GET",
+    "url": "index.php?/downloads/files/&locked=1",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getPresentationOnEVM",
+    "params": "Ljava/lang/String;Ljava/lang/String;I",
+    "verb": "GET",
+    "url": "index.php?/downloads/files/174",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getStatusPaperOnEVM",
+    "params": "Ljava/lang/String;Ljava/lang/String;I",
+    "verb": "GET",
+    "url": "index.php?/downloads/files/184",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllECIGallerySubCategory",
+    "params": "Ljava/lang/String;IILjava/lang/String;",
+    "verb": "GET",
+    "url": "index.php?/gallery/albums",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllECIGalleryImages",
+    "params": "Ljava/lang/String;IILjava/lang/String;",
+    "verb": "GET",
+    "url": "index.php?/gallery/images",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllECIGalleryImagesByCatID",
+    "params": "Ljava/lang/String;IILjava/lang/String;",
+    "verb": "GET",
+    "url": "index.php?/gallery/images",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getAllSveepGalleryImagesOne",
+    "params": "Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "index.php?/gallery/images",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "secureLogout",
+    "params": "Ljava/lang/String;",
+    "verb": "POST",
+    "url": "logout",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getOtpDetail",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "mobile_otp_verify",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "searchElectoralElectroleDetail",
+    "params": "Ljava/util/Map;",
+    "verb": "GET",
+    "url": "mservices/api/EVP/GetEVPElectorDetails",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "checkRefNumber",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TAppealRequest;",
+    "verb": "POST",
+    "url": "ngsp-appeal/checkRefNumber",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "closeAppeal",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TAppealRequest;",
+    "verb": "POST",
+    "url": "ngsp-appeal/closedComplaint",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "fetchAppealList",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TAppealRequest;",
+    "verb": "POST",
+    "url": "ngsp-appeal/fetchAppealByUserId",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "fetchAppealHistory",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "ngsp-appeal/fetchAppealHistory",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "trackStatusEF",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "ngsp-appeal/fetchByHearingRefId",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getStateDistrictAcData",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TAppealRequest;",
+    "verb": "POST",
+    "url": "ngsp-appeal/getStateDistrictAcData",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "reopenAppeal",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TAppealRequest;",
+    "verb": "POST",
+    "url": "ngsp-appeal/reOpenComplaint",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "submitReOpenAppeal",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TAppealSubmitRequest;",
+    "verb": "POST",
+    "url": "ngsp-appeal/reOpenSubmitToRedis",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "appealSendOTP",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/model/formsModel/ChangeRequest;",
+    "verb": "POST",
+    "url": "ngsp-appeal/send",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "submitAppeal",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TAppealSubmitRequest;",
+    "verb": "POST",
+    "url": "ngsp-appeal/submitFormToRedis",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "appealVerifyOTP",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/model/formsModel/ChangeRequest;",
+    "verb": "POST",
+    "url": "ngsp-appeal/verify-mobile",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/TERestClient.smali",
+    "klass": "TERestClient",
+    "method": "getAssembliesOfficers",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "ngsp-officers/getAsmblyDetail",
+    "headers": [
+      "Content-Type: application/json",
+      "channelidobo: BACK_OFFICE_APP",
+      "applicationName: BACK_OFFICE_APP",
+      "credentials: include",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "officerList",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "ngsp-officers/getStateOfficerforvha",
+    "headers": [
+      "Content-Type: application/json",
+      "channelidobo: BACK_OFFICE_APP",
+      "applicationName: BACK_OFFICE_APP",
+      "credentials: include",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "officerListAc",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "ngsp-officers/getStateOfficerforvha",
+    "headers": [
+      "Content-Type: application/json",
+      "channelidobo: BACK_OFFICE_APP",
+      "applicationName: BACK_OFFICE_APP",
+      "credentials: include",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getNAdditionalData",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TCommonRequest;",
+    "verb": "POST",
+    "url": "ngsp/getAdditionalInfo",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getNCategories",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "ngsp/getCategory",
+    "headers": [
+      "Content-Type: application/json",
+      "currentRole: citizen",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getNSubCategories",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "ngsp/getSubCategory",
+    "headers": [
+      "Content-Type: application/json",
+      "currentRole: citizen",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "submitNGSComplaint",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TNGSRequest;",
+    "verb": "POST",
+    "url": "ngsp/submitComplaintCitizen",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getAllMCCHistory",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/TNGSRequest;",
+    "verb": "POST",
+    "url": "ngsp/trackComplaintCitizen",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "setForgotPassword",
+    "params": "Lin/gov/eci/garuda/model/formsModel/ChangeRequest;",
+    "verb": "POST",
+    "url": "nvsp-user-management/forgot/password",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getOtp",
+    "params": "Lin/gov/eci/garuda/model/formsModel/ChangeRequest;",
+    "verb": "POST",
+    "url": "nvsp-user-management/otp/send",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getOtpNew",
+    "params": "Lin/gov/eci/garuda/e2/models/ChecksumRequest;",
+    "verb": "POST",
+    "url": "nvsp-user-management/otp/send",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "createUser",
+    "params": "Lin/gov/eci/garuda/e2/models/ChecksumRequest;",
+    "verb": "POST",
+    "url": "nvsp-user-management/user/createUser",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "verifyEPIC",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/model/userModel/TUserUpdateRequest;",
+    "verb": "POST",
+    "url": "nvsp-user-management/user/profile/epic/check",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "checkMobile",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "nvsp-user-management/user/profile/mobile-info",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "currentrole: citizen",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "updateUser",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/model/userModel/TUserUpdateRequest;",
+    "verb": "PUT",
+    "url": "nvsp-user-management/user/profile/update",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getUser",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "nvsp-user-management/user/profile/users",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "currentrole: citizen",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "validateUser",
+    "params": "Lin/gov/eci/garuda/model/formsModel/ChangeRequest;",
+    "verb": "POST",
+    "url": "nvsp-user-management/user/validate",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "validateUserNew",
+    "params": "Lin/gov/eci/garuda/e2/models/ChecksumRequest;",
+    "verb": "POST",
+    "url": "nvsp-user-management/user/validate",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getDraftForms",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "nvsp/draftFormDetails",
+    "headers": [
+      "appName: VHAAPP",
+      "applicationName: VHA",
+      "channelidobo: VHA",
+      "currentRole: citizen",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "trackStatus",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "nvsp/trackApplicationDetails/{ref_id}",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "trackStatusP",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "nvsp/trackFormStatus/{ref_id}",
+    "headers": [
+      "Content-Type: application/json",
+      "Accept: application/json",
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "currentRole: citizen",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "pollESign",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "nvsp/validate/referenceNumber/{refId}",
+    "headers": [
+      "appName: VHAAPP",
+      "applicationName: VHA",
+      "channelidobo: VHA",
+      "currentRole: citizen",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/Apis.smali",
+    "klass": "Apis",
+    "method": "getPaymetApi",
+    "params": "Ljava/lang/String;Lcom/eci/citizen/DataRepository/Model/RazorPayInput;",
+    "verb": "POST",
+    "url": "orders",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "login",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "otp",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "secureOtp",
+    "params": "Lin/gov/eci/seizure/model/CommonRequest;",
+    "verb": "POST",
+    "url": "otpForEnforcementUser",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "secureOtp",
+    "params": "Lin/gov/eci/encore/model/CommonRequest;",
+    "verb": "POST",
+    "url": "otpSend",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "secureLogin",
+    "params": "Lin/gov/eci/encore/model/CommonRequest;",
+    "verb": "POST",
+    "url": "otpVerify",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "verifyOtp",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "otpVerify",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "doPing2",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "pollusers.zip",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "getUsers",
+    "params": "",
+    "verb": "GET",
+    "url": "pollusers/users.json",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "getUsersP",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "pollusers/{stCode}-{acCode}.json",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getEnumDraftStatus",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "producer/ctzver/checkEnuFormStatus",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getEnumStatus",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "producer/ctzver/checkEnuFormStatus",
+    "headers": [
+      "Content-Type: application/json",
+      "currentrole: citizen",
+      "Accept: application/json",
+      "channelidobo: VHA",
+      "applicationName: VHA",
+      "appName: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getOnlineEnuPreDataEdit",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/EnumerationAuthRequest;",
+    "verb": "POST",
+    "url": "producer/ctzver/getOnlineEnuDetails",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getOnlineEnuPreData",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/AgetIntialDataRequest;",
+    "verb": "POST",
+    "url": "producer/ctzver/getPreFilledData",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getSubmitEnumForm",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/ChecksumRequest;",
+    "verb": "POST",
+    "url": "producer/ctzver/sumbitOnlineEnuFormNew",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "validateSIRSelfMapping",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/SirMappingRequest;",
+    "verb": "POST",
+    "url": "producer/ctzver/validateSirMapping",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "validateSIRProgenyMapping",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lin/gov/eci/garuda/e2/models/SirMappingRequest;",
+    "verb": "POST",
+    "url": "producer/ctzver/validateSirProgenyMapping",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "editSeizure",
+    "params": "Ljava/lang/String;Lin/gov/eci/seizure/model/ChecksumRequest;",
+    "verb": "POST",
+    "url": "same-user-update-seizure",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "editSeizureAuth",
+    "params": "Ljava/lang/String;Lin/gov/eci/seizure/model/ChecksumRequest;",
+    "verb": "POST",
+    "url": "same-user-update-seizure-authorized",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/ObserverCall/Apis.smali",
+    "klass": "Apis",
+    "method": "getPaymetSaveApi",
+    "params": "Lcom/eci/citizen/DataRepository/Model/RozorpayRequest;",
+    "verb": "POST",
+    "url": "saveRpTransaction",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "saveTransaction",
+    "params": "Lcom/eci/citizen/DataRepository/Model/RozorpayRequest;",
+    "verb": "POST",
+    "url": "saveRpTransaction",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "callScreeningEntry",
+    "params": "Ljava/lang/String;Ldad/droid/lizz/ChecksumRequest;",
+    "verb": "POST",
+    "url": "screeningOfficer/inOutEntry",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "callScreeningEntryFull",
+    "params": "Ljava/lang/String;Ldad/droid/lizz/ChecksumRequest;",
+    "verb": "POST",
+    "url": "screeningOfficer/inOutEntryFull",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "secureLogoutScreening",
+    "params": "Ljava/lang/String;",
+    "verb": "POST",
+    "url": "screeningOfficer/logout",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "screeningSecureOtp",
+    "params": "Lin/gov/eci/encore/model/CommonRequest;",
+    "verb": "POST",
+    "url": "screeningOfficer/otp",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "screeningSecureLogin",
+    "params": "Lin/gov/eci/encore/model/CommonRequest;",
+    "verb": "POST",
+    "url": "screeningOfficer/otpVerify",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "callScreeningSearch",
+    "params": "Ljava/lang/String;Ldad/droid/lizz/ChecksumRequest;",
+    "verb": "POST",
+    "url": "screeningOfficer/searchRecords",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "agencyRequestEdit",
+    "params": "Ljava/lang/String;Lin/gov/eci/seizure/model/ChecksumRequest;",
+    "verb": "POST",
+    "url": "seizure-agency-edit-request",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "getAnalyticsBarReport",
+    "params": "Ljava/lang/String;",
+    "verb": "POST",
+    "url": "seizure-analytics-bar-new",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "getSeizureAnalytics",
+    "params": "Ljava/lang/String;",
+    "verb": "POST",
+    "url": "seizure-analytics-new",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "requestChange",
+    "params": "Ljava/lang/String;Lin/gov/eci/seizure/model/ChecksumRequest;",
+    "verb": "POST",
+    "url": "seizure-change-request",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "requestEdit",
+    "params": "Ljava/lang/String;Lin/gov/eci/seizure/model/ChecksumRequest;",
+    "verb": "POST",
+    "url": "seizure-edit-request",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "storeSeizure",
+    "params": "Ljava/lang/String;Lin/gov/eci/seizure/model/ChecksumRequest;",
+    "verb": "POST",
+    "url": "seizure-request",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "searchSeizure",
+    "params": "Ljava/lang/String;Lin/gov/eci/seizure/model/ChecksumRequest;",
+    "verb": "POST",
+    "url": "seizure-search",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "getOut",
+    "params": "Ljava/lang/String;",
+    "verb": "POST",
+    "url": "seizure-user-logout",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "getElections",
+    "params": "",
+    "verb": "GET",
+    "url": "seizureElectionNameList.json",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "login",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "sendsmsrequest",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "submitComplaint",
+    "params": "Ljava/lang/String;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/MultipartBody$Part;",
+    "verb": "POST",
+    "url": "storecomplaint",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "sendQuestionFeedback",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "submit_user_answers",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "submitComplaint",
+    "params": "Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "submitsComplaintVoterPortal",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getDigilokerMobileToken",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "token",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getResultCandidateWise",
+    "params": "Ljava/lang/String;Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "totalResults",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getResultCandidateWiseLara",
+    "params": "Ljava/lang/String;Lokhttp3/RequestBody;",
+    "verb": "POST",
+    "url": "totalResults",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getResultCandidateWiseDataPC",
+    "params": "",
+    "verb": "GET",
+    "url": "totalResults.txt",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "callForm17C",
+    "params": "Ljava/lang/String;Lokhttp3/MultipartBody$Part;",
+    "verb": "POST",
+    "url": "ufivity",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "submitdetails",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "unenrolled_family_member",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "callLocationApi",
+    "params": "Ljava/lang/String;Ldad/droid/lizz/ChecksumRequest;",
+    "verb": "POST",
+    "url": "updt_location",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "callPollApi",
+    "params": "Ljava/lang/String;Ldad/droid/lizz/ChecksumRequest;",
+    "verb": "POST",
+    "url": "updt_poll_activity_v4",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "updatedoc",
+    "params": "Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/RequestBody;Lokhttp3/MultipartBody$Part;",
+    "verb": "POST",
+    "url": "upload_document",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/encore/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "callMockPollFormUpload",
+    "params": "Ljava/lang/String;Lokhttp3/RequestBody;Lokhttp3/MultipartBody$Part;Lokhttp3/MultipartBody$Part;",
+    "verb": "POST",
+    "url": "uplog",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getDigilokerLogin",
+    "params": "Ljava/lang/String;",
+    "verb": "POST",
+    "url": "user",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getMobileOtp",
+    "params": "Lin/gov/eci/garuda/model/formsModel/ChangeRequest;",
+    "verb": "POST",
+    "url": "user-management/otp/send",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "verifyMobileOtp",
+    "params": "Lin/gov/eci/garuda/model/formsModel/ChangeRequest;",
+    "verb": "POST",
+    "url": "user-management/otp/verify",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "doPing",
+    "params": "Ljava/lang/String;Lin/gov/eci/seizure/model/CommonRequest;",
+    "verb": "POST",
+    "url": "userPing",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getMPMLA",
+    "params": "Ljava/lang/String;Ljava/lang/String;Lcom/eci/citizen/DataRepository/ServerRequestEntity/mpmla/MpMlaRequest;",
+    "verb": "POST",
+    "url": "v1/tcs/winningcandidate",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "getSeizureReport",
+    "params": "Ljava/lang/String;Lin/gov/eci/seizure/model/CommonRequest;",
+    "verb": "POST",
+    "url": "v3/get-seizure-list",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "getInterceptedReport",
+    "params": "Ljava/lang/String;Lin/gov/eci/seizure/model/CommonRequest;",
+    "verb": "POST",
+    "url": "v3/get-seizure-list-all-dist",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "secureLogin",
+    "params": "Lin/gov/eci/seizure/model/CommonRequest;",
+    "verb": "POST",
+    "url": "v3/otpVerifyForEnforcementUser",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "verifyBLO",
+    "params": "Lin/gov/eci/garuda/e2/models/TKnowBLORequest;",
+    "verb": "POST",
+    "url": "verifyBloV2",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getPSQueueDetails",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "POST",
+    "url": "vh_PSQ",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "verifyElectoral",
+    "params": "Ljava/util/Map;",
+    "verb": "POST",
+    "url": "vh_epicno_verify",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getPersonalVault",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "vha/getPersonalVault",
+    "headers": [
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/garuda/e2/repo/TRestClient.smali",
+    "klass": "TRestClient",
+    "method": "getPollingOfficials",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "vha/getPollingOfficials",
+    "headers": [
+      "applicationName: VHA",
+      "appName: VHA",
+      "channelidobo: VHA",
+      "platform-type: ANDROIDMOB"
+    ]
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getBannerCdn",
+    "params": "",
+    "verb": "GET",
+    "url": "vha_banner.json",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getPartyWinData",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "{state_code}/PartyWinData_{state_code}.txt",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "getDistrictWiseReport",
+    "params": "Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "{state_code}/esms-data-{state_code}-{dist_code}.json",
+    "headers": [
+      "Content-Type: application/json"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "getDistrictWiseReportC",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "{state_code}/esms-data-{state_code}-{dist_code}.json",
+    "headers": [
+      "Content-Type: application/json"
+    ]
+  },
+  {
+    "file": "smali/smali_classes5/in/gov/eci/seizure/repo/ApiService.smali",
+    "klass": "ApiService",
+    "method": "getStateWiseReport",
+    "params": "Ljava/lang/String;Ljava/lang/String;",
+    "verb": "GET",
+    "url": "{state_code}/esms-data-{state_code}.json",
+    "headers": [
+      "Content-Type: application/json"
+    ]
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getConstituencyWiseData",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "{state_code}/getPcSummary_{state_code}.txt",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getResultCandidateWiseData",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "{state_code}/totalResults_{state_code}.txt",
+    "headers": []
+  },
+  {
+    "file": "smali/smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+    "klass": "RestClient",
+    "method": "getPartyVoteShareData",
+    "params": "Ljava/lang/String;",
+    "verb": "GET",
+    "url": "{state_code}/votePercentage_{state_code}.txt",
+    "headers": []
+  }
+]

@@ -1,0 +1,358 @@
+
+================ S01 AC 1 ================
+
+[voters.eci.gov.in]
+  getPartByAc      status 200
+  keys of a row: ['acNumber', 'distNo', 'fvtmNo', 'fvtmType', 'id', 'oldPdfUrl', 'partName', 'partNameV1', 'partNumber', 'psCaty', 'psType']
+  first row: {'acNumber': 1, 'partNumber': 1, 'psType': None, 'fvtmType': None, 'fvtmNo': None, 'psCaty': None, 'oldPdfUrl': None, 'partNameV1': 'కేదారి పురం', 'partName': 'Kedari Puram', 'distNo': 1}
+  -> 153 parts, min 1 max 153, gaps: none
+
+[gateway-vha]
+  vha bystatecd    status 200 -> 319 rows
+  -> 319 parts, min 1 max 319
+
+[2003 roll, probing part numbers 1..200]
+  -> 153 old parts exist: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153]
+      old part 1    Kedari Puram
+      old part 2    Muchimdra
+      old part 3    Purushottapuram
+      old part 4    Purushottapuram
+      old part 5    Aminsahebpeta
+      old part 6    Mamdapalli
+      old part 7    Mamdapalli
+      old part 8    Mamdapalli
+      old part 9    Telukumchi
+      old part 10   Haripuram
+      old part 11   Boddabada
+      old part 12   Koligam
+      old part 13   Koligam
+      old part 14   Arakabadra
+      old part 15   Birlamgi
+      old part 16   Birlamgi
+      old part 17   Rattakanna
+      old part 18   Rattakanna
+      old part 19   Ichchapuram
+      old part 20   Ichchapuram
+      old part 21   Ichchapuram
+      old part 22   Ichchapuram
+      old part 23   Ichchapuram
+      old part 24   Ichchapuram
+      old part 25   Ichchapuram
+      old part 26   Ichchapuram
+      old part 27   Ichchapuram
+      old part 28   Ichchapuram
+      old part 29   Ichchapuram
+      old part 30   Ichchapuram
+      old part 31   Ichchapuram
+      old part 32   Ichchapuram
+      old part 33   Ichchapuram
+      old part 34   Ichchapuram
+      old part 35   Ichchapuram
+      old part 36   Loddaputti
+      old part 37   Loddaputti
+      old part 38   Loddaputti
+      old part 39   Tulasigam
+      old part 40   Tulasigam
+      old part 41   Dharma Puram
+      old part 42   Dharma Puram
+      old part 43   Kotari
+      old part 44   Kotari
+      old part 45   Idupuram
+      old part 46   Idupuram
+      old part 47   Idupuram
+      old part 48   Idupuram
+      old part 49   Kesupuram
+      old part 50   Burjapadu
+      old part 51   Domkuru
+      old part 52   Domkuru
+      old part 53   Sanyasiputtuga
+      old part 54   Sanyasiputtuga
+      old part 55   Nelavamka
+      old part 56   Nelavamka
+      old part 57   Di. Gonapaputtuga
+      old part 58   Di. Gonapaputtuga
+      old part 59   Kapasukuddi
+      old part 60   Si.Hech. Kapasukuddi
+      old part 61   Si.Hech. Kapasukuddi
+      old part 62   Kaviti
+      old part 63   Kaviti
+      old part 64   Kaviti
+      old part 65   Kaviti
+      old part 66   Kaviti
+      old part 67   Kaviti
+      old part 68   Erra Govimda Puttuga
+      old part 69   Erra Govimda Puttuga
+      old part 70   Bairipuram
+      old part 71   Rajupuram
+      old part 72   Rajupuram
+      old part 73   Rajupuram
+      old part 74   Rajupuram
+      old part 75   Kojjiriya
+      old part 76   Karapadu
+      old part 77   Kannu Puttuga
+      old part 78   Silagam
+      old part 79   Silagam
+      old part 80   Silagam
+      old part 81   Yas Puttuga
+      old part 82   Yas. Puttuga
+      old part 83   Jagati
+      old part 84   Jagati
+      old part 85   Bejji Puttuga
+      old part 86   Bejji Puttuga
+      old part 87   Pedda Karrivanipalem
+      old part 88   Pedda Karrivanipalem
+      old part 89   Boruvamka
+      old part 90   Boruvamka
+      old part 91   Idduvanipalem
+      old part 92   Bi. Gonapa Puttuga
+      old part 93   Bi. Gonapa Puttuga
+      old part 94   Pata Varaka
+      old part 95   Kotta Varaka
+      old part 96   Kusumapuram
+      old part 97   Kusumapuram
+      old part 98   Pedda Shrirampuram
+      old part 99   Pedda Shrirampuram
+      old part 100  Makarampuram
+      old part 101  Makarampuram
+      old part 102  Pedda Kojjiriya
+      old part 103  Jadupudi
+      old part 104  Jadupudi
+      old part 105  Belagam
+      old part 106  Belagam
+      old part 107  Belagam
+      old part 108  Gorlepadu
+      old part 109  Poleru
+      old part 110  Poleru
+      old part 111  Bhairipuram
+      old part 112  Ke.Bi.Naugam
+      old part 113  Ke.Bi.Naugam
+      old part 114  Di.Ji. Puram
+      old part 115  Mumdala
+      old part 116  Mumdala
+      old part 117  Bellupada
+      old part 118  Bellupada
+      old part 119  Jakkara
+      old part 120  Kolluru
+      old part 121  Kolluru
+      old part 122  Karthili
+      old part 123  Karthili
+      old part 124  Em.Yas. Palli
+      old part 125  E.Yas. Palli
+      old part 126  Bogabeni
+      old part 127  Bogabeni
+      old part 128  Je.Ela. Kota
+      old part 129  Je.Ela. Kota
+      old part 130  Gokarnapuram
+      old part 131  Gokarnapuram
+      old part 132  Kamchili
+      old part 133  Kamchili
+      old part 134  Kamchili
+      old part 135  Kamchili
+      old part 136  Kamchili
+      old part 137  Kamchili
+      old part 138  Kottakomda Rampuram
+      old part 139  Kottaampuram
+      old part 140  Kattivaram
+      old part 141  Talatampara
+      old part 142  Talatampara
+      old part 143  Talatampara
+      old part 144  Talatampara
+      old part 145  Belliputtuga
+      old part 146  Belliputtuga
+      old part 147  Manikyapuram
+      old part 148  Manikyapuram
+      old part 149  Manikyapuram
+      old part 150  Ke.Puttuga
+      old part 151  Ke. Puttuga
+      old part 152  Gollagamdi
+      old part 153  Ramayyapatnam
+
+================ S01 AC 2 ================
+
+[voters.eci.gov.in]
+  getPartByAc      status 200
+  keys of a row: ['acNumber', 'distNo', 'fvtmNo', 'fvtmType', 'id', 'oldPdfUrl', 'partName', 'partNameV1', 'partNumber', 'psCaty', 'psType']
+  first row: {'acNumber': 2, 'partNumber': 1, 'psType': None, 'fvtmType': None, 'fvtmNo': None, 'psCaty': None, 'oldPdfUrl': None, 'partNameV1': 'గౌడుగురంటి', 'partName': 'Gauduguramti', 'distNo': 1}
+  -> 175 parts, min 1 max 175, gaps: none
+
+[gateway-vha]
+  vha bystatecd    status 200 -> 302 rows
+  -> 302 parts, min 1 max 302
+
+[2003 roll, probing part numbers 1..200]
+  -> 175 old parts exist: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170, 171, 172, 173, 174, 175]
+      old part 1    Gauduguramti
+      old part 2    China Kosta
+      old part 3    Batupuram
+      old part 4    Koramjibadra
+      old part 5    Koramjibadra
+      old part 6    Shashanam
+      old part 7    Shashanam
+      old part 8    Besiramachamdrapuram
+      old part 9    Besi Ramachamdrapuram
+      old part 10   Jeddiputtuga Kotturu
+      old part 11   Buragam
+      old part 12   Buragam
+      old part 13   Sompeta
+      old part 14   Sompeta
+      old part 15   Sompeta
+      old part 16   Sompeta
+      old part 17   Sompeta
+      old part 18   Sompeta
+      old part 19   Sompeta
+      old part 20   Sompeta
+      old part 21   Sompeta
+      old part 22   Sompeta
+      old part 23   Sompeta
+      old part 24   Sompeta
+      old part 25   Ammavari Puttuga
+      old part 26   Narayanapuram
+      old part 27   Rushikudda
+      old part 28   Isukapalem
+      old part 29   Isukapalem
+      old part 30   Kuttuma
+      old part 31   Bamkili
+      old part 32   Jimkibadra
+      old part 33   Jimkibadra
+      old part 34   Palasapuram
+      old part 35   Palasapuram
+      old part 36   Lakkavaram
+      old part 37   Baruva
+      old part 38   Baruva
+      old part 39   Baruva
+      old part 40   Baruva
+      old part 41   Baruva
+      old part 42   Baruva
+      old part 43   Baruva
+      old part 44   Baruva
+      old part 45   Korlam
+      old part 46   Korlam
+      old part 47   Korlam
+      old part 48   Palavalasa
+      old part 49   Palavalasa
+      old part 50   Kottapalli
+      old part 51   Mukumdapuram
+      old part 52   Kartalipalem
+      old part 53   Kartalipalem
+      old part 54   Potrakomda
+      old part 55   Potrakomda
+      old part 56   Makannapuram
+      old part 57   Sharadapuram
+      old part 58   Pottamgi
+      old part 59   Bisvalichakipeta
+      old part 60   Siripuram
+      old part 61   Bogapuram
+      old part 62   Bellupatiya
+      old part 63   Budarisimgi
+      old part 64   Patakota
+      old part 65   Chipi
+      old part 66   Honnali
+      old part 67   Siddigam
+      old part 68   Mamdasa
+      old part 69   Mamdasa
+      old part 70   Mamdasa
+      old part 71   Mamdasa
+      old part 72   Mamdasa
+      old part 73   Mamdasa
+      old part 74   Mamdasa
+      old part 75   Bhairi Saramgipuram
+      old part 76   Bhairisaramgipuram
+      old part 77   Pitatoli
+      old part 78   Somdipudi
+      old part 79   Mulipadu
+      old part 80   Shrinivasapuram
+      old part 81   Binnala
+      old part 82   Vemkata Varadarajupuram
+      old part 83   Mamidipalli
+      old part 84   Mamidipalli
+      old part 85   Patinivalasa
+      old part 86   Gollavuru
+      old part 87   Gollavuru
+      old part 88   Turakashashanam
+      old part 89   Domkaluru
+      old part 90   Battigalluru
+      old part 91   Ekuvuru
+      old part 92   Geddavuru
+      old part 93   Erramukkam
+      old part 94   Erramukkam
+      old part 95   Dunnavuru
+      old part 96   Loharibamda
+      old part 97   Ambujiram
+      old part 98   Ambugam Boddaluru
+      old part 99   Tallabhadra
+      old part 100  Tallabhadra
+      old part 101  Baligam
+      old part 102  Baligam
+      old part 103  Haripuram
+      old part 104  Haripuram
+      old part 105  Narayanapuram
+      old part 106  Narayanapuram
+      old part 107  Kumtikota
+      old part 108  Pidi Mamdasa
+      old part 109  Pidi Mamdasa
+      old part 110  Gudari Rajamanipuram (Dira Gunna)0
+      old part 111  Jallumda
+      old part 112  Dimiri
+      old part 113  Hamsarali
+      old part 114  Budambo
+      old part 115  Sabakota
+      old part 116  Komkadaputti
+      old part 117  Bogabamda
+      old part 118  Lotturu
+      old part 119  Remtikota
+      old part 120  Remtikota
+      old part 121  Kamtragada
+      old part 122  Allukola
+      old part 123  Pedamchala
+      old part 124  Maradarajapuram
+      old part 125  Chinamchala
+      old part 126  Gamguvada
+      old part 127  Bamtukotturu
+      old part 128  Pedda Narayanapuram
+      old part 129  Kedaripuram
+      old part 130  Palasa
+      old part 131  Palasa
+      old part 132  Palasa
+      old part 133  Palasa
+      old part 134  Palasa
+      old part 135  Palasa
+      old part 136  Palasa
+      old part 137  Palasa
+      old part 138  Palasa
+      old part 139  Mogilipadu
+      old part 140  Mogilipadu
+      old part 141  Palasa
+      old part 142  Palasa
+      old part 143  Palasa
+      old part 144  Palasa
+      old part 145  Loddabadra
+      old part 146  Loddabadra
+      old part 147  Tarlakota
+      old part 148  Sunnada
+      old part 149  Killoyi Kolani
+      old part 150  Komdalogam
+      old part 151  Pattu Logam
+      old part 152  Mahadevupuram
+      old part 153  Mahadevupuram
+      old part 154  Makarajola
+      old part 155  Boddapadu
+      old part 156  Boddapadu
+      old part 157  Nilavati
+      old part 158  Ramgoyi
+      old part 159  Gurudasupuram
+      old part 160  Sunnadevi
+      old part 161  Suvarnapuram
+      old part 162  Guddipadra
+      old part 163  Bamjarukesupuram
+      old part 164  Ratti
+      old part 165  Betalapuram
+      old part 166  Milagamguvada
+      old part 167  Milagamguvada
+      old part 168  Bahadapalli
+      old part 169  Bahadapalli
+      old part 170  Sariyapalli
+      old part 171  Makannapalli
+      old part 172  Metturu
+      old part 173  Metturu
+      old part 174  Vamkaluru
+      old part 175  Chipurupalli

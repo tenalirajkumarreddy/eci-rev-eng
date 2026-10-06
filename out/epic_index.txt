@@ -1,0 +1,16 @@
+indexed classes: 1758
+
+==========================================================================
+CLASSES REFERENCING ElectorDetails / EpicDatum / EpicRefrenceModel
+==========================================================================
+  ElectorDetails: 0 classes
+  EpicDatum: 0 classes
+  EpicRefrenceModel: 0 classes
+  SearchByElectorDetails: 0 classes
+  EpicSearchDeatils: 0 classes
+  Epicdetails: 0 classes
+  SearchLastElectorDetails: 0 classes
+
+==========================================================================
+ENDPOINT-ISH STRINGS mentioning epic/elector/voter/roll/search
+==========================================================================

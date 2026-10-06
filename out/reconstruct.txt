@@ -1,0 +1,66 @@
+============================================================================
+DigitalEpicActivity::.method private callSearchApi(I)V
+============================================================================
+  .method private callSearchApi(I)V
+  .annotation system Ldalvik/annotation/MethodParameters;
+  accessFlags = {
+  0x0
+  }
+  names = {
+  "pageNo"
+  }
+  .end annotation
+  new-instance v0, Ljava/util/HashMap;
+  invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+  invoke-virtual {p0}, Lcom/eci/citizen/features/home/evp/DigitalEpicActivity;->getOfficialDetailSecureKey()Ljava/lang/String;
+  move-result-object v1
+  const-string v2, "IPS2062445"
+  invoke-static {v2, v1}, Lcom/eci/citizen/utility/Utils;->GetHashNew(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+  move-result-object v1
+  const-string v3, "epic_no"
+  invoke-virtual {v0, v3, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  const-string v2, "search_type"
+  const-string v3, "epic"
+  invoke-virtual {v0, v2, v3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  new-instance v2, Ljava/lang/StringBuilder;
+  const-string v3, ""
+  invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+  invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+  move-result-object v1
+  invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+  move-result-object v1
+  const-string v2, "passKey"
+  invoke-virtual {v0, v2, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  new-instance v1, Ljava/lang/StringBuilder;
+  invoke-direct {v1, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+  invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+  move-result-object p1
+  invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+  move-result-object p1
+  const-string v1, "page_no"
+  invoke-virtual {v0, v1, p1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+  invoke-virtual {p0}, Lcom/eci/citizen/features/home/evp/DigitalEpicActivity;->showProgressDialog()V
+  invoke-static {}, Lcom/eci/citizen/DataRepository/ApiClient;->getElectoralClient()Lretrofit2/Retrofit;
+  move-result-object p1
+  const-class v1, Lcom/eci/citizen/DataRepository/RestClient;
+  invoke-virtual {p1, v1}, Lretrofit2/Retrofit;->create(Ljava/lang/Class;)Ljava/lang/Object;
+  move-result-object p1
+  check-cast p1, Lcom/eci/citizen/DataRepository/RestClient;
+  invoke-interface {p1, v0}, Lcom/eci/citizen/DataRepository/RestClient;->searchElectoralOne(Ljava/util/Map;)Lretrofit2/Call;
+  move-result-object p1
+  new-instance v0, Lcom/eci/citizen/features/home/evp/DigitalEpicActivity$2;
+  invoke-virtual {p0}, Lcom/eci/citizen/features/home/evp/DigitalEpicActivity;->context()Landroid/content/Context;
+  move-result-object v1
+  invoke-direct {v0, p0, p1, v1}, Lcom/eci/citizen/features/home/evp/DigitalEpicActivity$2;-><init>(Lcom/eci/citizen/features/home/evp/DigitalEpicActivity;Lr
+  invoke-interface {p1, v0}, Lretrofit2/Call;->enqueue(Lretrofit2/Callback;)V
+  return-void
+  .end method
+
+============================================================================
+EdigitalEpic::.method public isValidation()Z
+============================================================================
+  .method public isValidation()Z
+  const/4 v0, 0x1
+  return v0
+  .end method
+

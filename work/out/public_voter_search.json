@@ -1,0 +1,28 @@
+{
+  "request": {
+    "id": "public_voter_search",
+    "name": "Public voter record search (weak auth)",
+    "verb": "GET",
+    "url": "https://electoralsearch.in/api/search?epic_no=SXQ2097129&search_type=epic&pass_key=d3d7e449c5742b1c5d222b96506d8f58a36dc4c51253008f713c841d4a8870fcab1195c9e2973421194ff3e612d748d88c263533b6cb3143bdc41e41e21caaef&page_no=1",
+    "headers": [
+      [
+        "User-Agent",
+        "Mozilla/5.0 ECIPIN Engine"
+      ]
+    ],
+    "body": null,
+    "response_model": "ElectorDetails",
+    "evidence": [
+      "smali_classes13/com/eci/citizen/features/home/evp/DigitalEpicActivity.smali",
+      "callSearchApi: GET api/search?epic_no=...&search_type=epic&passKey=&page_no=..."
+    ],
+    "sent_at": "2026-10-05T15:22:08+00:00",
+    "status": "not_started"
+  },
+  "response": {
+    "status": null,
+    "bytes": 0,
+    "summary": null
+  },
+  "error": null
+}

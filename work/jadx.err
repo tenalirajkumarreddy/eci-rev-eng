@@ -1,0 +1,2 @@
+Error: Could not find or load main class jadx.cli.JadxCLI
+Caused by: java.lang.ClassNotFoundException: jadx.cli.JadxCLI

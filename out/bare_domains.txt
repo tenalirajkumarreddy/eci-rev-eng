@@ -1,0 +1,499 @@
+76	android.media	|| android.media.metadata.MEDIA_URI ~~ !android.media.mediaparser.UNKNOWN ~~ android.media.metadata.ALBUM_ART
+56	pwd.eci.com	|| ;in.gov.eci.pollturnout.view.activity.DistrictToAcWiseActivity->com.pairip.vmencryption.KeyImportActivity;pwd.eci.com.pwdapp.facilities.contact.Contact->com.pai ~~ .eci.com.pwdapp.facilities.volunterregister.AddVolunteer->com.pairip.vmencryption.KeyImportActivity;pwd.eci.com.pwdapp.PSFacilities->com.pairip.vmencryption.Key ~~ *pwd.eci.com.pwdapp.common.PreferenceHelper
+52	java.util	|| "java.util.prefs.PreferencesFactory ~~ extends java.util.AbstractList< ~~ %java.util.concurrent.atomic.LongAdder
+46	in.gov	|| "in.gov.eci.encore.ui.FrontActivity ~~ !in.gov.eci.encore.vm.PROViewModel ~~ &in.gov.eci.seizure.vm.SeizureViewModel
+24	io.grpc.internal	|| "io.grpc.internal.ServiceConfigUtil ~~ io.grpc.internal.DnsNameResolver ~~ "io.grpc.internal.ProxyDetectorImpl
+22	android.support.v4.media	|| &android.support.v4.media.session.TOKEN ~~ (android.support.v4.media.action.DOWNLOAD ~~ -android.support.v4.media.session.EXTRA_BINDER
+21	java.io	|| parse(java.io.Reader r, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, java.io.IOException { ~~ parse(java.io.InputStream is, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, java.io.IOException { ~~ parse(java.io.File file, org.apache.xmlbeans.XmlOptions options) throws org.apache.xmlbeans.XmlException, java.io.IOException {
+20	anychart.core.utils	|| new anychart.core.utils.bounds() ~~ !new anychart.core.utils.exports() ~~ new anychart.core.utils.margin()
+20	com.google.android.gms.maps.internal	|| :com.google.android.gms.maps.internal.IOnCameraIdleListener ~~ :com.google.android.gms.maps.internal.IOnCameraMoveListener ~~ -com.google.android.gms.maps.internal.ICreator
+18	android.app	|| &android.app.ActivityThread$AppBindData ~~ 9null cannot be cast to non-null type android.app.Activity ~~ "Deprecated in android.app.Activity
+17	anychart.data	|| !new anychart.data.Tree.dataItem() ~~ !new anychart.data.tableComputer() ~~ new anychart.data.tableMapping()
+17	type.googleapis.com	|| .type.googleapis.com/google.crypto.tink.HmacKey ~~ "type.googleapis.com/google.crypto. ~~ 'type.googleapis.com/google.crypto.tink.
+11	kotlinx.coroutines.flow.internal	|| :kotlinx.coroutines.flow.internal.CombineKt$zipImpl$1$1$2$1 ~~ ;kotlinx.coroutines.flow.internal.ChannelFlow$collectToFun$1 ~~ <kotlinx.coroutines.flow.internal.CombineKt$combineInternal$2
+10	com.google.firebase.auth	|| &com.google.firebase.auth.KEY_TENANT_ID ~~ $com.google.firebase.auth.KEY_API_KEY ~~ &com.google.firebase.auth.FIREBASE_USER
+10	java.net	|| ?null cannot be cast to non-null type java.net.InetSocketAddress ~~ ?null cannot be cast to non-null type java.net.HttpURLConnection ~~ 3Caught java.net.SocketException closing conneciton.
+9	org.apache.xmlbeans.impl.store	|| #org.apache.xmlbeans.impl.store.Path ~~ $org.apache.xmlbeans.impl.store.Query ~~ %org.apache.xmlbeans.impl.store.Locale
+9	com.google.android.gms.maps.model.internal	|| ;com.google.android.gms.maps.model.internal.IFeatureDelegate ~~ :com.google.android.gms.maps.model.internal.IMarkerDelegate ~~ :com.google.android.gms.maps.model.internal.ICircleDelegate
+9	kotlinx.coroutines.internal	|| Knull cannot be cast to non-null type kotlinx.coroutines.internal.Segment<*> ~~ Unull cannot be cast to non-null type S of kotlinx.coroutines.internal.SegmentOrClosed ~~ Wnull cannot be cast to non-null type kotlinx.coroutines.internal.LockFreeLinkedListNode
+9	con.avcoding.core.data	|| nnull cannot be cast to non-null type java.util.ArrayList<con.avcoding.core.data.source.remote.model.PartyList> ~~ \con.avcoding.core.data.source.remote.repoImpl.PermissionServiceImpl$getAcBasedOnPermission$2 ~~ \con.avcoding.core.data.source.remote.repoImpl.PermissionServiceImpl$getPcBasedOnPermission$2
+8	prefs.app	|| prefs.app.decider.disclaimer ~~ prefs.app.decider.init ~~ prefs.app.provider.decider.patch
+8	measurement.client	|| &measurement.client.3p_consent_state_v1 ~~ #measurement.client.consent_state_v1 ~~ $measurement.client.ad_id_consent_fix
+8	com.google.firebase.auth.internal	|| +com.google.firebase.auth.internal.OPERATION ~~ :com.google.firebase.auth.internal.VERIFY_ASSERTION_REQUEST ~~ (com.google.firebase.auth.internal.STATUS
+8	http.auth	|| http.auth.credential-charset ~~ http.auth.credentials-provider ~~ http.auth.ntlm.domain
+7	android.net	|| L@Url must be okhttp3.HttpUrl, String, java.net.URI, or android.net.Uri type. ~~ $android.net.conn.CONNECTIVITY_CHANGE ~~ Dnull cannot be cast to non-null type android.net.ConnectivityManager
+7	androidx.core.app	|| 'androidx.core.app.extra.COMPAT_TEMPLATE ~~ &androidx.core.app.CoreComponentFactory ~~ 'androidx.core.app.EXTRA_CALLING_PACKAGE
+7	in.gov.eci.app	|| <https://play.google.com/store/apps/details?id=in.gov.eci.app ~~ >https://play.google.com/store/apps/details?id=in.gov.eci.app ~~ /in.gov.eci.app.NOTIFICATION_BADGE_UPDATE_FILTER
+7	androidx.privacysandbox.ads	|| androidx.privacysandbox.ads.adservices.java.measurement.MeasurementManagerFutures$Api33Ext5JavaImpl$getMeasurementApiStatusAsync$1 ~~ androidx.privacysandbox.ads.adservices.java.customaudience.CustomAudienceManagerFutures$Api33Ext4JavaImpl$leaveCustomAudienceAsync$1 ~~ androidx.privacysandbox.ads.adservices.java.customaudience.CustomAudienceManagerFutures$Api33Ext4JavaImpl$joinCustomAudienceAsync$1
+7	parser.cc	|| parser.cc.3 ~~ parser.cc.1 ~~ parser.cc.2
+6	com.google.android.gms.signin.internal	|| <com.google.android.gms.signin.internal.realClientPackageName ~~ =com.google.android.gms.signin.internal.offlineAccessRequested ~~ =com.google.android.gms.signin.internal.clientRequestedAccount
+6	javax.net	|| Enull cannot be cast to non-null type javax.net.ssl.HttpsURLConnection ~~ Cnull cannot be cast to non-null type javax.net.ssl.X509TrustManager ~~ <null cannot be cast to non-null type javax.net.ssl.SSLSocket
+6	com.google.firebase.crashlytics.buildtools.reloc.org	|| \com.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.impl.Log4JLogger ~~ \com.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.diagnostics.dest ~~ \com.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.impl.Jdk14Logger
+5	com.google.android.gms.auth	|| #com.google.android.gms.auth.NO_IMPL ~~ )com.google.android.gms.auth.service.START ~~ $com.google.android.gms.auth.GetToken
+5	com.google.android.gms.auth.api	|| (com.google.android.gms.auth.api.fallback ~~ :com.google.android.gms.auth.api.phone.EXTRA_CONSENT_INTENT ~~ =com.google.android.gms.auth.api.accounttransfer.service.START
+5	firebase.app	|| *Firebase.app[SessionDatastore::class.java] ~~ *Firebase.app[SessionGenerator::class.java] ~~ *Firebase.app[FirebaseSessions::class.java]
+5	kotlinx.serialization.internal	|| .kotlinx.serialization.internal.EnumSerializer< ~~ null cannot be cast to non-null type kotlinx.serialization.KSerializer<T of kotlinx.serialization.internal.Platform_commonKt.cast> ~~ fnull cannot be cast to non-null type T of kotlinx.serialization.internal.AbstractPolymorphicSerializer
+5	1type.googleapis.com	|| 1type.googleapis.com/google.crypto.tink.AesCmacKey ~~ 1type.googleapis.com/google.crypto.tink.HmacPrfKey ~~ 1type.googleapis.com/google.crypto.tink.HkdfPrfKey
+5	2com.google.android.libraries.places.internal	|| 2com.google.android.libraries.places.internal.zzbfl ~~ 2com.google.android.libraries.places.internal.zzbbk ~~ 2com.google.android.libraries.places.internal.zzbbl
+5	com.eci.citizen.offline.db	|| 5table_ac(com.eci.citizen.offline.db.TAc). ~~ ;table_forms(com.eci.citizen.offline.db.TForms). ~~ 7table_ssr(com.eci.citizen.offline.db.TSsr).
+5	7android.support.v4.media	|| 7android.support.v4.media.session.action.ARGUMENT_EXTRAS ~~ 7android.support.v4.media.session.action.ARGUMENT_RATING ~~ 7android.support.v4.media.session.action.SET_REPEAT_MODE
+5	8com.google.android.gms.maps.internal	|| 8com.google.android.gms.maps.internal.IOnMapReadyCallback ~~ 8com.google.android.gms.maps.internal.IOnPoiClickListener ~~ 8com.google.android.gms.maps.internal.IOnMapClickListener
+5	com.google.android.gms.common.internal	|| ;com.google.android.gms.common.internal.ISignInButtonCreator ~~ =com.google.android.gms.common.internal.service.ICommonService ~~ =com.google.android.gms.common.internal.IGoogleCertificatesApi
+5	measurement.test	|| measurement.test.double_flag ~~ measurement.test.int_flag ~~ measurement.test.boolean_flag
+4	org.apache.log4j.net	|| org.apache.log4j.net.JMSSink ~~ !org.apache.log4j.net.SocketServer ~~ 'org.apache.log4j.net.SimpleSocketServer
+4	android.service.media	|| "android.service.media.extra.RECENT ~~ %android.service.media.extra.SUGGESTED ~~ #android.service.media.extra.OFFLINE
+4	con.eci.candidateapp.ui.login	|| %con.eci.candidateapp.ui.login.LoginVm ~~ =con.eci.candidateapp.ui.login.ActivityLogin$setUpObserver$1$1 ~~ ;con.eci.candidateapp.ui.login.ActivityLogin$setUpObserver$1
+4	com.android.org	|| 'com.android.org.conscrypt.OpenSSLRandom ~~ +com.android.org.conscrypt.OpenSSLSocketImpl ~~ )com.android.org.conscrypt.OpenSSLProvider
+4	kotlin.io	|| )kotlin.io.path.PathTreeWalk$dfsIterator$1 ~~ Avoid creating temporary directories in the default temp location with this function due to too wide permissions on the newly created directory. Use kotlin.io.p ~~ )kotlin.io.path.PathTreeWalk$bfsIterator$1
+4	0type.googleapis.com	|| 0type.googleapis.com/google.crypto.tink.AesGcmKey ~~ 0type.googleapis.com/google.crypto.tink.AesCtrKey ~~ 0type.googleapis.com/google.crypto.tink.AesEaxKey
+4	9android.support.v4.media	|| 9android.support.v4.media.session.IMediaControllerCallback ~~ 9android.support.v4.media.session.ARGUMENT_MEDIA_ATTRIBUTE ~~ 9android.support.v4.media.session.action.ARGUMENT_MEDIA_ID
+4	com.google.android.location.internal	|| :com.google.android.location.internal.EXTRA_ACTIVITY_RESULT ~~ ?com.google.android.location.internal.EXTRA_SLEEP_SEGMENT_RESULT ~~ ?com.google.android.location.internal.EXTRA_ACTIVITY_RESULT_LIST
+4	com.google.android.youtube.player.internal	|| :com.google.android.youtube.player.internal.IYouTubeService ~~ :com.google.android.youtube.player.internal.IEmbeddedPlayer ~~ ?com.google.android.youtube.player.internal.IConnectionCallbacks
+4	com.google.android.gms.location.internal	|| <com.google.android.gms.location.internal.IGeofencerCallbacks ~~ ?com.google.android.gms.location.internal.IBooleanStatusCallback ~~ ;com.google.android.gms.location.internal.ISettingsCallbacks
+4	acom.google.android.youtube.player.internal	|| Acom.google.android.youtube.player.internal.IPlaylistEventListener ~~ Acom.google.android.youtube.player.internal.IThumbnailLoaderClient ~~ Acom.google.android.youtube.player.internal.IPlaybackEventListener
+4	okhttp3.internal	|| Wnull cannot be cast to non-null type okhttp3.internal.connection.RealCall.CallReference ~~ Lnull cannot be cast to non-null type okhttp3.internal.ws.RealWebSocket.Close ~~ Nnull cannot be cast to non-null type okhttp3.internal.ws.RealWebSocket.Message
+4	dcom.google.firebase.crashlytics.buildtools.reloc.org	|| dcom.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.LogFactory.HashtableImpl ~~ dcom.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.Log.allowFlawedHierarchy ~~ dcom.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.Log.allowFlawedDiscovery
+3	debug.firebase.analytics.app	|| adb shell setprop debug.firebase.analytics.app ~~ debug.firebase.analytics.app ~~ adb shell setprop debug.firebase.analytics.app .none.
+3	io.grpc.okhttp.internal	|| +io.grpc.okhttp.internal.framed.Http2$Writer ~~ +io.grpc.okhttp.internal.framed.Http2$Reader ~~ io.grpc.okhttp.internal.Platform
+3	androidx.appcompat.app	|| |Reading app Locales : Unable to parse through file :androidx.appcompat.app.AppCompatDelegate.application_locales_record_file ~~ $androidx.appcompat.app.ActionBar$Tab ~~ *androidx.appcompat.app.AlertDialog$Builder
+3	com.google.zxing.client	|| $com.google.zxing.client.android.SCAN ~~ ?com.google.zxing.client.android.camera.open.OpenCameraInterface ~~ com.google.zxing.client.android
+3	kotlin.jvm.internal	|| 'kotlin.jvm.internal.EnumCompanionObject ~~ )kotlin.jvm.internal.StringCompanionObject ~~ kotlin.jvm.internal.
+3	3android.media	|| 3android.media.extras.ERROR_RESOLUTION_ACTION_INTENT ~~ 3android.media.browse.CONTENT_STYLE_SINGLE_ITEM_HINT ~~ 3android.media.browse.CONTENT_STYLE_GROUP_TITLE_HINT
+3	8type.googleapis.com	|| 8type.googleapis.com/google.crypto.tink.AesCtrHmacAeadKey ~~ 8type.googleapis.com/google.crypto.tink.JwtEcdsaPublicKey ~~ 8type.googleapis.com/google.crypto.tink.Ed25519PrivateKey
+3	9androidx.media	|| 9androidx.media.MediaSessionCompat.Extras.KEY_ACCOUNT_TYPE ~~ 9androidx.media.MediaMetadatCompat.METADATA_KEY_CONTENT_ID ~~ 9androidx.media.MediaSessionCompat.Extras.KEY_ACCOUNT_NAME
+3	9type.googleapis.com	|| 9type.googleapis.com/google.crypto.tink.JwtEcdsaPrivateKey ~~ 9type.googleapis.com/google.crypto.tink.RsaSsaPssPublicKey ~~ 9type.googleapis.com/google.crypto.tink.KmsEnvelopeAeadKey
+3	dvcsrequest.data	|| <DVCSRequest.data.message should be specified for CPD service ~~ ;DVCSRequest.data.certs should be specified for VPKC service ~~ <DVCSRequest.data.message should be specified for VSD service
+3	w3.org	|| X'X*keywords" content="w3.org/1999/xhtml"><a target="_blank" text/html; charset=" target="_blank"><table cellpadding="autocomplete="off" text-align: center;to l ~~ <html <meta charset="utf-8">:url" content="http://.css" rel="stylesheet"style type="text/css">type="text/css" href="w3.org/1999/xhtml" xmltype="text/javascript" ~~ <div class="w3.org/1999/xhtml"
+3	com.google.android.gms.auth.api.signin.internal	|| places.widget.AutocompleteActivity->com.pairip.vmencryption.KeyImportActivity;com.google.firebase.auth.internal.GenericIdpActivity->com.pairip.vmencryption.KeyI ~~ >com.google.android.gms.auth.api.signin.internal.ISignInService ~~ @com.google.android.gms.auth.api.signin.internal.ISignInCallbacks
+3	vnd.openxmlformats-package.digital	|| Iapplication/vnd.openxmlformats-package.digital-signature-xmlsignature+xml ~~ Dapplication/vnd.openxmlformats-package.digital-signature-certificate ~~ ?application/vnd.openxmlformats-package.digital-signature-origin
+3	acom.google.android.gms.maps.internal	|| Acom.google.android.gms.maps.internal.IOnIndoorStateChangeListener ~~ Acom.google.android.gms.maps.internal.IOnCameraMoveStartedListener ~~ Acom.google.android.gms.maps.internal.ICameraUpdateFactoryDelegate
+3	qcon.avcoding.core.data	|| Qcon.avcoding.core.data.source.remote.repoImpl.CreatePasswordImpl$createPassword$2 ~~ Qcon.avcoding.core.data.source.remote.repoImpl.PermissionServiceImpl$getLocation$2 ~~ Qcon.avcoding.core.data.source.remote.repoImpl.PermissionServiceImpl$getDistrict$2
+3	zcon.avcoding.core.data	|| Zcon.avcoding.core.data.source.remote.repoImpl.NominationServiceImpl$getNominationDetails$2 ~~ Zcon.avcoding.core.data.source.remote.repoImpl.PermissionServiceImpl$getPermissionDetails$2 ~~ Zcon.avcoding.core.data.source.remote.repoImpl.PermissionServiceImpl$allPermissionRequest$2
+3	androidx.compose.runtime.internal	|| null cannot be cast to non-null type androidx.compose.runtime.State<T of androidx.compose.runtime.internal.LiveLiteralKt.liveLiteral> ~~ [null cannot be cast to non-null type androidx.compose.runtime.internal.ComposableLambdaImpl ~~ \null cannot be cast to non-null type androidx.compose.runtime.internal.ComposableLambdaNImpl
+3	matcher.group	|| matcher.group(1) ~~ matcher.group(2) ~~ matcher.group(3)
+3	kotlinx.serialization.json.internal	|| null cannot be cast to non-null type kotlinx.serialization.DeserializationStrategy<T of kotlinx.serialization.json.internal.PolymorphicKt.decodeSerializableValu ~~ null cannot be cast to non-null type kotlinx.serialization.DeserializationStrategy<T of kotlinx.serialization.json.internal.StreamingJsonDecoder.decodeSerializa ~~ null cannot be cast to non-null type kotlinx.serialization.SerializationStrategy<T of kotlinx.serialization.json.internal.PolymorphicKt.encodePolymorphically>
+3	prefs.data	|| prefs.data.ac ~~ prefs.data.dis ~~ prefs.data.st
+3	prefsm.app	|| prefsm.app.init ~~ prefsm.app.inifdfdfidsct ~~ prefsm.app.provider.patch
+3	rx2.io	|| rx2.io-keep-alive-time ~~ rx2.io-priority ~~ rx2.io-scheduled-release
+2	org.apache.xml.resolver.tools	|| -catalog [file] -  catalog file for org.apache.xml.resolver.tools.CatalogResolver. (Note: needs resolver.jar from http://xml.apache.org/commons/components/resol ~~ -org.apache.xml.resolver.tools.CatalogResolver
+2	io.grpc.util	|| :io.grpc.util.SecretRoundRobinLoadBalancerProvider$Provider ~~ #io.grpc.util.MultiChildLoadBalancer
+2	com.google.firebase.auth.api	|| &com.google.firebase.auth.api.crypto.%s ~~ %com.google.firebase.auth.api.Store.%s
+2	com.google.firebase.crashlytics.files	|| ).com.google.firebase.crashlytics.files.v1 ~~ ).com.google.firebase.crashlytics.files.v2
+2	android.support.v4.app	|| ,android.support.v4.app.EXTRA_CALLING_PACKAGE ~~ -android.support.v4.app.EXTRA_CALLING_ACTIVITY
+2	com.google.android.youtube.api	|| ,com.google.android.youtube.api.service.START ~~ =com.google.android.youtube.api.StandalonePlayerActivity.START
+2	gts.so	|| ?t&ce&jorparodef.&duolc,gts.so.ppa,so.ppa,?riderbew,?e&ews-yrev-si,nretni&ehtfodne,fodne,??hgink-a-si,s&ixetn&od,seod,?o&h-emag,l-si,???ue:.&a&-q,c,?cm,dc,e&b,d ~~ ,koob-daer,ltbup,nd&-won,deerf,emoh,golb,kcud,mood,nyd:.&emoh,og,?,ps,rvd,tog,uolc,?s&a-skcik,ndd,?tnemhcattaomb,u,?t&ce&jorparodef.&duolc,gts.so.ppa,so.ppa,?ri
+2	con.avcoding.core.util	|| ]Discovered AppGlideModule from annotation: con.avcoding.core.util.glideCache.GlideImageModule ~~ -con.avcoding.core.util.CountDownTimer$start$1
+2	com.eci.ci	|| .GallerySubCatListActivity->com.pairip.vmencryption.KeyImportActivity;com.eci.citizen.features.home.gallery.GalleryImagesListActivity->com.pairip.vmencryption.K ~~ Activity;com.eci.citizen.features.NvspLogin.NewNvspRegistration->com.pairip.vmencryption.KeyImportActivity;com.eci.citizen.features.NvspLogin.NvspLogin->com.pai
+2	places.googleapis.com	|| places.googleapis.com ~~ /Invalid host or port: places.googleapis.com 443
+2	engine.io	|| /engine.io ~~ engine.io-client.heartbeat-
+2	0android.media	|| 0android.media.mediaparser.eagerlyExposeTrackType ~~ 0android.media.browse.CONTENT_STYLE_PLAYABLE_HINT
+2	0com.google.firebase.auth.internal	|| 0com.google.firebase.auth.internal.CLIENT_VERSION ~~ 0com.google.firebase.auth.internal.EXTRA_CANCELED
+2	1android.media	|| 1android.media.mediaparser.includeSupplementalData ~~ 1android.media.browse.CONTENT_STYLE_BROWSABLE_HINT
+2	1com.google.firebase.auth.internal	|| 1com.google.firebase.auth.internal.RECAPTCHA_TOKEN ~~ 1com.google.firebase.auth.internal.NONGMSCORE_LINK
+2	2com.google.android.gms.auth.api	|| 2com.google.android.gms.auth.api.credentials.PICKER ~~ 2com.google.android.gms.auth.api.phone.EXTRA_STATUS
+2	3com.google.android.gms.signin.internal	|| 3com.google.android.gms.signin.internal.hostedDomain ~~ 3com.google.android.gms.signin.internal.logSessionId
+2	4com.android.vending.billing	|| 4com.android.vending.billing.InAppBillingService.LUCK ~~ 4com.android.vending.billing.InAppBillingService.COIN
+2	4com.google.android.gms.auth.api	|| 4com.google.android.gms.auth.api.phone.EXTRA_SMS_CODE ~~ 4com.google.android.gms.auth.api.signin.service.START
+2	4com.google.firebase.auth.internal	|| 4com.google.firebase.auth.internal.NONGMSCORE_SIGN_IN ~~ 4com.google.firebase.auth.internal.ProcessDeathHelper
+2	4io.grpc.internal	|| 4io.grpc.internal.AbstractClientStream$TransportState ~~ 4io.grpc.internal.DnsNameResolverProvider.enable_jndi
+2	4type.googleapis.com	|| 4type.googleapis.com/google.crypto.tink.HpkePublicKey ~~ 4type.googleapis.com/google.crypto.tink.AesCmacPrfKey
+2	5android.support.v4.media	|| 5android.support.v4.media.description.NULL_BUNDLE_FLAG ~~ 5android.support.v4.media.session.action.PLAY_FROM_URI
+2	5com.google.android.gms.signin.internal	|| 5com.google.android.gms.signin.internal.serverClientId ~~ 5com.google.android.gms.signin.internal.ISignInService
+2	5com.google.firebase.auth.internal	|| 5com.google.firebase.auth.internal.DefaultFirebaseUser ~~ 5com.google.firebase.auth.internal.KEY_STARTED_SIGN_IN
+2	5type.googleapis.com	|| 5type.googleapis.com/google.crypto.tink.HpkePrivateKey ~~ 5type.googleapis.com/google.crypto.tink.EcdsaPublicKey
+2	6android.support.v4.media	|| 6android.support.v4.media.session.action.ARGUMENT_QUERY ~~ 6android.support.v4.media.action.REMOVE_DOWNLOADED_FILE
+2	6androidx.media	|| 6androidx.media.PlaybackStateCompat.Extras.KEY_MEDIA_ID ~~ 6androidx.media.MediaSessionCompat.Extras.KEY_AUTHTOKEN
+2	6kotlinx.coroutines.flow.internal	|| 6kotlinx.coroutines.flow.internal.CombineKt$zipImpl$1$1 ~~ 6kotlinx.coroutines.flow.internal.ChannelFlow$collect$2
+2	7com.google.android.gms.internal	|| 7com.google.android.gms.internal.firebase-auth-api.zzaek ~~ 7com.google.android.gms.internal.firebase-auth-api.zzaco
+2	7com.google.android.gms.maps.internal	|| 7com.google.android.gms.maps.internal.IGoogleMapDelegate ~~ 7com.google.android.gms.maps.internal.IInfoWindowAdapter
+2	7com.google.android.gms.signin.internal	|| 7com.google.android.gms.signin.internal.idTokenRequested ~~ 7com.google.android.gms.signin.internal.ISignInCallbacks
+2	7com.google.firebase.auth.internal	|| 7com.google.firebase.auth.internal.EVENT_ID.%s.OPERATION ~~ 7com.google.firebase.auth.internal.ACTION_SHOW_RECAPTCHA
+2	8android.support.v4.media	|| 8android.support.v4.media.session.action.SET_SHUFFLE_MODE ~~ 8android.support.v4.media.session.action.PREPARE_FROM_URI
+2	9com.google.android.gms.auth	|| 9com.google.android.gms.auth.ACCOUNT_EXPORT_DATA_AVAILABLE ~~ 9com.google.android.gms.auth.ACCOUNT_IMPORT_DATA_AVAILABLE
+2	9com.google.android.gms.auth.api	|| 9com.google.android.gms.auth.api.phone.EXTRA_SMS_CODE_LINE ~~ 9com.google.android.gms.auth.api.credentials.service.START
+2	9com.google.android.gms.maps.internal	|| 9com.google.android.gms.maps.internal.IOnMapLoadedCallback ~~ 9com.google.android.gms.maps.internal.IMapFragmentDelegate
+2	org.apache.poi.hssf.dev	|| 9usage: java org.apache.poi.hssf.dev.RecordLister filename ~~ 9usage: java org.apache.poi.hssf.dev.EBBiffViewer filename
+2	com.google.android.gms.safetynet.internal	|| ;com.google.android.gms.safetynet.internal.ISafetyNetService ~~ =com.google.android.gms.safetynet.internal.ISafetyNetCallbacks
+2	okio.internal	|| <okio.internal.-FileSystem$commonDeleteRecursively$sequence$1 ~~ okio.internal.-FileSystem
+2	com.google.android.gms.measurement.api.internal	|| ?com.google.android.gms.measurement.api.internal.IBundleReceiver ~~ ?com.google.android.gms.measurement.api.internal.IStringProvider
+2	androidx.media	|| @androidx.media.MediaBrowserCompat.Extras.KEY_ROOT_CHILDREN_LIMIT ~~ @androidx.media.MediaMetadatCompat.METADATA_KEY_SERIES_CONTENT_ID
+2	bcom.google.android.gms.maps.internal	|| Bcom.google.android.gms.maps.internal.IOnCameraMoveCanceledListener ~~ Bcom.google.android.gms.maps.internal.IOnGroundOverlayClickListener
+2	bcom.google.android.gms.maps.model.internal	|| Bcom.google.android.gms.maps.model.internal.IOnFeatureClickListener ~~ Bcom.google.android.gms.maps.model.internal.IIndoorBuildingDelegate
+2	candroid.support.v4.media	|| Candroid.support.v4.media.session.command.ARGUMENT_MEDIA_DESCRIPTION ~~ Candroid.support.v4.media.session.action.ARGUMENT_CAPTIONING_ENABLED
+2	eandroidx.privacysandbox.ads	|| Eandroidx.privacysandbox.ads.adservices.topics.TopicsManagerImplCommon ~~ Eandroidx.privacysandbox.ads.adservices.adid.AdIdManager$Api33Ext4Impl
+2	gcom.google.android.gms.auth.api.identity.internal	|| Gcom.google.android.gms.auth.api.identity.internal.IAuthorizationService ~~ Gcom.google.android.gms.auth.api.identity.internal.ISavePasswordCallback
+2	gcom.google.android.gms.maps.internal	|| Gcom.google.android.gms.maps.internal.IOnStreetViewPanoramaReadyCallback ~~ Gcom.google.android.gms.maps.internal.IOnStreetViewPanoramaClickListener
+2	hcom.google.android.gms.maps.internal	|| Hcom.google.android.gms.maps.internal.IOnStreetViewPanoramaChangeListener ~~ Hcom.google.android.gms.maps.internal.IStreetViewPanoramaFragmentDelegate
+2	hcon.avcoding.core.data	|| Hcon.avcoding.core.data.source.remote.repoImpl.OtpServiceImpl$verifyOtp$2 ~~ Hcon.avcoding.core.data.source.remote.repoImpl.OtpServiceImpl$resendOtp$2
+2	icon.avcoding.core.data	|| Icon.avcoding.core.data.source.remote.repoImpl.StateServiceImpl$getParty$2 ~~ Icon.avcoding.core.data.source.remote.repoImpl.StateServiceImpl$getState$2
+2	jcom.google.android.gms.auth.api.identity.internal	|| Jcom.google.android.gms.auth.api.identity.internal.IGetSignInIntentCallback ~~ Jcom.google.android.gms.auth.api.identity.internal.ICredentialSavingService
+2	jcon.avcoding.core.data	|| Jcon.avcoding.core.data.source.remote.repoImpl.LoginServiceImpl$loginUser$2 ~~ Jcon.avcoding.core.data.source.remote.repoImpl.SignUpServiceImpl$signUser$2
+2	jorg.apache.xmlbeans.impl.jam.internal	|| Jorg.apache.xmlbeans.impl.jam.internal.javadoc.JavadocTigerDelegateImpl_150 ~~ Jorg.apache.xmlbeans.impl.jam.internal.reflect.ReflectTigerDelegateImpl_150
+2	ocom.google.firebase.crashlytics.buildtools.reloc.org	|| Ocom.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.Log ~~ Ocom.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.log
+2	scon.avcoding.core.data	|| Scon.avcoding.core.data.source.remote.repoImpl.NominationServiceImpl$getNomination$2 ~~ Scon.avcoding.core.data.source.remote.repoImpl.PermissionServiceImpl$logoutRequest$2
+2	androidx.fragment.app	|| bnull cannot be cast to non-null type java.lang.Class<androidx.fragment.app.FragmentTransitionImpl> ~~ Set a custom {@link androidx.fragment.app.FragmentFactory} via
+2	tcon.avcoding.core.data	|| Tcon.avcoding.core.data.source.remote.repoImpl.PermissionServiceImpl$uploadFilePart$2 ~~ Tcon.avcoding.core.data.source.remote.repoImpl.PermissionServiceImpl$getSelectedDoc$2
+2	vcom.google.firebase.crashlytics.buildtools.reloc.org	|| Vcom.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.LogFactory ~~ Vcom.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.simplelog.
+2	zcom.google.firebase.crashlytics.buildtools.reloc.org	|| Zcom.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.impl.SimpleLog ~~ Zcom.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.simplelog.log.
+2	www.bouncycastle.org	|| www.bouncycastle.org ~~ [Copyright (c) 2000-2019 The Legion of the Bouncy Castle Inc. (http://www.bouncycastle.org)
+2	in.gov.eci.encore.utils	|| com.pairip.vmencryption.KeyImportPlaceholderService;com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService->com.pairip.vmencr ~~ aceholderContentProvider;com.eci.citizen.features.home.downloads.DownloadService->com.pairip.vmencryption.KeyImportPlaceholderService;com.eci.citizen.fcm.MyFire
+2	androidx.work.util	|| androidx.work.util.id ~~ androidx.work.util.preferences
+2	bcom.google.firebase.crashlytics.buildtools.reloc.org	|| bcom.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.Log.allowFlawedContext ~~ bcom.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.simplelog.showdatetime
+2	eci.user	|| eci.user.sharedprefs ~~ eci.user.decider.sharedprefs
+2	fcom.google.firebase.crashlytics.buildtools.reloc.org	|| fcom.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.simplelog.showShortLogname ~~ fcom.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.impl.Jdk13LumberjackLogger
+2	i.com	|| i.com.pwdapp.forms.CommonFormSevenProgram->com.pairip.vmencryption.KeyImportActivity;pwd.eci.com.pwdapp.forms.CommonSearchProgram->com.pairip.vmencryption.KeyIm ~~ i.com.pwdapp.Candidate.CandidateProfileActivity->com.pairip.vmencryption.KeyImportActivity;pwd.eci.com.pwdapp.ELECTION.resultNew.GeneralElectionResultMainActivi
+2	java.vendor	|| java.vendor ~~ java.vendor.url
+2	libcore.io	|| libcore.io.Memory ~~ libcore.io.DiskLruCache
+2	prefs.login	|| prefs.login.decider.response ~~ prefs.login.response
+2	rx3.io	|| rx3.io-keep-alive-time ~~ rx3.io-priority
+2	typesubtype.group	|| typeSubtype.group(2) ~~ typeSubtype.group(1)
+1	cs.caltech.edu	|| company   = 'Caltech Infospheres Project'        email     = 'adam@cs.caltech.edu'        homepage  = 'http://www.cs.caltech.edu/~adam/'/></bCard>
+1	invalid.character.in.base64.data	|| invalid.character.in.base64.data
+1	argmatcher.group	|| !argMatcher.group(index + 1) ?: ""
+1	http.client	|| !http.client.response.uncompressed
+1	identitytoolkit.googleapis.com	|| !identitytoolkit.googleapis.com/v2
+1	kotlinx.coroutines.io	|| !kotlinx.coroutines.io.parallelism
+1	com.google.apphosting.api	|| "com.google.apphosting.api.ApiProxy
+1	com.google.common.util	|| "com.google.common.util.concurrent.
+1	incorrect.segment.type.in	|| "incorrect.segment.type.in.pfb.file
+1	log.com	|| #fff;">Log.com"treatsheet) && 14px;sleepntentfiledja:c
+1	uk.co	|| #uk.co.deanwild.materialshowcaseview
+1	com.google.android.gms.org	|| $com.google.android.gms.org.conscrypt
+1	com.googlecode.mp4parser.util	|| $com.googlecode.mp4parser.util.Matrix
+1	firebaseinstallations.googleapis.com	|| $firebaseinstallations.googleapis.com
+1	com.android.providers.media	|| %com.android.providers.media.documents
+1	firebaseinappmessaging.googleapis.com	|| %firebaseinappmessaging.googleapis.com
+1	com.google.appengine.api	|| &com.google.appengine.api.ThreadManager
+1	org.apache.xerces.util	|| &org.apache.xerces.util.SecurityManager
+1	framehandler.data	|| 'OkHttpServerTransport$FrameHandler.data
+1	plus.me	|| 'https://www.googleapis.com/auth/plus.me
+1	org.jcp.xml.dsig.internal	|| 'org.jcp.xml.dsig.internal.dom.XMLDSigRI
+1	com.google.common.base.internal	|| )com.google.common.base.internal.Finalizer
+1	vnd.common.api	|| *Accept: application/vnd.common.api.v2+json
+1	com.android.internal	|| *com.android.internal.view.menu.MenuBuilder
+1	plus.login	|| *https://www.googleapis.com/auth/plus.login
+1	com.google.android.auth	|| +com.google.android.auth.IAuthManagerService
+1	measurement.store	|| +measurement.store.max_stored_events_per_app
+1	kotlin.coroutines.jvm.internal	|| ,kotlin.coroutines.jvm.internal.DebugProbesKt
+1	measurement.account	|| ,measurement.account.time_zone_offset_minutes
+1	anychart.core.stock.eventmarkers.group	|| ,new anychart.core.stock.eventMarkers.group()
+1	clientframehandler.data	|| -OkHttpClientTransport$ClientFrameHandler.data
+1	com.google.appengine.api.utils	|| -com.google.appengine.api.utils.SystemProperty
+1	default-rtdb.firebaseio.com	|| -default-rtdb.firebaseio.com
+1	gbraid.client.dev	|| -measurement.gbraid_campaign.gbraid.client.dev
+1	tos.org	|| . When in bothdismissExplorealways via thespaC1olwelfareruling arrangecaptainhis sonrule ofhe tookitself,=0&amp;(calledsamplesto makecom/pagMartin Kennedyaccept
+1	butterknife.internal	|| .butterknife.internal.DebouncingOnClickListener
+1	common.api	|| .common.api.GoogleApiActivity->com.pairip.vmencryption.KeyImportActivity;com.journeyapps.barcodescanner.CaptureActivity->com.pairip.vmencryption.KeyImportActivi
+1	com.eci.enetra.features.login	|| .common.api.GoogleApiActivity->com.pairip.vmencryption.KeyImportActivity;com.journeyapps.barcodescanner.CaptureActivity->com.pairip.vmencryption.KeyImportActivi
+1	eci.com	|| .eci.com.pwdapp.facilities.volunterregister.AddVolunteer->com.pairip.vmencryption.KeyImportActivity;pwd.eci.com.pwdapp.PSFacilities->com.pairip.vmencryption.Key
+1	firebaseio-demo.com	|| .firebaseio-demo.com
+1	firebaseio.com	|| .firebaseio.com
+1	userinfo.email	|| .https://www.googleapis.com/auth/userinfo.email
+1	note.gnu.build	|| .note.gnu.build-id
+1	org.apache.jcp.xml.dsig.internal	|| .org.apache.jcp.xml.dsig.internal.dom.XMLDSigRI
+1	org.apache.xerces.utils	|| .org.apache.xerces.utils.regex.ParseException:
+1	androidx.lifecycle.internal	|| /androidx.lifecycle.internal.SavedStateHandlesVM
+1	socket.io	|| /socket.io
+1	0android.support.v4.media	|| 0android.support.v4.media.session.action.UNFOLLOW
+1	0com.google.android.gms.auth	|| 0com.google.android.gms.auth.START_ACCOUNT_EXPORT
+1	0com.google.android.gms.common.internal	|| 0com.google.android.gms.common.internal.ICertData
+1	0com.google.android.gms.maps.internal	|| 0com.google.android.gms.maps.internal.CreatorImpl
+1	0com.google.android.gms.measurement.internal	|| 0com.google.android.gms.measurement.internal.zzfz
+1	0com.google.common.util	|| 0com.google.common.util.concurrent.AbstractFuture
+1	0io.grpc.util	|| 0io.grpc.util.MultiChildLoadBalancer$ChildLbState
+1	0kotlinx.coroutines.internal	|| 0kotlinx.coroutines.internal.StackTraceRecoveryKt
+1	1firebase.app	|| 1Firebase.app[SessionFirelogPublisher::class.java]
+1	1androidx.core.app	|| 1androidx.core.app.NotificationCompat$BigTextStyle
+1	1com.google.android.gms.auth.account	|| 1com.google.android.gms.auth.account.authapi.START
+1	1com.google.android.libraries.places.internal	|| 1com.google.android.libraries.places.internal.zzrj
+1	1com.google.common.util	|| 1com.google.common.util.concurrent.ImmediateFuture
+1	1com.google.firebase.auth.api	|| 1com.google.firebase.auth.api.gms.config.tenant.id
+1	1con.eci.candidateapp.ui.login	|| 1con.eci.candidateapp.ui.login.LoginVm$loginUser$1
+1	1in.nic.eci.observer.utils	|| 1in.nic.eci.observer.utils.SharedPreferenceManager
+1	1kotlin.reflect.jvm.internal	|| 1kotlin.reflect.jvm.internal.ReflectionFactoryImpl
+1	1okio.internal	|| 1okio.internal.-FileSystem$commonListRecursively$1
+1	2firebase.app	|| 2Firebase.app[SessionLife
+1	2android.media	|| 2android.media.extras.ERROR_RESOLUTION_ACTION_LABEL
+1	2android.support.v4.media	|| 2android.support.v4.media.session.action.SET_RATING
+1	2com.google.crypto.tink.internal	|| 2com.google.crypto.tink.internal.KeyManagerRegistry
+1	2com.itextpdf.forms.util	|| 2com.itextpdf.forms.util.RegisterDefaultDiContainer
+1	2java.com.google.android.gms.libs	|| 2java.com.google.android.gms.libs.identity_identity
+1	2kotlinx.serialization.json.internal	|| 2kotlinx.serialization.json.internal.JsonTreeReader
+1	context.assets	|| 2newChannel(context.assets.open(copyFromAssetPath))
+1	2www.googleapis.com	|| 2www.googleapis.com/identitytoolkit/v3/relyingparty
+1	thing.org	|| 3>thing.org/multiheardPowerstandtokensolid(thisbringshipsstafftriedcallsfullyfactsagentThis //-->adminegyptEvent15px;Emailtrue"crossspentblogsbox">notedleavechi
+1	3androidx.core.app	|| 3androidx.core.app.NotificationCompat$MessagingStyle
+1	3com.google.android.gms.ads	|| 3com.google.android.gms.ads.identifier.service.START
+1	3com.google.android.gms.auth.api	|| 3com.google.android.gms.auth.api.phone.SMS_RETRIEVED
+1	3com.google.android.gms.common.internal	|| 3com.google.android.gms.common.internal.ICancelToken
+1	3com.google.crypto.tink.config.internal	|| 3com.google.crypto.tink.config.internal.TinkFipsUtil
+1	3com.google.firebase.auth	|| 3com.google.firebase.auth.KEY_PROVIDER_CUSTOM_PARAMS
+1	3com.google.firebase.auth.internal	|| 3com.google.firebase.auth.internal.FIREBASE_APP_NAME
+1	3con.eci.candidateapp.ui.login	|| 3con.eci.candidateapp.ui.login.LoginVm$loginUser$1$1
+1	3in.gov	|| 3in.gov.eci.pollturnout.view.activity.SplashActivity
+1	3io.grpc.internal	|| 3io.grpc.internal.CALL_OPTIONS_RPC_OWNED_BY_BALANCER
+1	3kotlin.coroutines.jvm.internal	|| 3kotlin.coroutines.jvm.internal.BaseContinuationImpl
+1	3type.googleapis.com	|| 3type.googleapis.com/google.crypto.tink.AesGcmSivKey
+1	4android.support.v4.media	|| 4android.support.v4.media.session.action.ARGUMENT_URI
+1	4androidx.core.app	|| 4androidx.core.app.NotificationCompat$BigPictureStyle
+1	4com.google.android.gms.common.account	|| 4com.google.android.gms.common.account.CHOOSE_ACCOUNT
+1	4com.google.android.gms.common.internal	|| 4com.google.android.gms.common.internal.IGmsCallbacks
+1	4com.google.android.gms.org	|| 4com.google.android.gms.org.conscrypt.OpenSSLProvider
+1	4com.google.firebase.crash.internal	|| 4com.google.firebase.crash.internal.IFirebaseCrashApi
+1	5android.media	|| 5android.media.mediaparser.matroska.disableCuesSeeking
+1	5androidx.lifecycle.internal	|| 5androidx.lifecycle.internal.SavedStateHandlesProvider
+1	5androidx.media	|| 5androidx.media.MediaItem.Extras.COMPLETION_PERCENTAGE
+1	5com.google.android.gms.auth.account	|| 5com.google.android.gms.auth.account.workaccount.START
+1	5com.google.android.gms.auth.api.internal	|| 5com.google.android.gms.auth.api.internal.IAuthService
+1	5com.google.android.gms.auth.api	|| 5com.google.android.gms.auth.api.phone.permission.SEND
+1	5com.google.android.gms.maps.internal	|| 5com.google.android.gms.maps.internal.IMapViewDelegate
+1	5com.google.common.flogger.util	|| 5com.google.common.flogger.util.StackWalkerStackGetter
+1	6androidx.appcompat.app	|| 6androidx.appcompat.app.AppLocalesMetadataHolderService
+1	6com.google.android.gms.fido.fido2.api	|| 6com.google.android.gms.fido.fido2.api.IBooleanCallback
+1	6io.grpc.internal	|| 6io.grpc.internal.SerializeReentrantCallsDirectExecutor
+1	6java.util	|| 6java.util.List targetList = new java.util.ArrayList();
+1	6measurement.client	|| 6measurement.client.sessions.check_on_reset_and_enable2
+1	6type.googleapis.com	|| 6type.googleapis.com/google.crypto.tink.EcdsaPrivateKey
+1	7android.media	|| 7android.media.mediaParser.exposeChunkIndexAsMediaFormat
+1	7com.google.android.gms.auth.account	|| 7com.google.android.gms.auth.account.IWorkAccountService
+1	7com.google.android.gms.auth.api.internal	|| 7com.google.android.gms.auth.api.internal.IAuthCallbacks
+1	7com.google.android.gms.auth.api	|| 7com.google.android.gms.auth.api.phone.EXTRA_SMS_MESSAGE
+1	7com.google.android.gms.common.internal	|| 7com.google.android.gms.common.internal.IAccountAccessor
+1	7io.grpc.internal	|| 7io.grpc.internal.ManagedChannelServiceConfig.MethodInfo
+1	7io.grpc.okhttp.internal	|| 7io.grpc.okhttp.internal.framed.Http2$ContinuationSource
+1	7measurement.client	|| 7measurement.client.sessions.background_sessions_enabled
+1	7type.googleapis.com	|| 7type.googleapis.com/google.crypto.tink.Ed25519PublicKey
+1	8com.google.android.gms.auth.account	|| 8com.google.android.gms.auth.account.IWorkAccountCallback
+1	8com.google.android.gms.auth.account.data	|| 8com.google.android.gms.auth.account.data.IBundleCallback
+1	8com.google.android.gms.auth.api	|| 8com.google.android.gms.auth.api.phone.SMS_CODE_RETRIEVED
+1	8com.google.android.gms.common.internal	|| 8com.google.android.gms.common.internal.IGmsServiceBroker
+1	8com.google.android.gms.maps.model.internal	|| 8com.google.android.gms.maps.model.internal.IStyleFactory
+1	8com.google.common.flogger.util	|| 8com.google.common.flogger.util.JavaLangAccessStackGetter
+1	8com.google.firebase.auth.internal	|| 8com.google.firebase.auth.internal.EVENT_ID.%s.SESSION_ID
+1	8io.grpc.internal	|| 8io.grpc.internal.ManagedChannelImpl$NameResolverListener
+1	8kotlinx.coroutines.debug.internal	|| 8kotlinx.coroutines.debug.internal.DebugCoroutineInfoImpl
+1	8kotlinx.coroutines.flow.internal	|| 8kotlinx.coroutines.flow.internal.CombineKt$zipImpl$1$1$2
+1	9com.google.android.youtube.player.internal	|| 9com.google.android.youtube.player.internal.IServiceBroker
+1	9com.google.firebase.auth.internal	|| 9com.google.firebase.auth.internal.EVENT_ID.%s.PROVIDER_ID
+1	9io.grpc.internal	|| 9io.grpc.internal.PickFirstLeafLoadBalancer$HealthListener
+1	9io.grpc.okhttp.internal	|| 9io.grpc.okhttp.internal.Platform$JdkWithJettyBootPlatform
+1	9measurement.rb.attribution.client	|| 9measurement.rb.attribution.client.min_ad_services_version
+1	com.google.android.gms.common.api.internal	|| :com.google.android.gms.common.api.internal.IStatusCallback
+1	kotlinx.coroutines.test.internal	|| :kotlinx.coroutines.test.internal.TestMainDispatcherFactory
+1	com.google.android.gms.auth.account.data	|| ;com.google.android.gms.auth.account.data.IGoogleAuthService
+1	com.google.firebase.crash.internal.api	|| ;com.google.firebase.crash.internal.api.FirebaseCrashApiImpl
+1	con.avcoding.core.data.source.remote.data	|| ;con.avcoding.core.data.source.remote.data.GenericApiRequest
+1	mci.net	|| <!DOCTYPE bCard 'http://www.cs.caltech.edu/~adam/schemas/bCard'><bCard><?xml default bCard        firstname = ''        lastname  = '' company   = '' email = ''
+1	2fwww.in	|| <&nbsp;&nbsp;&nbsp;"><a href="http://style="float:left;concerned with the=http%3A%2F%2Fwww.in popular culturetype="text/css" />it is possible to Harvard Univers
+1	proprietaryoriginatingprestigiousgrammaticalexperience.to	|| </script>adopted theproperty ofdirected byeffectivelywas broughtchildren ofProgramminglonger thanmanuscriptswar againstby means ofand most ofsimilar to propriet
+1	com.google.android.gms.auth.api.identity	|| =com.google.android.gms.auth.api.identity.service.signin.START
+1	com.google.android.gms.fido.fido2.api	|| =com.google.android.gms.fido.fido2.api.ICredentialListCallback
+1	com.google.firebase.sessions.api	|| =com.google.firebase.sessions.api.FirebaseSessionsDependencies
+1	com.google.android.youtube.api.jar.client	|| >com.google.android.youtube.api.jar.client.RemoteEmbeddedPlayer
+1	bap.us	|| ??za???s!.&a!bap.us,disnim321,?b!ibnal?rofmok??c!a??d!b?n&arb?ubroflanummok???e?f!noc,?g!ro??h!f??i!trap??k!shf??l?m!oc,t??n!mygskurbrutan??o?p!ohsdaerpsym,p??r
+1	com.google.android.gms.fido.u2f.internal	|| ?com.google.android.gms.fido.u2f.internal.regular.IU2fAppService
+1	com.google.android.gms.measurement.internal	|| ?com.google.android.gms.measurement.internal.IMeasurementService
+1	measurement.id.client	|| ?measurement.id.client.sessions.enable_fix_background_engagement
+1	org.apache.xmlbeans.impl.jam.internal	|| ?org.apache.xmlbeans.impl.jam.internal.javadoc.JavadocRunner_150
+1	com.google.android.gms.auth.api.identity.internal	|| @com.google.android.gms.auth.api.identity.internal.ISignInService
+1	java.com	|| @java.com.google.android.libraries.places.widget.kotlin_kotlin_3p
+1	client.dev	|| @measurement.collection.enable_session_stitching_token.client.dev
+1	s.whatsapp.net	|| @s.whatsapp.net
+1	org.bouncycastle.util	|| AAll elements of list must be of type org.bouncycastle.util.Store.
+1	acom.android.okhttp.internal	|| Acom.android.okhttp.internal.http.HttpTransport$ChunkedInputStream
+1	acom.google.android.gms.fido.u2f.internal	|| Acom.google.android.gms.fido.u2f.internal.regular.IU2fAppCallbacks
+1	acom.google.android.gms.maps.model.internal	|| Acom.google.android.gms.maps.model.internal.IGroundOverlayDelegate
+1	acom.google.android.libraries.places.api.net	|| Acom.google.android.libraries.places.api.net.kotlin.PlacesClientKt
+1	acom.google.android.youtube.api	|| Acom.google.android.youtube.api.locallylinked.LocallyLinkedFactory
+1	ajava.com.google.android.libraries.places.api.net	|| Ajava.com.google.android.libraries.places.api.net.kotlin_kotlin_3p
+1	akotlinx.coroutines.flow.internal	|| Akotlinx.coroutines.flow.internal.CombineKt$zipImpl$1$1$second$1$1
+1	bcom.google.android.gms.auth.api.signin.internal	|| Bcom.google.android.gms.auth.api.signin.internal.IRevocationService
+1	bcom.google.android.gms.measurement.api.internal	|| Bcom.google.android.gms.measurement.api.internal.IEventHandlerProxy
+1	bcom.google.android.youtube.player.internal	|| Bcom.google.android.youtube.player.internal.IThumbnailLoaderService
+1	candroid.media	|| Candroid.media.playback.ALWAYS_RESERVE_SPACE_FOR.ACTION_SKIP_TO_NEXT
+1	ccom.google.android.gms.fido.fido2.internal	|| Ccom.google.android.gms.fido.fido2.internal.regular.IFido2AppService
+1	ccom.google.android.gms.maps.internal	|| Ccom.google.android.gms.maps.internal.IOnInfoWindowLongClickListener
+1	ccom.google.android.gms.maps.model.internal	|| Ccom.google.android.gms.maps.model.internal.IMapCapabilitiesDelegate
+1	ccom.google.devtools.build	|| Ccom.google.devtools.build.android.desugar.runtime.twr_disable_mimic
+1	cjava.com.google.android.libraries.places.api	|| Cjava.com.google.android.libraries.places.api.model.kotlin_kotlin_3p
+1	converter.identity	|| Converter.identity()
+1	ddvcsrequest.data	|| DDVCSRequest.data.messageImprint should be specified for CCPD service
+1	dcom.google.android.gms.ads.identifier.internal	|| Dcom.google.android.gms.ads.identifier.internal.IAdvertisingIdService
+1	dcom.google.android.gms.auth.api.identity	|| Dcom.google.android.gms.auth.api.identity.service.authorization.START
+1	dcom.google.android.gms.maps.internal	|| Dcom.google.android.gms.maps.internal.IStreetViewPanoramaViewDelegate
+1	dcom.google.firebase.auth.internal	|| Dcom.google.firebase.auth.internal.KEY_ALREADY_STARTED_RECAPTCHA_FLOW
+1	dio.grpc.internal	|| Dio.grpc.internal.RetryingNameResolver.RESOLUTION_RESULT_LISTENER_KEY
+1	ecom.android.okhttp.internal	|| Ecom.android.okhttp.internal.http.HttpTransport$FixedLengthInputStream
+1	ecom.google.android.gms.auth.account.data	|| Ecom.google.android.gms.auth.account.data.IGetTokenWithDetailsCallback
+1	ecom.google.android.gms.fido.fido2.internal	|| Ecom.google.android.gms.fido.fido2.internal.regular.IFido2AppCallbacks
+1	ecom.google.android.gms.maps.internal	|| Ecom.google.android.gms.maps.internal.IOnMyLocationButtonClickListener
+1	ecom.google.android.gms.maps.model.internal	|| Ecom.google.android.gms.maps.model.internal.IFeatureClickEventDelegate
+1	ecom.google.android.location.internal	|| Ecom.google.android.location.internal.EXTRA_ACTIVITY_TRANSITION_RESULT
+1	ecom.google.android.youtube.player.internal	|| Ecom.google.android.youtube.player.internal.IPlayerStateChangeListener
+1	ecom.google.firebase.crashlytics.buildtools.reloc.org	|| Ecom.google.firebase.crashlytics.buildtools.reloc.org.apache.http.wire
+1	emeasurement.client	|| Emeasurement.client.sessions.remove_expired_session_properties_enabled
+1	eorg.bouncycastle.jcajce.provider.symmetric.util	|| Eorg.bouncycastle.jcajce.provider.symmetric.util.IvAlgorithmParameters
+1	fandroidx.media	|| Fandroidx.media.MediaMetadatCompat.METADATA_KEY_NEXT_EPISODE_CONTENT_ID
+1	fcom.google.android.gms.auth.api.identity.internal	|| Fcom.google.android.gms.auth.api.identity.internal.IBeginSignInCallback
+1	fcom.google.android.gms.auth.api.phone.internal	|| Fcom.google.android.gms.auth.api.phone.internal.ISmsRetrieverApiService
+1	fcom.google.android.gms.common.internal	|| Fcom.google.android.gms.common.internal.service.IClientTelemetryService
+1	fcom.google.android.gms.location.internal	|| Fcom.google.android.gms.location.internal.IGoogleLocationManagerService
+1	fcom.google.android.gms.maps.internal	|| Fcom.google.android.gms.maps.internal.IOnMapCapabilitiesChangedListener
+1	fcom.google.android.location.internal	|| Fcom.google.android.location.internal.EXTRA_ACTIVITY_TRANSITION_REQUEST
+1	fkotlinx.coroutines.flow.internal	|| Fkotlinx.coroutines.flow.internal.ChannelLimitedFlowMerge$collectTo$2$1
+1	fkotlinx.serialization.json.internal	|| Fkotlinx.serialization.json.internal.JsonTreeReader$readDeepRecursive$1
+1	functions.identity	|| Functions.identity()
+1	gandroid.media	|| Gandroid.media.playback.ALWAYS_RESERVE_SPACE_FOR.ACTION_SKIP_TO_PREVIOUS
+1	gcom.google.android.gms.auth.api.identity	|| Gcom.google.android.gms.auth.api.identity.service.credentialsaving.START
+1	gcom.google.android.gms.fido.u2f.internal	|| Gcom.google.android.gms.fido.u2f.internal.zeroparty.IU2fZeroPartyService
+1	gcom.google.android.gms.location.internal	|| Gcom.google.android.gms.location.internal.IFusedLocationProviderCallback
+1	gcom.google.android.location.internal	|| Gcom.google.android.location.internal.GoogleLocationManagerService.START
+1	gcom.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client	|| Gcom.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client
+1	gjava.com	|| Gjava.com.google.android.libraries.abuse.recaptcha.enterprise_enterprise
+1	gkotlinx.coroutines.flow.internal	|| Gkotlinx.coroutines.flow.internal.UndispatchedContextCollector$emitRef$1
+1	handroidx.appcompat.app	|| Handroidx.appcompat.app.AppCompatDelegate.application_locales_record_file
+1	hcom.google.android.gms.auth.account.data	|| Hcom.google.android.gms.auth.account.data.IGetAccountChangeEventsCallback
+1	hcom.google.android.gms.auth.api.credentials.internal	|| Hcom.google.android.gms.auth.api.credentials.internal.ICredentialsService
+1	hcom.google.android.gms.auth.api.identity.internal	|| Hcom.google.android.gms.auth.api.identity.internal.IAuthorizationCallback
+1	hcom.google.firebase.crashlytics.buildtools.reloc.org	|| Hcom.google.firebase.crashlytics.buildtools.reloc.org.apache.http.headers
+1	hcon.avcoding.core.data.source.remote.data	|| Hcon.avcoding.core.data.source.remote.data.GenericApiRequest$apiRequest$2
+1	hjava.util	|| Hjava.util.Calendar[] result = new java.util.Calendar[targetList.size()];
+1	www.nokko.com	|| Host: www.nokko.com
+1	iandroidx.media	|| Iandroidx.media.MediaControllerCompat.TransportControls.extras.KEY_SHUFFLE
+1	icom.google.android.gms.auth.api.phone.internal	|| Icom.google.android.gms.auth.api.phone.internal.IOngoingSmsRequestCallback
+1	icom.google.android.gms.measurement.internal	|| Icom.google.android.gms.measurement.internal.AppMeasurementDynamiteService
+1	ijava.com	|| Ijava.com.google.android.libraries.firebase.firebase_analytics_ktx_granule
+1	ikotlinx.coroutines.flow.internal	|| Ikotlinx.coroutines.flow.internal.ChannelFlowTransformLatest$flowCollect$3
+1	jandroidx.media	|| Jandroidx.media.MediaBrowserCompat.Extras.KEY_ROOT_CHILDREN_SUPPORTED_FLAGS
+1	jcom.google.android.gms.auth.api.credentials.internal	|| Jcom.google.android.gms.auth.api.credentials.internal.ICredentialsCallbacks
+1	jcom.google.android.gms.auth.api.phone.internal	|| Jcom.google.android.gms.auth.api.phone.internal.ISmsRetrieverResultCallback
+1	jcom.google.android.gms.auth.api	|| Jcom.google.android.gms.auth.api.phone.service.SmsRetrieverApiService.START
+1	jcom.google.android.gms.common.moduleinstall.internal	|| Jcom.google.android.gms.common.moduleinstall.internal.IModuleInstallService
+1	jjava.com	|| Jjava.com.google.android.libraries.abuse.recaptcha.enterprise.public_public
+1	jorg.apache.xerces.utils	|| Jorg.apache.xerces.utils.regex.Token#getRange(): Unknown Unicode category:
+1	kcom.google.android.gms.maps.internal	|| Kcom.google.android.gms.maps.internal.IOnStreetViewPanoramaLongClickListener
+1	kcom.google.android.gms.maps.model.internal	|| Kcom.google.android.gms.maps.model.internal.IBitmapDescriptorFactoryDelegate
+1	kcon.avcoding.core.data	|| Kcon.avcoding.core.data.source.remote.repoImpl.OtpSignUpImpl$verifySignOtp$2
+1	kkotlinx.coroutines.flow.internal	|| Kkotlinx.coroutines.flow.internal.ChannelFlowTransformLatest$flowCollect$3$1
+1	lcom.google.android.gms.common.moduleinstall.internal	|| Lcom.google.android.gms.common.moduleinstall.internal.IModuleInstallCallbacks
+1	lcom.google.android.gms.location.internal	|| Lcom.google.android.gms.location.internal.ILocationAvailabilityStatusCallback
+1	ljava.com.google.android.gmscore.integ.client	|| Ljava.com.google.android.gmscore.integ.client.measurement_api_measurement_api
+1	mandroidx.privacysandbox.ads	|| Mandroidx.privacysandbox.ads.adservices.appsetid.AppSetIdManager$Api33Ext4Impl
+1	mcom.google.android.gms.fido.fido2.internal	|| Mcom.google.android.gms.fido.fido2.internal.privileged.IFido2PrivilegedService
+1	mkotlinx.coroutines.debug.internal	|| Mkotlinx.coroutines.debug.internal.DebugCoroutineInfoImpl$creationStackTrace$1
+1	mkotlinx.coroutines.flow.internal	|| Mkotlinx.coroutines.flow.internal.ChannelFlowTransformLatest$flowCollect$3$1$2
+1	androidx.core.util	|| Mnull cannot be cast to non-null type T of androidx.core.util.Pools.SimplePool
+1	ncom.google.android.gms.maps.internal	|| Ncom.google.android.gms.maps.internal.IOnStreetViewPanoramaCameraChangeListener
+1	ncom.google.android.gms.measurement.api.internal	|| Ncom.google.android.gms.measurement.api.internal.IAppMeasurementDynamiteService
+1	ngoogle.internal	|| Ngoogle.internal.firebase.inappmessaging.v1.sdkserving.InAppMessagingSdkServing
+1	ocom.google.android.gms.auth.api.phone.internal	|| Ocom.google.android.gms.auth.api.phone.internal.IAutofillPermissionStateCallback
+1	ocom.google.android.gms.fido.fido2.internal	|| Ocom.google.android.gms.fido.fido2.internal.privileged.IFido2PrivilegedCallbacks
+1	djava.io	|| PSystems temporary directory not defined - set the -Djava.io.tmpdir jvm property!
+1	pcom.google.android.gms.auth.api.accounttransfer.internal	|| Pcom.google.android.gms.auth.api.accounttransfer.internal.IAccountTransferService
+1	pcon.avcoding.core.data	|| Pcon.avcoding.core.data.source.remote.repoImpl.StateServiceImpl$profileRegister$2
+1	periodformat.space	|| PeriodFormat.space
+1	pjava.com.google.android.gmscore.integ.client	|| Pjava.com.google.android.gmscore.integ.client.firebase-auth-api_firebase-auth-api
+1	predicates.in	|| Predicates.in(
+1	qcom.google.android.gms.common.moduleinstall.internal	|| Qcom.google.android.gms.common.moduleinstall.internal.IModuleInstallStatusListener
+1	qcom.google.firebase.crashlytics.buildtools.reloc.org	|| Qcom.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.impl.
+1	rcom.google.android.gms.auth.api.accounttransfer.internal	|| Rcom.google.android.gms.auth.api.accounttransfer.internal.IAccountTransferCallbacks
+1	rcom.google.android.gms.auth.api.identity.internal	|| Rcom.google.android.gms.auth.api.identity.internal.ISaveAccountLinkingTokenCallback
+1	dop.portal.tracking	|| Rhttps://www.indiapost.gov.in/_layouts/15/dop.portal.tracking/trackconsignment.aspx
+1	sandroidx.privacysandbox.ads	|| Sandroidx.privacysandbox.ads.adservices.adselection.AdSelectionManager$Api33Ext4Impl
+1	scom.google.android.gms.auth.api.identity.internal	|| Scom.google.android.gms.auth.api.identity.internal.IGetPhoneNumberHintIntentCallback
+1	ita-itb.io	|| T`/iTa-iTb.io
+1	tandroidx.compose.runtime.internal	|| Tandroidx.compose.runtime.internal.rememberComposableLambda (ComposableLambda.kt:628)
+1	ukotlinx.coroutines.flow.internal	|| Ukotlinx.coroutines.flow.internal.ChannelFlowOperator$collectWithContextUndispatched$2
+1	vandroidx.media	|| Vandroidx.media.BrowserRoot.Extras.APPLICATION_PREFERENCES_USING_CAR_APP_LIBRARY_INTENT
+1	vcon.avcoding.core.data	|| Vcon.avcoding.core.data.source.remote.repoImpl.PermissionServiceImpl$getPoliceStation$2
+1	wandroidx.media	|| Wandroidx.media.PlaybackStateCompat.Extras.ERROR_RESOLUTION_USING_CAR_APP_LIBRARY_INTENT
+1	wcon.avcoding.core.data	|| Wcon.avcoding.core.data.source.remote.repoImpl.PermissionServiceImpl$getPermissionData$2
+1	kotlinx.coroutines.debug.internal	|| Wnull cannot be cast to non-null type kotlinx.coroutines.debug.internal.HashedWeakRef<*>
+1	xcom.google.firebase.crashlytics.buildtools.reloc.org	|| Xcom.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.impl.NoOpLog
+1	xcon.avcoding.core.data	|| Xcon.avcoding.core.data.source.remote.repoImpl.PermissionServiceImpl$getPollDayResponse$2
+1	zandroidx.compose.runtime.internal	|| Zandroidx.compose.runtime.internal.rememberComposableLambdaN (ComposableLambdaN.jvm.kt:176)
+1	zcom.google.firebase.crashlytics.buildtools.reloc.com.google.common.base.internal	|| Zcom.google.firebase.crashlytics.buildtools.reloc.com.google.common.base.internal.Finalizer
+1	com.google.firebase.crashlytics.buildtools.reloc.com	|| \com.google.firebase.crashlytics.buildtools.reloc.com.google.common.base.FinalizableReference
+1	google.firebase.crashlytics.buildtools.reloc.org	|| _com.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.impl.LogFactoryImpl
+1	acom.google.firebase.crashlytics.buildtools.reloc.org	|| acom.google.firebase.crashlytics.buildtools.reloc.org.apache.commons.logging.simplelog.showlogname
+1	android.tv	|| android.tv.EXTENSIONS
+1	android.com	|| android@android.com
+1	apple.com	|| apple.com
+1	builder.build	|| builder.build()
+1	cn.google.services	|| cn.google.services
+1	com.android.wp.net	|| com.android.wp.net.log
+1	com.facebook.auth.login	|| com.facebook.auth.login
+1	com.google.android.tv	|| com.google.android.tv
+1	com.google.android.wearable.app	|| com.google.android.wearable.app
+1	com.google.android.youtube.tv	|| com.google.android.youtube.tv
+1	com.google.app	|| com.google.app.id
+1	com.ibm.uvm.tools	|| com.ibm.uvm.tools.DebugSupport
+1	com.itextpdf.io	|| com.itextpdf.io
+1	jp.ne.ibis.ibispaintx.app	|| com.labpixies.flood,com.sofascore.results,games.spearmint.triplecrush,com.block.juggle,io.supercent.linkedcubic,com.cdtg.gunsound,com.corestudios.storemanagemen
+1	com.repodroid.app	|| com.repodroid.app
+1	dandroidx.privacysandbox.ads	|| dandroidx.privacysandbox.ads.adservices.java.adid.AdIdManagerFutures$Api33Ext4JavaImpl$getAdIdAsync$1
+1	databuilder.build	|| dataBuilder.build()
+1	demo.eci.nic.in	|| demo.eci.nic.in
+1	gmail.com	|| devprojects.eci@gmail.com
+1	genretrucklooksvalueframe.net	|| dshillsteamsPhototruthclean.php?saintmetallouismeantproofbriefrow">genretrucklooksValueFrame.net/-->
+1	androidx.work.impl.utils	|| ebase.iid.FirebaseInstanceIdReceiver->com.pairip.vmencryption.KeyImportPlaceholderReceiver;androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver->com.pai
+1	ecim.user	|| ecim.user.sharedprefs
+1	encoreapp.user	|| encoreapp.user.sharedprefs
+1	facebook.com	|| facebook.com
+1	firebase.com	|| firebase.com.protolitewrapper
+1	firebaseapp.com	|| firebaseapp.com
+1	firestore.googleapis.com	|| firestore.googleapis.com
+1	gcm.n.link	|| gcm.n.link
+1	locatedstatic.login	|| generatdecidedare not/searchbeliefs-image:locatedstatic.login">convertviolententeredfirst">circuitFinlandchemistshe was10px;">as suchdivided</span>will beline o
+1	google-analytics.com	|| google-analytics.com
+1	google.to	|| google.to
+1	http.auth.auth	|| http.auth.auth-cache
+1	http.route.local	|| http.route.local-address
+1	http.user	|| http.user-token
+1	in.gov.eci.seizure.app	|| in.gov.eci.seizure.app
+1	jandroidx.privacysandbox.ads	|| jandroidx.privacysandbox.ads.adservices.java.topics.TopicsManagerFutures$Api33Ext4JavaImpl$getTopicsAsync$1
+1	java.specification.vendor	|| java.specification.vendor
+1	java.sql	|| java.sql.Date
+1	java.util.map.java.util	|| java.util.Map.java.util.Map
+1	java.vm.info	|| java.vm.info
+1	java.vm.specification.vendor	|| java.vm.specification.vendor
+1	java.vm.vendor	|| java.vm.vendor
+1	libfrida-gadget.so	|| libfrida-gadget.so
+1	libinjector.so	|| libinjector.so
+1	the.com	|| market.highwaydone inctivity"last">obligedrise to"undefimade to Early praisedin its for hisathleteJupiterYahoo! termed so manyreally s. The a woman?value=direct
+1	measurement.sfmc.client	|| measurement.sfmc.client
+1	measurement.sgtm.client.dev	|| measurement.sgtm.client.dev
+1	measurement.tcf.client.dev	|| measurement.tcf.client.dev
+1	com.eci.citizen.features.login	|| mentActivity->com.pairip.vmencryption.KeyImportActivity;com.eci.citizen.features.login.LoginActivity->com.pairip.vmencryption.KeyImportActivity;com.eci.citizen.
+1	boston.test	|| msboughtfamousgooglelongeri++) {israelsayingdecidehome">headerensurebranchpiecesblock;statedtop"><racingresize--&gt;pacitysexualbureau.jpg" 10,000obtaintitlesam
+1	n.gov	|| n.gov.eci.seizure.ui.dashboard.DashboardActivity->com.pairip.vmencryption.KeyImportActivity;in.gov.eci.seizure.ui.seizure.SeizureSearchActivity->com.pairip.vmen
+1	org.apache.http.client	|| org.apache.http.client
+1	org.apache.poi.util	|| org.apache.poi.util.POILogger
+1	org.aspectj.runtime.internal	|| org.aspectj.runtime.internal
+1	org.blackmart.market	|| org.blackmart.market
+1	org.openjsse.net	|| org.openjsse.net.ssl.OpenJSSE
+1	output.build	|| output.build()
+1	pandroidx.privacysandbox.ads	|| pandroidx.privacysandbox.ads.adservices.java.appsetid.AppSetIdManagerFutures$Api33Ext4JavaImpl$getAppSetIdAsync$1
+1	people.in	|| people.in one =windowfooter_a good reklamaothers,to this_cookiepanel">London,definescrushedbaptismcoastalstatus title" move tolost inbetter impliesrivalryserver
+1	playgames.google.com	|| playgames.google.com
+1	poi.keep.tmp.files	|| poi.keep.tmp.files
+1	prefsm.login	|| prefsm.login.response
+1	prefsm.screen.login	|| prefsm.screen.login.response
+1	premature.end.in	|| premature.end.in.pfb.file
+1	push.parse.com	|| push.parse.com
+1	ro.build	|| ro.build.version.oneui
+1	adroh.so	|| s??ron??adroh.so?dron.&a&g5-b--nx?ri-yreh--nx??ob?y&oreh?
+1	securetoken.googleapis.com	|| securetoken.googleapis.com/v1
+1	sun.arch.data	|| sun.arch.data.model
+1	ecitech.in	|| support@ecitech.in
+1	surefire.test	|| surefire.test.class.path
+1	sys.user	|| sys.user.
+1	investigator.eci.gov.in	|| t-%1$s@investigator.eci.gov.in
+1	tandroidx.privacysandbox.ads	|| tandroidx.privacysandbox.ads.adservices.java.adselection.AdSelectionManagerFutures$Api33Ext4JavaImpl$selectAdsAsync$1
+1	time.android.com	|| time.android.com
+1	vtps.user	|| vtps.user.sharedprefs
+1	web.app	|| web.app
+1	www.gstatic.com	|| www.gstatic.com/recaptcha
+1	www.simplifiedcoding.net	|| www.simplifiedcoding.net
+1	yandroidx.privacysandbox.ads	|| yandroidx.privacysandbox.ads.adservices.java.measurement.MeasurementManagerFutures$Api33Ext5JavaImpl$registerSourceAsync$1
+1	zandroidx.privacysandbox.ads	|| zandroidx.privacysandbox.ads.adservices.java.measurement.MeasurementManagerFutures$Api33Ext5JavaImpl$registerTriggerAsync$1

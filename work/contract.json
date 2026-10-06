@@ -1,0 +1,228 @@
+{
+  "engine": "epic_engine",
+  "version": "1.0.0",
+  "epic": "SQX2097129",
+  "requests": [
+    {
+      "id": "public_voter_search",
+      "name": "Public voter record search (weak auth)",
+      "verb": "GET",
+      "host": "https://electoralsearch.in",
+      "path": "/api/search",
+      "query": [
+        [
+          "epic_no",
+          "SQX2097129"
+        ],
+        [
+          "search_type",
+          "epic"
+        ],
+        [
+          "pass_key",
+          "d3d7e449c5742b1c5d222b96506d8f58a36dc4c51253008f713c841d4a8870fcab1195c9e2973421194ff3e612d748d88c263533b6cb3143bdc41e41e21caaef"
+        ],
+        [
+          "page_no",
+          "1"
+        ]
+      ],
+      "note": "pass_key is client-computed and identical for every installation. No per-user authentication.",
+      "evidences": [
+        "smali_classes13/com/eci/citizen/features/home/evp/DigitalEpicActivity.smali",
+        "callSearchApi: GET api/search?epic_no=...&search_type=epic&passKey=...&page_no=..."
+      ]
+    },
+    {
+      "id": "public_voter_search",
+      "name": "Public voter record search (weak auth)",
+      "verb": "GET",
+      "host": "https://electoralsearch.in",
+      "path": "/api/search",
+      "query": [
+        [
+          "epic_no",
+          "SQX2097129"
+        ],
+        [
+          "search_type",
+          "epic"
+        ],
+        [
+          "pass_key",
+          "d3d7e449c5742b1c5d222b96506d8f58a36dc4c51253008f713c841d4a8870fcab1195c9e2973421194ff3e612d748d88c263533b6cb3143bdc41e41e21caaef"
+        ],
+        [
+          "page_no",
+          "1"
+        ]
+      ],
+      "note": "pass_key is client-computed and identical for every installation. No per-user authentication.",
+      "evidences": [
+        "smali_classes13/com/eci/citizen/features/home/evp/DigitalEpicActivity.smali",
+        "callSearchApi: GET api/search?epic_no=...&search_type=epic&passKey=...&page_no=..."
+      ]
+    },
+    {
+      "id": "eepic_search",
+      "name": "EEPIC detail search (authenticated)",
+      "verb": "POST",
+      "host": "https://gateway-vha.eci.gov.in/api/v1",
+      "path": "/eepic/GetElectorDetailForEEPIC",
+      "query": [],
+      "headers": [
+        [
+          "Content-Type",
+          "application/json"
+        ],
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "X-API-KEY",
+          "<unset>"
+        ]
+      ],
+      "body": {
+        "body": {
+          "epic_no": "SQX2097129",
+          "search_type": "epic"
+        }
+      },
+      "response_model": "ElectorDetails",
+      "evidences": [
+        "smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+        "POST eepic/GetElectorDetailForEEPIC",
+        "response type: Lcom/eci/citizen/DataRepository/Model/ElectorDetails;"
+      ],
+      "response_profile": {
+        "payload": {
+          "body": {
+            "epic_no": "SQX2097129",
+            "search_type": "epic"
+          }
+        },
+        "profile": {}
+      }
+    },
+    {
+      "id": "eepic_card_pdf",
+      "name": "EEPIC card PDF download",
+      "verb": "POST",
+      "host": "https://gateway-vha.eci.gov.in",
+      "path": "/eepic/GetEEPICCard",
+      "query": [],
+      "headers": [
+        [
+          "Content-Type",
+          "application/json"
+        ],
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "X-API-KEY",
+          "<unset>"
+        ]
+      ],
+      "body": {
+        "body": {
+          "epic_no": "SQX2097129",
+          "search_type": "epic"
+        }
+      },
+      "response_model": "ResponseBody (EPIC card PDF)",
+      "evidences": [
+        "smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+        "POST eepic/GetEEPICCard",
+        "response type: Lokhttp3/ResponseBody;"
+      ]
+    },
+    {
+      "id": "verification",
+      "name": "EEPIC verification lookup",
+      "verb": "POST",
+      "host": "https://gateway-vha.eci.gov.in/api/v1",
+      "path": "/api/v1/vh_epicno_verify",
+      "query": [],
+      "headers": [
+        [
+          "Content-Type",
+          "application/json"
+        ],
+        [
+          "Accept",
+          "application/json"
+        ],
+        [
+          "X-API-KEY",
+          "<unset>"
+        ]
+      ],
+      "body": {
+        "body": {
+          "epic_no": "SQX2097129",
+          "search_type": "epic"
+        }
+      },
+      "response_model": "VerifyEVPResponse",
+      "evidences": [
+        "smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+        "POST vh_epicno_verify",
+        "response type: verifyEVPResponse;"
+      ]
+    }
+  ],
+  "endpoints": [
+    {
+      "id": "public_voter_search",
+      "name": "Public voter record search (weak auth)",
+      "verb": "GET",
+      "host": "https://electoralsearch.in",
+      "path": "/api/search",
+      "headers": {},
+      "response_model": null
+    },
+    {
+      "id": "eepic_search",
+      "name": "EEPIC detail search (authenticated)",
+      "verb": "POST",
+      "host": "https://gateway-vha.eci.gov.in/api/v1",
+      "path": "/eepic/GetElectorDetailForEEPIC",
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "X-API-KEY": "<from binary/config>"
+      },
+      "response_model": "ElectorDetails"
+    },
+    {
+      "id": "eepic_card_pdf",
+      "name": "EEPIC card PDF download",
+      "verb": "POST",
+      "host": "https://gateway-vha.eci.gov.in",
+      "path": "/eepic/GetEEPICCard",
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "X-API-KEY": "<from binary/config>"
+      },
+      "response_model": "ResponseBody (EPIC card PDF)"
+    },
+    {
+      "id": "verification",
+      "name": "EEPIC verification lookup",
+      "verb": "POST",
+      "host": "https://gateway-vha.eci.gov.in/api/v1",
+      "path": "/api/v1/vh_epicno_verify",
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "X-API-KEY": "<from binary/config>"
+      },
+      "response_model": "VerifyEVPResponse"
+    }
+  ]
+}

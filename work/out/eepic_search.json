@@ -1,0 +1,42 @@
+{
+  "request": {
+    "id": "eepic_search",
+    "name": "EEPIC detail search (authenticated)",
+    "verb": "POST",
+    "url": "https://gateway-vha.eci.gov.in/api/v1/eepic/GetElectorDetailForEEPIC",
+    "headers": [
+      [
+        "Content-Type",
+        "application/json"
+      ],
+      [
+        "Accept",
+        "application/json"
+      ],
+      [
+        "X-API-KEY",
+        "<unset>"
+      ]
+    ],
+    "body": {
+      "body": {
+        "epic_no": "SXQ2097129",
+        "search_type": "epic"
+      }
+    },
+    "response_model": "ElectorDetails",
+    "evidence": [
+      "smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+      "POST eepic/GetElectorDetailForEEPIC",
+      "response type: Lcom/eci/citizen/DataRepository/Model/ElectorDetails;"
+    ],
+    "sent_at": "2026-10-05T15:22:08+00:00",
+    "status": "not_started"
+  },
+  "response": {
+    "status": null,
+    "bytes": 0,
+    "summary": null
+  },
+  "error": null
+}

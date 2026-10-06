@@ -1,0 +1,88 @@
+==============================================================================
+RestClient: methods matching epic / elector / voter / search / roll / sir
+==============================================================================
+
+  METHOD : public abstract absenteeVoterRequest(Ljava/util/Map;)Lretrofit2/Call;
+
+  METHOD : public abstract getElectorsDetailsApi(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call;
+
+  METHOD : public abstract getEpicElectorDetail(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call;
+
+  METHOD : public abstract getNvspUserDetails(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+
+  METHOD : public abstract getNvspUserDetails1(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+
+  METHOD : public abstract modelRVoterTurnout(Ljava/util/Map;)Lretrofit2/Call;
+
+  METHOD : public abstract nvspCoreDocument(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretrofi
+
+  METHOD : public abstract nvspForgot(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call;
+
+  METHOD : public abstract nvspNewRegistration(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call;
+
+  METHOD : public abstract nvspRegistration(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call;
+
+  METHOD : public abstract nvspSendOtp(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+
+  METHOD : public abstract nvspSendProOtp(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Lretrofit2/Call;
+
+  METHOD : public abstract searchElectoral(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lretrofit2/Call;
+
+  METHOD : public abstract searchElectoralElectroleDetail(Ljava/util/Map;)Lretrofit2/Call;
+
+  METHOD : public abstract searchElectoralOne(Ljava/util/Map;)Lretrofit2/Call;
+
+  METHOD : public abstract searchElectoralPdf(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call;
+
+  METHOD : public abstract searchOfficerDetail(Ljava/util/Map;)Lretrofit2/Call;
+
+  METHOD : public abstract submitNewVoterRegistationWithToken(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/uti
+
+  METHOD : public abstract submitVoterMarking(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;)Lretrofit2/Call;
+
+  METHOD : public abstract verifyElectoral(Ljava/util/Map;)Lretrofit2/Call;
+
+matched methods: 20
+
+==============================================================================
+BASE URL CANDIDATES (const-strings that look like base URLs)
+==============================================================================
+  com/eci/citizen/DataRepository/ApiClientModule.smali: NOT FOUND
+
+  --- com/eci/citizen/DataRepository/ApiClient.smali ---
+      https://ecisveep.nic.in/api/
+      https://nvspservices.ecinet.in/api/
+      https://nvspservices.ecinet.in/api/login/
+      https://Nvsp.in/Forms/FormsAPI/
+      https://nvspservices.ecinet.in/api/master/
+      https://eronetservices.ecinet.in/api/ERONet/
+      https://nvspservices.ecinet.in/api/FormsAPI/
+      https://api.digitallocker.gov.in/public/oauth2/1/
+      https://old.eci.gov.in/api/
+      https://gateway-officials.eci.gov.in/CDAC-EnhanceTransliterationAPI/
+      https://old.eci.gov.in/
+      https://electoralsearch.in/
+      https://ems.eci.gov.in/api/
+      https://nvspservices.ecinet.in/api/NvspAccount/
+      https://resultapi.eci.gov.in/api/new/
+      https://suvidha.eci.gov.in/suvidhaac/public/api/
+      http://0.0.0.0/ngspapi/service.svc/
+      https://resultapi.eci.gov.in/api/
+      https://voterportal.eci.gov.in/api/
+      https://boothapp.eci.gov.in/api/
+      https://nvspservices.ecinet.in/api/pwdAPI/
+      https://affidavit.eci.gov.in/api/
+      https://ecisveep.nic.in
+      https://msdgweb.mgov.gov.in/esms/
+      https://msdgweb.mgov.gov.in
+      http://0.0.0.0/suvidhaac/public/api/
+      https://www.eci.gov.in/eci-backend/public/VHA_Banner/
+      https://results.eci.gov.in/staticFileGenerate/ACBye/
+      https://results.eci.gov.in/staticFileGenerate/ACGen/
+      https://results.eci.gov.in/staticFileGenerate/prepoll/
+      https://results.eci.gov.in/staticFileGenerate/
+      https://results.eci.gov.in/staticFileGenerate/PCGen/
+      https://www.eci.gov.in/eci-backend/public/api/
+
+  --- com/eci/citizen/DataRepository/RestClient.smali ---
+      https://voterportal.eci.gov.in/api/mobile_otp_send

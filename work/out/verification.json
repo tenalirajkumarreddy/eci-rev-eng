@@ -1,0 +1,42 @@
+{
+  "request": {
+    "id": "verification",
+    "name": "EEPIC verification lookup",
+    "verb": "POST",
+    "url": "https://gateway-vha.eci.gov.in/api/v1/vh_epicno_verify",
+    "headers": [
+      [
+        "Content-Type",
+        "application/json"
+      ],
+      [
+        "Accept",
+        "application/json"
+      ],
+      [
+        "X-API-KEY",
+        "<unset>"
+      ]
+    ],
+    "body": {
+      "body": {
+        "epic_no": "SXQ2097129",
+        "search_type": "epic"
+      }
+    },
+    "response_model": "VerifyEVPResponse",
+    "evidence": [
+      "smali_classes13/com/eci/citizen/DataRepository/RestClient.smali",
+      "POST vh_epicno_verify",
+      "response type: verifyEVPResponse;"
+    ],
+    "sent_at": "2026-10-05T15:22:08+00:00",
+    "status": "not_started"
+  },
+  "response": {
+    "status": null,
+    "bytes": 0,
+    "summary": null
+  },
+  "error": null
+}

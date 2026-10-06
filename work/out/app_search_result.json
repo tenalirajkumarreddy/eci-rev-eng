@@ -1,0 +1,24 @@
+{
+  "engine": "app_search",
+  "version": "1.0.0",
+  "epic": "SXQ2097129",
+  "endpoint": "https://gateway-vha.eci.gov.in/api/v1/elastic/search-by-epic-from-national-display-v1",
+  "headers": {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "applicationName": "VHA",
+    "appName": "VHA",
+    "channelidobo": "VHA",
+    "platform-type": "ANDROIDMOB",
+    "device-id": "2bd292d9-9384-4333-af72-a79b76cee921"
+  },
+  "inner_plaintext": {
+    "captchaData": "na",
+    "captchaId": "na",
+    "epicNumber": "SXQ2097129",
+    "securityKey": "<redacted>"
+  },
+  "sent_at": "2026-10-05T17:59:04+00:00",
+  "http_status": 200,
+  "response": "[]"
+}

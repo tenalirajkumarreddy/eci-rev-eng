@@ -1,0 +1,45 @@
+{
+  "engine": "epic_engine",
+  "version": "1.0.0",
+  "endpoints": [
+    {
+      "id": "eepic_search",
+      "name": "EEPIC detail search (authenticated)",
+      "verb": "POST",
+      "path": "eepic/GetElectorDetailForEEPIC",
+      "host": "https://gateway-vha.eci.gov.in/api/v1/",
+      "headers": [
+        "Content-Type",
+        "Accept",
+        "X-API-KEY"
+      ],
+      "response_model": "ElectorDetails"
+    },
+    {
+      "id": "eepic_card_pdf",
+      "name": "EEPIC card PDF download",
+      "verb": "POST",
+      "path": "eepic/GetEEPICCard",
+      "host": "https://gateway-vha.eci.gov.in/api/v1/",
+      "headers": [
+        "Content-Type",
+        "Accept",
+        "X-API-KEY"
+      ],
+      "response_model": "ResponseBody (EPIC card PDF)"
+    },
+    {
+      "id": "verification",
+      "name": "EEPIC verification lookup",
+      "verb": "POST",
+      "path": "vh_epicno_verify",
+      "host": "https://gateway-vha.eci.gov.in/api/v1/",
+      "headers": [
+        "Content-Type",
+        "Accept",
+        "X-API-KEY"
+      ],
+      "response_model": "VerifyEVPResponse"
+    }
+  ]
+}
