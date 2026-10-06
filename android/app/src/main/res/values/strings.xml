@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Old ECI</string>
+    <string name="menu_browse">Browse</string>
+    <string name="menu_epic">EPIC</string>
+    <string name="menu_settings">Settings</string>
+</resources>

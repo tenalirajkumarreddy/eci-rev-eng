@@ -376,6 +376,12 @@ def collect_part(conn, job_id, state_cd, ac_no, part_no, force=False):
     workers = int(db.setting("workers", 6))
     cap = int(db.setting("collect_serial_cap", 3000))
     roll_end = client.probe_roll_end(state_cd, ac_no, part_no, hard_cap=cap)
+    # Publish roll_end before sweeping: it is the denominator the dashboard uses
+    # for live speed and ETA, and `last_serial` is only written every 200 serials,
+    # so without this the live card is blank for the first seconds of a part.
+    db.q("""update old_parts set roll_end=%s, updated_at=now()
+            where state_cd=%s and ac_no=%s and part_no=%s""",
+         (roll_end, state_cd, ac_no, part_no), fetch=None)
     stats = {"hits": 0, "misses": 0, "errors": 0, "records": 0, "epics": 0}
     seen_ids = set()
 

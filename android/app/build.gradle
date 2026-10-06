@@ -1,0 +1,40 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.oldroll.collector'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.oldroll.collector"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+    // pgjdbc 42.7.4 with ONE class patched for Android: upstream
+    // PGPropertyMaxResultBufferParser calls java.lang.management.ManagementFactory,
+    // which does not exist on Android and killed every connect with
+    // NoClassDefFoundError. See libs/patched/PGPropertyMaxResultBufferParser.java.
+    implementation files('libs/postgresql-42.7.4-android.jar')
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}

@@ -12,3 +12,7 @@
 *.apk
 *.apk
 *.apk
+/android/.gradle
+*.class
+*.dex
+/android/app/build

@@ -1,7 +1,7 @@
 {
   "engine": "app_search",
   "version": "1.0.0",
-  "epic": "SXQ2097129",
+  "epic": "TBG0342345",
   "endpoint": "https://gateway-vha.eci.gov.in/api/v1/elastic/search-by-epic-from-national-display-v1",
   "headers": {
     "Content-Type": "application/json",
@@ -10,15 +10,15 @@
     "appName": "VHA",
     "channelidobo": "VHA",
     "platform-type": "ANDROIDMOB",
-    "device-id": "2bd292d9-9384-4333-af72-a79b76cee921"
+    "device-id": "b6eb0849-e2a0-4b25-a770-0f7050c5cad6"
   },
   "inner_plaintext": {
     "captchaData": "na",
     "captchaId": "na",
-    "epicNumber": "SXQ2097129",
+    "epicNumber": "TBG0342345",
     "securityKey": "<redacted>"
   },
-  "sent_at": "2026-10-05T17:59:04+00:00",
+  "sent_at": "2026-10-06T15:36:50+00:00",
   "http_status": 200,
-  "response": "[]"
+  "response": "[{\"index\":\"national-electoral-display\",\"id\":\"22497143_TBG0342345_S01\",\"score\":16.332203,\"sortValues\":[],\"content\":{\"id\":\"22497143_TBG0342345_S01\",\"epicId\":22497143,\"epicNumber\":\"TBG0342345\",\"formReferenceNo\":null,\"applicantFirstName\":\"URJANA RAMAIAH\",\"underJo\":null,\"applicantFirstNameL1\":\"\u0c09\u0c30\u0c4d\u0c1c\u0c3e\u0c28 \u0c30\u0c3e\u0c2e\u0c2f\u0c4d\u0c2f\",\"applicantFirstNameL2\":null,\"applicantLastName\":null,\"applicantLastNameL1\":null,\"applicantLastNameL2\":null,\"relationName\":\"NARAYANA\",\"relationNameL1\":\"\u0c28\u0c3e\u0c30\u0c3e\u0c2f\u0c23\",\"relationNameL2\":null,\"age\":51,\"gender\":\"M\",\"partNumber\":\"2\",\"partId\":80397,\"partName\":\"KEDARIPURAM\",\"partNameL1\":\"\u0c15\u0c47\u0c26\u0c3e\u0c30\u0c3f\u0c2a\u0c41\u0c30\u0c02\",\"partSerialNumber\":16,\"asmblyName\":\"Ichchapuram\",\"asmblyNameL1\":\"\u0c07\u0c1a\u0c4d\u0c1a\u0c3e\u0c2a\u0c41\u0c30\u0c02\",\"acId\":10,\"acNumber\":1,\"prlmntName\":\"Srikakulam\",\"prlmntNameL1\":null,\"prlmntNo\":\"2\",\"districtValue\":\"Srikakulam\",\"districtValueL1\":\"\u0c36\u0c4d\u0c30\u0c40\u0c15\u0c3e\u0c15\u0c41\u0c33\u0c02\",\"districtCd\":\"S0101\",\"districtId\":null,\"districtNo\":1,\"stateName\":\"Andhra Pradesh\",\"stateNameL1\":\"\u0906\u0902\u0927\u094d\u0930 \u092a\u094d\u0930\u0926\u0947\u0936\",\"stateId\":1,\"stateCd\":\"S01\",\"isActive\":true,\"formType\":null,\"relationType\":\"FTHR\",\"createdDttm\":\"2023-04-03 03:16:39\",\"modifiedDttm\":null,\"genderL1\":null,\"isDeleted\":null,\"processType\":null,\"relationLName\":null,\"relationLNameL1\":null,\"relationTypeL1\":null,\"revisionId\":null,\"statusType\":null,\"sectionNo\":1,\"pollingDate\":null,\"electionDate\":null,\"electionTime\":null,\"psbuildingName\":\"M P U P SCHOOL, MIDDLE ROOM\",\"birthYear\":null,\"partLatLong\":null,\"disabilityAny\":null,\"disabilityType\":null,\"isForm8Migration\":null,\"isLocomotorDisabled\":null,\"isSpeechHearingDisabled\":null,\"isVisuallyImpaired\":null,\"otherDisability\":null,\"isValidated\":null,\"isWheelchairRequired\":null,\"pwdMarkingFormType\":null,\"pwdMarkingRefNo\":null,\"pwd\":null,\"isVip\":null,\"epicDatetime\":\"2026-07-30T13:32:05.800+00:00\",\"fullName\":\"urjana ramaiah\",\"fullNameL1\":\"\u0c09\u0c30\u0c4d\u0c1c\u0c3e\u0c28 \u0c30\u0c3e\u0c2e\u0c2f\u0c4d\u0c2f\",\"relativeFullName\":\"narayana\",\"relativeFullNameL1\":\"\u0c28\u0c3e\u0c30\u0c3e\u0c2f\u0c23\",\"psRoomDetails\":null,\"psRoomDetailsL1\":null,\"psBuildingNameL1\":\"\u0c0f\u0c2e\u0c4d \u0c2a\u0c3f \u0c2f\u0c42 \u0c2a\u0c3f \u0c38\u0c4d\u0c15\u0c42\u0c32\u0c4d, \u0c2e\u0c3f\u0c21\u0c3f\u0c32\u0c4d \u0c30\u0c42\u0c2e\u0c4d\",\"buildingAddress\":\"KEDARIPURAM\",\"buildingAddressL1\":\"\u0c15\u0c47\u0c26\u0c3e\u0c30\u0c3f\u0c2a\u0c41\u0c30\u0c02\",\"joSupplementDate\":null,\"joSupplementStatus\":null,\"atSupplementDate\":null,\"atSupplementStatus\":null,\"part_lat_long\":null},\"highlightFields\":{},\"innerHits\":{},\"nestedMetaData\":null,\"routing\":null,\"explanation\":null,\"matchedQueries\":[]}]"
 }

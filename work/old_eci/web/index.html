@@ -292,6 +292,8 @@ async function loadDash() {
   const d = await api("/api/summary");
   state.summary = d;
   const o = d.overall || {};
+  const sp = d.speed || {};
+  const cur = sp.current || {};
   const kpi = [
     ["States", nf(o.states)], ["ACs", nf(o.acs)], ["Old parts", nf(o.old_parts)],
     ["Parts done", `<span class="kpi-ok">${nf(o.done_parts)}</span>`],
@@ -299,6 +301,22 @@ async function loadDash() {
     ["Errors", `<span class="kpi-err">${nf(o.error_parts)}</span>`],
     ["Elector rows", nf(o.electors)], ["Unique EPICs", nf(o.unique_epics)],
     ["EPIC lookups", nf(o.epic_lookups)],
+    // Collection speed, in units per second. `req/s` is serials actually fetched
+    // while parts were running (gateway-facing); `rec/s` is rows landed over the
+    // whole window, so it includes idle time.
+    ["Speed (live)", (cur.req_per_sec != null)
+      ? `<span class="kpi-run">${cur.req_per_sec}</span> <span class="small muted">req/s</span>
+         <div class="small muted">${cur.records_per_sec} rec/s${cur.eta_secs != null ? " · eta " + Math.round(cur.eta_secs) + "s" : ""}</div>`
+      : (cur.part_no ? `<span class="small muted">starting part ${esc(cur.part_no)}…</span>`
+        : `<span class="small muted">idle</span>`)],
+    ["Speed (avg busy)", sp.req_per_sec != null
+      ? `<span class="kpi-run">${sp.req_per_sec}</span> <span class="small muted">req/s</span>
+         <div class="small muted">${nf(sp.records_per_busy_sec)} rec/s while running · ${nf(sp.busy_secs)}s busy</div>`
+      : "—"],
+    ["Throughput", sp.records_per_sec != null
+      ? `${sp.records_per_sec} <span class="small muted">rec/s wall</span>
+         <div class="small muted">${sp.parts_per_hour} parts/h · ${nf(sp.records)} rows in ${sp.window_min}m</div>`
+      : "—"],
   ];
   $("#kpis").innerHTML = kpi.map(([k, v]) =>
     `<div class="card"><div class="k">${k}</div><div class="v">${v}</div></div>`).join("");
@@ -318,8 +336,17 @@ async function loadDash() {
   $("#hdr-db").textContent = location.host;
   $("#workersSel").value = d.settings.workers || 6;
   $("#discoverMax").value = d.settings.discover_max_part || 400;
+  const partTxt = cur.part_no
+    ? ` <b>${esc(cur.state_cd)}</b> AC ${esc(cur.ac_no)} P${esc(cur.part_no)}
+        <b>${nf(cur.serial)}</b>${cur.roll_end ? "/" + nf(cur.roll_end) : ""} serials`
+    : "";
+  const speedTxt = cur.req_per_sec != null
+    ? ` · <b>${cur.req_per_sec} req/s</b> · ${cur.records_per_sec} rec/s`
+      + (cur.eta_secs != null ? ` · eta ${Math.round(cur.eta_secs)}s` : "")
+    : "";
   $("#workerState").innerHTML = `auto <b>${auto ? "ON" : "off"}</b> · workers
-      <b>${esc(d.settings.workers)}</b> · calibrate <b>${esc(d.settings.calibrate_offset)}</b>`;
+      <b>${esc(d.settings.workers)}</b> · calibrate <b>${esc(d.settings.calibrate_offset)}</b>`
+      + partTxt + speedTxt;
   loadBreakdown();
 
   $("#jobsLive").innerHTML = (d.jobs || []).length ? (d.jobs.map(j => {

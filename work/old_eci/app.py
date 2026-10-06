@@ -8,6 +8,7 @@ import csv
 import io
 import json
 import os
+import time
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException, Query
@@ -51,23 +52,154 @@ def index():
 
 # ------------------------------------------------------------------- dashboard
 
+# The dashboard polls /api/summary every few seconds, so the endpoint is built
+# from cheap queries plus two short-lived caches. `v_overall` is deliberately NOT
+# used here: its `count(distinct cur_epic)` over the electors table measured 15s
+# on 600k rows, and it grows with the table. Nothing about a KPI card needs to be
+# exact to the second, so exact-but-expensive counts are cached and labelled.
+_agg_cache = {"at": 0.0, "data": None}
+AGG_TTL = 60.0          # electors / unique EPICs
+_speed_cache = {"at": 0.0, "data": None}
+SPEED_TTL = 5.0         # live speed is still live at 5s old
+
+
+def heavy_counts():
+    """Exact `electors` and distinct-EPIC counts, cached for AGG_TTL seconds."""
+    now = time.time()
+    if _agg_cache["data"] is None or now - _agg_cache["at"] > AGG_TTL:
+        row = db.q("""select (select count(*) from electors) electors,
+                             (select count(distinct cur_epic) from electors
+                               where cur_epic is not null and cur_epic <> '')
+                               unique_epics""", fetch="one") or {}
+        _agg_cache.update(at=now, data=dict(row))
+    out = dict(_agg_cache["data"] or {})
+    out["cached_secs"] = round(now - _agg_cache["at"], 1)
+    out["ttl_secs"] = AGG_TTL
+    return out
+
+
+def speed_stats(window_min=15):
+    """Live collection speed, in units per second.
+
+    Two different rates, because they answer different questions:
+
+    * `req_per_sec` - serials actually fetched, divided by the time those parts
+      were *running*. This is the gateway-facing speed and excludes idle.
+    * `records_per_sec` - elector rows landed, divided by the whole wall-clock
+      window. This includes idle, so it is what the database actually gains.
+
+    `current` is the in-flight part, timed from `started_at`. `collect_part`
+    updates `last_serial` every 200 serials, so this is a real instantaneous
+    rate rather than an average over finished work, and it carries an ETA.
+    """
+    row = db.q("""
+        select count(*) parts,
+               coalesce(sum(records),0) records,
+               coalesce(sum(coalesce(roll_end, records)),0) serials,
+               coalesce(sum(extract(epoch from
+                 (coalesce(finished_at, now()) - started_at))),0) busy
+        from old_parts
+        where finished_at > now() - (%s * interval '1 minute')""",
+        (window_min,), fetch="one") or {}
+    busy = float(row.get("busy") or 0)
+    wall = float(window_min) * 60
+    parts = row.get("parts") or 0
+    out = {
+        "window_min": window_min,
+        "parts": parts,
+        "records": row.get("records") or 0,
+        "serials": row.get("serials") or 0,
+        "busy_secs": round(busy, 1),
+        "parts_per_hour": round(parts / wall * 3600, 1),
+        # Wall-clock rate includes idle, so on a quiet system it understates the
+        # real speed; the *_busy rates divide by the time parts were actually
+        # running, which is the number to compare against the gateway's limits.
+        "records_per_sec": round((row.get("records") or 0) / wall, 2),
+        "records_per_busy_sec": (round((row.get("records") or 0) / busy, 1)
+                                 if busy else None),
+        "req_per_sec": round((row.get("serials") or 0) / busy, 1) if busy else None,
+        "current": None,
+    }
+    cur = db.q("""select state_cd, ac_no, part_no, last_serial, roll_end, records,
+                         extract(epoch from now()-started_at) elapsed
+                  from old_parts where status='running'
+                  order by started_at desc limit 1""", fetch="one")
+    if not cur:
+        # Show the most recently finished part while the worker is between parts,
+        # so the card does not flap to "idle" between every collection.
+        cur = db.q("""select state_cd, ac_no, part_no, roll_end, records, roll_end last_serial,
+                             extract(epoch from (finished_at - started_at)) elapsed
+                      from old_parts where finished_at is not null
+                      order by finished_at desc limit 1""", fetch="one")
+        if cur:
+            out["last_finished"] = True
+    if cur and cur.get("elapsed"):
+        el = max(float(cur["elapsed"]), 0.1)
+        done = cur.get("last_serial") or 0
+        rate = (done / el) if done else None
+        roll_end = cur.get("roll_end")
+        out["current"] = {
+            "state_cd": cur["state_cd"], "ac_no": cur["ac_no"],
+            "part_no": cur["part_no"], "serial": done, "roll_end": roll_end,
+            "records": cur.get("records") or 0, "elapsed": round(el, 1),
+            "req_per_sec": round(rate, 1) if rate else None,
+            "records_per_sec": round((cur.get("records") or 0) / el, 2),
+            "eta_secs": (round((roll_end - done) / rate)
+                         if rate and roll_end and roll_end > done else None),
+        }
+    return out
+
+
 @app.get("/api/summary")
 def summary():
-    overall = db.q("select * from v_overall", fetch="one")
+    # One pass over old_parts (a few thousand rows) for all the part counters,
+    # instead of v_overall's subquery-per-count.
+    parts = db.q("""
+        select count(*) old_parts,
+               count(*) filter (where status='done')    done_parts,
+               count(*) filter (where status='pending') pending_parts,
+               count(*) filter (where status='running') running_parts,
+               count(*) filter (where status='error')   error_parts,
+               coalesce(sum(records),0) records,
+               coalesce(sum(epics),0)   epics
+        from old_parts""", fetch="one") or {}
+    overall = dict(parts)
+    overall["states"] = db.q("select count(*) c from states", fetch="one")["c"]
+    overall["acs"] = db.q("select count(*) c from acs", fetch="one")["c"]
+    overall["epic_lookups"] = db.q("select count(*) c from epic_lookups",
+                                  fetch="one")["c"]
+    overall.update(heavy_counts())
+
     jobs = db.q("""select id, kind, status, mode, progress, result, error, created_at,
                           started_at, finished_at from jobs
                    where status in ('queued','running') order by id desc limit 8""")
-    states = db.q("""select s.state_cd, s.name, s.has_old_data,
-                            (select count(*) from acs a where a.state_cd=s.state_cd) acs,
-                            (select count(*) from old_parts p where p.state_cd=s.state_cd) parts,
-                            (select count(*) from old_parts p where p.state_cd=s.state_cd
-                              and p.status='done') done
-                     from states s order by s.state_cd limit 60""")
+    # Aggregated per state in one scan each, rather than three correlated
+    # subqueries per state (which cost a round trip apiece and measured 0.85s).
+    states = db.q("""
+        select s.state_cd, s.name, s.has_old_data,
+               coalesce(a.acs,0) acs, coalesce(p.parts,0) parts, coalesce(p.done,0) done
+        from states s
+        left join (select state_cd, count(*) acs from acs group by 1) a
+               on a.state_cd = s.state_cd
+        left join (select state_cd, count(*) parts,
+                          count(*) filter (where status='done') done
+                   from old_parts group by 1) p
+               on p.state_cd = s.state_cd
+        order by s.state_cd limit 60""")
+
+    now = time.time()
+    if _speed_cache["data"] is None or now - _speed_cache["at"] > SPEED_TTL:
+        _speed_cache.update(at=now, data=speed_stats())
+    speed = dict(_speed_cache["data"] or {})
+    speed["cached_secs"] = round(now - _speed_cache["at"], 1)
+    speed["ttl_secs"] = SPEED_TTL
+
     return {
         "overall": overall,
         "jobs": jobs,
         "states": states,
         "worker": worker.worker_status(),
+        "speed": speed,
         "settings": {k: db.setting(k) for k in ("auto_enabled", "workers",
                                                 "discover_max_part",
                                                 "calibrate_offset")},

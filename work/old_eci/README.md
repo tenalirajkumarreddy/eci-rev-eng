@@ -93,3 +93,50 @@ against the national EPIC search, which is rate-limited to ~1 req/s).
 Names and ages in this dataset are **2003 vintage**; EPICs are current.
 
 See `work/extra_endpoints.md` §6–7 for the full contract, findings and caveats.
+
+## Single-file version for Colab
+
+`old_eci_collector.py` (repo root) is this whole app in one self-contained file —
+the DB layer, the API client, the EPIC processor and the auto collector — with the
+credentials embedded and no local imports. Upload it to Colab and run it:
+
+```
+!python old_eci_collector.py                 # auto mode, runs until stopped
+!python old_eci_collector.py --parts 20      # stop after 20 collected parts
+!python old_eci_collector.py --minutes 120   # stop after two hours
+```
+
+It talks to the same `old_eci` database as this web app, so the two can be mixed
+freely. Both queue into `old_parts` and every write is an upsert keyed on the
+record id, so a re-collection overwrites rather than duplicating.
+
+Other modes: `--status`, `--epic <EPIC>` (EPIC processor), `--selftest` (offline
+crypto + DB + route checks), `--export out.csv`, plus `--state/--ac` to scope a run
+and `--force` to re-collect done parts.
+
+## Concurrency
+
+Two independent knobs:
+
+* `--workers N` — threads fetching different serials *within* one part. Measured
+  ceiling at the gateway: ~80 req/s; beyond ~28 workers you add latency, not
+  speed (see `work/bench_workers.py`).
+* `--parts-parallel N` — collect N parts at the same time. Each part still uses
+  `--workers` serial threads, so the gateway sees roughly the product. Claims are
+  atomic (`_mark_running`), so two collectors can never sweep the same part; a
+  lost race shows up as a visible skip. Measured on a quiet gateway at an equal
+  28-request budget: 3 parts one-at-a-time ≈ 25 req/s vs 3 parts at once ≈
+  54 req/s — the overlap fills each part's probe head and ragged tail. It
+  approaches the ~80 req/s ceiling; it does not raise it.
+
+The gateway sees `parts-parallel × workers` concurrent requests; keep the product
+at or below ~32.
+
+Two operational notes when both are running:
+
+* pass `--no-recover` — otherwise the script requeues, as orphans of a previous
+  process, whatever the web worker currently has in flight (harmless, but it
+  wastes a sweep);
+* the schema DDL takes `ACCESS EXCLUSIVE` locks and can deadlock against live
+  inserts, so `db_init()` detects an already-complete schema and skips the DDL
+  entirely. `--no-init` skips it unconditionally.
