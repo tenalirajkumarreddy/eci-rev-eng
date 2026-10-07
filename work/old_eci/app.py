@@ -8,6 +8,7 @@ import csv
 import io
 import json
 import os
+import threading
 import time
 from contextlib import asynccontextmanager
 
@@ -36,8 +37,13 @@ app = FastAPI(title="old_eci collector", version="1.0",
 
 
 def enqueue(kind, payload, mode="manual", priority=100):
-    row = db.q("insert into jobs(kind, payload, mode, priority) values (%s,%s,%s,%s) "
-               "returning id, kind, status", (kind, json.dumps(payload), mode, priority),
+    # Tag the job with THIS device (the web/PC node). Each device's worker claims
+    # only its own jobs, so a job queued here is never run by a phone and vice
+    # versa - each device owns its tasks. Jobs queued before that had no device
+    # (NULL) and stay claimable by anyone.
+    row = db.q("insert into jobs(kind, payload, mode, priority, device) "
+               "values (%s,%s,%s,%s,%s) returning id, kind, status",
+               (kind, json.dumps(payload), mode, priority, db._device_tag()),
                fetch="one")
     db.event("api", "queued #%s %s %s" % (row["id"], kind, json.dumps(payload)[:120]))
     return row
@@ -58,22 +64,46 @@ def index():
 # on 600k rows, and it grows with the table. Nothing about a KPI card needs to be
 # exact to the second, so exact-but-expensive counts are cached and labelled.
 _agg_cache = {"at": 0.0, "data": None}
-AGG_TTL = 60.0          # electors / unique EPICs
+AGG_TTL = 120.0         # electors / unique EPICs
+_agg_lock = threading.Lock()     # single-flight: at most ONE heavy aggregate at a time
+_bd_cache = {"at": 0.0, "data": None}
+BD_TTL = 300.0                   # relation/gender/coverage breakdown
+_bd_lock = threading.Lock()
 _speed_cache = {"at": 0.0, "data": None}
 SPEED_TTL = 5.0         # live speed is still live at 5s old
 
 
 def heavy_counts():
-    """Exact `electors` and distinct-EPIC counts, cached for AGG_TTL seconds."""
+    """Exact `electors` and distinct-EPIC counts, cached and single-flight.
+
+    `count(distinct cur_epic)` over millions of rows spills >40 MB of temp files
+    and takes a minute - with every poller refreshing its own copy at expiry the
+    dashboard queries alone saturated the DB server (
+    `BufFileRead`/`DataFileRead` waits, statement timeouts on the workers). A
+    process-wide lock lets exactly one refresh run; everyone else serves the
+    previous value and `stale` marks it. The 2-minute TTL bounds the staleness
+    of a number that only feeds a KPI card.
+    """
     now = time.time()
     if _agg_cache["data"] is None or now - _agg_cache["at"] > AGG_TTL:
-        row = db.q("""select (select count(*) from electors) electors,
+        if _agg_lock.acquire(timeout=0.05):
+            try:
+                if _agg_cache["data"] is None or now - _agg_cache["at"] > AGG_TTL:
+                    row = db.q("""select (select count(*) from electors) electors,
                              (select count(distinct cur_epic) from electors
                                where cur_epic is not null and cur_epic <> '')
                                unique_epics""", fetch="one") or {}
-        _agg_cache.update(at=now, data=dict(row))
+                    _agg_cache.update(at=time.time(), data=dict(row))
+            except Exception:
+                pass      # serve the previous value; the DB is having a bad day
+            finally:
+                _agg_lock.release()
     out = dict(_agg_cache["data"] or {})
-    out["cached_secs"] = round(now - _agg_cache["at"], 1)
+    out["cached_secs"] = (round(now - _agg_cache["at"], 1)
+                          if _agg_cache["data"] is not None else None)
+    out["stale"] = bool(_agg_cache["data"] is not None
+                        and out["cached_secs"] is not None
+                        and out["cached_secs"] > AGG_TTL)
     out["ttl_secs"] = AGG_TTL
     return out
 
@@ -169,10 +199,17 @@ def summary():
     overall["epic_lookups"] = db.q("select count(*) c from epic_lookups",
                                   fetch="one")["c"]
     overall.update(heavy_counts())
+    # Free = unprocessed AND unclaimed: running parts already belong to a device,
+    # so this is exactly the pool each device's picker is allowed to scan.
+    overall["free_parts"] = ((overall.get("pending_parts") or 0)
+                             + (overall.get("error_parts") or 0))
 
-    jobs = db.q("""select id, kind, status, mode, progress, result, error, created_at,
-                          started_at, finished_at from jobs
-                   where status in ('queued','running') order by id desc limit 8""")
+    # This device's own tasks (plus legacy untagged ones), not the whole fleet's.
+    jobs = db.q("""select id, kind, status, mode, device, progress, result, error,
+                          created_at, started_at, finished_at from jobs
+                   where (device is null or device = %s)
+                     and status in ('queued','running')
+                   order by id desc limit 8""", (db._device_tag(),))
     # Aggregated per state in one scan each, rather than three correlated
     # subqueries per state (which cost a round trip apiece and measured 0.85s).
     states = db.q("""
@@ -194,22 +231,52 @@ def summary():
     speed["cached_secs"] = round(now - _speed_cache["at"], 1)
     speed["ttl_secs"] = SPEED_TTL
 
+    # Per-device knobs: the summary shows THIS server's tag's values plus the
+    # fleet defaults, every claimant's kind so the operator sees who holds
+    # what, and any device that opted itself OUT of the fleet auto default -
+    # the phone's switch writes 'auto_enabled@android-<model>', the dashboard
+    # here writes the global row everyone else falls back to.
+    tag = os.environ.get("ECI_DEVICE_TAG", "")
+    settings = {
+        "auto_enabled": db.setting("auto_enabled", tag=""),  # fleet default
+        "calibrate_offset": db.setting("calibrate_offset", tag=""),
+        "workers": (db.setting("workers", ("workers", 6), tag=tag)
+                    if tag else db.setting("workers")),
+        "discover_max_part": (db.setting("discover_max_part",
+                                         ("discover_max_part", 400), tag=tag)
+                              if tag else db.setting("discover_max_part")),
+        "device_tag": tag or None,
+    }
+    settings["auto_overrides"] = db.q(
+        "select key, value from settings where key like 'auto_enabled@%%' "
+        "order by key")
+    claimants = db.q("""select split_part(claimed_by, '-', 1) as kind,
+                               min(claimed_by) example, count(*)
+                        from old_parts where status='running'
+                          and claimed_by is not null group by 1""")
     return {
         "overall": overall,
         "jobs": jobs,
         "states": states,
         "worker": worker.worker_status(),
         "speed": speed,
-        "settings": {k: db.setting(k) for k in ("auto_enabled", "workers",
-                                                "discover_max_part",
-                                                "calibrate_offset")},
+        "settings": settings,
+        "claimants": claimants,
     }
 
 
 @app.get("/api/events")
-def events(limit: int = 50):
-    return db.q("select id, ts, level, source, message from events "
-                "order by id desc limit %s", (min(limit, 500),))
+def events(limit: int = 50, device: str = None, all: int = 0):
+    """This device's own log stream by default (`all=1` or `device=*` for the
+    whole fleet). Each device shows its own logs - the web page no longer mirrors
+    the phones' feed."""
+    limit = min(limit, 500)
+    if all or device == "*":
+        return db.q("select id, ts, level, source, message, device from events "
+                    "order by id desc limit %s", (limit,))
+    dev = device if device is not None else db._device_tag()
+    return db.q("select id, ts, level, source, message, device from events "
+                "where device = %s order by id desc limit %s", (dev, limit))
 
 
 # --------------------------------------------------------------------- catalog
@@ -367,19 +434,29 @@ def collect_auto(payload: dict):
 
 @app.post("/api/auto")
 def auto(payload: dict):
+    # Dashboard = fleet control: writes the global row, which every device
+    # without its own '@tag' override follows. The phone's own switch writes its
+    # scoped row instead, so the phone can opt out without stopping the PC.
     db.set_setting("auto_enabled", bool(payload.get("enabled")))
-    db.event("api", "auto mode %s" % ("on" if payload.get("enabled") else "off"))
-    return {"auto_enabled": db.setting("auto_enabled")}
+    db.event("api", "auto mode (fleet default) %s"
+             % ("on" if payload.get("enabled") else "off"))
+    return {"auto_enabled": db.setting("auto_enabled", tag="")}
 
 
 @app.post("/api/settings")
 def set_settings(payload: dict):
+    # session?device= scopes numbers to one device; without it they stay global
+    # (the shared defaults every other device falls back to).
+    tag = (payload or {}).get("device_tag") or None
     for k, v in (payload or {}).items():
-        if k in ("workers", "discover_max_part", "calibrate_offset", "collect_serial_cap",
+        if k in ("device_tag",):
+            continue
+        if k in ("workers", "discover_max_part", "collect_serial_cap",
                  "request_pause_ms"):
-            db.set_setting(k, v)
-    return {k: db.setting(k) for k in ("auto_enabled", "workers", "discover_max_part",
-                                       "calibrate_offset", "collect_serial_cap")}
+            db.set_setting(k, v, tag=tag)
+    out_keys = ("workers", "discover_max_part", "collect_serial_cap",
+                "request_pause_ms")
+    return {k: db.setting(k, tag=tag) for k in out_keys}
 
 
 @app.get("/api/jobs")
@@ -448,15 +525,26 @@ def breakdown(state: str | None = None, ac: int | None = None):
         where.append("ac_no=%s")
         params.append(ac)
     w = " and ".join(where)
-    rel = db.q("""select relation_type code, count(*) n,
+    # Cached + single-flight: the dashboard used to re-run these three
+    # full-table aggregates every 3s poll, and with electors in the millions
+    # their BufferMapping waits starved the collectors (statement timeouts on
+    # the PC, IO errors on the phone). A slow-changing value domain does not
+    # need per-poll freshness. (Server-side, so every device/browser shares
+    # one cache.)
+    cur = time.time()
+    if _bd_cache["data"] is None or cur - _bd_cache["at"] > BD_TTL:
+        if _bd_lock.acquire(timeout=0.05):
+            try:
+                if _bd_cache["data"] is None or cur - _bd_cache["at"] > BD_TTL:
+                    rel = db.q("""select relation_type code, count(*) n,
                          count(*) filter (where cur_epic is not null
                                           and cur_epic <> '') mapped
                   from electors where %s group by 1 order by n desc""" % w, params)
-    gen = db.q("""select gender code, count(*) n,
+                    gen = db.q("""select gender code, count(*) n,
                          count(*) filter (where cur_epic is not null
                                           and cur_epic <> '') mapped
                   from electors where %s group by 1 order by n desc""" % w, params)
-    cov = db.q("""select count(*) total,
+                    cov = db.q("""select count(*) total,
                         count(*) filter (where cur_epic is not null
                                          and cur_epic <> '') with_epic,
                         count(*) filter (where relative_name is null
@@ -464,12 +552,30 @@ def breakdown(state: str | None = None, ac: int | None = None):
                         count(*) filter (where full_name is null
                                          or full_name = '') no_name
                  from electors where %s""" % w, params, fetch="one")
+                    if rel or gen or cov:
+                        _bd_cache.update(at=time.time(), data={"rel": rel,
+                                                               "gen": gen,
+                                                               "cov": dict(cov or {})})
+            except Exception:
+                pass    # serve the previous cache; the DB is having a bad day
+            finally:
+                _bd_lock.release()
+    if _bd_cache["data"] is not None:
+        data = _bd_cache["data"]
+    else:
+        # Nothing cached yet (or the refresh itself failed): one uncached shot,
+        # so the table is never empty on first use.
+        data = {"rel": rel if "rel" in dir() else [],
+                "gen": gen if "gen" in dir() else [],
+                "cov": dict(cov) if "cov" in dir() else {}}
     return {
         "relation": [dict(r, label=client.relation_label(r["code"]),
                           short=client.relation_label(r["code"], short=True))
-                     for r in rel],
-        "gender": [dict(r, label=client.gender_label(r["code"])) for r in gen],
-        "coverage": cov,
+                     for r in data["rel"]],
+        "gender": [dict(r, label=client.gender_label(r["code"])) for r in data["gen"]],
+        "coverage": data["cov"],
+        "cached_secs": round(cur - _bd_cache["at"], 1) if _bd_cache["data"] else None,
+        "ttl_secs": BD_TTL,
     }
 
 
@@ -552,7 +658,8 @@ def restart_worker():
 def health():
     st = worker.worker_status()
     return {"ok": True, "schema": db.SCHEMA, "db": db.DSN.split("@")[-1],
-            "auto": db.setting("auto_enabled"), "worker_alive": st["alive"],
+            "auto": db.setting("auto_enabled", tag=""),  # fleet default
+            "worker_alive": st["alive"],
             "worker_tick_age": st["tick_age"], "worker_error": st["error"]}
 
 

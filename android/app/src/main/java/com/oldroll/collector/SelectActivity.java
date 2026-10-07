@@ -209,10 +209,13 @@ public class SelectActivity extends Activity {
                int priority) {
         final String body = Json.map(payload).toString();
         bg(() -> {
+            // Tag the job with THIS device, so only this device's worker runs
+            // it - each device owns its tasks instead of a shared queue the
+            // web worker can steal.
             Map<String, Object> row = Db.q1(
-                    "insert into jobs(kind, payload, mode, priority) "
-                            + "values (?,?::jsonb,?,?) returning id, kind, status",
-                    kind, body, mode, priority);
+                    "insert into jobs(kind, payload, mode, priority, device) "
+                            + "values (?,?::jsonb,?,?,?) returning id, kind, status",
+                    kind, body, mode, priority, Db.myTag());
             Db.event("api", "queued #" + row.get("id") + " " + kind + " "
                     + (body.length() > 120 ? body.substring(0, 120) : body));
             return row.get("id");

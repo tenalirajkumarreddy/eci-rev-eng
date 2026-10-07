@@ -73,6 +73,12 @@ public final class Gateway {
         try { Thread.sleep(ms); } catch (InterruptedException ignored) { }
     }
 
+    /** 0.5x-1.5x jitter: several devices retrying the same rate-limited route
+     *  must not land in lockstep and re-trigger the limiter together. */
+    static long jitter(long ms) {
+        return (long) (ms * (0.5 + Math.random()));
+    }
+
     static void applyHeaders(HttpURLConnection c, Map<String, String> headers) {
         if (headers == null) return;
         for (Map.Entry<String, String> e : headers.entrySet()) {
@@ -111,7 +117,7 @@ public final class Gateway {
                 int st = c.getResponseCode();
                 String text = readAll(st >= 400 ? c.getErrorStream() : c.getInputStream());
                 if (st == 429) {
-                    sleepMs(2000L * (attempt + 1));
+                    sleepMs(jitter(2000L * (attempt + 1)));
                     last.status = st;
                     last.body = text;
                     continue;
@@ -120,7 +126,7 @@ public final class Gateway {
             } catch (IOException e) {
                 last.status = 0;
                 last.body = e.getClass().getSimpleName() + ": " + e.getMessage();
-                sleepMs(1000L * (attempt + 1));
+                sleepMs(jitter(1000L * (attempt + 1)));
             } finally {
                 if (c != null) c.disconnect();
             }
@@ -141,14 +147,14 @@ public final class Gateway {
                 int st = c.getResponseCode();
                 String text = readAll(st >= 400 ? c.getErrorStream() : c.getInputStream());
                 if (st == 429) {
-                    sleepMs(2000L * (attempt + 1));
+                    sleepMs(jitter(2000L * (attempt + 1)));
                     continue;
                 }
                 return parse(st, text);
             } catch (IOException e) {
                 last.status = 0;
                 last.body = e.getClass().getSimpleName() + ": " + e.getMessage();
-                sleepMs(1000L * (attempt + 1));
+                sleepMs(jitter(1000L * (attempt + 1)));
             } finally {
                 if (c != null) c.disconnect();
             }
@@ -206,14 +212,34 @@ public final class Gateway {
         return fetchSerial(state, ac, part, "");
     }
 
+    public static int probeRollEnd(String state, int ac, int part, int hardCap) {
+        return probeRollEnd(state, ac, part, hardCap, 0);
+    }
+
     /**
      * Highest serial that answers, +20 margin (30 if the part is empty).
-     * Candidates mirror client.probe_roll_end exactly.
+     * Candidates mirror client.probe_roll_end exactly. `hint` (a neighbour
+     * part's roll_end) is probed first: if it answers, the result is identical
+     * to the full ascending probe but skips the wasted low candidates; if it
+     * misses, the full probe runs.
      */
-    public static int probeRollEnd(String state, int ac, int part, int hardCap) {
+    public static int probeRollEnd(String state, int ac, int part, int hardCap,
+                                   int hint) {
         int last = 0;
-        for (int cand : new int[]{50, 100, 200, 300, 400, 500, 650, 800, 1000,
-                1200, 1500, 2000, 2500}) {
+        int[] seq = new int[]{50, 100, 200, 300, 400, 500, 650, 800, 1000,
+                1200, 1500, 2000, 2500};
+        if (hint >= 50) {
+            int h = Math.min(hint, hardCap);
+            if (!fetchSerial(state, ac, part, String.valueOf(h)).isEmpty()) {
+                last = h;
+                List<Integer> above = new ArrayList<>();
+                for (int c : seq) if (c > h) above.add(c);
+                int[] hinted = new int[above.size()];
+                for (int i = 0; i < hinted.length; i++) hinted[i] = above.get(i);
+                seq = hinted;
+            }
+        }
+        for (int cand : seq) {
             if (cand > hardCap) break;
             List<Map<String, String>> payload = fetchSerial(state, ac, part,
                     String.valueOf(cand));

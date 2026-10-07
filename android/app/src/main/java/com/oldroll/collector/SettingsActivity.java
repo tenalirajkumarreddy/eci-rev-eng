@@ -48,10 +48,17 @@ public class SettingsActivity extends Activity {
         new Thread(() -> {
             // settings table may not exist yet on a fresh install
             try { Db.initSchema(); } catch (Throwable ignored) { }
-            final Object w = Db.setting("workers", 6);
-            final Object d = Db.setting("discover_max_part", 400);
-            final Object c = Db.setting("collect_serial_cap", 3000);
-            final Object cal = Db.setting("calibrate_offset", true);
+            // THIS device's own row first ('<key>@<tag>'), falling back to the
+            // shared global value when the device has not set its own yet.
+            final String tag = Db.myTag();
+            final Object w = Db.settingExact("workers@" + tag,
+                    Db.setting("workers", 6));
+            final Object d = Db.settingExact("discover_max_part@" + tag,
+                    Db.setting("discover_max_part", 400));
+            final Object c = Db.settingExact("collect_serial_cap@" + tag,
+                    Db.setting("collect_serial_cap", 3000));
+            final Object cal = Db.settingExact("calibrate_offset@" + tag,
+                    Db.setting("calibrate_offset", true));
             runOnUiThread(() -> {
                 etWorkers.setText(String.valueOf(w));
                 etDiscover.setText(String.valueOf(d));
@@ -72,11 +79,16 @@ public class SettingsActivity extends Activity {
             final boolean cal = cbCalibrate.isChecked();
             new Thread(() -> {
                 try {
-                    Db.setSetting("workers", w);
-                    Db.setSetting("discover_max_part", d);
-                    Db.setSetting("collect_serial_cap", c);
-                    Db.setSetting("calibrate_offset", cal);
-                    Db.event("api", "settings saved: workers=" + w + " floor=" + d
+                    // Every value the settings screen owns is per-device
+                    // ('<key>@<tag>'): the phone's numbers never touch the
+                    // PC's or another phone's.
+                    final String tag = Db.myTag();
+                    Db.setSetting("workers", w, tag);
+                    Db.setSetting("discover_max_part", d, tag);
+                    Db.setSetting("collect_serial_cap", c, tag);
+                    Db.setSetting("calibrate_offset", cal, tag);
+                    Db.event("api", "settings saved for " + tag
+                            + ": workers=" + w + " floor=" + d
                             + " cap=" + c + " calibrate=" + cal);
                     runOnUiThread(() -> Toast.makeText(this, "Saved",
                             Toast.LENGTH_SHORT).show());

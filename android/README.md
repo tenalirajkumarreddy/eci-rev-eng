@@ -68,17 +68,33 @@ Stock `org.postgresql:postgresql:42.7.4` **crashes on Android**:
 — and because it is an `Error`, it killed the whole process. No URL property
 avoids it.
 
-`libs/postgresql-42.7.4-android.jar` is the unmodified upstream jar with **one
-class recompiled** (source kept at `libs/patched/PGPropertyMaxResultBufferParser.java`):
+`libs/postgresql-42.7.4-android.jar` is the unmodified upstream jar with **two
+classes recompiled** (sources kept in `libs/patched/`):
+
+1. `PGPropertyMaxResultBufferParser.java`:
 `ManagementFactory` usage removed in favour of a fixed `HEAP_CAP_BYTES =
 512MB` constant (the default property path still yields `-1`, i.e. the same
-unlimited buffer as upstream). Rebuild it by compiling that file against the
-stock jar and running `jar uf`. Verify with:
+unlimited buffer as upstream).
+2. `BatchResultHandler.java` (added 2026-10-07): upstream builds batch
+failures with the Java-9-only constructor
+`BatchUpdateException(String,String,int,long[],Throwable)`, which is absent
+on ART — the FIRST failed batch request therefore crashed the worker with
+`NoSuchMethodError` *instead of showing the real server error*. The patched
+class uses the JDBC-4 `BatchUpdateException(String,String,int,int[])`
+constructor (present on every Android API ≥ 11) and attaches the cause with
+`initCause`, so the underlying server error (duplicate key, our discover
+INSERT column bug, …) surfaces normally. `CallableBatchResultHandler` does
+not use the Java-9 constructor and needed no change.
+
+Rebuild them by compiling both files against the stock jar (checker-qual on
+the classpath) and running `jar uf`. Verify with:
 
 ```bash
 unzip -l libs/postgresql-42.7.4-android.jar | grep MaxResultBuffer   # class present
 javap -c -p -cp libs/postgresql-42.7.4-android.jar \
   org.postgresql.core.PGPropertyMaxResultBufferParser | grep -c ManagementFactory   # 0
+javap -c -p -cp libs/postgresql-42.7.4-android.jar \
+  org.postgresql.jdbc.BatchResultHandler | grep -c 'long\[\], java.lang.Throwable'  # 0
 ```
 
 As defence in depth every background thread catches `Throwable`, so even a

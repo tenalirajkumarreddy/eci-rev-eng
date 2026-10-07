@@ -13,6 +13,7 @@ Two families are used:
 from __future__ import annotations
 
 import os
+import random
 import sys
 import threading
 import time
@@ -78,10 +79,12 @@ def _post(url, body, timeout=30, retries=3):
         try:
             r = session().post(url, json=body, timeout=timeout)
         except requests.RequestException:
-            time.sleep(1.0 * (attempt + 1))
+            time.sleep(1.0 * (attempt + 1) * (0.5 + random.random()))
             continue
         if r.status_code == 429:
-            time.sleep(2.0 * (attempt + 1))
+            # Jitter: several devices retrying the same rate-limited route must
+            # not land in lockstep and re-trigger the limiter together.
+            time.sleep(2.0 * (attempt + 1) * (0.5 + random.random()))
             continue
         try:
             payload = r.json()
@@ -106,10 +109,23 @@ def fetch_window(state, ac, part, timeout=30):
     return fetch_serial(state, ac, part, "", timeout=timeout)
 
 
-def probe_roll_end(state, ac, part, hard_cap=3000):
-    """Highest serial that answers, +20 margin (30 if the part is empty)."""
+def probe_roll_end(state, ac, part, hard_cap=3000, hint=0):
+    """Highest serial that answers, +20 margin (30 if the part is empty).
+
+    `hint` seeds the probe with a neighbour part's roll_end: if the hint
+    answers, the result is identical to the full ascending probe but skips the
+    wasted low candidates; if the hint misses, the full probe runs.
+    """
+    cands = (50, 100, 200, 300, 400, 500, 650, 800, 1000, 1200, 1500, 2000, 2500)
+    seq = cands
     last = 0
-    for cand in (50, 100, 200, 300, 400, 500, 650, 800, 1000, 1200, 1500, 2000, 2500):
+    if hint and int(hint) >= 50:
+        h = min(int(hint), hard_cap)
+        status, payload = fetch_serial(state, ac, part, h)
+        if status == 200 and payload:
+            last = h
+            seq = tuple(c for c in cands if c > h)
+    for cand in seq:
         if cand > hard_cap:
             break
         status, payload = fetch_serial(state, ac, part, cand)

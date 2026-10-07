@@ -46,6 +46,7 @@ import base64
 import csv
 import json
 import os
+import random
 import re
 import secrets
 import statistics
@@ -286,6 +287,10 @@ create table if not exists {s}.old_parts (
 create index if not exists old_parts_queue_idx
   on {s}.old_parts (status, priority desc, state_cd, ac_no, part_no);
 create index if not exists old_parts_cur_idx on {s}.old_parts (cur_part_mode);
+-- Supports the picker's two correlated neighbour lookups. Without it the pick
+-- full-scans every pending part twice and times out on a large table.
+create index if not exists old_parts_neigh_idx
+  on {s}.old_parts (state_cd, ac_no, status, part_no);
 
 create table if not exists {s}.electors (
   source_id     text primary key,
@@ -367,19 +372,25 @@ create table if not exists {s}.jobs (
   result      jsonb,
   error       text,
   cancel      boolean default false,
+  device      text,
   created_at  timestamptz default now(),
   started_at  timestamptz,
   finished_at timestamptz
 );
 create index if not exists jobs_queue_idx on {s}.jobs (status, priority desc, id);
+-- Per-device tasks: each device claims only its own queued jobs.
+create index if not exists jobs_device_idx on {s}.jobs (device, status, priority desc, id);
 
 create table if not exists {s}.events (
   id      bigserial primary key,
   ts      timestamptz default now(),
   level   text default 'info',
   source  text,
-  message text
+  message text,
+  device  text
 );
+-- Per-device logs: every event carries the producing device's tag.
+create index if not exists events_device_idx on {s}.events (device, id desc);
 
 create table if not exists {s}.settings (
   key        text primary key,
@@ -427,11 +438,20 @@ alter table {s}.acs add column if not exists ac_type text;
 alter table {s}.current_parts add column if not exists ps_type     text;
 alter table {s}.current_parts add column if not exists ps_caty    text;
 alter table {s}.current_parts add column if not exists old_pdf_url text;
+-- Multi-device coordination: which collector holds a part, and when an AC's
+-- part discovery started (so a stale one can be reclaimed without stealing a
+-- live device's work).
+alter table {s}.old_parts add column if not exists claimed_by text;
+alter table {s}.acs add column if not exists discover_started_at timestamptz;
+-- Per-device logs and tasks: every event/job carries the tag of the device.
+alter table {s}.events add column if not exists device text;
+alter table {s}.jobs   add column if not exists device text;
 """
 
 DEFAULTS = {
     "auto_enabled": True,
     "workers": 6,
+    "parts_parallel": 2,
     "request_pause_ms": 0,
     "discover_max_part": 400,
     "calibrate_offset": True,
@@ -442,7 +462,9 @@ DEFAULTS = {
 REQUIRED_TABLES = ("states", "acs", "old_parts", "electors", "current_parts",
                    "epic_lookups", "jobs", "events", "settings")
 REQUIRED_COLUMNS = (("old_parts", "old_ac_name"), ("acs", "ac_type"),
-                    ("current_parts", "old_pdf_url"))
+                    ("current_parts", "old_pdf_url"),
+                    ("old_parts", "claimed_by"),
+                    ("acs", "discover_started_at"))
 
 
 def _schema_ready(cur):
@@ -474,6 +496,19 @@ def db_init(attempts=4):
     for i in range(attempts):
         try:
             with connect() as conn, conn.cursor() as cur:
+                # `if not exists` is a cheap catalogue check, so this runs even
+                # on an up-to-date schema (whose DDL is skipped below) - a
+                # missing neighbour index makes the picker scan every pending
+                # part twice and time out.
+                cur.execute("create index if not exists old_parts_neigh_idx "
+                            "on %s.old_parts (state_cd, ac_no, status, part_no)"
+                            % SCHEMA)
+                # Same reasoning for the per-device log / task indexes.
+                cur.execute("create index if not exists events_device_idx "
+                            "on %s.events (device, id desc)" % SCHEMA)
+                cur.execute("create index if not exists jobs_device_idx "
+                            "on %s.jobs (device, status, priority desc, id)"
+                            % SCHEMA)
                 if _schema_ready(cur):
                     cur.execute("""insert into settings(key, value)
                                    select k, v from jsonb_each(%s::jsonb) as e(k, v)
@@ -497,21 +532,37 @@ def db_init(attempts=4):
     raise last
 
 
-def setting(key, default=None):
+def setting(key, default=None, tag=None):
+    """Per-device fallthrough: '<key>@<tag>' first, then the shared '<key>'.
+
+    A '' or None tag means 'global only' (the pre-per-device behaviour), which
+    keeps the engine's own status output and the web dashboard reading the
+    fleet values."""
+    if tag:
+        row = q("select value from settings where key=%s", (key + "@" + tag,),
+                fetch="one")
+        if row:
+            return row["value"]
     row = q("select value from settings where key=%s", (key,), fetch="one")
     return row["value"] if row else default
 
 
-def set_setting(key, value):
+def set_setting(key, value, tag=None):
+    key = key if (tag in (None, "")) else "%s@%s" % (key, tag)
     q("insert into settings(key,value) values (%s,%s) "
       "on conflict (key) do update set value=excluded.value, updated_at=now()",
       (key, json.dumps(value)), fetch=None)
 
 
-def event(source, message, level="info"):
+def event(source, message, level="info", device=None):
+    """Log a line stamped with this device's tag (defaults to THIS process's
+    OLD_ECI_DEVICE_TAG), so each device can show its own feed."""
     try:
-        q("insert into events(level, source, message) values (%s,%s,%s)",
-          (level, source, message), fetch=None)
+        q("insert into events(level, source, message, device) "
+          "values (%s,%s,%s,%s)",
+          (level, source, message,
+           device if device is not None else globals().get("DEVICE_TAG", "")),
+          fetch=None)
     except Exception:
         pass
 
@@ -539,10 +590,12 @@ def _post(url, body, timeout=30, retries=3):
         try:
             r = _session("app").post(url, json=body, timeout=timeout)
         except requests.RequestException:
-            time.sleep(1.0 * (attempt + 1))
+            time.sleep(1.0 * (attempt + 1) * (0.5 + random.random()))
             continue
         if r.status_code == 429:
-            time.sleep(2.0 * (attempt + 1))
+            # Jitter: several devices retrying the same rate-limited route must
+            # not land in lockstep and re-trigger the limiter together.
+            time.sleep(2.0 * (attempt + 1) * (0.5 + random.random()))
             continue
         try:
             payload = r.json()
@@ -567,10 +620,23 @@ def fetch_window(state, ac, part, timeout=30):
     return fetch_serial(state, ac, part, "", timeout=timeout)
 
 
-def probe_roll_end(state, ac, part, hard_cap=3000):
-    """Highest serial that answers, +20 margin (30 if the part looks empty)."""
+def probe_roll_end(state, ac, part, hard_cap=3000, hint=0):
+    """Highest serial that answers, +20 margin (30 if the part looks empty).
+
+    `hint` seeds the probe with a neighbour part's roll_end: if the hint
+    answers, the result is identical to the full ascending probe but skips the
+    wasted low candidates; if the hint misses, the full probe runs.
+    """
+    cands = (50, 100, 200, 300, 400, 500, 650, 800, 1000, 1200, 1500, 2000, 2500)
+    seq = cands
     last = 0
-    for cand in (50, 100, 200, 300, 400, 500, 650, 800, 1000, 1200, 1500, 2000, 2500):
+    if hint and int(hint) >= 50:
+        h = min(int(hint), hard_cap)
+        status, payload = fetch_serial(state, ac, part, h)
+        if status == 200 and payload:
+            last = h
+            seq = tuple(c for c in cands if c > h)
+    for cand in seq:
         if cand > hard_cap:
             break
         status, payload = fetch_serial(state, ac, part, cand)
@@ -970,33 +1036,42 @@ def epic_lookup_store(epic):
 # 5. collector - catalog, discovery, collection, auto loop
 # ===========================================================================
 def recover_orphans():
-    """Requeue work left behind by a previous process.
+    """Requeue work whose holder is gone - STALE rows only, never a part that a
+    live PC process, phone or web-app worker is sweeping this minute.
 
-    A part killed mid-collection stays `running` forever, and the picker only
-    looks at pending/error - so without this it is stranded silently. Nothing can
-    legitimately be in flight when a fresh process starts. Re-collecting is safe:
-    the elector upsert is keyed on `source_id`.
+    A part being collected touches its row (batch flush + last_serial) every 200
+    serials, so 'running and not updated for 10 minutes' means the holder is
+    gone: crash, killed process, closed laptop. Runs at startup AND every ~60s
+    from the auto loop, so any surviving device picks up a dead device's parts
+    live. `--no-recover` still disables it entirely. Re-collecting is safe: the
+    elector upsert is keyed on `source_id`.
     """
     try:
         parts = q("""update old_parts set status='pending', last_serial=0,
-                            updated_at=now()
+                            claimed_by=null, updated_at=now()
                      where status='running'
+                       and updated_at < now() - interval '10 minutes'
                      returning state_cd, ac_no, part_no,
                                extract(epoch from now()-started_at)::int as age_s""")
     except Exception:
         parts = []
     try:
         jobs = q("""update jobs set status='error', finished_at=now(),
-                           error='interrupted by restart'
-                    where status='running' returning id""")
+                           error='interrupted'
+                    where status='running'
+                      and started_at < now() - interval '30 minutes'
+                    returning id""")
     except Exception:
         jobs = []
     try:
         # Same hazard one level up: a discovery killed mid-probe leaves the AC
-        # marked running, and the AC picker only looks at pending/error - so the
-        # AC would never be discovered again. Nothing can be in flight here.
+        # marked running, and the AC picker only looks at pending/error. Only
+        # stale discoveries are reclaimed; discover_started_at makes the
+        # distinction exact for rows written by this or any newer collector.
         acs = q("""update acs set discover_status='pending'
                    where discover_status='running'
+                     and (discover_started_at is null or
+                          discover_started_at < now() - interval '30 minutes')
                    returning state_cd, ac_no""")
     except Exception:
         acs = []
@@ -1110,14 +1185,15 @@ def _worker_count(workers=None):
     """
     n = int(workers or 0)
     if n <= 0:
-        n = int(setting("workers", 6) or 6)
+        n = int(setting("workers", 6, tag=DEVICE_TAG) or 6)
     return max(1, min(n, 32))
 
 
 def discover_parts(conn, state, ac, max_part=None, workers=None):
-    floor = int(max_part or setting("discover_max_part", 400))
+    floor = int(max_part or setting("discover_max_part", 400, tag=DEVICE_TAG))
     workers = _worker_count(workers)
-    q("update acs set discover_status='running', discover_max=%s, last_error=null "
+    q("update acs set discover_status='running', discover_max=%s, last_error=null, "
+      "discover_started_at=now() "
       "where state_cd=%s and ac_no=%s", (floor, state, ac), fetch=None)
 
     def probe(n):
@@ -1205,24 +1281,38 @@ def _row_tuple(rec, state, ac, part):
             _int(rec.get("bloMappedPartNo")), rec.get("bloMappedEpicNo"))
 
 
+# Identity written into old_parts.claimed_by when this collector claims a part,
+# so the dashboard can see which PC process, phone or Colab runtime holds what.
+WORKER_ID = "colab-%s-%s" % (os.uname().nodename if hasattr(os, "uname") else "host",
+                             os.getpid())
+# Per-device settings tag: 'key@<tag>' overrides the shared 'key', so this
+# runtime's workers/parts_parallel/calibrate never change the PC's or the
+# phone's. Stable across runs on purpose (a Colab hostname is random per
+# session) - one predictable row per fleet, overridable with
+# OLD_ECI_DEVICE_TAG. WORKER_ID keeps the pid: claims stay per-process, while
+# knobs stay per-fleet.
+DEVICE_TAG = os.environ.get("OLD_ECI_DEVICE_TAG", "colab")
+
+
 def _mark_running(state, ac, part):
     """Atomically claim a part for collection.
 
     Returns False when another collector already has it running. With parallel
-    part-workers or two scripts on one database, whoever sees `running` first
-    loses the race - and that must be *visible* (a skip in the log), not a silent
-    double sweep of the same part.
+    part-workers, or the web app / phone / another Colab on one database,
+    whoever sees `running` first loses the race - and that must be *visible* (a
+    skip in the log), not a silent double sweep of the same part. `claimed_by`
+    records which device holds it.
     """
     with pool().connection() as conn, conn.cursor() as cur:
         cur.execute("""insert into old_parts(state_cd, ac_no, part_no, status,
-                       started_at, attempts)
-                       values (%s,%s,%s,'running', now(), 1)
+                       started_at, attempts, claimed_by)
+                       values (%s,%s,%s,'running', now(), 1, %s)
                        on conflict (state_cd, ac_no, part_no) do update set
                          status='running', started_at=now(),
                          attempts=old_parts.attempts+1, last_error=null,
-                         updated_at=now()
+                         claimed_by=excluded.claimed_by, updated_at=now()
                        where old_parts.status <> 'running'
-                       returning state_cd""", (state, ac, part))
+                       returning state_cd""", (state, ac, part, WORKER_ID))
         return cur.fetchone() is not None
 
 
@@ -1243,8 +1333,9 @@ def collect_part(conn, state, ac, part, force=False, workers=None, cancel=None):
         # to the queue with the reason attached, then let the caller decide.
         try:
             q("""update old_parts set status='pending', last_error=%s,
-                    updated_at=now()
-                    where state_cd=%s and ac_no=%s and part_no=%s""",
+                    claimed_by=null, updated_at=now()
+                    where state_cd=%s and ac_no=%s and part_no=%s
+                      and status='running'""",
               ("%s: %s" % (type(exc).__name__, exc), state, ac, part), fetch=None)
         except Exception:
             pass
@@ -1254,8 +1345,19 @@ def collect_part(conn, state, ac, part, force=False, workers=None, cancel=None):
 def _collect_inner(conn, state, ac, part, workers=None, cancel=None):
     workers = _worker_count(workers)
     t0 = time.time()
-    cap = int(setting("collect_serial_cap", 3000) or 3000)
-    roll_end = probe_roll_end(state, ac, part, hard_cap=cap)
+    cap = int(setting("collect_serial_cap", 3000, tag=DEVICE_TAG) or 3000)
+    # Seed the roll-end probe from finished neighbours of the same AC: one DB
+    # read usually replaces ~10 of the ~13 sequential probe requests.
+    # probe_roll_end falls back to the full probe when the hint misses, so the
+    # answer matches an unhinted probe.
+    hint = 0
+    nb = q("""select max(roll_end) as r from old_parts
+              where state_cd=%s and ac_no=%s and status='done'
+                and roll_end is not null and abs(part_no - %s) <= 3""",
+           (state, ac, part), fetch="one")
+    if nb and nb["r"]:
+        hint = int(nb["r"])
+    roll_end = probe_roll_end(state, ac, part, hard_cap=cap, hint=hint)
     # Publish roll_end before sweeping: it is the denominator for live progress
     # and ETA, and without it a reader only sees progress from the first 200
     # serials onward (last_serial is written in the same 200-serial batch).
@@ -1356,7 +1458,8 @@ def _finish_part(conn, state, ac, part, stats, roll_end, offset, cur_part_mode,
     """Final status write + speed math. Split from _collect_inner so a parallel
     runner can finalise several parts without racing over each other's rows."""
     status = "pending" if cancelled else "done"
-    q("""update old_parts set status=%s, finished_at=now(), records=%s, epics=%s,
+    q("""update old_parts set status=%s, finished_at=now(), claimed_by=null,
+            records=%s, epics=%s,
             unmapped=%s, roll_end=%s, mapping_offset=%s, cur_part_mode=%s,
             old_state_name=coalesce(%s, old_state_name),
             old_dist_no=coalesce(%s, old_dist_no),
@@ -1390,7 +1493,14 @@ select p.state_cd, p.ac_no, p.part_no, p.name,
 from old_parts p
 where p.status = any(%s) and coalesce(p.exists_, true)
   {filters}
-order by neighbours_done desc, neighbour_yield desc, p.state_cd, p.ac_no, p.part_no
+-- Per-device tie-break (see worker.py BEST_PART_SQL): the deterministic
+-- ranking made every collector pick the same top part at the same moment;
+-- hashing the part identity with this device's tag spreads the equally-good
+-- frontier parts across devices. The real keys (done neighbours, yield) still
+-- dominate, so devices stay on the same AC but stop colliding on one part.
+order by neighbours_done desc, neighbour_yield desc,
+         md5(p.state_cd || ':' || p.ac_no::text || ':' || p.part_no::text || %s),
+         p.state_cd, p.ac_no, p.part_no
 limit 1
 """
 
@@ -1418,6 +1528,7 @@ def best_pending_part(state=None, ac=None, force=False, exclude=()):
             ["(%s,%s,%s)"] * len(exclude))
         for e in exclude:
             params.extend(e)
+    params.append(DEVICE_TAG)
     sql = BEST_PART_SQL.format(filters=filters)
     if force:
         sql = sql.replace(
@@ -1448,6 +1559,7 @@ def best_pending_parts(state=None, ac=None, limit=1, exclude=()):
             ["(%s,%s,%s)"] * len(exclude))
         for e in exclude:
             params.extend(e)
+    params.append(DEVICE_TAG)
     sql = BEST_PART_SQL.format(filters=filters)
     sql = sql.replace("limit 1", "limit %d" % max(1, int(limit)))
     return q(sql, params) or []
@@ -1652,6 +1764,11 @@ class Runner:
     def _collect_one(self, part):
         """Serial path: one part, this thread (the original loop)."""
         key = (part["state_cd"], part["ac_no"], part["part_no"])
+        # No pre-claim here on purpose: collect_part claims the part itself
+        # (_mark_running) once its sweep starts. Claiming in both places makes
+        # the second claim lose against the first and every part ends up
+        # skipped as "already running elsewhere" - that bug was already dug out
+        # once, don't reintroduce it.
         res = collect_part(self._conn(), part["state_cd"], part["ac_no"],
                            part["part_no"], force=self.a.force,
                            workers=self.workers, cancel=self.cancel)
@@ -1793,7 +1910,9 @@ class Runner:
         else:
             db_init()
         if a.workers:
-            set_setting("workers", int(a.workers))
+            # Scoped to this fleet's tag: an explicit --workers must not change
+            # the PC's or the phone's concurrency.
+            set_setting("workers", int(a.workers), tag=DEVICE_TAG)
         # NOTE: this deliberately does NOT touch settings.auto_enabled. That flag
         # belongs to the web app's worker, and commending it from here used to
         # turn the web app's collector on as a side effect of starting this script
@@ -1818,6 +1937,7 @@ class Runner:
             % a.discover_ahead)
         deadline = self.t0 + a.minutes * 60 if a.minutes else None
         idle_since = None
+        last_reap = 0.0
         while not self.stop.is_set():
             if deadline and time.time() > deadline:
                 self.summary("time limit reached")
@@ -1825,6 +1945,16 @@ class Runner:
             if a.parts and self.parts_done >= a.parts:
                 self.summary("part limit reached")
                 return 0
+            # Live reaper: hand back parts whose holder died (crash, killed
+            # process, closed laptop). Stale-only, so a live device's part is
+            # never stolen; every ~60s so any survivor picks up dead work.
+            if time.time() - last_reap >= 60.0:
+                last_reap = time.time()
+                if not a.no_recover:
+                    try:
+                        recover_orphans()
+                    except Exception as exc:  # noqa: BLE001
+                        event("worker", "reap failed: %s" % exc, level="warn")
             try:
                 out = self.step()
             except KeyboardInterrupt:

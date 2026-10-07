@@ -32,14 +32,20 @@ import java.util.Map;
  */
 public class MainActivity extends Activity {
 
-    TextView tvHealth, tvParts, tvKpis, tvCurrent, tvSpeed;
+    TextView tvHealth, tvParts, tvKpis, tvCurrent, tvSpeed, tvDevice, tvTasks;
     ProgressBar pbParts, pbCurrent;
     Switch swAuto;
-    Button btnService;
+    Button btnService, btnLogScope;
     LinearLayout llEvents;
+    // Logs default to THIS device's own stream; the toggle reveals the whole
+    // fleet. 'mine' is what makes the app a solo collector rather than a remote
+    // mirror of the web dashboard's feed.
+    volatile boolean logsAll;
 
     final Handler main = new Handler(Looper.getMainLooper());
     boolean refreshing;
+    final java.util.concurrent.atomic.AtomicBoolean heavyInFlight =
+            new java.util.concurrent.atomic.AtomicBoolean(false);
     boolean updatingAuto;
     // After a user flips the switch, the DB write is async; a refresh reading
     // the OLD value before it lands would visually revert the user's tap (and
@@ -76,12 +82,22 @@ public class MainActivity extends Activity {
         swAuto = findViewById(R.id.swAuto);
         btnService = findViewById(R.id.btnService);
         llEvents = findViewById(R.id.llEvents);
+        tvDevice = findViewById(R.id.tvDevice);
+        tvTasks = findViewById(R.id.tvTasks);
+        btnLogScope = findViewById(R.id.btnLogScope);
+        btnLogScope.setOnClickListener(v -> {
+            logsAll = !logsAll;
+            btnLogScope.setText(logsAll ? "all" : "mine");
+            refresh();
+        });
 
         swAuto.setOnCheckedChangeListener((btn, checked) -> {
             if (updatingAuto) return;
             autoPendingUntil = System.currentTimeMillis() + 5000;
-            bg(() -> {
-                Db.setSetting("auto_enabled", checked);
+            bg(() -> {                        // Scoped to THIS device: the phone's switch starts/stops
+                        // the phone only; the PC's dashboard toggle (global row)
+                        // stays the fleet default.
+                        Db.setSetting("auto_enabled", checked, Db.myTag());
                 Db.event("api", "auto mode " + (checked ? "on" : "off"));
                 if (checked) runOnUiThread(() -> CollectorService.start(this));
                 return null;
@@ -212,18 +228,36 @@ public class MainActivity extends Activity {
             long acs = Db.scalarLong("select count(*) from acs");
             long lookups = Db.scalarLong("select count(*) from epic_lookups");
 
-            if (cachedElectors < 0 || System.currentTimeMillis() - cachedAt > 60_000) {
-                cachedElectors = Db.scalarLong("select count(*) from electors");
-                cachedUnique = Db.scalarLong("select count(distinct cur_epic) "
-                        + "from electors where cur_epic is not null and cur_epic <> ''");
-                cachedAt = System.currentTimeMillis();
+            // Heavy electors/unique-EPIC aggregates: refresh at most every 2
+            // minutes, and only inside a lock so the app polls at most ONE copy
+            // of `count(distinct cur_epic)` (a minute-scale, 40 MB temp-spill
+            // query; several concurrent copies starved the workers). Positive:
+            // something is refreshing right now; Negative: first boot, not yet
+            // loaded.
+            if (cachedElectors < 0 || System.currentTimeMillis() - cachedAt > 120_000) {
+                if (heavyInFlight.compareAndSet(false, true)) {
+                    try {
+                        cachedElectors = Db.scalarLong("select count(*) from electors");
+                        cachedUnique = Db.scalarLong("select count(distinct cur_epic) "
+                                + "from electors where cur_epic is not null and cur_epic <> ''");
+                        cachedAt = System.currentTimeMillis();
+                    } finally {
+                        heavyInFlight.set(false);
+                    }
+                }
+                // Not the leader this tick: serve the (possibly stale) cached
+                // numbers - they feed a KPI card, nothing depends on freshness.
             }
 
+            // The current-part card follows THIS device's claim ('claimed_by'
+            // starts with this install's tag) instead of whichever device won
+            // the last claim - two phones used to show the same part.
             Map<String, Object> cur = Db.q1("select state_cd, ac_no, part_no, "
                     + "last_serial, roll_end, records, "
                     + "extract(epoch from now()-started_at) elapsed "
                     + "from old_parts where status='running' "
-                    + "order by started_at desc limit 1");
+                    + "and claimed_by like ? || '%' "
+                    + "order by started_at desc limit 1", Db.myTag());
             boolean lastFinished = false;
             if (cur == null) {
                 cur = Db.q1("select state_cd, ac_no, part_no, roll_end, records, "
@@ -242,10 +276,24 @@ public class MainActivity extends Activity {
                     + "- started_at))),0) busy from old_parts "
                     + "where finished_at > now() - interval '15 minutes'");
 
-            boolean auto = Db.boolSetting("auto_enabled", false);
-            List<Map<String, Object>> events = Db.q(
-                    "select ts, level, source, message from events "
-                            + "order by id desc limit 25");
+            boolean auto = Db.boolSetting("auto_enabled", false);  // this device
+
+            // This device's own work and its own task queue - the app is a solo
+            // collector, not a thin remote for the web dashboard.
+            long myRunning = Db.scalarLong(
+                    "select count(*) from old_parts where status='running' "
+                            + "and claimed_by like ? || '%'", Db.myTag());
+            List<Map<String, Object>> myTasks = Db.q(
+                    "select id, kind, status from jobs where device = ? "
+                            + "order by id desc limit 8", Db.myTag());
+
+            // Own logs by default (every event carries a device tag); the button
+            // switches to the whole fleet.
+            List<Map<String, Object>> events = logsAll
+                    ? Db.q("select ts, level, source, message, device from events "
+                            + "order by id desc limit 25")
+                    : Db.q("select ts, level, source, message, device from events "
+                            + "where device = ? order by id desc limit 25", Db.myTag());
 
             final Map<String, Object> fParts = parts;
             final long fStates = states, fAcs = acs, fLookups = lookups;
@@ -253,9 +301,11 @@ public class MainActivity extends Activity {
             final boolean fLast = lastFinished;
             final Map<String, Object> fWin = win;
             final boolean fAuto = auto;
+            final long fMyRunning = myRunning;
+            final List<Map<String, Object>> fTasks = myTasks;
             final List<Map<String, Object>> fEvents = events;
             runOnUiThread(() -> bind(fParts, fStates, fAcs, fLookups, fCur, fLast,
-                    fWin, fAuto, fEvents));
+                    fWin, fAuto, fMyRunning, fTasks, fEvents));
         }
     }
 
@@ -275,7 +325,8 @@ public class MainActivity extends Activity {
 
     void bind(Map<String, Object> parts, long states, long acs, long lookups,
               Map<String, Object> cur, boolean lastFinished, Map<String, Object> win,
-              boolean auto, List<Map<String, Object>> events) {
+              boolean auto, long myRunning, List<Map<String, Object>> myTasks,
+              List<Map<String, Object>> events) {
         refreshing = false;
         tvHealth.setText(healthLine());
 
@@ -284,9 +335,31 @@ public class MainActivity extends Activity {
         long pend = num(parts, "pending_parts");
         long run = num(parts, "running_parts");
         long err = num(parts, "error_parts");
+        // Free = nobody has processed it and nobody holds it (running parts are
+        // already claimed) - the pool every device's picker scans.
+        long free = pend + err;
         tvParts.setText(done + " / " + total
-                + "   (pend " + pend + " · run " + run + " · err " + err + ")");
+                + "   (pend " + pend + " · run " + run + " · err " + err + ")"
+                + "\nfree " + free + "  ·  this device runs " + myRunning);
         pbParts.setProgress(total == 0 ? 0 : (int) (done * 100 / total));
+
+        tvDevice.setText(Db.myTag()
+                + "\nworker " + (Worker.uiAlive() ? "alive" : "stopped")
+                + "  ·  auto " + (auto ? "ON" : "off")
+                + "  ·  mine running " + myRunning
+                + "\ndb " + Db.user + "@" + Db.host + ":" + Db.port + "/" + Db.name);
+
+        StringBuilder tb = new StringBuilder();
+        if (myTasks.isEmpty()) {
+            tb.append("no tasks queued on this device");
+        } else {
+            for (Map<String, Object> t : myTasks) {
+                if (tb.length() > 0) tb.append('\n');
+                tb.append('#').append(num(t, "id")).append(' ').append(str(t.get("kind")))
+                  .append("  [").append(str(t.get("status"))).append(']');
+            }
+        }
+        tvTasks.setText(tb.toString());
 
         tvKpis.setText(String.format(Locale.US,
                 "records %,d · epics %,d · unique %,d\nelectors %,d · lookups %,d · states %d · acs %d",
@@ -350,8 +423,12 @@ public class MainActivity extends Activity {
             TextView t = new TextView(this);
             long ts = e.get("ts") == null ? 0 : ((Number) e.get("ts")).longValue();
             String level = str(e.get("level"));
-            t.setText(String.format(Locale.US, "%s %s%s: %s",
-                    df.format(new Date(ts)), str(e.get("source")),
+            // In fleet view, prefix each line with the producing device's tag so
+            // 'mine' and 'all' are visually distinct.
+            String dev = logsAll && e.get("device") != null
+                    ? "[" + e.get("device") + "] " : "";
+            t.setText(String.format(Locale.US, "%s %s%s%s: %s",
+                    df.format(new Date(ts)), dev, str(e.get("source")),
                     "error".equals(level) ? "!" : "", str(e.get("message"))));
             t.setTextSize(11);
             if ("error".equals(level)) t.setTextColor(0xFFC62828);

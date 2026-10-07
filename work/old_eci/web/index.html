@@ -287,6 +287,15 @@ async function loadBreakdown() {
     + ` · ${nf(cov.no_relative)} with no relative name · ${nf(cov.no_name)} with no name`;
 }
 
+/* One line summarising who currently HOLDS parts, from /api/summary.claimants
+   (picked up per running claimant kind). Empty on an idle system. */
+function deviationLine(claimants) {
+  if (!Array.isArray(claimants) || !claimants.length) return "";
+  const bits = claimants.map(c =>
+    `${c.kind}: ${c.count}`);
+  return bits.join(" · ");
+}
+
 /* dashboards */
 async function loadDash() {
   const d = await api("/api/summary");
@@ -299,6 +308,11 @@ async function loadDash() {
     ["Parts done", `<span class="kpi-ok">${nf(o.done_parts)}</span>`],
     ["Pending", `<span class="kpi-run">${nf(o.pending_parts)}</span>`],
     ["Errors", `<span class="kpi-err">${nf(o.error_parts)}</span>`],
+    // Free = unprocessed AND unclaimed: exactly the pool every device's picker
+    // scans (running parts already belong to some device).
+    ["Free (unclaimed)",
+      `<span class="kpi-run">${nf(o.free_parts != null ? o.free_parts
+        : (o.pending_parts || 0) + (o.error_parts || 0))}</span>`],
     ["Elector rows", nf(o.electors)], ["Unique EPICs", nf(o.unique_epics)],
     ["EPIC lookups", nf(o.epic_lookups)],
     // Collection speed, in units per second. `req/s` is serials actually fetched
@@ -336,6 +350,22 @@ async function loadDash() {
   $("#hdr-db").textContent = location.host;
   $("#workersSel").value = d.settings.workers || 6;
   $("#discoverMax").value = d.settings.discover_max_part || 400;
+  // Per-device scope: this server only controls ITS OWN tag when one is set;
+  // otherwise the dropdown writes the shared global defaults.
+  const devTag = d.settings.device_tag || "";
+  const devLine = deviationLine(d.claimants);
+  $("#workerState").dataset.deviceTag = devTag;
+  // Header identifies THIS device (its tag) and who else holds parts.
+  $("#hdr-db").textContent = location.host
+    + (devTag ? " · " + devTag : "") + (devLine ? " · " + devLine : "");
+  // Devices that opted out of / into auto on their own (the phone's switch):
+  // show them so a fleet-wide "auto off" here is never a surprise.
+  const overrides = (d.settings.auto_overrides || []).map(o =>
+    `${esc(String(o.key).split("@")[1] || "?")}: ${o.value ? "on" : "off"}`);
+  if (overrides.length) {
+    $("#hdr-auto").textContent = "auto: " + (auto ? "on" : "off")
+      + " (" + overrides.join(", ") + ")";
+  }
   const partTxt = cur.part_no
     ? ` <b>${esc(cur.state_cd)}</b> AC ${esc(cur.ac_no)} P${esc(cur.part_no)}
         <b>${nf(cur.serial)}</b>${cur.roll_end ? "/" + nf(cur.roll_end) : ""} serials`
@@ -345,9 +375,10 @@ async function loadDash() {
       + (cur.eta_secs != null ? ` · eta ${Math.round(cur.eta_secs)}s` : "")
     : "";
   $("#workerState").innerHTML = `auto <b>${auto ? "ON" : "off"}</b> · workers
-      <b>${esc(d.settings.workers)}</b> · calibrate <b>${esc(d.settings.calibrate_offset)}</b>`
+      <b>${esc(d.settings.workers)}</b>${devTag ? ` <span class="small muted">for ${esc(devTag)} (per-device; numbers changed here do not touch other devices)</span>` : ""}
+      · calibrate <b>${esc(d.settings.calibrate_offset)}</b>`
       + partTxt + speedTxt;
-  loadBreakdown();
+  loadBreakdownOnce();
 
   $("#jobsLive").innerHTML = (d.jobs || []).length ? (d.jobs.map(j => {
     const p = j.progress || {};
@@ -385,8 +416,11 @@ $("#autoToggle").onchange = async (e) => {
   toast("auto mode " + (e.target.checked ? "on" : "off")); loadDash();
 };
 $("#saveSettings").onclick = async () => {
+  // This dashboard manages THIS device: its tag rides along so the numbers
+  // land on '<key>@<tag>' instead of the shared row - the phone keeps its own.
   await post("/api/settings", {workers: parseInt($("#workersSel").value, 10),
-                               discover_max_part: parseInt($("#discoverMax").value, 10)});
+                               discover_max_part: parseInt($("#discoverMax").value, 10),
+                               device_tag: $("#workerState").dataset.deviceTag || ""});
   toast("settings saved"); loadDash();
 };
 async function cancelJob(id) { await post(`/api/jobs/${id}/cancel`, {}); toast("cancel requested"); loadDash(); }
@@ -627,11 +661,25 @@ async function loadEvents() {
   $("#eventsTable").innerHTML = "<thead><tr><th>ts</th><th>level</th><th>source</th><th>message</th></tr></thead><tbody>"
     + d.map(e => `<tr><td class="small muted">${new Date(e.ts).toLocaleString()}</td>
         <td>${esc(e.level)}</td><td>${esc(e.source)}</td><td>${esc(e.message)}</td></tr>`).join("")
-    + "</tbody>";
+    +    "</tbody>";
 }
 
-/* boot + polling */
+/* boot + polling.
+   loadBreakdown used to fire inside every dashboard refresh: its three
+   full-table aggregates over electors (relation / gender / coverage) take
+   seconds each on millions of rows and the whole dashboard was drenched in
+   BufferMapping waits, which in turn starved the collectors into
+   statement-timeout errors. It is a slow-changing value domain, so it runs
+   once on boot and can be reloaded from the tab itself. */
+let breakdownLoaded = false;
+function loadBreakdownOnce() {
+  if (breakdownLoaded) return;
+  breakdownLoaded = true;
+  loadBreakdown().catch(() => { breakdownLoaded = false; });
+}
+
 refreshTab();
+loadBreakdownOnce();
 setInterval(() => { if (state.tab === "dash") loadDash().catch(() => {});
                     if (state.tab === "parts") loadParts().catch(() => {}); }, 3000);
 </script>

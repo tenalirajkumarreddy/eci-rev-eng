@@ -1,5 +1,7 @@
 package com.oldroll.collector;
 
+import android.os.Build;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -26,14 +28,19 @@ import java.util.concurrent.TimeUnit;
  * Same queue, same ledger, same job kinds (seed_states, seed_acs[,_all],
  * discover_parts, collect_part, collect_auto, epic_lookup), same auto mode:
  * the phone and the PC web app are interchangeable workers over one database.
- * Queued jobs use FOR UPDATE SKIP LOCKED, and a part is claimed inside
- * collect_part only, so two workers never both sweep the same part.
+ * Queued jobs use FOR UPDATE SKIP LOCKED, and a part is claimed atomically
+ * (claimPart: `where status <> 'running'`) so two workers never both sweep the
+ * same part - the loser sees a visible skip.
  *
- * Differences from the Python worker, both deliberate:
- *  - orphan recovery only reclaims rows stale for 10 min (parts) / 30 min
- *    (jobs): a live worker on the other machine keeps writing, so its work is
- *    never stolen (the Python version resets every running row, which is only
- *    safe with exactly one worker process);
+ * Multi-device safety:
+ *  - orphan recovery only reclaims rows STALE for 10 min (parts) / 30 min
+ *    (jobs/discovery): a live device on the other machine keeps writing, so its
+ *    work is never stolen; the same stale-only pass runs every ~60s from the
+ *    loop, so a dead device's parts are picked up live;
+ *  - a failed part is handed back to 'pending' with the error attached, never
+ *    left 'running';
+ *  - auto mode pipelines `parts_parallel` parts at once, dividing the shared
+ *    serial-thread budget so the gateway load stays the same;
  *  - offset calibration is best-effort: a failed EPIC lookup must not strand a
  *    freshly collected part in 'running'.
  */
@@ -47,6 +54,12 @@ public final class Worker {
     public static volatile long jobId;
     public static volatile String note = "";
     public static volatile String lastError;
+
+    /** Identity written into old_parts.claimed_by when this device claims a
+     *  part, so the dashboard can see which phone or PC process holds what. */
+    static final String WORKER_ID = "android-" + Build.MODEL + "-"
+            + android.os.Process.myPid();
+    static volatile long lastReapAt;
 
     // Part sweeps beat the heartbeat: collect_part bumps tick every 200 serials.
     static final long STALE_AFTER_MS = 90_000;
@@ -106,11 +119,16 @@ public final class Worker {
 
     // ----------------------------------------------------------- job queue
 
+    /** Claim the next queued job THIS device owns. Jobs carry the tag of the
+     *  device that queued them, so a job queued on the web app is never run by
+     *  a phone (and vice versa) - each device has its own tasks. Legacy rows
+     *  with no device stay claimable by anyone. */
     static Map<String, Object> claimJob() throws SQLException {
         return Db.q1("update jobs set status='running', started_at=now() "
                 + "where id = (select id from jobs where status='queued' "
+                + "and (device is null or device = ?) "
                 + "order by priority desc, id limit 1 for update skip locked) "
-                + "returning *");
+                + "returning *", Db.myTag());
     }
 
     static boolean jobCancelled(Long id) {
@@ -151,14 +169,20 @@ public final class Worker {
     public static void recoverOrphans() throws SQLException {
         List<Map<String, Object>> parts = Db.updReturning(
                 "update old_parts set status='pending', last_serial=0, "
-                        + "updated_at=now() where status='running' "
+                        + "claimed_by=null, updated_at=now() where status='running' "
                         + "and updated_at < now() - interval '10 minutes' "
                         + "returning state_cd, ac_no, part_no");
         List<Map<String, Object>> jobs = Db.updReturning(
                 "update jobs set status='error', finished_at=now(), "
-                        + "error='interrupted by restart' where status='running' "
+                        + "error='interrupted' where status='running' "
                         + "and started_at < now() - interval '30 minutes' "
                         + "returning id");
+        List<Map<String, Object>> acs = Db.updReturning(
+                "update acs set discover_status='pending' "
+                        + "where discover_status='running' "
+                        + "and (discover_started_at is null or "
+                        + "discover_started_at < now() - interval '30 minutes') "
+                        + "returning state_cd, ac_no");
         if (!parts.isEmpty()) {
             StringBuilder sb = new StringBuilder();
             for (Map<String, Object> p : parts) {
@@ -178,6 +202,15 @@ public final class Worker {
             Db.event("worker", "marked " + jobs.size()
                     + " interrupted job(s) as error: " + sb, "warn");
         }
+        if (!acs.isEmpty()) {
+            StringBuilder sb = new StringBuilder();
+            for (Map<String, Object> a : acs) {
+                if (sb.length() > 0) sb.append(", ");
+                sb.append(a.get("state_cd")).append(" AC").append(a.get("ac_no"));
+            }
+            Db.event("worker", "requeued " + acs.size()
+                    + " stale AC discovery/discoveries: " + sb);
+        }
     }
 
     // ------------------------------------------------------- best pending part
@@ -193,9 +226,17 @@ public final class Worker {
           + "from old_parts p\n"
           + "where p.status in ('pending','error') and coalesce(p.exists_, true)\n"
           + "  %s\n"
-          + "order by neighbours_done desc, neighbour_yield desc, "
-          + "p.state_cd, p.ac_no, p.part_no\n"
-          + "limit 1";
+            // Per-device tie-break (mirror of worker.py BEST_PART_SQL): the
+            // fully deterministic ranking made every device pick the same top
+            // part in the same instant, so all but one lost the claim ('both
+            // doing the same thing'). The md5 of part identity + THIS device's
+            // id spreads the equally-good frontier parts across devices while
+            // the real keys (done neighbours, yield) still dominate.
+          + "order by neighbours_done desc, neighbour_yield desc,\n"
+          + "         md5(p.state_cd || ':' || p.ac_no::text || ':' "
+          + "|| p.part_no::text || ?),\n"
+          + "         p.state_cd, p.ac_no, p.part_no\n"
+          + "limit %s";
 
     public static Map<String, Object> bestPendingPart(String stateCd, Integer acNo)
             throws SQLException {
@@ -209,8 +250,66 @@ public final class Worker {
             filters.append(" and p.ac_no = ?");
             params.add(acNo);
         }
-        return Db.q1(String.format(BEST_PART_SQL, filters),
+        // Tie-break binds this device's id (see BEST_PART_SQL).
+        params.add(WORKER_ID);
+        return Db.q1(String.format(BEST_PART_SQL, filters, 1),
                 params.toArray(new Object[0]));
+    }
+
+    /** Best `limit` collectable parts. Picking is advisory - the atomic claim
+     *  (claimPart) is what reserves a part, so overlapping picks across devices
+     *  resolve to visible skips, never duplicate sweeps. */
+    public static List<Map<String, Object>> bestPendingParts(String stateCd,
+                                                             Integer acNo, int limit)
+            throws SQLException {
+        StringBuilder filters = new StringBuilder();
+        List<Object> params = new ArrayList<>();
+        if (stateCd != null) {
+            filters.append(" and p.state_cd = ?");
+            params.add(stateCd);
+        }
+        if (acNo != null) {
+            filters.append(" and p.ac_no = ?");
+            params.add(acNo);
+        }
+        // Tie-break binds this device's id (see bestPendingPart).
+        params.add(WORKER_ID);
+        // `limit` is an internal int (free + width), interpolated as a literal
+        // so the parameter list stays exactly the bind placeholders.
+        return Db.q(String.format(BEST_PART_SQL, filters, limit),
+                params.toArray(new Object[0]));
+    }
+
+    /** Atomically claim a part for collection; false when another device (or
+     *  another thread here) holds it running. The `where status <> 'running'`
+     *  guard makes the claim one atomic statement: with the web app's 9 worker
+     *  processes, phones and Colab racing on one database, exactly one claimer
+     *  wins and every loser sees a visible skip instead of a duplicate sweep. */
+    static boolean claimPart(String stateCd, int acNo, int partNo) throws SQLException {
+        Map<String, Object> r = Db.q1(
+                "insert into old_parts(state_cd, ac_no, part_no, status, started_at, "
+                        + "attempts, claimed_by) values (?,?,?,'running', now(), 1, ?) "
+                        + "on conflict (state_cd, ac_no, part_no) do update set "
+                        + "status='running', started_at=now(), "
+                        + "attempts=old_parts.attempts+1, last_error=null, "
+                        + "claimed_by=excluded.claimed_by, updated_at=now() "
+                        + "where old_parts.status <> 'running' returning state_cd",
+                stateCd, acNo, partNo, WORKER_ID);
+        return r != null;
+    }
+
+    /** Hand a part back to the queue after a failure, error attached. Never
+     *  leaves a part 'running' where the picker cannot see it. */
+    static void handback(String stateCd, int acNo, int partNo, String error) {
+        try {
+            Db.upd("update old_parts set status='pending', last_error=?, "
+                            + "claimed_by=null, updated_at=now() "
+                            + "where state_cd=? and ac_no=? and part_no=? "
+                            + "and status='running'",
+                    error, stateCd, acNo, partNo);
+        } catch (Throwable ignored) {
+            // the stale reaper is the second line of defence
+        }
     }
 
     // ------------------------------------------------------------- catalog
@@ -358,7 +457,9 @@ public final class Worker {
             throws SQLException, JSONException {
         int floor = maxPart != null ? maxPart : Db.intSetting("discover_max_part", 400);
         Db.upd("update acs set discover_status='running', discover_max=?, "
-                + "last_error=null where state_cd=? and ac_no=?", floor, stateCd, acNo);
+                        + "last_error=null, discover_started_at=now() "
+                        + "where state_cd=? and ac_no=?",
+                floor, stateCd, acNo);
         int workers = Math.max(1, Db.intSetting("workers", 6));
 
         Map<Integer, String> found = new TreeMap<>();
@@ -404,7 +505,7 @@ public final class Worker {
 
         boolean truncated = found.containsKey(probedTo) && probedTo >= PART_HARD_CAP;
         String sql = "insert into old_parts(state_cd, ac_no, part_no, name, exists_, status) "
-                + "values (?,?,?,?,'pending') on conflict (state_cd, ac_no, part_no) "
+                + "values (?,?,?,?,true,'pending') on conflict (state_cd, ac_no, part_no) "
                 + "do update set name=coalesce(excluded.name, old_parts.name), "
                 + "exists_=true, updated_at=now()";
         Db.withPs(sql, ps -> {
@@ -529,6 +630,16 @@ public final class Worker {
     public static Map<String, Object> collectPart(Long id, String stateCd, int acNo,
                                                   int partNo, boolean force)
             throws SQLException, JSONException {
+        return collectPart(id, stateCd, acNo, partNo, force, 1);
+    }
+
+    /** `width` parts are being collected in parallel by this worker; the shared
+     *  `workers` budget is divided across them so the gateway sees the same
+     *  total concurrency as a sequential sweep - the parallel win is phase
+     *  overlap, not more requests. */
+    public static Map<String, Object> collectPart(Long id, String stateCd, int acNo,
+                                                  int partNo, boolean force, int width)
+            throws SQLException, JSONException {
         Map<String, Object> row = Db.q1("select * from old_parts where state_cd=? "
                 + "and ac_no=? and part_no=?", stateCd, acNo, partNo);
         if (row != null && "done".equals(row.get("status")) && !force) {
@@ -540,17 +651,31 @@ public final class Worker {
             return out;
         }
 
-        Db.upd("insert into old_parts(state_cd, ac_no, part_no, status, started_at, attempts)\n"
-                        + "values (?,?,?,'running', now(), 1)\n"
-                        + "on conflict (state_cd, ac_no, part_no)\n"
-                        + "do update set status='running', started_at=now(), "
-                        + "attempts=old_parts.attempts+1, last_error=null, updated_at=now()",
-                stateCd, acNo, partNo);
+        if (!claimPart(stateCd, acNo, partNo)) {
+            // Another PC process, phone or Colab holds this part right now:
+            // visible skip instead of a silent duplicate sweep.
+            Map<String, Object> out = new LinkedHashMap<>();
+            out.put("skipped", true);
+            out.put("reason", "already running elsewhere");
+            return out;
+        }
 
         long t0 = now();
-        int workers = Math.max(1, Db.intSetting("workers", 6));
+        int workers = Math.max(1, Db.intSetting("workers", 6) / Math.max(1, width));
         int cap = Db.intSetting("collect_serial_cap", 3000);
-        int rollEnd = Gateway.probeRollEnd(stateCd, acNo, partNo, cap);
+        // Seed the roll-end probe from finished neighbours of the same AC: one
+        // DB read usually replaces ~10 of the ~13 sequential probe requests.
+        // probeRollEnd falls back to the full probe when the hint misses, so
+        // the answer matches an unhinted probe.
+        int hint = 0;
+        Map<String, Object> nb = Db.q1("select max(roll_end) as r from old_parts "
+                + "where state_cd=? and ac_no=? and status='done' "
+                + "and roll_end is not null and abs(part_no - ?) <= 3",
+                stateCd, acNo, partNo);
+        if (nb != null && nb.get("r") != null) {
+            hint = ((Number) nb.get("r")).intValue();
+        }
+        int rollEnd = Gateway.probeRollEnd(stateCd, acNo, partNo, cap, hint);
         // Publish roll_end before sweeping: it is the denominator the dashboard
         // uses for live speed and ETA, and last_serial only lands every 200.
         Db.upd("update old_parts set roll_end=?, updated_at=now() "
@@ -696,7 +821,8 @@ public final class Worker {
         }
 
         String status = cancelled ? "pending" : "done";
-        Db.upd("update old_parts set status=?, finished_at=now(), records=?, epics=?, "
+        Db.upd("update old_parts set status=?, finished_at=now(), claimed_by=null, "
+                        + "records=?, epics=?, "
                         + "unmapped=?, roll_end=?, mapping_offset=?, cur_part_mode=?, "
                         + "old_state_name=coalesce(?, old_state_name), "
                         + "old_dist_no=coalesce(?, old_dist_no), "
@@ -727,36 +853,179 @@ public final class Worker {
         return out;
     }
 
-    public static Map<String, Object> collectAuto(Long id, String stateCd, Integer acNo,
-                                                  int maxParts, boolean force)
-            throws SQLException, JSONException {
-        List<Object> done = new ArrayList<>();
-        for (int i = 0; i < maxParts; i++) {
-            if (jobCancelled(id) || stopRequested) break;
-            Map<String, Object> nxt = bestPendingPart(stateCd, acNo);
-            if (nxt == null) break;
-            String sc = String.valueOf(nxt.get("state_cd"));
-            int a = ((Number) nxt.get("ac_no")).intValue();
-            int p = ((Number) nxt.get("part_no")).intValue();
-            note = "auto: " + sc + " AC" + a + " P" + p;
-            Map<String, Object> res = collectPart(id, sc, a, p, force);
-            Map<String, Object> one = new LinkedHashMap<>();
-            one.put("state_cd", sc);
-            one.put("ac_no", a);
-            one.put("part_no", p);
-            one.put("result", res);
-            one.put("cur_part_mode", res.get("cur_part_mode"));
-            done.add(one);
+    /** Body of one parallel part-worker: every statement goes through the
+     *  shared pool (each borrow is per-operation), failures hand the part back
+     *  via handback - the same invariant as the sequential path. */
+    private static Map<String, Object> pipelineOne(Long id, Map<String, Object> pick,
+                                                   boolean force, int width) {
+        String sc = String.valueOf(pick.get("state_cd"));
+        int a = ((Number) pick.get("ac_no")).intValue();
+        int p = ((Number) pick.get("part_no")).intValue();
+        try {
+            return collectPart(id, sc, a, p, force, width);
+        } catch (Throwable t) {
+            handback(sc, a, p, t.getClass().getSimpleName() + ": " + t.getMessage());
+            if (t instanceof RuntimeException) throw (RuntimeException) t;
+            if (t instanceof Error) throw (Error) t;
+            throw new RuntimeException(t);
+        }
+    }
+
+    private static void recordPipeline(List<Map<String, Object>> done, Long id,
+                                       Map<String, Object> pick,
+                                       Map<String, Object> res) {
+        Map<String, Object> one = new LinkedHashMap<>();
+        one.put("state_cd", pick.get("state_cd"));
+        one.put("ac_no", pick.get("ac_no"));
+        one.put("part_no", pick.get("part_no"));
+        one.put("result", res);
+        one.put("cur_part_mode", res == null ? null : res.get("cur_part_mode"));
+        done.add(one);
+        try {
             JSONObject prog = new JSONObject();
             prog.put("phase", "auto");
             prog.put("finished", done.size());
             prog.put("last", Json.z(one));
             progress(id, prog);
-        }
+        } catch (JSONException ignored) { }
+    }
+
+    private static Map<String, Object> pipelineOut(List<Map<String, Object>> done) {
         Map<String, Object> out = new LinkedHashMap<>();
         out.put("parts", done.size());
         out.put("done", done);
         return out;
+    }
+
+    /** True when any job is waiting in the queue: an open-ended auto pipeline
+     *  (id == null, no cap) breaks out so run_forever can claim the job on its
+     *  next pass instead of the queue sitting starved behind endless auto
+     *  collection. Explicit jobs (id != null) run to their own terms. */
+    static boolean hasQueuedJob() {
+        try {
+            return !Db.q("select 1 from jobs where status='queued' "
+                    + "and (device is null or device = ?) limit 1", Db.myTag())
+                    .isEmpty();
+        } catch (Throwable t) {
+            // A transient DB hiccup must not empty every pipeline; the reaper
+            // and the next pipeline pass retry the check anyway.
+            return false;
+        }
+    }
+
+    /** Collect parts concurrently, replenishing each slot as it frees. The win
+     *  is phase overlap: while one part is in its probe head, its calibration
+     *  tail or its final DB flush, another is already sweeping. Each part runs
+     *  `workers / width` serial threads, so the gateway sees the same total
+     *  concurrency as a sequential sweep. Claims are atomic, so overlapping
+     *  with other devices is safe: losers get a visible skip. */
+    public static Map<String, Object> collectPipeline(Long id, String stateCd,
+                                                      Integer acNo, Integer maxParts,
+                                                      boolean force)
+            throws SQLException {
+        int width = Math.max(1, Db.intSetting("parts_parallel", 2));
+        List<Map<String, Object>> done = new ArrayList<>();
+
+        if (width <= 1) {
+            while (maxParts == null || done.size() < maxParts) {
+                if (jobCancelled(id) || stopRequested) break;
+                // An open-ended auto pipeline (id == null) must yield promptly
+                // when a queued job appears - otherwise the endless sweep
+                // starves the jobs queue (observed on the PC: discover buttons
+                // sat unclaimed for half an hour while auto collected).
+                // run_forever claims it on the next pass.
+                if (id == null && hasQueuedJob()) break;
+                Map<String, Object> nxt = bestPendingPart(stateCd, acNo);
+                if (nxt == null) break;
+                Map<String, Object> pick = new LinkedHashMap<>();
+                pick.put("state_cd", nxt.get("state_cd"));
+                pick.put("ac_no", nxt.get("ac_no"));
+                pick.put("part_no", nxt.get("part_no"));
+                Map<String, Object> res;
+                try {
+                    res = collectPart(id, String.valueOf(pick.get("state_cd")),
+                            ((Number) pick.get("ac_no")).intValue(),
+                            ((Number) pick.get("part_no")).intValue(), force, 1);
+                } catch (Throwable t) {
+                    handback(String.valueOf(pick.get("state_cd")),
+                            ((Number) pick.get("ac_no")).intValue(),
+                            ((Number) pick.get("part_no")).intValue(),
+                            t.getClass().getSimpleName() + ": " + t.getMessage());
+                    res = new LinkedHashMap<>();
+                    res.put("error", t.getClass().getSimpleName() + ": " + t.getMessage());
+                }
+                recordPipeline(done, id, pick, res);
+            }
+            return pipelineOut(done);
+        }
+
+        Set<String> attempted = new HashSet<>();
+        Map<Future<Map<String, Object>>, Map<String, Object>> inflight =
+                new LinkedHashMap<>();
+        ExecutorService ex = Executors.newFixedThreadPool(width);
+        try {
+            while (!stopRequested) {
+                if (jobCancelled(id)) break;
+                if (maxParts != null && done.size() >= maxParts) break;
+                // Same jobs-queue yield as the sequential branch: an open-
+                // ended auto pipeline must let run_forever claim a queued job
+                // instead of sweeping pending parts forever.
+                if (id == null && hasQueuedJob()) break;
+                int free = width - inflight.size();
+                if (free > 0 && (maxParts == null
+                        || done.size() + inflight.size() < maxParts)) {
+                    List<Map<String, Object>> picks =
+                            bestPendingParts(stateCd, acNo, free + width);
+                    for (Map<String, Object> nxt : picks) {
+                        if (free <= 0) break;
+                        if (maxParts != null
+                                && done.size() + inflight.size() >= maxParts) break;
+                        String key = nxt.get("state_cd") + ":" + nxt.get("ac_no")
+                                + ":" + nxt.get("part_no");
+                        if (attempted.contains(key)) continue;
+                        attempted.add(key);
+                        Map<String, Object> pick = new LinkedHashMap<>();
+                        pick.put("state_cd", nxt.get("state_cd"));
+                        pick.put("ac_no", nxt.get("ac_no"));
+                        pick.put("part_no", nxt.get("part_no"));
+                        final Long jid = id;
+                        final Map<String, Object> pk = pick;
+                        inflight.put(ex.submit(() -> pipelineOne(jid, pk, force, width)),
+                                pick);
+                        free--;
+                    }
+                }
+                if (inflight.isEmpty()) break;   // nothing pending (or all held elsewhere)
+                Future<Map<String, Object>> fin = null;
+                for (Future<Map<String, Object>> f : inflight.keySet()) {
+                    if (f.isDone()) { fin = f; break; }
+                }
+                if (fin == null) {
+                    try { Thread.sleep(500); } catch (InterruptedException ie) { break; }
+                    continue;
+                }
+                Map<String, Object> pick = inflight.remove(fin);
+                Map<String, Object> res;
+                try {
+                    res = fin.get();
+                } catch (Throwable t) {
+                    res = new LinkedHashMap<>();
+                    res.put("error", t.getClass().getSimpleName() + ": " + t.getMessage());
+                }
+                recordPipeline(done, id, pick, res);
+            }
+        } finally {
+            ex.shutdownNow();
+            try { ex.awaitTermination(2, TimeUnit.SECONDS); }
+            catch (InterruptedException ignored) { }
+        }
+        return pipelineOut(done);
+    }
+
+    public static Map<String, Object> collectAuto(Long id, String stateCd, Integer acNo,
+                                                  int maxParts, boolean force)
+            throws SQLException {
+        return collectPipeline(id, stateCd, acNo, maxParts, force);
     }
 
     // ---------------------------------------------------------------- EPIC
@@ -845,11 +1114,22 @@ public final class Worker {
                             payload.has("max_part") && !payload.isNull("max_part")
                                     ? payload.getInt("max_part") : null);
                     break;
-                case "collect_part":
-                    out = collectPart(id, payload.getString("state_cd"),
-                            payload.getInt("ac_no"), payload.getInt("part_no"),
-                            payload.optBoolean("force", false));
+                case "collect_part": {
+                    String sc = payload.getString("state_cd");
+                    int a = payload.getInt("ac_no");
+                    int p = payload.getInt("part_no");
+                    try {
+                        out = collectPart(id, sc, a, p,
+                                payload.optBoolean("force", false));
+                    } catch (Throwable t) {
+                        // a failed part must never sit 'running' invisible to
+                        // the picker - hand it back with the reason attached
+                        handback(sc, a, p,
+                                t.getClass().getSimpleName() + ": " + t.getMessage());
+                        throw t;
+                    }
                     break;
+                }
                 case "collect_auto":
                     out = collectAuto(id, payload.optString("state_cd", null),
                             payload.has("ac_no") && !payload.isNull("ac_no")
@@ -904,17 +1184,31 @@ public final class Worker {
                     runJob(job);
                     continue;
                 }
+                // Live reaper: hand back parts whose holder died (crash, dead
+                // emulator). Stale-only, so a live PC part is never stolen;
+                // every ~60s so any surviving device picks up dead work.
+                if (now() - lastReapAt >= 60_000) {
+                    lastReapAt = now();
+                    try {
+                        recoverOrphans();
+                    } catch (Throwable ignored) { }
+                }
                 if (Db.boolSetting("auto_enabled", false)) {
                     Map<String, Object> nxt = bestPendingPart(null, null);
                     if (nxt != null) {
                         String sc = String.valueOf(nxt.get("state_cd"));
                         int a = ((Number) nxt.get("ac_no")).intValue();
                         int p = ((Number) nxt.get("part_no")).intValue();
-                        note = "auto: " + sc + " AC" + a + " P" + p;
-                        collectPart(null, sc, a, p, false);
-                        continue;
+                        note = "auto pipeline x" + Db.intSetting("parts_parallel", 2)
+                                + ": " + sc + " AC" + a + " P" + p;
+                        Map<String, Object> out = collectPipeline(null, null, null,
+                                null, false);
+                        if (((Number) out.get("parts")).intValue() > 0) continue;
+                        // Every pick is held by another device right now.
+                        note = "auto: parts in flight elsewhere";
+                    } else {
+                        note = "idle - nothing pending";
                     }
-                    note = "idle - nothing pending";
                 } else {
                     note = "idle";
                 }

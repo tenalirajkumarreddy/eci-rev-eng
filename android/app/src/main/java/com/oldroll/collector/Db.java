@@ -125,6 +125,15 @@ public final class Db {
     }
 
     static String url(String dbName) {
+        // Patched pgjdbc jar: the BatchResultHandler was recompiled against the
+        // JDBC-4 BatchUpdateException(String,String,int,int[]) constructor -- the
+        // Java-9-only (String,String,int,long[],Throwable) one is absent on ART,
+        // so the FIRST failed batch request crashed the sweep with
+        // NoSuchMethodError that hid the real server error. With the patched
+        // class the underlying reason (duplicate key, deadlock, ...) surfaces
+        // normally. See libs/patched/BatchResultHandler.java (no URL property
+        // exists for this; disableBatchUpdateExceptions is not a real pgjdbc
+        // 42.7.4 property and was never honoured).
         return "jdbc:postgresql://" + host + ":" + port + "/" + dbName
                 + "?sslmode=disable&connectTimeout=10&socketTimeout=120"
                 + "&tcpKeepAlive=true&ApplicationName=oldroll-android";
@@ -303,25 +312,79 @@ public final class Db {
 
     // ----------------------------------------------------- settings / events
 
-    /** Reads a settings row. jsonb arrives as text: {@code 6}, {@code true}, {@code "x"}. */
+    /** jsonb value -> typed object (int/bool/String). */
+    static Object parseJson(String v, Object def) {
+        if (v == null) return def;
+        v = v.trim();
+        if (v.isEmpty()) return def;
+        if (def instanceof Boolean) return "true".equalsIgnoreCase(v);
+        if (def instanceof Integer) {
+            try { return (int) Double.parseDouble(v); }
+            catch (Exception e) { return def; }
+        }
+        if (def instanceof Long) {
+            try { return (long) Double.parseDouble(v); }
+            catch (Exception e) { return def; }
+        }
+        if (v.length() > 1 && v.startsWith("\"") && v.endsWith("\""))
+            return v.substring(1, v.length() - 1);
+        return v;
+    }
+
+    /** Reads a settings row. jsonb arrives as text: {@code 6}, {@code true}, {@code "x"}.
+     *  Per-device fallthrough: '<key>@<tag>' first, then the shared '<key>'. */
     public static Object setting(String key, Object def) {
         try {
-            Map<String, Object> r = q1("select value from settings where key=?", key);
-            if (r == null) return def;
-            String v = r.get("value") == null ? "" : r.get("value").toString().trim();
+            Map<String, Object> own = q1(
+                    "select value from settings where key=?",
+                    key + "@" + myTag());
+            if (own != null) {
+                String v = own.get("value") == null ? ""
+                        : own.get("value").toString().trim();
+                if (!v.isEmpty()) return parseJson(v, def);
+            }
+            Map<String, Object> global = q1(
+                    "select value from settings where key=?", key);
+            if (global == null) return def;
+            String v = global.get("value") == null ? ""
+                    : global.get("value").toString().trim();
             if (v.isEmpty()) return def;
-            if (def instanceof Boolean) return "true".equalsIgnoreCase(v);
-            if (def instanceof Integer) return (int) Double.parseDouble(v);
-            if (def instanceof Long) return (long) Double.parseDouble(v);
-            if (v.length() > 1 && v.startsWith("\"") && v.endsWith("\""))
-                return v.substring(1, v.length() - 1);
-            return v;
+            return parseJson(v, def);
         } catch (Exception e) {
             return def;
         }
     }
 
-    public static boolean boolSetting(String key, boolean def) {
+    /** Raw lookup by exact key (used by SettingsActivity to see THIS device's
+     *  own '@tag' value before the global fallthrough). */
+    public static Object settingExact(String key, Object def) {
+        try {
+            Map<String, Object> r = q1("select value from settings where key=?", key);
+            if (r == null) return def;
+            String v = r.get("value") == null ? "" : r.get("value").toString().trim();
+            if (v.isEmpty()) return def;
+            return parseJson(v, def);
+        } catch (Exception e) {
+            return def;
+        }
+    }
+
+    /** Per-device settings key for this install. The app writes '<key>@<tag>'
+     *  and reads it back with fallthrough to the shared global '<key>', so the
+     *  phone runs its own worker count / auto mode while the PC keeps its own;
+     *  flipping one device's knob never flips the other's. The web dashboard
+     *  (which has no per-device tag of its own by default) writes the global
+     *  rows instead - fleet-wide defaults every device falls back to. */
+    public static String deviceTag() {
+        return "android-" + android.os.Build.MODEL;
+    }
+
+    static volatile String sDeviceTag;
+
+    public static String myTag() {
+        if (sDeviceTag == null) sDeviceTag = deviceTag();
+        return sDeviceTag;
+    }    public static boolean boolSetting(String key, boolean def) {
         Object v = setting(key, def);
         return v instanceof Boolean ? (Boolean) v : Boolean.parseBoolean(String.valueOf(v));
     }
@@ -336,16 +399,27 @@ public final class Db {
         }
     }
 
-    /** Writes a settings row as jsonb (same rows the web app reads). */
-    public static void setSetting(String key, Object value) throws SQLException {
-        String json;
-        if (value instanceof Boolean) json = ((Boolean) value) ? "true" : "false";
-        else if (value instanceof Number) json = value.toString();
-        else json = "\"" + String.valueOf(value).replace("\\", "\\\\")
+    /** jsonb string for a value (shared by setSetting overloads). */
+    static String jsonFor(Object value) {
+        if (value instanceof Boolean) return ((Boolean) value) ? "true" : "false";
+        if (value instanceof Number) return value.toString();
+        return "\"" + String.valueOf(value).replace("\\", "\\\\")
                 .replace("\"", "\\\"") + "\"";
+    }
+
+    /** Writes a settings row. Null tag = global (shared default / dashboard
+     *  semantics); a tag scopes to one device: '<key>@<tag>'. */
+    public static void setSetting(String key, Object value, String tag)
+            throws SQLException {
+        if (tag != null) key = key + "@" + tag;
         upd("insert into settings(key, value) values (?, ?::jsonb) "
                 + "on conflict (key) do update set value=excluded.value, "
-                + "updated_at=now()", key, json);
+                + "updated_at=now()", key, jsonFor(value));
+    }
+
+    /** Global write (compat helper). */
+    public static void setSetting(String key, Object value) throws SQLException {
+        setSetting(key, value, null);
     }
 
     public static void event(String source, String message) {
@@ -355,8 +429,10 @@ public final class Db {
     /** Best-effort event row - the web UI's activity feed shows these. */
     public static void event(String source, String message, String level) {
         try {
-            upd("insert into events(level, source, message) values (?,?,?)",
-                    level == null ? "info" : level, source, message);
+            // Stamp the event with THIS device's tag so the phone shows its own
+            // log stream instead of mirroring the whole fleet's feed.
+            upd("insert into events(level, source, message, device) values (?,?,?,?)",
+                    level == null ? "info" : level, source, message, myTag());
         } catch (Exception ignored) {
             // events must never break collection
         }
@@ -375,12 +451,14 @@ public final class Db {
             {"acs", "ac_type"},
             {"current_parts", "old_pdf_url"},
             {"old_parts", "old_ac_name"},
+            {"old_parts", "claimed_by"},
     };
 
     static final Map<String, Object> DEFAULTS = new LinkedHashMap<>();
     static {
         DEFAULTS.put("auto_enabled", false);
         DEFAULTS.put("workers", 6);
+        DEFAULTS.put("parts_parallel", 2);
         DEFAULTS.put("request_pause_ms", 0);
         DEFAULTS.put("discover_max_part", 400);
         DEFAULTS.put("calibrate_offset", true);
@@ -415,6 +493,25 @@ public final class Db {
         return true;
     }
 
+    /** Settings DEFAULTS seeds when the row is missing (on conflict do
+     *  nothing), so a fresh install or a schema hit by a prior DDL failure
+     *  recovers its knobs without overwriting values the user set from the
+     *  dashboard or on another device. */
+    static void seedDefaults(Connection c) throws SQLException {
+        for (Map.Entry<String, Object> e : DEFAULTS.entrySet()) {
+            String json = (e.getValue() instanceof Boolean)
+                    ? (Boolean) e.getValue() ? "true" : "false"
+                    : e.getValue().toString();
+            try (PreparedStatement ps = c.prepareStatement(
+                    "insert into settings(key, value) values (?, ?::jsonb) "
+                            + "on conflict (key) do nothing")) {
+                ps.setString(1, e.getKey());
+                ps.setString(2, json);
+                ps.executeUpdate();
+            }
+        }
+    }
+
     /**
      * Create/migrate the schema, idempotently.
      *
@@ -427,6 +524,18 @@ public final class Db {
         Connection c = open(name);
         try {
             boolean ready = schemaReady(c);
+            // `if not exists` is a cheap catalogue check, so ensure the picker's
+            // neighbour index even when the schema is already up to date (the
+            // DDL below is skipped in that case). Without it the pick scans
+            // every pending part twice and can exceed the statement timeout.
+            try (Statement st = c.createStatement()) {
+                st.execute("create index if not exists old_parts_neigh_idx "
+                         + "on public.old_parts (state_cd, ac_no, status, part_no)");
+                st.execute("create index if not exists events_device_idx "
+                         + "on public.events (device, id desc)");
+                st.execute("create index if not exists jobs_device_idx "
+                         + "on public.jobs (device, status, priority desc, id)");
+            }
             if (!ready) {
                 for (String stmt : DDL.split(";")) {
                     String s = stmt.trim();
@@ -443,18 +552,7 @@ public final class Db {
                     }
                 }
             }
-            for (Map.Entry<String, Object> e : DEFAULTS.entrySet()) {
-                String json = (e.getValue() instanceof Boolean)
-                        ? (Boolean) e.getValue() ? "true" : "false"
-                        : e.getValue().toString();
-                try (PreparedStatement ps = c.prepareStatement(
-                        "insert into settings(key, value) values (?, ?::jsonb) "
-                                + "on conflict (key) do nothing")) {
-                    ps.setString(1, e.getKey());
-                    ps.setString(2, json);
-                    ps.executeUpdate();
-                }
-            }
+            seedDefaults(c);
         } finally {
             try { c.close(); } catch (Exception ignored) { }
         }
@@ -524,6 +622,9 @@ public final class Db {
             + "create index if not exists old_parts_queue_idx\n"
             + "  on public.old_parts (status, priority desc, state_cd, ac_no, part_no);\n"
             + "create index if not exists old_parts_cur_idx on public.old_parts (cur_part_mode);\n"
+            + "-- Supports the picker's two correlated neighbour lookups; without it\n"
+            + "-- the pick full-scans every pending part twice and times out.\n"
+            + "create index if not exists old_parts_neigh_idx on public.old_parts (state_cd, ac_no, status, part_no);\n"
             + "create table if not exists public.electors (\n"
             + "  source_id     text primary key,\n"
             + "  state_cd      text not null,\n"
@@ -601,18 +702,24 @@ public final class Db {
             + "  result      jsonb,\n"
             + "  error       text,\n"
             + "  cancel      boolean default false,\n"
+            + "  device      text,\n"
             + "  created_at  timestamptz default now(),\n"
             + "  started_at  timestamptz,\n"
             + "  finished_at timestamptz\n"
             + ");\n"
             + "create index if not exists jobs_queue_idx on public.jobs (status, priority desc, id);\n"
+            // Per-device tasks: each device claims only its own queued jobs.
+            + "create index if not exists jobs_device_idx on public.jobs (device, status, priority desc, id);\n"
             + "create table if not exists public.events (\n"
             + "  id      bigserial primary key,\n"
             + "  ts      timestamptz default now(),\n"
             + "  level   text default 'info',\n"
             + "  source  text,\n"
-            + "  message text\n"
+            + "  message text,\n"
+            + "  device  text\n"
             + ");\n"
+            // Per-device logs: every event carries the producing device's tag.
+            + "create index if not exists events_device_idx on public.events (device, id desc);\n"
             + "create table if not exists public.settings (\n"
             + "  key        text primary key,\n"
             + "  value      jsonb,\n"
@@ -642,5 +749,14 @@ public final class Db {
             + "alter table public.acs add column if not exists ac_type text;\n"
             + "alter table public.current_parts add column if not exists ps_type     text;\n"
             + "alter table public.current_parts add column if not exists ps_caty    text;\n"
-            + "alter table public.current_parts add column if not exists old_pdf_url text;\n";
+            + "alter table public.current_parts add column if not exists old_pdf_url text;\n"
+            // Multi-device coordination: which collector holds a part, and when
+            // an AC's discovery started (so a stale one can be reclaimed
+            // without stealing a live device's work).
+            + "alter table public.old_parts add column if not exists claimed_by text;\n"
+            + "alter table public.acs add column if not exists discover_started_at timestamptz;\n"
+            // Per-device logs and tasks: every event/job carries the tag of the
+            // device that produced it, so each device shows/runs only its own.
+            + "alter table public.events add column if not exists device text;\n"
+            + "alter table public.jobs   add column if not exists device text;\n";
 }

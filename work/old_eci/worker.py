@@ -20,14 +20,26 @@ off.
 from __future__ import annotations
 
 import json
+import os
+import random
+import socket
 import statistics
 import threading
 import time
 from collections import Counter
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 
 import client
 import db
+
+# Identity written into old_parts.claimed_by when this process claims a part,
+# so the dashboard can see which PC process, phone or Colab holds what.
+HOST_TAG = socket.gethostname()
+WORKER_ID = "pc-%s-%s" % (HOST_TAG, os.getpid())
+# Per-device settings key: 'key@inspiron' overrides the shared 'key' default.
+# Each device runs its own concurrency - the phone 8 workers while the PC runs
+# 2 - without either flip-flopping the other between polls.
+DEVICE_TAG = os.environ.get("ECI_DEVICE_TAG", HOST_TAG)
 
 STOP = threading.Event()
 # `tick` is bumped every loop turn so a stalled worker is visible instead of
@@ -53,13 +65,19 @@ def worker_status():
 # ------------------------------------------------------------------ job queue
 
 def claim_job(conn):
+    """Claim the next queued job THIS device owns. Jobs carry the tag of the
+    device that queued them, so a phone's manual job is never run by the web
+    worker (and vice versa) - each device has its own tasks. Legacy rows with no
+    device stay claimable by anyone."""
     with conn.cursor() as cur:
         cur.execute("""
             update jobs set status='running', started_at=now()
-            where id = (select id from jobs where status='queued'
+            where id = (select id from jobs
+                        where status='queued'
+                          and (device is null or device = %s)
                         order by priority desc, id
                         limit 1 for update skip locked)
-            returning *""")
+            returning *""", (DEVICE_TAG,))
         return cur.fetchone()
 
 
@@ -86,34 +104,46 @@ def progress(conn, job_id, prog):
 
 
 def recover_orphans(conn=None):
-    """Put work left behind by a previous process back in the queue. `conn` is
-    accepted for call-site symmetry; every query goes through `db.q`.
+    """Requeue work whose holder is gone. `conn` is accepted for call-site
+    symmetry; every query goes through `db.q`.
 
-    A part killed mid-collection (crash, close the window, Ctrl-C) stays marked
-    `running` in the ledger, and `best_pending_part` only looks at
-    `pending`/`error` - so without this the part is stranded forever. Nothing can
-    legitimately be in flight when a fresh process starts, so reset those rows.
-
-    Assumes one worker process per database. Re-collecting is safe: the elector
-    upsert is keyed on `source_id`, so a second sweep overwrites rows instead of
-    duplicating them.
+    Multi-device safe: only STALE rows are touched, never a part that a live PC
+    process, phone or Colab is sweeping this minute. A part being collected
+    touches its row (batch flush + last_serial) every 200 serials, so 'running
+    and not updated for 10 minutes' means the holder is gone - crash, killed
+    window, dead emulator. Runs at startup AND every ~60s from the loop, so any
+    surviving device picks up a dead device's parts live. Re-collecting is safe:
+    the elector upsert is keyed on `source_id`, so a second sweep overwrites
+    rows instead of duplicating them.
     """
     parts = db.q("""update old_parts set status='pending', last_serial=0,
-                          updated_at=now()
+                          claimed_by=null, updated_at=now()
                    where status='running'
+                     and updated_at < now() - interval '10 minutes'
                    returning state_cd, ac_no, part_no""", fetch="all")
     jobs = db.q("""update jobs set status='error', finished_at=now(),
-                          error='interrupted by restart'
-                   where status='running' returning id""", fetch="all")
+                          error='interrupted'
+                   where status='running'
+                     and started_at < now() - interval '30 minutes'
+                   returning id""", fetch="all")
+    acs = db.q("""update acs set discover_status='pending'
+                  where discover_status='running'
+                    and (discover_started_at is null or
+                         discover_started_at < now() - interval '30 minutes')
+                  returning state_cd, ac_no""", fetch="all")
     if parts:
-        db.event("worker", "requeued %d part(s) left running by a previous process: %s"
+        db.event("worker", "requeued %d stale part(s): %s"
                  % (len(parts), ", ".join("%s AC%s P%s" % (p["state_cd"], p["ac_no"],
                                                             p["part_no"])
                                           for p in parts)))
     if jobs:
         db.event("worker", "marked %d interrupted job(s) as error: %s"
                  % (len(jobs), ", ".join("#%s" % j["id"] for j in jobs)), level="warn")
-    return {"parts": len(parts or []), "jobs": len(jobs or [])}
+    if acs:
+        db.event("worker", "requeued %d stale AC discovery/discoveries: %s"
+                 % (len(acs), ", ".join("%s AC%s" % (a["state_cd"], a["ac_no"])
+                                        for a in acs)))
+    return {"parts": len(parts or []), "jobs": len(jobs or []), "acs": len(acs or [])}
 
 
 # ----------------------------------------------------------------- the best part
@@ -129,8 +159,17 @@ select p.state_cd, p.ac_no, p.part_no, p.name,
 from old_parts p
 where p.status in ('pending','error') and coalesce(p.exists_, true)
   {filters}
-order by neighbours_done desc, neighbour_yield desc, p.state_cd, p.ac_no, p.part_no
-limit 1
+-- The last sort key is a per-DEVICE hash of the part's identity, not its
+-- number. Before this the ranking was fully deterministic, so every device
+-- picked the very same top part in the same second and all but one lost the
+-- claim ('both doing the same thing'). Hashing with the device tag spreads the
+-- equally-good frontier parts across devices while the real ranking keys
+-- (finished neighbours first, then yield) still dominate - so each device
+-- works its own slice of the same AC and claims stop colliding.
+order by neighbours_done desc, neighbour_yield desc,
+         md5(p.state_cd || ':' || p.ac_no::text || ':' || p.part_no::text || %s),
+         p.state_cd, p.ac_no, p.part_no
+limit {limit}
 """
 
 
@@ -142,7 +181,44 @@ def best_pending_part(conn, state_cd=None, ac_no=None):
     if ac_no is not None:
         filters += " and p.ac_no = %s"
         params.append(ac_no)
-    return db.q(BEST_PART_SQL.format(filters=filters), params, fetch="one")
+    return db.q(BEST_PART_SQL.format(filters=filters, limit=1),
+                params + [DEVICE_TAG], fetch="one")
+
+
+def best_pending_parts(conn, state_cd=None, ac_no=None, limit=1):
+    """Best `limit` collectable parts. Picking is advisory - the atomic claim
+    (claim_part) is what actually reserves a part, so overlapping picks across
+    devices resolve to visible skips, never duplicate sweeps."""
+    filters, params = "", []
+    if state_cd:
+        filters += " and p.state_cd = %s"
+        params.append(state_cd)
+    if ac_no is not None:
+        filters += " and p.ac_no = %s"
+        params.append(ac_no)
+    return db.q(BEST_PART_SQL.format(filters=filters, limit="%s"),
+                params + [DEVICE_TAG, int(limit)], fetch="all")
+
+
+def claim_part(state_cd, ac_no, part_no):
+    """Atomically claim a part for collection; False when someone else has it.
+
+    The `where status <> 'running'` guard makes the claim a single atomic
+    statement: with the web app's 9 worker processes, phones and Colab racing on
+    one database, exactly one claimer wins and every loser sees a visible skip
+    instead of double-sweeping the same part through the gateway.
+    """
+    row = db.q("""insert into old_parts(state_cd, ac_no, part_no, status,
+                   started_at, attempts, claimed_by)
+            values (%s,%s,%s,'running', now(), 1, %s)
+            on conflict (state_cd, ac_no, part_no) do update set
+              status='running', started_at=now(),
+              attempts=old_parts.attempts+1, last_error=null,
+              claimed_by=excluded.claimed_by, updated_at=now()
+            where old_parts.status <> 'running'
+            returning state_cd""",
+         (state_cd, ac_no, part_no, WORKER_ID), fetch="one")
+    return row is not None
 
 
 # --------------------------------------------------------------------- catalog
@@ -255,10 +331,12 @@ def discover_parts(conn, job_id, state_cd, ac_no, max_part=None):
     each chunk is live, up to PART_HARD_CAP, and the result reports whether it
     hit that ceiling.
     """
-    floor = int(max_part or db.setting("discover_max_part", 400))
-    db.q("update acs set discover_status='running', discover_max=%s, last_error=null "
-         "where state_cd=%s and ac_no=%s", (floor, state_cd, ac_no), fetch=None)
-    workers = int(db.setting("workers", 6))
+    floor = int(db.setting("discover_max_part", max_part or 400,
+                           tag=DEVICE_TAG))
+    db.q("update acs set discover_status='running', discover_max=%s, last_error=null, "
+         "discover_started_at=now() where state_cd=%s and ac_no=%s",
+         (floor, state_cd, ac_no), fetch=None)
+    workers = int(db.setting("workers", ("workers", 6), tag=DEVICE_TAG))
 
     def probe(n):
         status, payload = client.fetch_window(state_cd, ac_no, n)
@@ -358,24 +436,64 @@ def _row_tuple(rec, state, ac, part):
             age(rec.get("bloMappedPartNo")), rec.get("bloMappedEpicNo"))
 
 
-def collect_part(conn, job_id, state_cd, ac_no, part_no, force=False):
+def collect_part(conn, job_id, state_cd, ac_no, part_no, force=False, width=1):
+    """Claim + sweep + finalise, with the failure hand-back in one place.
+
+    `width` parts are being collected in parallel by this worker; the shared
+    `workers` budget is divided across them so the gateway sees the same total
+    concurrency as a sequential sweep - the parallel win is phase overlap, not
+    more requests. conn=None runs every statement through the shared pool (the
+    pipeline calls it this way; psycopg connections are not thread-safe).
+    """
     row = db.q("select * from old_parts where state_cd=%s and ac_no=%s and part_no=%s",
                (state_cd, ac_no, part_no), fetch="one")
     if row and row["status"] == "done" and not force:
         return {"skipped": True, "reason": "already done",
                 "records": row["records"], "epics": row["epics"]}
 
-    db.q("""insert into old_parts(state_cd, ac_no, part_no, status, started_at, attempts)
-            values (%s,%s,%s,'running', now(), 1)
-            on conflict (state_cd, ac_no, part_no)
-            do update set status='running', started_at=now(),
-                          attempts=old_parts.attempts+1, last_error=null,
-                          updated_at=now()""",
-         (state_cd, ac_no, part_no), fetch=None)
+    if not claim_part(state_cd, ac_no, part_no):
+        # Another PC process, phone or Colab holds this part right now: visible
+        # skip instead of a silent duplicate sweep.
+        return {"skipped": True, "reason": "already running elsewhere"}
+
+    try:
+        return _collect_part_impl(conn, job_id, state_cd, ac_no, part_no,
+                                  width=width)
+    except BaseException as exc:  # noqa: BLE001 - hand the part back, then raise
+        # A part must never stay `running` after a failure: the picker only
+        # looks at pending/error, so a stranded part is invisible to every
+        # device until restart. Hand it back with the reason attached.
+        try:
+            db.q("""update old_parts set status='pending', last_error=%s,
+                        claimed_by=null, updated_at=now()
+                    where state_cd=%s and ac_no=%s and part_no=%s
+                      and status='running'""",
+                 ("%s: %s" % (type(exc).__name__, exc), state_cd, ac_no, part_no),
+                 fetch=None)
+        except Exception:
+            pass
+        raise
+
+
+def _collect_part_impl(conn, job_id, state_cd, ac_no, part_no, width=1):
     t0 = time.time()
-    workers = int(db.setting("workers", 6))
-    cap = int(db.setting("collect_serial_cap", 3000))
-    roll_end = client.probe_roll_end(state_cd, ac_no, part_no, hard_cap=cap)
+    workers = max(1, int(db.setting("workers", ("workers", 6), tag=DEVICE_TAG))
+                  // max(1, width))
+    cap = int(db.setting("collect_serial_cap", ("collect_serial_cap", 3000),
+                         tag=DEVICE_TAG))
+    # Seed the roll-end probe from finished neighbours of the same AC: their
+    # roll lengths are similar, so one DB read usually replaces ~10 of the ~13
+    # sequential probe requests. probe_roll_end falls back to the full probe
+    # when the hint misses, so the answer matches an unhinted probe.
+    hint = 0
+    nb = db.q("""select max(roll_end) as r from old_parts
+                 where state_cd=%s and ac_no=%s and status='done'
+                   and roll_end is not null and abs(part_no - %s) <= 3""",
+              (state_cd, ac_no, part_no), fetch="one")
+    if nb and nb["r"]:
+        hint = int(nb["r"])
+    roll_end = client.probe_roll_end(state_cd, ac_no, part_no, hard_cap=cap,
+                                     hint=hint)
     # Publish roll_end before sweeping: it is the denominator the dashboard uses
     # for live speed and ETA, and `last_serial` is only written every 200 serials,
     # so without this the live card is blank for the first seconds of a part.
@@ -397,8 +515,12 @@ def collect_part(conn, job_id, state_cd, ac_no, part_no, force=False):
     def flush():
         if not pending_rows:
             return
-        with conn.cursor() as cur:
-            cur.executemany(ELECTOR_UPSERT, pending_rows)
+        if conn is None:      # pipeline mode: borrow from the shared pool
+            with db.pool().connection() as c, c.cursor() as cur:
+                cur.executemany(ELECTOR_UPSERT, pending_rows)
+        else:
+            with conn.cursor() as cur:
+                cur.executemany(ELECTOR_UPSERT, pending_rows)
         pending_rows.clear()
 
     cancelled = False
@@ -450,7 +572,7 @@ def collect_part(conn, job_id, state_cd, ac_no, part_no, force=False):
 
     # ---- calibration: how far does the mapping's numbering lag the live roll?
     offset = cur_part_mode = None
-    if db.setting("calibrate_offset", True) and stats["epics"]:
+    if db.setting("calibrate_offset", True):  # global-only knob (device-agnostic)
         sample = db.q("""select cur_epic, cur_part_no from electors
                          where state_cd=%s and ac_no=%s and part_no=%s
                            and cur_epic is not null and cur_epic <> ''
@@ -471,7 +593,8 @@ def collect_part(conn, job_id, state_cd, ac_no, part_no, force=False):
             cur_part_mode = Counter(parts).most_common(1)[0][0]
 
     status = "pending" if cancelled else "done"
-    db.q("""update old_parts set status=%s, finished_at=now(), records=%s, epics=%s,
+    db.q("""update old_parts set status=%s, finished_at=now(), claimed_by=null,
+            records=%s, epics=%s,
             unmapped=%s, roll_end=%s, mapping_offset=%s, cur_part_mode=%s,
             old_state_name=coalesce(%s, old_state_name),
             old_dist_no=coalesce(%s, old_dist_no),
@@ -493,22 +616,107 @@ def collect_part(conn, job_id, state_cd, ac_no, part_no, force=False):
     return result
 
 
-def collect_auto(conn, job_id, state_cd=None, ac_no=None, max_parts=50, force=False):
+def _pipeline_one(pick, force):
+    """Body of one parallel part-worker: every statement goes through the shared
+    pool (the loop's conn belongs to the caller's thread; psycopg connections
+    are not thread-safe). Failures surface via the future - collect_part hands
+    the part back to the queue either way."""
+    return collect_part(None, None, pick["state_cd"], pick["ac_no"],
+                        pick["part_no"], force=force)
+
+
+def collect_pipeline(conn, job_id, state_cd=None, ac_no=None, width=None,
+                     max_parts=None, force=False):
+    """Collect parts concurrently, replenishing each slot as it frees.
+
+    The win is phase overlap: while one part sits in its roll-end probe head,
+    its calibration tail or its final DB flush, another is already sweeping.
+    Each part still runs `workers // width` serial threads, so the gateway sees
+    the same total concurrency as before, just never idle. Claims are atomic
+    (claim_part), so overlapping with other PC processes, phones and Colab is
+    safe: losers get a visible skip.
+    """
+    if width is None:
+        width = max(1, int(db.setting("parts_parallel", ("parts_parallel", 2),
+                                      tag=DEVICE_TAG)))
+
     done = []
-    for _ in range(max_parts):
-        if job_cancelled(conn, job_id):
-            break
-        nxt = best_pending_part(conn, state_cd, ac_no)
-        if not nxt:
-            break
-        res = collect_part(conn, job_id, nxt["state_cd"], nxt["ac_no"],
-                           nxt["part_no"], force=force)
-        done.append({"state_cd": nxt["state_cd"], "ac_no": nxt["ac_no"],
-                     "part_no": nxt["part_no"], "result": res,
-                     "cur_part_mode": res.get("cur_part_mode")})
+
+    def record(pick, res):
+        done.append({"state_cd": pick["state_cd"], "ac_no": pick["ac_no"],
+                     "part_no": pick["part_no"], "result": res,
+                     "cur_part_mode": (res or {}).get("cur_part_mode")})
         progress(conn, job_id, {"phase": "auto", "finished": len(done),
                                 "last": done[-1]})
+
+    if width <= 1:
+        while max_parts is None or len(done) < max_parts:
+            if job_id is not None and job_cancelled(conn, job_id):
+                break
+            nxt = best_pending_part(conn, state_cd, ac_no)
+            if not nxt:
+                break
+            pick = {"state_cd": nxt["state_cd"], "ac_no": nxt["ac_no"],
+                    "part_no": nxt["part_no"]}
+            record(pick, collect_part(conn, job_id, pick["state_cd"],
+                                      pick["ac_no"], pick["part_no"],
+                                      force=force))
+        return {"parts": len(done), "done": done}
+
+    attempted = set()
+    inflight = {}   # future -> pick
+    with ThreadPoolExecutor(max_workers=width) as ex:
+        while not STOP.is_set():
+            if job_id is not None and job_cancelled(conn, job_id):
+                break
+            if max_parts is not None and len(done) >= max_parts:
+                break
+            # An open-ended auto pipeline (job_id=None) must yield promptly when
+            # a queued job appears - otherwise the endless sweep starves the
+            # jobs queue (observed: discover buttons sat unclaimed for half an
+            # hour while auto collected). run_forever claims it on the next pass.
+            if job_id is None:
+                queued = db.q("select 1 from jobs where status='queued' "
+                              "and (device is null or device = %s) limit 1",
+                              (DEVICE_TAG,), fetch="one")
+                if queued:
+                    break
+            free = width - len(inflight)
+            if free > 0 and (max_parts is None
+                             or len(done) + len(inflight) < max_parts):
+                picks = best_pending_parts(conn, state_cd, ac_no,
+                                           limit=free + width)
+                for nxt in picks:
+                    if free <= 0:
+                        break
+                    if max_parts is not None and \
+                            len(done) + len(inflight) >= max_parts:
+                        break
+                    pick = {"state_cd": nxt["state_cd"], "ac_no": nxt["ac_no"],
+                            "part_no": nxt["part_no"]}
+                    key = (pick["state_cd"], pick["ac_no"], pick["part_no"])
+                    if key in attempted:
+                        continue
+                    attempted.add(key)
+                    inflight[ex.submit(_pipeline_one, pick, force)] = pick
+                    free -= 1
+            if not inflight:
+                break   # nothing pending left (or everything is held elsewhere)
+            finished, _ = wait(list(inflight), timeout=5,
+                               return_when=FIRST_COMPLETED)
+            for fut in finished:
+                pick = inflight.pop(fut)
+                try:
+                    res = fut.result()
+                except Exception as exc:  # noqa: BLE001 - recorded, loop goes on
+                    res = {"error": "%s: %s" % (type(exc).__name__, exc)}
+                record(pick, res)
     return {"parts": len(done), "done": done}
+
+
+def collect_auto(conn, job_id, state_cd=None, ac_no=None, max_parts=50, force=False):
+    return collect_pipeline(conn, job_id, state_cd, ac_no,
+                            max_parts=max_parts or None, force=force)
 
 
 def epic_lookup_job(conn, job_id, epic):
@@ -604,24 +812,44 @@ def run_forever(poll=2.0):
     except Exception as exc:  # noqa: BLE001
         db.event("worker", "orphan recovery failed: %s" % exc, level="error")
     conn = None
+    last_reap = 0.0
     while not STOP.is_set():
         STATE["tick"] = time.time()
+        # Clear the previous turn's failure: the error below is only set when a
+        # turn raises, but a recovered worker kept advertising a stale timeout
+        # (observed: 'QueryCanceled' shown while parts were being claimed).
+        STATE["error"] = None
         try:
             if conn is None:
                 conn = db.connect()
+            # Live reaper: hand back parts whose holder died (crash, killed
+            # window, dead emulator). Stale-only, so it never touches a part a
+            # live device is sweeping; runs here every ~60s so any surviving
+            # device picks up a dead device's work without waiting for restart.
+            if time.time() - last_reap >= 60.0:
+                last_reap = time.time()
+                try:
+                    recover_orphans(None)
+                except Exception as exc:  # noqa: BLE001
+                    db.event("worker", "reap failed: %s" % exc, level="warn")
             job = claim_job(conn)
             if job:
                 run_job(conn, job)
                 continue
-            if db.setting("auto_enabled", False):
+            if db.setting("auto_enabled", False):  # global-only knob
                 nxt = best_pending_part(conn)
                 if nxt:
-                    STATE["note"] = "auto: %s AC %s part %s" % (
-                        nxt["state_cd"], nxt["ac_no"], nxt["part_no"])
-                    collect_part(conn, None, nxt["state_cd"], nxt["ac_no"], nxt["part_no"])
-                    continue
-                # Nothing left to pick: don't keep advertising the last part.
-                STATE["note"] = "idle - nothing pending"
+                    STATE["note"] = "auto pipeline x%s: %s AC %s part %s" % (
+                        db.setting("parts_parallel", 2), nxt["state_cd"],
+                        nxt["ac_no"], nxt["part_no"])
+                    out = collect_pipeline(conn, None)
+                    if out["parts"]:
+                        continue
+                    # Every pick is held by another device right now.
+                    STATE["note"] = "auto: parts in flight elsewhere"
+                else:
+                    # Nothing left to pick: don't keep advertising the last part.
+                    STATE["note"] = "idle - nothing pending"
             conn.commit()
         except Exception as exc:  # noqa: BLE001
             STATE["error"] = "%s: %s" % (type(exc).__name__, exc)

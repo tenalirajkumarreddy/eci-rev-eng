@@ -147,6 +147,12 @@ create table if not exists {s}.old_parts (
 create index if not exists old_parts_queue_idx
   on {s}.old_parts (status, priority desc, state_cd, ac_no, part_no);
 create index if not exists old_parts_cur_idx on {s}.old_parts (cur_part_mode);
+-- Supports the picker's two correlated neighbour lookups
+-- (state_cd=p.state_cd and ac_no=p.ac_no and status='done' and part_no+-2).
+-- Without it those scans full-scan the AC and the pick exceeded the 120s
+-- statement_timeout once discovery grew old_parts past ~30k pending rows.
+create index if not exists old_parts_neigh_idx
+  on {s}.old_parts (state_cd, ac_no, status, part_no);
 
 create table if not exists {s}.electors (
   source_id     text primary key,
@@ -228,19 +234,26 @@ create table if not exists {s}.jobs (
   result      jsonb,
   error       text,
   cancel      boolean default false,
+  device      text,
   created_at  timestamptz default now(),
   started_at  timestamptz,
   finished_at timestamptz
 );
 create index if not exists jobs_queue_idx on {s}.jobs (status, priority desc, id);
+-- Per-device tasks: each device claims only its own queued jobs (or legacy
+-- untagged ones), so a phone's manual job is never stolen by the web worker.
+create index if not exists jobs_device_idx on {s}.jobs (device, status, priority desc, id);
 
 create table if not exists {s}.events (
   id      bigserial primary key,
   ts      timestamptz default now(),
   level   text default 'info',
   source  text,
-  message text
+  message text,
+  device  text
 );
+-- Per-device logs: every event carries the tag of the device that produced it.
+create index if not exists events_device_idx on {s}.events (device, id desc);
 
 create table if not exists {s}.settings (
   key        text primary key,
@@ -293,11 +306,21 @@ alter table {s}.acs add column if not exists ac_type text;
 alter table {s}.current_parts add column if not exists ps_type     text;
 alter table {s}.current_parts add column if not exists ps_caty    text;
 alter table {s}.current_parts add column if not exists old_pdf_url text;
+-- Multi-device coordination: which collector holds a part, and when an AC's
+-- part discovery started (so a stale one can be reclaimed without stealing a
+-- live device's work).
+alter table {s}.old_parts add column if not exists claimed_by text;
+alter table {s}.acs add column if not exists discover_started_at timestamptz;
+-- Per-device logs and tasks: every event and job carries the tag of the device
+-- that produced it, so each device can show its own stream and run its own jobs.
+alter table {s}.events add column if not exists device text;
+alter table {s}.jobs   add column if not exists device text;
 """
 
 DEFAULTS = {
     "auto_enabled": False,
     "workers": 6,
+    "parts_parallel": 2,
     "request_pause_ms": 0,
     "discover_max_part": 400,
     "calibrate_offset": True,
@@ -305,33 +328,124 @@ DEFAULTS = {
 }
 
 
-def init():
-    with connect() as conn, conn.cursor() as cur:
-        if SCHEMA != "public":
-            cur.execute("create schema if not exists %s" % SCHEMA)
-        cur.execute(DDL.format(s=SCHEMA))
-        cur.execute(MIGRATIONS.format(s=SCHEMA))
+def _seed_defaults(conn):
+    """Seed each settings knob only when its row is missing, so a restart never
+    resets values the user changed from the dashboard or on another worker."""
+    with conn.cursor() as cur:
         for k, v in DEFAULTS.items():
             cur.execute(
                 "insert into settings(key, value) values (%s, %s) "
                 "on conflict (key) do nothing", (k, json.dumps(v)))
 
 
-def setting(key, default=None):
+def _schema_ok(conn):
+    """Same fast-path check the Android app and the Colab file do: when every
+    table AND every migrated sentinel column already exists, the DDL block is
+    skipped entirely - its ACCESS EXCLUSIVE locks (and the 120 s
+    statement_timeout on a giant old_parts) turned restarts into a race
+    against the live collectors, observed as QueryCanceled at startup."""
+    tables = ("states", "acs", "old_parts", "electors", "current_parts",
+              "epic_lookups", "jobs", "events", "settings")
+    sentinels = (("old_parts", "old_state_name"), ("old_parts", "claimed_by"),
+                 ("acs", "ac_type"), ("acs", "discover_started_at"),
+                 ("current_parts", "old_pdf_url"),
+                 ("current_parts", "ps_type"))
+    with conn.cursor() as cur:
+        cur.execute("select count(*) from information_schema.tables "
+                    "where table_schema=%s and table_name = any(%s)",
+                    (SCHEMA, list(tables)))
+        if cur.fetchone()["count"] != len(tables):
+            return False
+        # vw_records-style tuple list: psycopg unsquares python tuples itself.
+        rows = []
+        for _t, _c in sentinels:
+            rows.append((SCHEMA, _t, _c))
+        cur.execute("select count(*) as n from (values %s) s(sch, tbl, col) "
+                    "join information_schema.columns c "
+                    "on c.table_schema=s.sch and c.table_name=s.tbl "
+                    "and c.column_name=s.col" % ",".join(
+                        ["(%s,%s,%s)"] * len(rows)),
+                    [v for r in rows for v in r])
+        return cur.fetchone()["n"] == len(sentinels)
+
+
+def init():
+    with connect() as conn, conn.cursor() as cur:
+        if SCHEMA != "public":
+            cur.execute("create schema if not exists %s" % SCHEMA)
+        if not _schema_ok(conn):
+            cur.execute(DDL.format(s=SCHEMA))
+            cur.execute(MIGRATIONS.format(s=SCHEMA))
+        # The fast path above skips DDL on an up-to-date schema, so an index
+        # added after the fact would never appear on a live DB. `if not exists`
+        # is a cheap catalogue check (it does not rebuild), so ensure it every
+        # start - a missing neighbour index makes the picker scan every pending
+        # row twice and time out.
+        cur.execute("create index if not exists old_parts_neigh_idx "
+                    "on %s.old_parts (state_cd, ac_no, status, part_no)" % SCHEMA)
+        # Same reasoning for the per-device log / task indexes: the fast path
+        # above skips DDL, so ensure them on every start.
+        cur.execute("create index if not exists events_device_idx "
+                    "on %s.events (device, id desc)" % SCHEMA)
+        cur.execute("create index if not exists jobs_device_idx "
+                    "on %s.jobs (device, status, priority desc, id)" % SCHEMA)
+    with connect() as conn:
+        # Separate transaction AFTER the DDL: parts_parallel added to DEFAULTS
+        # mid-flight had its insert aborted by a leftover failed transaction,
+        # so the row never landed and every Android pick came back 'zero rows'.
+        _seed_defaults(conn)
+
+
+# ------------------------------------------------------------------ settings
+#
+# Settings resolve per device: '<key>@<device_tag>' first, then the one shared
+# global '<key>'. EVERY knob is per-device - workers, parts_parallel,
+# auto_enabled, calibrate_offset, ... - so the phone can run 8 workers (or opt
+# itself out of auto) while the PC keeps running its own knobs. Changing a
+# setting on one device never flips another device's behaviour; the shared row
+# is just the fleet default each device falls back to until it sets its own.
+
+
+def _device_tag():
+    """This process's device tag: '' on the web app (no env set), letting its
+    reads fall back to whichever @tag the operator set. """
+    return os.environ.get("ECI_DEVICE_TAG", "")
+
+
+def setting(key, default=None, tag=_device_tag()):
+    """Read a setting with per-device fallthrough: '<key>@<tag>' first, then
+    the shared '<key>'. Every knob is per-device now (no global-only keys), so
+    a device that set its own value never inherits another device's change.
+    `default` may be a (key, value) pair so the caller's fallback survives when
+    neither row exists (intSetting-style callers)."""
+    if isinstance(default, tuple):
+        default = default[1]
+    if tag:
+        row = q("select value from settings where key=%s",
+                ("%s@%s" % (key, tag),), fetch="one")
+        if row:
+            return row["value"]
     row = q("select value from settings where key=%s", (key,), fetch="one")
     return row["value"] if row else default
 
 
-def set_setting(key, value):
+def set_setting(key, value, tag=None):
+    """Write a setting; tag=None keeps the row global (dashboard writes),
+    tag='...' scopes it to one device (SettingsActivity writes '"..."')."""
+    key = key if tag is None else "%s@%s" % (key, tag)
     q("insert into settings(key,value) values (%s,%s) "
       "on conflict (key) do update set value=excluded.value, updated_at=now()",
       (key, json.dumps(value)), fetch=None)
 
 
-def event(source, message, level="info"):
+def event(source, message, level="info", device=None):
+    """Log a line stamped with this device's tag, so each device can show its
+    own feed (the tag defaults to THIS process's ECI_DEVICE_TAG)."""
     try:
-        q("insert into events(level, source, message) values (%s,%s,%s)",
-          (level, source, message), fetch=None)
+        q("insert into events(level, source, message, device) "
+          "values (%s,%s,%s,%s)",
+          (level, source, message,
+           device if device is not None else _device_tag()), fetch=None)
     except Exception:
         pass
 

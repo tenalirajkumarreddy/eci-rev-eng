@@ -22,7 +22,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:text="PARTS"
+            android:text="THIS DEVICE"
+            android:textSize="11sp"
+            android:alpha="0.6" />
+
+        <TextView
+            android:id="@+id/tvDevice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:textSize="12sp"
+            android:text="—" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="GLOBAL PARTS"
             android:textSize="11sp"
             android:alpha="0.6" />
 
@@ -89,6 +105,22 @@
             android:textSize="13sp"
             android:text="—" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="MY TASKS"
+            android:textSize="11sp"
+            android:alpha="0.6" />
+
+        <TextView
+            android:id="@+id/tvTasks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="monospace"
+            android:textSize="12sp"
+            android:text="—" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -136,13 +168,36 @@
                 android:text="EPIC" />
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="EVENTS"
-            android:textSize="11sp"
-            android:alpha="0.6" />
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOGS"
+                android:textSize="11sp"
+                android:alpha="0.6" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btnLogScope"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textSize="11sp"
+                android:text="mine" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llEvents"
