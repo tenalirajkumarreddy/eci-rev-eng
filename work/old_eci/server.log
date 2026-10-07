@@ -2280,3 +2280,1918 @@ INFO:     127.0.0.1:52294 - "GET /api/summary HTTP/1.1" 200 OK
 INFO:     127.0.0.1:52294 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
 INFO:     127.0.0.1:52294 - "GET /api/summary HTTP/1.1" 200 OK
 INFO:     127.0.0.1:52294 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52294 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59529 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59529 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53764 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63315 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63315 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59622 - "GET /api/states HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56887 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56887 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65360 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65360 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET /api/acs?state=S01 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET /api/parts?state=S01&ac=100&limit=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET /api/parts?state=S01&ac=100&limit=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET /api/parts?state=S01&ac=100&limit=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET /api/parts?state=S01&ac=100&limit=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET /api/parts?state=S01&ac=100&limit=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET /api/parts?state=S01&ac=100&limit=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET /api/parts?state=S01&ac=100&limit=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52607 - "GET /api/parts?state=S01&ac=100&limit=600 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49173 - "GET /api/states HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59541 - "POST /api/acs/discover HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52600 - "GET /api/acs?state=S01 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49383 - "GET /api/electors?state=S01&ac=100&limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/electors?state=S01&ac=100&limit=200 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55282 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55282 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64772 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55450 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55450 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55450 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55450 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55450 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55450 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55450 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55450 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55450 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55450 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60877 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60877 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60877 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58372 - "GET /api/breakdown HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62029 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62129 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65409 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60464 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49740 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50072 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50072 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50072 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50072 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50072 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50072 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50072 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50072 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63201 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63201 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63201 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63201 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64207 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58075 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58075 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58075 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58075 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58075 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58075 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64952 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58634 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58634 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58634 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58634 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58634 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58634 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58634 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58634 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58634 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58634 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64139 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57351 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57351 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51088 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51088 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63416 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63416 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53076 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61673 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61673 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61673 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61673 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61673 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61673 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61673 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61673 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54383 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57846 - "GET /api/breakdown HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53420 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53420 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53420 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53420 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53420 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53420 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53420 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53420 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53420 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53420 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59265 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52499 - "GET /api/breakdown HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50690 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65263 - "GET /api/states HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57056 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54475 - "GET /api/acs?state=S01 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51967 - "POST /api/acs/discover HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62752 - "POST /api/acs/discover HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62752 - "POST /api/acs/discover HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62752 - "POST /api/acs/discover HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62752 - "POST /api/acs/discover HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61884 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61884 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61284 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61284 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61884 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61884 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61284 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61284 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61884 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61884 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61284 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61284 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61884 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61884 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53992 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53992 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53992 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53992 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53992 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53992 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53992 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53992 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53992 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53992 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53992 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53992 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53992 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53992 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/states HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58376 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58376 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51244 - "GET /api/acs?state=S02 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51244 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51244 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62637 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58024 - "POST /api/acs/discover HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58024 - "POST /api/acs/discover HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58024 - "POST /api/acs/discover HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58024 - "POST /api/acs/discover HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60232 - "GET /api/states HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58167 - "GET /api/acs?state=S09 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58167 - "POST /api/acs/seed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58167 - "GET /api/acs?state=S09 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61873 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61873 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62939 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62939 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56688 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51717 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49865 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49865 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49865 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49865 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64855 - "GET /api/states HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49865 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49865 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52361 - "GET /api/acs?state=S29 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55911 - "POST /api/acs/discover HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62607 - "POST /api/acs/discover HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63979 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63979 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52373 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52373 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52373 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52373 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52373 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52373 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52373 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52373 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52373 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52373 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53504 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53504 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54748 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54748 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54748 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54748 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54748 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54748 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52857 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/breakdown HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50352 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65024 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53054 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59396 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62903 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58837 - "GET /api/breakdown HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51701 - "GET /api/jobs?limit=60 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58605 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51701 - "GET /api/events?limit=120 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50060 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50060 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50871 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50871 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55879 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55879 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50871 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50871 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54692 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58025 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58025 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61660 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58025 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58025 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64355 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64355 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58025 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58025 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62234 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62234 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56373 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56373 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52315 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52315 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57395 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57395 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62250 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62250 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62250 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62250 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62250 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62250 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58582 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58582 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58582 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58582 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58582 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58582 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58582 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58582 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58582 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58582 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58582 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58582 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58582 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58582 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54155 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51468 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51468 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51468 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51468 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51468 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51468 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51800 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50060 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50060 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52125 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50060 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50060 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50358 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50358 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55875 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55875 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58833 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58833 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64398 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59634 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52554 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52554 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50804 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50804 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57507 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57507 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63046 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63046 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57617 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57617 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65290 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65290 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65455 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55436 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65455 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65455 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64369 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64369 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65455 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65455 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64369 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64369 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65455 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65455 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64369 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64369 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65455 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65455 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64369 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64369 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65455 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65455 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64369 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64369 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+discarding closed connection: <psycopg.Connection [BAD] at 0x206386ca510>
+discarding closed connection: <psycopg.Connection [BAD] at 0x20639e0d690>
+INFO:     127.0.0.1:65455 - "GET /api/summary HTTP/1.1" 500 Internal Server Error
+error connecting in 'pool-1': connection failed: connection to server at "129.225.75.85", port 5432 failed: Network is unreachable (0x00002743/10051)
+	Is the server running on that host and accepting TCP/IP connections?
+error connecting in 'pool-1': connection failed: connection to server at "129.225.75.85", port 5432 failed: Network is unreachable (0x00002743/10051)
+	Is the server running on that host and accepting TCP/IP connections?
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\uvicorn\protocols\http\httptools_impl.py", line 422, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\uvicorn\middleware\proxy_headers.py", line 63, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\applications.py", line 1215, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\applications.py", line 96, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\telemetry\_asgi.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\routing.py", line 676, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 2786, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 1310, in handle
+    await super().handle(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\routing.py", line 282, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 165, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 151, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 727, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 362, in run_endpoint_function
+    return await run_in_threadpool(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\telemetry\_api.py", line 240, in _run_sync_endpoint
+    return function(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\Documents\eci rev eng\work\old_eci\app.py", line 197, in summary
+    overall["states"] = db.q("select count(*) c from states", fetch="one")["c"]
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\Documents\eci rev eng\work\old_eci\db.py", line 91, in q
+    cur.execute(sql, params or ())
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\psycopg\cursor.py", line 117, in execute
+    raise ex.with_traceback(None)
+psycopg.OperationalError: consuming input failed: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+error connecting in 'pool-1': connection failed: connection to server at "129.225.75.85", port 5432 failed: Network is unreachable (0x00002743/10051)
+	Is the server running on that host and accepting TCP/IP connections?
+error connecting in 'pool-1': connection failed: connection to server at "129.225.75.85", port 5432 failed: Network is unreachable (0x00002743/10051)
+	Is the server running on that host and accepting TCP/IP connections?
+discarding closed connection: <psycopg.Connection [BAD] at 0x2063868c250>
+INFO:     127.0.0.1:61057 - "GET /api/summary HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\uvicorn\protocols\http\httptools_impl.py", line 422, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\uvicorn\middleware\proxy_headers.py", line 63, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\applications.py", line 1215, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\applications.py", line 96, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\telemetry\_asgi.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\routing.py", line 676, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 2786, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 1310, in handle
+    await super().handle(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\routing.py", line 282, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 165, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 151, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 727, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 362, in run_endpoint_function
+    return await run_in_threadpool(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\telemetry\_api.py", line 240, in _run_sync_endpoint
+    return function(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\Documents\eci rev eng\work\old_eci\app.py", line 187, in summary
+    parts = db.q("""
+            ^^^^^^^^
+  File "C:\Users\rajku\Documents\eci rev eng\work\old_eci\db.py", line 91, in q
+    cur.execute(sql, params or ())
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\psycopg\cursor.py", line 117, in execute
+    raise ex.with_traceback(None)
+psycopg.OperationalError: consuming input failed: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+discarding closed connection: <psycopg.Connection [BAD] at 0x20639c4d0d0>
+INFO:     127.0.0.1:57979 - "GET /api/summary HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\uvicorn\protocols\http\httptools_impl.py", line 422, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\uvicorn\middleware\proxy_headers.py", line 63, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\applications.py", line 1215, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\applications.py", line 96, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\telemetry\_asgi.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\routing.py", line 676, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 2786, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 1310, in handle
+    await super().handle(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\routing.py", line 282, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 165, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 151, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 727, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\routing.py", line 362, in run_endpoint_function
+    return await run_in_threadpool(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\starlette\concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\anyio\to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\anyio\_backends\_asyncio.py", line 2706, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\anyio\_backends\_asyncio.py", line 1100, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\fastapi\telemetry\_api.py", line 240, in _run_sync_endpoint
+    return function(**arguments)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\rajku\Documents\eci rev eng\work\old_eci\app.py", line 187, in summary
+    parts = db.q("""
+            ^^^^^^^^
+  File "C:\Users\rajku\Documents\eci rev eng\work\old_eci\db.py", line 91, in q
+    cur.execute(sql, params or ())
+  File "C:\Users\rajku\AppData\Roaming\Python\Python311\site-packages\psycopg\cursor.py", line 117, in execute
+    raise ex.with_traceback(None)
+psycopg.OperationalError: consuming input failed: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+INFO:     127.0.0.1:53941 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63167 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52804 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52804 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63167 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63167 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60235 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60235 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52751 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52751 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58271 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58271 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65020 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65020 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59771 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59771 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54435 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54435 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59757 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59757 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64255 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64255 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55646 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55646 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52783 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52783 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58553 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58553 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58553 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58553 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64251 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64251 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55951 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55951 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53650 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53650 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55317 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55317 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60711 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60711 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64503 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64503 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60711 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60711 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60711 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60711 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60711 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60711 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64391 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64391 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64391 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64391 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60711 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60711 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64391 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64391 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64391 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64391 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64391 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64391 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64391 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64391 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64391 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64391 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64391 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64391 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59341 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57177 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:57177 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64860 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64860 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53073 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53073 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59543 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59543 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64663 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64663 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60422 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60422 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59640 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:59640 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:49674 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60474 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60474 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63201 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63201 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50347 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50347 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61388 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61388 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62648 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62648 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54305 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54305 - "GET /api/events?limit=15 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53572 - "GET /api/summary HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53572 - "GET /api/events?limit=15 HTTP/1.1" 200 OK

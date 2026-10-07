@@ -308,11 +308,19 @@ async function loadDash() {
     ["Parts done", `<span class="kpi-ok">${nf(o.done_parts)}</span>`],
     ["Pending", `<span class="kpi-run">${nf(o.pending_parts)}</span>`],
     ["Errors", `<span class="kpi-err">${nf(o.error_parts)}</span>`],
-    // Free = unprocessed AND unclaimed: exactly the pool every device's picker
-    // scans (running parts already belong to some device).
+    // Free = unprocessed, unclaimed and unreserved: exactly the pool another
+    // device's picker may scan (running parts belong to a device, reserved ones
+    // are held for a device's next few sweeps).
     ["Free (unclaimed)",
       `<span class="kpi-run">${nf(o.free_parts != null ? o.free_parts
         : (o.pending_parts || 0) + (o.error_parts || 0))}</span>`],
+    // Reservations: the queue each device holds so two devices never rank the
+    // same part. `queue` is this device's own depth (it refills to N).
+    ["Reserved (queue)",
+      `<span class="kpi-run">${nf(o.reserved_parts || 0)}</span>
+       <div class="small muted">${(d.holds || []).map(h => `${esc(h.d)} ${h.c}`)
+         .join(" · ") || "none held"}${d.worker && d.worker.reserved
+         ? ` · this device ${d.worker.reserved}` : ""}</div>`],
     ["Elector rows", nf(o.electors)], ["Unique EPICs", nf(o.unique_epics)],
     ["EPIC lookups", nf(o.epic_lookups)],
     // Collection speed, in units per second. `req/s` is serials actually fetched
@@ -341,7 +349,8 @@ async function loadDash() {
 
   const w = d.worker || {};
   $("#hdr-worker").textContent = "worker: " + (w.alive ? "running" : (w.running ? "STALLED" : "stopped")) +
-    (w.note ? " · " + w.note : "");
+    (w.note ? " · " + w.note : "") +
+    (w.alive && w.reserved ? ` · queue ${w.reserved}` : "");
   $("#hdr-worker").className = "badge" + (w.alive ? "" : " bad");
   $("#workerRestart").hidden = !!w.alive;
   const auto = !!d.settings.auto_enabled;

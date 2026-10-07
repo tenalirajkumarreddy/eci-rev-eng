@@ -75,7 +75,15 @@ public class CollectorService extends Service {
         }
 
         Notification n = notify("Old ECI: starting…");
-        if (Build.VERSION.SDK_INT >= 29) {
+        if (Build.VERSION.SDK_INT >= 34) {
+            // specialUse: Android 15 caps a dataSync foreground service at
+            // 6h/24h and kills it mid-sweep the moment the quota runs out, and
+            // a collector's whole job is to run for hours unattended. There is
+            // no time limit on specialUse, and this app is sideloaded, so the
+            // Play-policy review that type implies does not apply.
+            startForeground(NOTIFY_ID, n,
+                    ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE);
+        } else if (Build.VERSION.SDK_INT >= 29) {
             startForeground(NOTIFY_ID, n, ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC);
         } else {
             startForeground(NOTIFY_ID, n);
@@ -85,7 +93,8 @@ public class CollectorService extends Service {
             active = true;
             PowerManager pm = getSystemService(PowerManager.class);
             wakeLock = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "oldroll:worker");
-            wakeLock.acquire();
+            wakeLock.setReferenceCounted(false);
+            acquireWakeLock();
 
             // Schema first, then the loop (both off the main thread).
             new Thread(() -> {
@@ -104,9 +113,21 @@ public class CollectorService extends Service {
         return START_STICKY;
     }
 
+    /** Hold with a timeout (some OEM battery savers silently drop an
+     *  unbounded lock) and re-assert it every tick, so a lock the system took
+     *  back mid-sweep is re-acquired within 3s instead of idling the CPU in
+     *  doze - which is exactly the 'stalls when the screen is off' symptom. */
+    static final long WAKE_MS = 4L * 60 * 60 * 1000;   // 4h, renewed below
+
+    void acquireWakeLock() {
+        if (wakeLock != null && !wakeLock.isHeld()) wakeLock.acquire(WAKE_MS);
+    }
+
     void tick() {
         while (active) {
             try {
+                acquireWakeLock();
+                watchdog();
                 String line = buildProgressLine();
                 progressLine = line;
                 NotificationManager nm = getSystemService(NotificationManager.class);
@@ -121,6 +142,23 @@ public class CollectorService extends Service {
                 return;
             }
         }
+    }
+
+    /** The PC worker restarts a thread that died (ensure_worker); without the
+     *  same thing here a single uncaught throwable ends an overnight run the
+     *  moment the screen is off and nobody is watching. Debounced so a worker
+     *  that dies instantly cannot spin into a restart loop. */
+    long lastRestart;
+
+    void watchdog() {
+        if (!active || Worker.stopRequested || Worker.alive()) return;
+        long now = android.os.SystemClock.elapsedRealtime();
+        if (now - lastRestart < 30_000) return;
+        lastRestart = now;
+        String why = Worker.lastError == null ? "no tick" : Worker.lastError;
+        Db.event("worker", "service watchdog: restarting worker thread (" + why + ")",
+                "warn");
+        Worker.start();
     }
 
     /** "auto ON · S01 AC1 P12 340/560 · 5.1 r/s" - the same facts the web dashboard shows. */

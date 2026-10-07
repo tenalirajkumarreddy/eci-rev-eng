@@ -452,6 +452,7 @@ public final class Db {
             {"current_parts", "old_pdf_url"},
             {"old_parts", "old_ac_name"},
             {"old_parts", "claimed_by"},
+            {"old_parts", "reserved_by"},
     };
 
     static final Map<String, Object> DEFAULTS = new LinkedHashMap<>();
@@ -463,6 +464,11 @@ public final class Db {
         DEFAULTS.put("discover_max_part", 400);
         DEFAULTS.put("calibrate_offset", true);
         DEFAULTS.put("collect_serial_cap", 3000);
+        // Per-device part reservations: how many upcoming parts a device holds
+        // so it never re-competes for the next one, and how long an unused hold
+        // survives (a stopped device's queue frees itself).
+        DEFAULTS.put("part_reserve_n", 5);
+        DEFAULTS.put("part_reserve_ttl", 900);
     }
 
     static boolean schemaReady(Connection c) throws SQLException {
@@ -531,6 +537,9 @@ public final class Db {
             try (Statement st = c.createStatement()) {
                 st.execute("create index if not exists old_parts_neigh_idx "
                          + "on public.old_parts (state_cd, ac_no, status, part_no)");
+                st.execute("create index if not exists old_parts_reserved_idx "
+                         + "on public.old_parts (reserved_by, reserved_at) "
+                         + "where reserved_by is not null");
                 st.execute("create index if not exists events_device_idx "
                          + "on public.events (device, id desc)");
                 st.execute("create index if not exists jobs_device_idx "
@@ -615,6 +624,13 @@ public final class Db {
             + "  started_at     timestamptz,\n"
             + "  finished_at    timestamptz,\n"
             + "  last_error     text,\n"
+            // Multi-device coordination: who holds the part now (claimed_by) and
+            // who has reserved it for the next few minutes
+            // (reserved_by/reserved_at). Declared here as well as in MIGRATIONS
+            // because the reservation index below belongs to this DDL block and
+            // would otherwise run before the columns exist.
+            + "  reserved_by    text,\n"
+            + "  reserved_at    timestamptz,\n"
             + "  created_at     timestamptz default now(),\n"
             + "  updated_at     timestamptz default now(),\n"
             + "  primary key (state_cd, ac_no, part_no)\n"
@@ -625,6 +641,9 @@ public final class Db {
             + "-- Supports the picker's two correlated neighbour lookups; without it\n"
             + "-- the pick full-scans every pending part twice and times out.\n"
             + "create index if not exists old_parts_neigh_idx on public.old_parts (state_cd, ac_no, status, part_no);\n"
+            // Per-device reservations: covers only the handful of held rows, so
+            // taking a queued part is a point lookup, not a scan.
+            + "create index if not exists old_parts_reserved_idx on public.old_parts (reserved_by, reserved_at) where reserved_by is not null;\n"
             + "create table if not exists public.electors (\n"
             + "  source_id     text primary key,\n"
             + "  state_cd      text not null,\n"
@@ -754,6 +773,12 @@ public final class Db {
             // an AC's discovery started (so a stale one can be reclaimed
             // without stealing a live device's work).
             + "alter table public.old_parts add column if not exists claimed_by text;\n"
+            // Per-device reservation of upcoming parts: reserved_by holds a part
+            // for one device so no other picker aims at it, reserved_at is what
+            // expires that hold (a time predicate in the SQL, so a dead device
+            // frees its own queue).
+            + "alter table public.old_parts add column if not exists reserved_by text;\n"
+            + "alter table public.old_parts add column if not exists reserved_at timestamptz;\n"
             + "alter table public.acs add column if not exists discover_started_at timestamptz;\n"
             // Per-device logs and tasks: every event/job carries the tag of the
             // device that produced it, so each device shows/runs only its own.

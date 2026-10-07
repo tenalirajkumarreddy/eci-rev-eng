@@ -257,3 +257,163 @@ The physical phone (`android-CPH2293`) still runs the **pre-change APK**. Becaus
 its `claim_job` has no device filter it still steals queued jobs and writes
 untagged (`device IS NULL`) events - that is how it was caught. It needs the new
 APK installed to become a properly solo device.
+
+## Per-device part reservations (2026-10-07, latest)
+
+### The problem
+
+Two devices ranking the same part both paid a pick and exactly one won the
+claim. The loser wasted the pick - now a **1.2-9 s** full scan of 33k+ pending
+rows - plus a slot's worth of attention, and then re-ranked from scratch. The
+per-device `md5(... || tag)` tie-break already spread *equally* ranked parts
+(`[140, 234, 281, ...]` vs `[358, 304, 393, ...]`), but the real ranking keys
+(done neighbours, then yield) still dominate, so devices kept colliding on the
+same frontier part.
+
+### Design: a reservation, not a queue service
+
+Two nullable columns on `old_parts` - `reserved_by` (device tag),
+`reserved_at` - plus a partial index. Layers on the existing contract instead of
+replacing it, so the atomic claim remains the only thing that decides who sweeps:
+
+| piece | what it does |
+| --- | --- |
+| **hide** | the pickers skip **another device's live hold**, so two devices stop ranking the same part at all. Expired holds are visible again. |
+| **guard** | `claim_part` / `_mark_running` / `claimPart` refuse a live **foreign** hold, so a pick made just before that device reserved cannot steal it. Own holds always pass - that is how the queue drains. Winning clears the hold. |
+| **take** | `take_reserved(n)` moves this device's oldest holds to `running` in **one indexed statement** (partial index, a handful of rows). This replaces the ~5 s picker on the per-part critical path. FIFO on `reserved_at`, so a hold is never held past its turn. |
+| **top up** | `reserve_parts(n)` = one candidate picker query (excluding its own live holds, `fresh=1`) + **one batch update**. A candidate another device stamped first simply does not match: a lost race costs a missing row, not a wasted sweep. |
+| **expire** | expiry is a **time predicate in the SQL** (`now() - make_interval(secs => ttl)`), used by the picker, the claim and the count - so a crashed or stopped device frees its own queue with no reaper running. The reaper only tidies, and never touches its own or a live hold. |
+| **give back** | released on a clean stop, when auto is off while holding parts, and when a pipeline turn yields to a queued job or collects nothing. |
+
+Pipeline: a freed slot is filled from the device's own queue first and only falls
+back to the shared picker when the queue is short; the top-up runs **after** the
+slots are dispatched. A low-water mark (one spare per slot) keeps the picker at
+once per `n_res - low` parts instead of once per part.
+
+Settings (per-device, like every other knob): `part_reserve_n` = 5,
+`part_reserve_ttl` = 900 s (floored at 60 s). The TTL must exceed
+`N x part duration` - a part is ~5-60 s, so a 5-deep queue is read ~5 min after
+it was held; below that a device would lose the back of its own queue.
+
+Rejected alternatives: a separate `part_reservations` table (adds a join to the
+already 30k-row picker); pre-claiming N parts as `running` (the known regression:
+`collect_part` claims internally, so every part looked running and skipped); a
+new `status='reserved'` value (must be handled by every counter, KPI and list
+query in three codebases, for no extra guarantee).
+
+Schema applied live in **0.7 s** (nullable columns = no rewrite; the partial
+index covers a handful of rows). It is also in all three codebases' DDL,
+MIGRATIONS, schema sentinels and the unconditional `init`/`initSchema` index
+block, so an already-migrated DB still gets the index.
+
+### Evidence
+
+**1. Semantics - `work/old_eci/reserve_test.py` (27 checks, ALL PASS).** Runs in
+its own schema (`rsvtest`) so the live fleet is never touched, and calls the real
+functions: exactly-N holds; another device's picker cannot see them while still
+seeing all 7 free parts; its claim is refused and `hold_reason` names the holder
+(`reserved by rsv-A`); the held row is untouched; top-up adds only new parts and
+never re-timestamps a live hold (no FIFO drift); `take_reserved(2)` returns the
+two **oldest** holds and leaves them `running` under this worker with the hold
+cleared; `collect_part(preclaimed=True)` sweeps instead of skipping; without the
+flag it would skip its own claim; a foreign hold blocks a plain claim on the sweep
+path; release frees exactly the remainder; a backdated hold is invisible/no longer
+counted and can be claimed by another device **without any reaper**; the reaper
+clears other devices' expired holds but leaves its own; `part_reserve_n=2`
+(per-device setting) is honoured.
+
+**2. Engine parity - `reserve_test.py --engine` (12 checks, ALL PASS)** through
+`old_eci_collector`'s own `reserve_parts` / `take_reserved` / `_mark_running` /
+`hold_reason` / `collect_part(preclaimed)` / `best_pending_parts(fresh=1)`.
+
+**3. Cost - `reserve_test.py --live` against the real 33.9k-row backlog**
+(round trip 67-81 ms; every number below is measured, not estimated):
+
+| operation | cost |
+| --- | --- |
+| `best_pending_part` (whole backlog) | 1232-1679 ms |
+| `take_reserved(1)` from own queue | **67-85 ms** = 0.8-1.3x a round trip (**14-25x** cheaper) |
+| `take_reserved(4)` (drain the queue) | 80-102 ms - still one statement |
+| claim refused on a foreign hold | 66-100 ms - one round trip, no wasted sweep |
+| fleet-wide hold count | 76-121 ms |
+| `reserve_parts` top-up | 1.19-2.67 s per 5 parts = 0.24-0.53 s/part amortised |
+
+**4. Live fleet.** With the PC worker restarted on the new code:
+
+- **11 of 11** parts it started came **from its own queue**, **0** from a shared
+  picker pick - the per-part decision is now a queue pop.
+- its queue oscillated 2->3->4->5 (refill at the low-water mark) and never fell
+  below the 2 in-flight slots - a slot was never left without a queued part.
+- 4 devices swept in parallel (PC, emulator, phone, plus one reaped orphan claim)
+  with no duplicate sweeps.
+- Cross-device evidence that holds are respected *between* new-code devices:
+  the emulator (new APK) lost **0** holds to the PC and stole **0** of the PC's.
+
+**4b. Android/Java path, observed live on the emulator** (the Java SQL is only
+compile-checked by `gradle`, so it was watched in the database):
+
+- `reserveParts` stamped a batch - five holds for the phone's tag, three of them
+  with an identical `reserved_at` (one statement);
+- the queue refilled in steps (`holds 0 -> 4`, then `-> 3`) whenever a slot
+  freed, so a slot was never left without a queued part;
+- `takeReserved` + `collectPart(preclaimed)`: `new running=[part 12] from QUEUE: 1`
+  - the part was in the previous sample's hold set and came back `running` under
+    this device's `WORKER_ID`;
+- `releaseReservations` on stop: tapping **STOP** produced
+  `worker released 1 part reservation(s) on stop` and the hold count went 1 -> 0;
+- the emulator never pulled a part out of the PC's queue (the phone on the old
+  APK did - see the limitation below).
+
+**5. Visibility.** Dashboard KPI: `RESERVED (QUEUE) 5 / android-sdk_gphone64_x86_64 3 · inspiron 2 · this device 2`,
+header `… · queue 2`; `free (unclaimed)` is now pending+error **minus live holds**
+(33,539 of 33,544+0 with 5 held). Android card (verified by `uiautomator dump`):
+`free 33555 · reserved 8 · my queue 3 · this device runs 4`.
+
+### Known limitation found live (same class as the last one)
+
+The **phone on the old APK** still ignores reservations - its picker does not skip
+holds and its claim has no hold guard - and it took **3 of the PC's holds** during
+the run above. Harmless (no duplicate sweep: the PC never started those parts, it
+refills automatically, and the leftover `reserved_by` is ignored by every
+reservation query because they all filter `status in ('pending','error')`), but
+the full effect needs the new APK on it. A stale `reserved_by` left on a `running`
+row by old code has one useful side effect: if that part is handed back to
+pending, it returns to the holder's queue instead of vanishing.
+
+### Reproducing
+
+```bash
+cd work/old_eci
+python -X utf8 reserve_test.py            # 27 semantic checks, private schema
+python -X utf8 reserve_test.py --engine   # 12 checks on the Colab script
+python -X utf8 reserve_test.py --live     # cost vs the real backlog
+```
+
+Both sandbox modes drop their schema when they finish; `--live` deletes its
+synthetic rows, hands back any real hold it took and requeues any real part it
+claimed, so it leaves the fleet exactly as it found it.
+
+## Zero-record guard (2026-10-07, after reservations)
+
+Found while verifying background work: WAF challenges / rate-limit storms answer
+the gateway with 200 and no parsable rows, so a sweep could *succeed* with
+0 records and the part was marked `done` on the first attempt — permanently
+lost. Fingerprint: all 63 such parts carried a degraded `roll_end=30` from the
+failed roll-end probe (real neighbours sweep 500–1200 records).
+
+Fix (all three codebases, one condition at finalisation): a completed sweep
+with `records == 0` **and** `errors > 0` (evidence of transport trouble) is
+handed back as `error` + `last_error='suspicious: 0 records…'` instead of done.
+A genuinely empty part misses cleanly (`errors == 0`) and still finishes `done`
+in one pass — no extra sweeps for phantoms. Finalisation also now clears
+`reserved_by`/`reserved_at`, so a finished part can never look live-held to
+another device's picker.
+
+Recovery: the 63 lost parts were requeued (`last_error='requeued: was done
+with 0 records…'`); re-sweeps returned 519–1040 records each (e.g. S01 AC20
+P163: 0 → 820 records). Verified live: finish events show `res_cleared=true`,
+PC `pc-inspiron-58568` and emulator `…-717` claiming independently after the
+restart, `/api/health` `worker_error: null`.
+
+Colab note: the engine (`old_eci_collector.py`) has the same guard, but a
+running Colab runtime keeps its old copy — restart the runtime to pick it up.

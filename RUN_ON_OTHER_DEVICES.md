@@ -117,13 +117,23 @@ unless your database has moved.
 | Card | Meaning |
 | --- | --- |
 | **THIS DEVICE** | your tag, your worker state, your auto switch, **how many parts *you* hold**, your DB endpoint |
-| **GLOBAL PARTS** | the whole fleet's progress, plus **free** = unprocessed *and* unclaimed — exactly the pool your picker scans |
+| **GLOBAL PARTS** | the whole fleet's progress, plus **free** = unprocessed, unclaimed *and* unreserved — exactly the pool your picker scans — and **reserved** / **my queue**: the upcoming parts the fleet is holding, and the parts *this* device has queued for itself |
 | **IN FLIGHT** | the part *this* device is currently sweeping, with speed and ETA |
 | **MY TASKS** | jobs queued **on this device** (nobody else can run them) |
 | **LOGS** | your own log lines. The `mine` / `all` button switches to the fleet view |
 
 Turn on **Auto collect** to let the device pick and sweep parts by itself. That
 switch is per device: switching it off on the phone does not stop the PC.
+
+**Each device holds its own queue.** Before sweeping, a device reserves the next
+`part_reserve_n` parts (default 5) for itself, so it never re-competes for its
+next part and two devices never rank the same one. The queue shows as
+`my queue N` on the phone and `queue N` on the dashboard; a hold is released when
+the device stops, and expires after `part_reserve_ttl` seconds (default 900) even
+if the device dies. **A device on an old APK ignores all of this** (its picker
+does not skip other devices' holds and its claim has no hold guard) — it still
+works safely, but it will pull parts out of another device's queue, so update
+every device before expecting the queuing to be complete.
 
 ---
 
@@ -222,12 +232,19 @@ Run this from any machine that can reach the database:
 select claimed_by, count(*) from old_parts where status = 'running'
 group by 1 order by 1;
 
+-- each device's reservation queue: it should sit at part_reserve_n per device
+select reserved_by, count(*) from old_parts
+where reserved_by is not null and status in ('pending','error')
+  and reserved_at >= now() - interval '15 minutes'
+group by 1 order by 2 desc;
+
 -- each device's own log stream
 select device, count(*), max(ts) from events group by 1 order by 2 desc;
 ```
 
-You should see one `claimed_by` row per active device, each holding its own
-parts, and a separate `device` row per tag in `events`.
+You should see one `claimed_by` row per active device (each holding its own
+parts), roughly `part_reserve_n` held parts per device, and a separate `device`
+row per tag in `events`.
 
 ---
 

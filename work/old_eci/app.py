@@ -199,10 +199,22 @@ def summary():
     overall["epic_lookups"] = db.q("select count(*) c from epic_lookups",
                                   fetch="one")["c"]
     overall.update(heavy_counts())
-    # Free = unprocessed AND unclaimed: running parts already belong to a device,
-    # so this is exactly the pool each device's picker is allowed to scan.
+    # Free = unprocessed, unclaimed AND unreserved: running parts already belong
+    # to a device and reserved ones are held for a device's next few sweeps, so
+    # what is left is exactly the pool another device's picker may scan.
     overall["free_parts"] = ((overall.get("pending_parts") or 0)
                              + (overall.get("error_parts") or 0))
+    # Reservations (see worker.reserve_parts): the upcoming parts each device is
+    # holding so it never re-competes for its next one. Live holds only - an
+    # expired hold is just a row waiting to be reclaimed, not a reserved part.
+    ttl = float(db.setting("part_reserve_ttl", 900) or 900)
+    holds = db.q("""select reserved_by d, count(*) c from old_parts
+                    where reserved_by is not null
+                      and status in ('pending','error')
+                      and reserved_at >= now() - make_interval(secs => %s)
+                    group by reserved_by order by 2 desc, 1""", (ttl,))
+    overall["reserved_parts"] = sum(h["c"] for h in holds)
+    overall["free_parts"] = max(0, overall["free_parts"] - overall["reserved_parts"])
 
     # This device's own tasks (plus legacy untagged ones), not the whole fleet's.
     jobs = db.q("""select id, kind, status, mode, device, progress, result, error,
@@ -262,6 +274,7 @@ def summary():
         "speed": speed,
         "settings": settings,
         "claimants": claimants,
+        "holds": holds,
     }
 
 

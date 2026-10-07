@@ -140,6 +140,12 @@ create table if not exists {s}.old_parts (
   started_at     timestamptz,
   finished_at    timestamptz,
   last_error     text,
+  -- Multi-device coordination: who holds the part now (claimed_by) and who has
+  -- reserved it for the next few minutes (reserved_by/reserved_at). Declared
+  -- here as well as in MIGRATIONS because the reservation index below is part
+  -- of this DDL block and would otherwise run before the columns exist.
+  reserved_by    text,
+  reserved_at    timestamptz,
   created_at     timestamptz default now(),
   updated_at     timestamptz default now(),
   primary key (state_cd, ac_no, part_no)
@@ -153,6 +159,10 @@ create index if not exists old_parts_cur_idx on {s}.old_parts (cur_part_mode);
 -- statement_timeout once discovery grew old_parts past ~30k pending rows.
 create index if not exists old_parts_neigh_idx
   on {s}.old_parts (state_cd, ac_no, status, part_no);
+-- Per-device reservations: covers only the handful of held rows, so the take
+-- path is a point lookup and the expiry sweep touches nothing else.
+create index if not exists old_parts_reserved_idx
+  on {s}.old_parts (reserved_by, reserved_at) where reserved_by is not null;
 
 create table if not exists {s}.electors (
   source_id     text primary key,
@@ -310,6 +320,12 @@ alter table {s}.current_parts add column if not exists old_pdf_url text;
 -- part discovery started (so a stale one can be reclaimed without stealing a
 -- live device's work).
 alter table {s}.old_parts add column if not exists claimed_by text;
+-- Per-device reservation of upcoming parts: `reserved_by` holds a part for one
+-- device so no other picker can aim at it, `reserved_at` is what expires the
+-- hold (the expiry is a time predicate in the SQL, so a dead device's holds
+-- free themselves even if no reaper is running).
+alter table {s}.old_parts add column if not exists reserved_by text;
+alter table {s}.old_parts add column if not exists reserved_at timestamptz;
 alter table {s}.acs add column if not exists discover_started_at timestamptz;
 -- Per-device logs and tasks: every event and job carries the tag of the device
 -- that produced it, so each device can show its own stream and run its own jobs.
@@ -323,6 +339,11 @@ DEFAULTS = {
     "parts_parallel": 2,
     "request_pause_ms": 0,
     "discover_max_part": 400,
+    # Per-device part reservations: how many upcoming parts a device holds so it
+    # never re-competes for the next one, and how long a hold survives without
+    # being used (a stopped device's queue frees itself).
+    "part_reserve_n": 5,
+    "part_reserve_ttl": 900,
     "calibrate_offset": True,
     "collect_serial_cap": 3000,
 }
@@ -347,6 +368,7 @@ def _schema_ok(conn):
     tables = ("states", "acs", "old_parts", "electors", "current_parts",
               "epic_lookups", "jobs", "events", "settings")
     sentinels = (("old_parts", "old_state_name"), ("old_parts", "claimed_by"),
+                 ("old_parts", "reserved_by"),
                  ("acs", "ac_type"), ("acs", "discover_started_at"),
                  ("current_parts", "old_pdf_url"),
                  ("current_parts", "ps_type"))
@@ -383,6 +405,9 @@ def init():
         # row twice and time out.
         cur.execute("create index if not exists old_parts_neigh_idx "
                     "on %s.old_parts (state_cd, ac_no, status, part_no)" % SCHEMA)
+        cur.execute("create index if not exists old_parts_reserved_idx "
+                    "on %s.old_parts (reserved_by, reserved_at) "
+                    "where reserved_by is not null" % SCHEMA)
         # Same reasoning for the per-device log / task indexes: the fast path
         # above skips DDL, so ensure them on every start.
         cur.execute("create index if not exists events_device_idx "

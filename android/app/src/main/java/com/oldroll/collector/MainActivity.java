@@ -2,11 +2,15 @@ package com.oldroll.collector;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.PowerManager;
+import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -111,6 +115,7 @@ public class MainActivity extends Activity {
                         Toast.LENGTH_SHORT).show();
             } else {
                 ensureNotifPermission();
+                ensureBatteryExemption();
                 CollectorService.start(this);
                 Toast.makeText(this, "Collector started", Toast.LENGTH_SHORT).show();
             }
@@ -130,6 +135,31 @@ public class MainActivity extends Activity {
                 Db.lastError = "schema: " + t.getMessage();
             }
         }, "schema-init").start();
+    }
+
+    /** Screen-off collection survives doze only if this app is exempt from
+     *  battery optimisation: the foreground service + wake lock keep the CPU
+     *  running, but aggressive OEM savers still cut network to an optimised
+     *  app (observed as fetches stalling ~1 min after the app left the
+     *  foreground). Asked once per install, from this visible activity, since
+     *  a background service may not launch that dialog. */
+    boolean batteryExempt() {
+        PowerManager pm = getSystemService(PowerManager.class);
+        return pm.isIgnoringBatteryOptimizations(getPackageName());
+    }
+
+    void ensureBatteryExemption() {
+        if (batteryExempt()) return;
+        SharedPreferences p = getSharedPreferences("ui", MODE_PRIVATE);
+        if (p.getBoolean("battery_prompted", false)) return;
+        p.edit().putBoolean("battery_prompted", true).apply();
+        try {
+            startActivity(new Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS,
+                    Uri.parse("package:" + getPackageName())));
+        } catch (Exception e) {
+            // Some builds refuse the direct request; the Settings screen's
+            // battery button is the manual fallback.
+        }
     }
 
     void ensureNotifPermission() {
@@ -217,13 +247,20 @@ public class MainActivity extends Activity {
 
     void doRefresh() throws Exception {
         {
+            // `reserved_parts`: parts the fleet currently holds for its next few
+            // sweeps (see Worker.reserveParts). They are still pending/error, so
+            // they are subtracted from 'free' below - free means what another
+            // device's picker may actually scan.
             Map<String, Object> parts = Db.q1("select count(*) old_parts, "
                     + "count(*) filter (where status='done') done_parts, "
                     + "count(*) filter (where status='pending') pending_parts, "
                     + "count(*) filter (where status='running') running_parts, "
                     + "count(*) filter (where status='error') error_parts, "
+                    + "count(*) filter (where reserved_by is not null "
+                    + "  and status in ('pending','error') and reserved_at >= now() "
+                    + "  - make_interval(secs => ?)) reserved_parts, "
                     + "coalesce(sum(records),0) records, coalesce(sum(epics),0) epics "
-                    + "from old_parts");
+                    + "from old_parts", Worker.reserveTtl());
             long states = Db.scalarLong("select count(*) from states");
             long acs = Db.scalarLong("select count(*) from acs");
             long lookups = Db.scalarLong("select count(*) from epic_lookups");
@@ -336,17 +373,23 @@ public class MainActivity extends Activity {
         long run = num(parts, "running_parts");
         long err = num(parts, "error_parts");
         // Free = nobody has processed it and nobody holds it (running parts are
-        // already claimed) - the pool every device's picker scans.
-        long free = pend + err;
+        // already claimed, reserved ones are queued for a device's next sweeps)
+        // - the pool another device's picker may scan.
+        long held = num(parts, "reserved_parts");
+        long free = Math.max(0, pend + err - held);
         tvParts.setText(done + " / " + total
                 + "   (pend " + pend + " · run " + run + " · err " + err + ")"
-                + "\nfree " + free + "  ·  this device runs " + myRunning);
+                + "\nfree " + free + "  ·  reserved " + held
+                + "  ·  my queue " + Worker.reservedHeld
+                + "  ·  this device runs " + myRunning);
         pbParts.setProgress(total == 0 ? 0 : (int) (done * 100 / total));
 
         tvDevice.setText(Db.myTag()
                 + "\nworker " + (Worker.uiAlive() ? "alive" : "stopped")
                 + "  ·  auto " + (auto ? "ON" : "off")
                 + "  ·  mine running " + myRunning
+                + "\nbattery " + (batteryExempt() ? "exempt" : "optimised")
+                + "  ·  queue " + Worker.reservedHeld
                 + "\ndb " + Db.user + "@" + Db.host + ":" + Db.port + "/" + Db.name);
 
         StringBuilder tb = new StringBuilder();

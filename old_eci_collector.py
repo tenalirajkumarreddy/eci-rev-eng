@@ -280,6 +280,12 @@ create table if not exists {s}.old_parts (
   started_at     timestamptz,
   finished_at    timestamptz,
   last_error     text,
+  -- Multi-device coordination: who holds the part now (claimed_by) and who has
+  -- reserved it for the next few minutes (reserved_by/reserved_at). Declared
+  -- here as well as in MIGRATIONS because the reservation index below belongs
+  -- to this DDL block and would otherwise run before the columns exist.
+  reserved_by    text,
+  reserved_at    timestamptz,
   created_at     timestamptz default now(),
   updated_at     timestamptz default now(),
   primary key (state_cd, ac_no, part_no)
@@ -291,6 +297,10 @@ create index if not exists old_parts_cur_idx on {s}.old_parts (cur_part_mode);
 -- full-scans every pending part twice and times out on a large table.
 create index if not exists old_parts_neigh_idx
   on {s}.old_parts (state_cd, ac_no, status, part_no);
+-- Per-device reservations: covers only the handful of held rows, so taking a
+-- queued part is a point lookup and the expiry sweep touches nothing else.
+create index if not exists old_parts_reserved_idx
+  on {s}.old_parts (reserved_by, reserved_at) where reserved_by is not null;
 
 create table if not exists {s}.electors (
   source_id     text primary key,
@@ -442,6 +452,11 @@ alter table {s}.current_parts add column if not exists old_pdf_url text;
 -- part discovery started (so a stale one can be reclaimed without stealing a
 -- live device's work).
 alter table {s}.old_parts add column if not exists claimed_by text;
+-- Per-device reservation of upcoming parts: `reserved_by` holds a part for one
+-- device so no other picker aims at it, `reserved_at` is what expires the hold
+-- (a time predicate in the SQL, so a dead device frees its own queue).
+alter table {s}.old_parts add column if not exists reserved_by text;
+alter table {s}.old_parts add column if not exists reserved_at timestamptz;
 alter table {s}.acs add column if not exists discover_started_at timestamptz;
 -- Per-device logs and tasks: every event/job carries the tag of the device.
 alter table {s}.events add column if not exists device text;
@@ -456,6 +471,10 @@ DEFAULTS = {
     "discover_max_part": 400,
     "calibrate_offset": True,
     "collect_serial_cap": 3000,
+    # Per-device part reservations: how many upcoming parts a device holds so it
+    # never re-competes for the next one, and how long a hold survives unused.
+    "part_reserve_n": 5,
+    "part_reserve_ttl": 900,
 }
 
 
@@ -464,6 +483,7 @@ REQUIRED_TABLES = ("states", "acs", "old_parts", "electors", "current_parts",
 REQUIRED_COLUMNS = (("old_parts", "old_ac_name"), ("acs", "ac_type"),
                     ("current_parts", "old_pdf_url"),
                     ("old_parts", "claimed_by"),
+                    ("old_parts", "reserved_by"),
                     ("acs", "discover_started_at"))
 
 
@@ -496,27 +516,35 @@ def db_init(attempts=4):
     for i in range(attempts):
         try:
             with connect() as conn, conn.cursor() as cur:
-                # `if not exists` is a cheap catalogue check, so this runs even
-                # on an up-to-date schema (whose DDL is skipped below) - a
-                # missing neighbour index makes the picker scan every pending
-                # part twice and time out.
-                cur.execute("create index if not exists old_parts_neigh_idx "
-                            "on %s.old_parts (state_cd, ac_no, status, part_no)"
-                            % SCHEMA)
-                # Same reasoning for the per-device log / task indexes.
-                cur.execute("create index if not exists events_device_idx "
-                            "on %s.events (device, id desc)" % SCHEMA)
-                cur.execute("create index if not exists jobs_device_idx "
-                            "on %s.jobs (device, status, priority desc, id)"
-                            % SCHEMA)
+                # The schema first: everything below is a catalogue lookup in
+                # THIS schema, and on a brand-new one they fail before the DDL
+                # has had a chance to create it.
+                if SCHEMA != "public":
+                    cur.execute("create schema if not exists %s" % SCHEMA)
                 if _schema_ready(cur):
+                    # Up-to-date schema: the DDL below is skipped (it takes
+                    # ACCESS EXCLUSIVE locks and deadlocks against a live
+                    # collector), but `if not exists` is a cheap catalogue
+                    # check, so the indexes added after the fact still appear
+                    # here. A missing neighbour index makes the picker scan
+                    # every pending part twice and time out.
+                    cur.execute("create index if not exists old_parts_neigh_idx "
+                                "on %s.old_parts (state_cd, ac_no, status, part_no)"
+                                % SCHEMA)
+                    cur.execute("create index if not exists old_parts_reserved_idx "
+                                "on %s.old_parts (reserved_by, reserved_at) "
+                                "where reserved_by is not null" % SCHEMA)
+                    # Same reasoning for the per-device log / task indexes.
+                    cur.execute("create index if not exists events_device_idx "
+                                "on %s.events (device, id desc)" % SCHEMA)
+                    cur.execute("create index if not exists jobs_device_idx "
+                                "on %s.jobs (device, status, priority desc, id)"
+                                % SCHEMA)
                     cur.execute("""insert into settings(key, value)
                                    select k, v from jsonb_each(%s::jsonb) as e(k, v)
                                    on conflict (key) do nothing""",
                                 (json.dumps(DEFAULTS),))
                     return
-                if SCHEMA != "public":
-                    cur.execute("create schema if not exists %s" % SCHEMA)
                 cur.execute(DDL.format(s=SCHEMA))
                 cur.execute(MIGRATIONS.format(s=SCHEMA))
                 for k, v in DEFAULTS.items():
@@ -1294,6 +1322,131 @@ WORKER_ID = "colab-%s-%s" % (os.uname().nodename if hasattr(os, "uname") else "h
 DEVICE_TAG = os.environ.get("OLD_ECI_DEVICE_TAG", "colab")
 
 
+# ------------------------------------------------ per-device reservations
+# Two devices that rank the same part both pay a pick and one loses the claim:
+# the loser wasted the pick (a full scan of every pending part - seconds now
+# that the backlog is 30k+) and a sweep's worth of attention. A reservation
+# moves that competition onto a cheap hold: `old_parts.reserved_by` hides an
+# upcoming part from every other picker, so this device's next part is already
+# decided and taking it is one indexed point update (see reserve_parts). The
+# reservation is advisory - the atomic claim stays the only thing that
+# guarantees a part is swept once.
+RESERVE_N = 5        # upcoming parts held per device
+# How long an unused hold survives. Must comfortably exceed N x part duration
+# (a part is ~5-60s, so the tail of a 5-deep queue is read ~5 minutes after it
+# was held) - below that a device would lose the back of its own queue.
+RESERVE_TTL = 900.0
+_TTL_CACHE = {"value": None, "at": 0.0}
+
+
+def reserve_ttl():
+    """Seconds an unused hold survives (per-device setting), cached briefly:
+    the picker, the claim, the expiry sweep and the reaper must agree on one
+    number within a turn."""
+    now = time.time()
+    if _TTL_CACHE["value"] is None or now - _TTL_CACHE["at"] > 30.0:
+        try:
+            v = float(setting("part_reserve_ttl", RESERVE_TTL, tag=DEVICE_TAG)
+                      or RESERVE_TTL)
+        except Exception:  # noqa: BLE001 - any read failure keeps the default
+            v = RESERVE_TTL
+        _TTL_CACHE.update(value=max(60.0, v), at=now)
+    return _TTL_CACHE["value"]
+
+
+def reserve_n():
+    """How many upcoming parts this device holds (per-device setting)."""
+    try:
+        return max(0, int(setting("part_reserve_n", RESERVE_N, tag=DEVICE_TAG)))
+    except Exception:  # noqa: BLE001
+        return RESERVE_N
+
+
+def reserve_count():
+    """How many usable parts this device is holding right now. Live holds
+    only: an expired one is no longer really held, so counting it would make a
+    stalled device think its queue was full and never top up again."""
+    row = q("""select count(*) c from old_parts
+                where reserved_by=%s and status in ('pending','error')
+                  and reserved_at >= now() - make_interval(secs => %s)""",
+            (DEVICE_TAG, reserve_ttl()), fetch="one")
+    return row["c"] if row else 0
+
+
+def reserve_parts(n=None, state=None, ac=None):
+    """Hold up to `n` upcoming parts for this device, cheapest way possible.
+
+    Two statements: the existing picker chooses candidates - it already skips
+    every live hold on the fleet, and (`fresh`) this device's own, which rank
+    top for its own tag and would otherwise fill the list with parts it already
+    has - then ONE batch update stamps them. The stamp is the atomic step: a
+    candidate another device reserved in the meantime simply does not match, so
+    a lost race costs a missing row, not a wasted sweep.
+    """
+    if n is None:
+        n = reserve_n()
+    if n <= 0:
+        return []
+    need = n - reserve_count()
+    if need <= 0:
+        return []
+    ttl = reserve_ttl()
+    keys = [(c["state_cd"], c["ac_no"], c["part_no"]) for c in
+            best_pending_parts(state, ac, limit=need + 2, fresh=True)][:need]
+    if not keys:
+        return []
+    params = []
+    for k in keys:
+        params.extend(k)
+    params.append(ttl)
+    # Driver placeholders doubled: the candidate tuples are spliced in with a `%`
+    # formatting step, which would otherwise eat the psycopg `%s`s.
+    return q("""update old_parts set reserved_by=%%s, reserved_at=now()
+                where (state_cd, ac_no, part_no) in (%s)
+                  and status in ('pending','error')
+                  and (reserved_by is null
+                       or reserved_at < now() - make_interval(secs => %%s))
+                returning state_cd, ac_no, part_no, name"""
+             % ",".join(["(%s,%s,%s)"] * len(keys)),
+             tuple([DEVICE_TAG] + params), fetch="all")
+
+
+def take_reserved(n=1):
+    """Move up to `n` of this device's held parts into `running`, oldest first.
+
+    The whole point of the reservation: the sub-select reads only this device's
+    handful of holds (partial index) and the update is a point write, so the
+    next part costs about one round trip instead of a full-backlog ranking race.
+    FIFO on `reserved_at` keeps a hold from being held past its turn.
+
+    The returned parts are already claimed, so collect_part must be told
+    (`preclaimed=True`) or it would lose the race against its own take.
+    """
+    if n <= 0:
+        return []
+    return q("""update old_parts p set
+                 status='running', started_at=now(),
+                 attempts=p.attempts+1, last_error=null,
+                 claimed_by=%s, reserved_by=null, reserved_at=null,
+                 updated_at=now()
+                where (p.state_cd, p.ac_no, p.part_no) in (
+                    select r.state_cd, r.ac_no, r.part_no from old_parts r
+                     where r.reserved_by=%s and r.status in ('pending','error')
+                     order by r.reserved_at, r.state_cd, r.ac_no, r.part_no
+                     limit %s)
+                  and p.status in ('pending','error') and p.reserved_by=%s
+                returning p.state_cd, p.ac_no, p.part_no, p.name""",
+             (WORKER_ID, DEVICE_TAG, int(n), DEVICE_TAG)) or []
+
+
+def release_reservations():
+    """Give back every unused hold of this device; returns how many were freed.
+    Called on a clean stop so a stopped collector does not hide parts until TTL."""
+    return len(q("""update old_parts set reserved_by=null, reserved_at=null
+                  where reserved_by=%s and status in ('pending','error')
+                  returning state_cd""", (DEVICE_TAG,)) or [])
+
+
 def _mark_running(state, ac, part):
     """Atomically claim a part for collection.
 
@@ -1302,6 +1455,11 @@ def _mark_running(state, ac, part):
     whoever sees `running` first loses the race - and that must be *visible* (a
     skip in the log), not a silent double sweep of the same part. `claimed_by`
     records which device holds it.
+
+    A live reservation held by ANOTHER device also blocks the claim, so a pick
+    made just before that device reserved the part cannot steal it. This
+    device's own hold always passes - that is how its queue is drained. Winning
+    clears the hold.
     """
     with pool().connection() as conn, conn.cursor() as cur:
         cur.execute("""insert into old_parts(state_cd, ac_no, part_no, status,
@@ -1310,21 +1468,52 @@ def _mark_running(state, ac, part):
                        on conflict (state_cd, ac_no, part_no) do update set
                          status='running', started_at=now(),
                          attempts=old_parts.attempts+1, last_error=null,
-                         claimed_by=excluded.claimed_by, updated_at=now()
+                         claimed_by=excluded.claimed_by,
+                         reserved_by=null, reserved_at=null, updated_at=now()
                        where old_parts.status <> 'running'
-                       returning state_cd""", (state, ac, part, WORKER_ID))
+                         and (old_parts.reserved_by is null
+                              or old_parts.reserved_by = %s
+                              or old_parts.reserved_at < now()
+                                 - make_interval(secs => %s))
+                       returning state_cd""",
+                    (state, ac, part, WORKER_ID, DEVICE_TAG, reserve_ttl()))
         return cur.fetchone() is not None
 
 
-def collect_part(conn, state, ac, part, force=False, workers=None, cancel=None):
-    """Full serial sweep of one old part, then mark it done (never rerun)."""
+def hold_reason(state, ac, part):
+    """Why a claim was refused, for the visible skip line (lost-claim path
+    only, so the normal path still costs exactly one round trip)."""
+    row = q("""select status, claimed_by, reserved_by,
+                     (reserved_by is not null and reserved_at is not null
+                      and reserved_at >= now() - make_interval(secs => %s))
+                       as held
+                from old_parts where state_cd=%s and ac_no=%s and part_no=%s""",
+            (reserve_ttl(), state, ac, part), fetch="one")
+    if row is None:
+        return "not in catalogue"
+    if row["status"] == "running":
+        return "already running on %s" % (row["claimed_by"] or "another device")
+    if row["held"]:
+        return "reserved by %s" % row["reserved_by"]
+    return "status changed to %s" % row["status"]
+
+
+def collect_part(conn, state, ac, part, force=False, workers=None, cancel=None,
+                 preclaimed=False):
+    """Full serial sweep of one old part, then mark it done (never rerun).
+
+    `preclaimed=True` means the caller already took the part out of this
+    device's reservation queue (take_reserved), so it is already running under
+    this device - claiming again would fail against our own claim and skip
+    every queued part.
+    """
     row = q("select * from old_parts where state_cd=%s and ac_no=%s and part_no=%s",
             (state, ac, part), fetch="one")
     if row and row["status"] == "done" and not force:
         return {"skipped": True, "reason": "already done",
                 "records": row["records"], "epics": row["epics"]}
-    if not _mark_running(state, ac, part):
-        return {"skipped": True, "reason": "already running elsewhere"}
+    if not preclaimed and not _mark_running(state, ac, part):
+        return {"skipped": True, "reason": hold_reason(state, ac, part)}
     try:
         return _collect_inner(conn, state, ac, part, workers, cancel)
     except BaseException as exc:  # noqa: BLE001
@@ -1458,16 +1647,27 @@ def _finish_part(conn, state, ac, part, stats, roll_end, offset, cur_part_mode,
     """Final status write + speed math. Split from _collect_inner so a parallel
     runner can finalise several parts without racing over each other's rows."""
     status = "pending" if cancelled else "done"
+    last_error = None
+    if status == "done" and stats["records"] == 0 and stats["errors"] > 0:
+        # WAF challenges and rate-limit storms answer 200 with no parsable rows,
+        # so a sweep can "succeed" with 0 records and the part would be lost as
+        # done forever. Fetch errors are evidence of transport trouble, so hand
+        # the part back to the retry path; a genuinely empty part misses cleanly
+        # (errors == 0) and stays done in one pass.
+        status = "error"
+        last_error = "suspicious: 0 records with %d fetch errors" % stats["errors"]
     q("""update old_parts set status=%s, finished_at=now(), claimed_by=null,
-            records=%s, epics=%s,
+            reserved_by=null, reserved_at=null,
+            records=%s, epics=%s, last_error=%s,
             unmapped=%s, roll_end=%s, mapping_offset=%s, cur_part_mode=%s,
             old_state_name=coalesce(%s, old_state_name),
             old_dist_no=coalesce(%s, old_dist_no),
             old_dist_name=coalesce(%s, old_dist_name),
             old_ac_name=coalesce(%s, old_ac_name), updated_at=now()
             where state_cd=%s and ac_no=%s and part_no=%s""",
-      (status, stats["records"], stats["epics"], stats["records"] - stats["epics"],
-       roll_end, offset, cur_part_mode, meta.get("old_state_name"),
+      (status, stats["records"], stats["epics"], last_error,
+       stats["records"] - stats["epics"], roll_end, offset, cur_part_mode,
+       meta.get("old_state_name"),
        meta.get("old_dist_no"), meta.get("old_dist_name"), meta.get("old_ac_name"),
        state, ac, part), fetch=None)
     secs = time.time() - t0
@@ -1492,6 +1692,13 @@ select p.state_cd, p.ac_no, p.part_no, p.name,
            and abs(d.part_no - p.part_no) <= 2), 0)                  as neighbour_yield
 from old_parts p
 where p.status = any(%s) and coalesce(p.exists_, true)
+  -- Per-device reservations (see reserve_parts): a part another device holds is
+  -- invisible here, which is what stops two devices from ranking the same part
+  -- at all. An expired hold is free again, and this device's own holds stay
+  -- visible so its queue can be drained.
+  and (p.reserved_by is null
+       or p.reserved_by = %s
+       or p.reserved_at < now() - make_interval(secs => %s))
   {filters}
 -- Per-device tie-break (see worker.py BEST_PART_SQL): the deterministic
 -- ranking made every collector pick the same top part at the same moment;
@@ -1517,6 +1724,8 @@ def best_pending_part(state=None, ac=None, force=False, exclude=()):
     # The base query already restricts status, so this is its first parameter -
     # keeping the order statuses, state, ac, exclusions.
     params.append(["pending", "error", "done"] if force else ["pending", "error"])
+    # Then the reservation predicate's two parameters, before the filters.
+    params.extend([DEVICE_TAG, reserve_ttl()])
     if state:
         filters += " and p.state_cd = %s"
         params.append(state)
@@ -1537,17 +1746,25 @@ def best_pending_part(state=None, ac=None, force=False, exclude=()):
     return q(sql, params, fetch="one")
 
 
-def best_pending_parts(state=None, ac=None, limit=1, exclude=()):
+def best_pending_parts(state=None, ac=None, limit=1, exclude=(), fresh=False):
     """The best `limit` collectable parts at once (thread-safe via _mark_running).
 
     Same ranking as the single picker (neighbours done first, then yield), so
     parallel part-workers naturally fan out across one AC's neighbourhood. The
     caller marks each pick running before it sweeps; a claim lost to another
-    collector shows up as a visible skip, not a double sweep.
+    collector shows up as a visible skip, not a double sweep. Reservations are
+    skipped as well (see reserve_parts).
+
+    `fresh=True` also skips THIS device's own live holds: the reservation
+    top-up needs that, because its own holds rank top for its own tag and would
+    otherwise fill the candidate list with parts it already has. Expired holds -
+    anyone's - are still candidates, which is how a lapsed part is recovered.
     """
     filters, params = "", []
     # The template's WHERE already restricts status; this is its first parameter.
     params.append(["pending", "error"])
+    # Then the reservation predicate's two parameters, before the filters.
+    params.extend([DEVICE_TAG, reserve_ttl()])
     if state:
         filters += " and p.state_cd = %s"
         params.append(state)
@@ -1559,6 +1776,10 @@ def best_pending_parts(state=None, ac=None, limit=1, exclude=()):
             ["(%s,%s,%s)"] * len(exclude))
         for e in exclude:
             params.extend(e)
+    if fresh:
+        filters += (" and (p.reserved_by is null or p.reserved_at < now()"
+                    " - make_interval(secs => %s))")
+        params.append(reserve_ttl())
     params.append(DEVICE_TAG)
     sql = BEST_PART_SQL.format(filters=filters)
     sql = sql.replace("limit 1", "limit %d" % max(1, int(limit)))
@@ -1718,7 +1939,8 @@ class Runner:
             try:
                 res = collect_part(conn, pick["state_cd"], pick["ac_no"],
                                    pick["part_no"], force=self.a.force,
-                                   workers=self.workers, cancel=self.cancel)
+                                   workers=self.workers, cancel=self.cancel,
+                                   preclaimed=bool(pick.get("preclaimed")))
                 res.setdefault("name", pick.get("name"))
                 self.results.put((key, res))
             finally:
@@ -1761,21 +1983,25 @@ class Runner:
                    res.get("records_per_sec", 0) or 0, res.get("roll_end"),
                    res.get("seconds")))
 
-    def _collect_one(self, part):
-        """Serial path: one part, this thread (the original loop)."""
+    def _collect_one(self, part, preclaimed=False):
+        """Serial path: one part, this thread (the original loop).
+
+        `preclaimed=True` is used only for a part that came out of this device's
+        own reservation queue, which already claimed it (take_reserved). For a
+        picker pick nothing is claimed here on purpose: collect_part claims the
+        part itself (_mark_running) once its sweep starts. Claiming in both
+        places makes the second claim lose against the first and every part ends
+        up skipped as "already running elsewhere" - a bug already dug out once.
+        """
         key = (part["state_cd"], part["ac_no"], part["part_no"])
-        # No pre-claim here on purpose: collect_part claims the part itself
-        # (_mark_running) once its sweep starts. Claiming in both places makes
-        # the second claim lose against the first and every part ends up
-        # skipped as "already running elsewhere" - that bug was already dug out
-        # once, don't reintroduce it.
         res = collect_part(self._conn(), part["state_cd"], part["ac_no"],
                            part["part_no"], force=self.a.force,
-                           workers=self.workers, cancel=self.cancel)
+                           workers=self.workers, cancel=self.cancel,
+                           preclaimed=preclaimed)
         self.attempted.add(key)
         if res.get("skipped"):
-            log("skip %s AC %s P%s (already done)"
-                % (key[0], key[1], key[2]))
+            log("skip %s AC %s P%s (%s)"
+                % (key[0], key[1], key[2], res.get("reason", "skipped")))
             return "work"
         self.parts_done += 1
         self.rows += res.get("records", 0)
@@ -1797,6 +2023,23 @@ class Runner:
             self.conn = connect()
         return self.conn
 
+    def _top_up(self, a, n_res):
+        """Hold up to `n_res` upcoming parts for this device, but only when the
+        queue has run low: a low-water mark of one spare per slot means a refill
+        lagging behind the sweeps can never leave a slot without a queued part,
+        while the picker runs once per (n_res - low) parts instead of per part.
+        A stamp lost to another device is normal - the next call tops up again.
+        """
+        if not n_res:
+            return 0
+        held = reserve_count()
+        low = max(0, n_res - max(1, min(a.parts_parallel, n_res)) - 1)
+        if held > low:
+            return held
+        got = reserve_parts(n=n_res, state=a.state, ac=a.ac)
+        held += len(got or [])
+        return held
+
     def drop_conn(self):
         try:
             if self.conn is not None:
@@ -1806,6 +2049,16 @@ class Runner:
         self.conn = None
 
     def summary(self, reason):
+        # A collector that is finishing must not keep its reservation queue
+        # hidden from the fleet: every exit path reports through here, so this
+        # is the one place that frees the holds. (The expiry predicate is what
+        # covers a kill - 15 minutes later, with no clean shutdown at all.)
+        try:
+            n = release_reservations()
+            if n:
+                log("released %d unused part reservation(s)" % n)
+        except Exception as exc:  # noqa: BLE001 - reporting must not fail
+            log("could not release reservations: %s" % exc)
         o = q("select * from v_overall", fetch="one") or {}
         mins = (time.time() - self.t0) / 60.0
         elapsed = max(time.time() - self.t0, 0.01)
@@ -1852,13 +2105,21 @@ class Runner:
                           level="warn")
                 return "work"
 
+        n_res = 0 if a.force else reserve_n()   # force walks done parts: never held
         if a.parts_parallel <= 1:
             # One part at a time: the simple loop. `workers` is the concurrency
             # that matters here - it parallelises serials *within* the part.
-            part = best_pending_part(a.state, a.ac, force=a.force,
-                                     exclude=sorted(self.attempted))
+            part, pre = None, False
+            if n_res:
+                self._top_up(a, n_res)
+                held = take_reserved(1)
+                if held:
+                    part, pre = held[0], True
+            if part is None:
+                part = best_pending_part(a.state, a.ac, force=a.force,
+                                         exclude=sorted(self.attempted))
             if part:
-                return self._collect_one(part)
+                return self._collect_one(part, preclaimed=pre)
         else:
             # Several parts at once. Each part-worker still splits its own part
             # across `workers` serial-threads, so the gateway sees at most
@@ -1866,24 +2127,36 @@ class Runner:
             # claim up to the width, harvest whatever finishes, and immediately
             # backfill the freed slot.
             while len(self.inflight) < a.parts_parallel and not self.stop.is_set():
-                picks = best_pending_parts(
-                    a.state, a.ac, limit=a.parts_parallel - len(self.inflight),
-                    exclude=sorted(self.attempted))
+                room = a.parts_parallel - len(self.inflight)
+                picks, pre = [], False
+                if n_res:
+                    # Own queue first: pre-claimed, one round trip, no race with
+                    # the fleet for the same top-ranked part.
+                    picks = take_reserved(room)
+                    pre = bool(picks)
+                if not picks:
+                    picks = best_pending_parts(a.state, a.ac, limit=room,
+                                               exclude=sorted(self.attempted))
                 if not picks:
                     break
-                claimed = False
+                started = False
                 for p in picks:
                     key = (p["state_cd"], p["ac_no"], p["part_no"])
+                    if key in self.attempted:
+                        continue
                     self.attempted.add(key)
-                    # No pre-claim here: collect_part itself claims the part
-                    # (_mark_running) once its worker thread starts. Claiming in
-                    # both places used to make collect_part lose the race against
-                    # its own runner and skip every part as "already running".
-                    claimed = True
+                    if pre:
+                        # A queued part is already claimed by take_reserved;
+                        # collect_part must not try to claim it again.
+                        p["preclaimed"] = True
+                    started = True
                     self.inflight[key] = ThreadPoolExecutor(max_workers=1)
                     self.inflight[key].submit(self._worker_run, p)
-                if not claimed:
+                if not started:
                     break
+            # Refill the queue AFTER the slots are dispatched, so the picker's
+            # ranking overlaps the sweeps instead of delaying the next part.
+            self._top_up(a, n_res)
             if self.inflight:
                 done = threading.Event()
                 key = next(iter(self.inflight))

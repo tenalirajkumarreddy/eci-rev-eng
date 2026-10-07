@@ -45,7 +45,7 @@ STOP = threading.Event()
 # `tick` is bumped every loop turn so a stalled worker is visible instead of
 # looking healthy. `thread` lets /api/worker/restart revive one that died.
 STATE = {"running": False, "job_id": None, "note": "", "tick": 0.0,
-         "started": 0.0, "error": None, "thread": None}
+         "started": 0.0, "error": None, "thread": None, "reserved": 0}
 
 # A worker that has not turned its loop in this long is stuck (see db.CONN_KWARGS
 # for what stops a dropped connection from hanging forever). A single old part can
@@ -53,13 +53,62 @@ STATE = {"running": False, "job_id": None, "note": "", "tick": 0.0,
 # trips on a genuine stall.
 STALE_AFTER = 90.0
 
+# ------------------------------------------------ per-device reservations
+# Two devices that rank the same part both pay a pick and one loses the claim:
+# the loser wasted the pick (a ~5s scan of every pending part now that the
+# backlog is 30k+) and a sweep's worth of attention. A reservation moves that
+# competition off the part and onto a cheap hold: `old_parts.reserved_by` hides
+# an upcoming part from every other picker, so the device's next part is already
+# decided and taking it is one indexed point update. See reserve_parts() for the
+# full contract - the reservation is advisory, the atomic claim is still the
+# only thing that guarantees a part is swept once.
+RESERVE_N = 5        # upcoming parts held per device
+# How long an unused hold survives. Must comfortably exceed N x part duration
+# (a part is ~5-60s, so the tail of a 5-deep queue is read ~5 minutes after it
+# was held) - below that a device would lose the back of its own queue. Expiry
+# is a time predicate in the SQL, so a crashed or stopped device's holds free
+# themselves even if no reaper is alive.
+RESERVE_TTL = 900.0
+
+_TTL_CACHE = {"value": None, "at": 0.0}
+
 
 def worker_status():
     age = time.time() - STATE["tick"] if STATE["tick"] else None
     return {"running": STATE["running"], "job_id": STATE["job_id"],
             "note": STATE["note"], "error": STATE["error"],
+            "reserved": STATE.get("reserved", 0),
             "tick_age": None if age is None else round(age, 1),
             "alive": bool(STATE["running"] and age is not None and age < STALE_AFTER)}
+
+
+def reserve_ttl():
+    """Seconds an unused hold survives (per-device setting).
+
+    Cached briefly because the picker, the claim, the reaper and the expiry
+    sweep all test the same boundary: they must agree on one number within a
+    turn, or a part could be 'expired' for the claim and 'live' for the reaper.
+    """
+    now = time.time()
+    if _TTL_CACHE["value"] is None or now - _TTL_CACHE["at"] > 30.0:
+        try:
+            v = float(db.setting("part_reserve_ttl", RESERVE_TTL,
+                                 tag=DEVICE_TAG))
+        except Exception:  # noqa: BLE001 - any read failure keeps the default
+            v = RESERVE_TTL
+        # Floored at a minute: a tiny TTL would expire holds faster than a
+        # single part takes and turn the queue into pure churn.
+        _TTL_CACHE.update(value=max(60.0, v), at=now)
+    return _TTL_CACHE["value"]
+
+
+def reserve_n():
+    """How many upcoming parts this device holds (per-device setting)."""
+    try:
+        return max(0, int(db.setting("part_reserve_n", RESERVE_N,
+                                     tag=DEVICE_TAG)))
+    except Exception:  # noqa: BLE001
+        return RESERVE_N
 
 
 # ------------------------------------------------------------------ job queue
@@ -121,6 +170,23 @@ def recover_orphans(conn=None):
                    where status='running'
                      and updated_at < now() - interval '10 minutes'
                    returning state_cd, ac_no, part_no""", fetch="all")
+    # Expired holds: a device that was killed while holding a queue. The picker
+    # already ignores an expired hold, so this is hygiene (it keeps the partial
+    # index tiny and makes the release visible in the log) rather than the thing
+    # that frees the part.
+    # `returning s.reserved_by` (the CTE, not the updated row) is what makes the
+    # freed holds still name their owner - the update has already nulled it.
+    holds = db.q("""with stale as (
+                     select state_cd, ac_no, part_no, reserved_by from old_parts
+                      where reserved_by is not null and reserved_by <> %s
+                        and status in ('pending','error')
+                        and reserved_at < now() - make_interval(secs => %s))
+                   update old_parts p set reserved_by=null, reserved_at=null
+                     from stale s
+                    where (p.state_cd, p.ac_no, p.part_no) =
+                          (s.state_cd, s.ac_no, s.part_no)
+                   returning s.reserved_by""",
+                 (DEVICE_TAG, reserve_ttl()), fetch="all")
     jobs = db.q("""update jobs set status='error', finished_at=now(),
                           error='interrupted'
                    where status='running'
@@ -143,7 +209,13 @@ def recover_orphans(conn=None):
         db.event("worker", "requeued %d stale AC discovery/discoveries: %s"
                  % (len(acs), ", ".join("%s AC%s" % (a["state_cd"], a["ac_no"])
                                         for a in acs)))
-    return {"parts": len(parts or []), "jobs": len(jobs or []), "acs": len(acs or [])}
+    if holds:
+        db.event("worker", "freed %d expired part reservation(s) (%s)"
+                 % (len(holds), ", ".join(sorted({h["reserved_by"]
+                                                  for h in holds}))),
+                 level="warn")
+    return {"parts": len(parts or []), "jobs": len(jobs or []),
+            "acs": len(acs or []), "holds": len(holds or [])}
 
 
 # ----------------------------------------------------------------- the best part
@@ -158,6 +230,13 @@ select p.state_cd, p.ac_no, p.part_no, p.name,
            and abs(d.part_no - p.part_no) <= 2), 0)                  as neighbour_yield
 from old_parts p
 where p.status in ('pending','error') and coalesce(p.exists_, true)
+  -- Per-device reservations (see reserve_parts): a part another device holds
+  -- is invisible here, which is what stops two devices from ranking the same
+  -- part at all. An expired hold is free again, and this device's own holds
+  -- stay visible so its queue can be drained.
+  and (p.reserved_by is null
+       or p.reserved_by = %s
+       or p.reserved_at < now() - make_interval(secs => %s))
   {filters}
 -- The last sort key is a per-DEVICE hash of the part's identity, not its
 -- number. Before this the ranking was fully deterministic, so every device
@@ -181,14 +260,23 @@ def best_pending_part(conn, state_cd=None, ac_no=None):
     if ac_no is not None:
         filters += " and p.ac_no = %s"
         params.append(ac_no)
+    # Bind order follows the SQL text: reservation predicate, filters, md5.
     return db.q(BEST_PART_SQL.format(filters=filters, limit=1),
-                params + [DEVICE_TAG], fetch="one")
+                [DEVICE_TAG, reserve_ttl()] + params + [DEVICE_TAG], fetch="one")
 
 
-def best_pending_parts(conn, state_cd=None, ac_no=None, limit=1):
+def best_pending_parts(conn, state_cd=None, ac_no=None, limit=1, fresh=False):
     """Best `limit` collectable parts. Picking is advisory - the atomic claim
     (claim_part) is what actually reserves a part, so overlapping picks across
-    devices resolve to visible skips, never duplicate sweeps."""
+    devices resolve to visible skips, never duplicate sweeps.
+
+    `fresh=True` also skips THIS device's own live holds. The reservation
+    top-up needs that: its own holds rank top for its own tag (they were chosen
+    by this same ranking a moment ago), so without it the candidate list would
+    be filled with parts it already has and the queue would starve. Expired
+    holds - anyone's - are still candidates, which is how a device recovers a
+    part it let lapse.
+    """
     filters, params = "", []
     if state_cd:
         filters += " and p.state_cd = %s"
@@ -196,8 +284,13 @@ def best_pending_parts(conn, state_cd=None, ac_no=None, limit=1):
     if ac_no is not None:
         filters += " and p.ac_no = %s"
         params.append(ac_no)
+    if fresh:
+        filters += (" and (p.reserved_by is null or p.reserved_at < now()"
+                    " - make_interval(secs => %s))")
+        params.append(reserve_ttl())
     return db.q(BEST_PART_SQL.format(filters=filters, limit="%s"),
-                params + [DEVICE_TAG, int(limit)], fetch="all")
+                [DEVICE_TAG, reserve_ttl()] + params + [DEVICE_TAG, int(limit)],
+                fetch="all")
 
 
 def claim_part(state_cd, ac_no, part_no):
@@ -207,6 +300,12 @@ def claim_part(state_cd, ac_no, part_no):
     statement: with the web app's 9 worker processes, phones and Colab racing on
     one database, exactly one claimer wins and every loser sees a visible skip
     instead of double-sweeping the same part through the gateway.
+
+    A live reservation held by ANOTHER device also blocks the claim, so a pick
+    made just before that device reserved the part cannot steal it - the hold is
+    a real hold, not a hint. This device's own hold always passes, which is how
+    the reservation queue is drained (see take_reserved). Winning clears the
+    hold: `reserved_by` is only ever set on a pending/error row waiting its turn.
     """
     row = db.q("""insert into old_parts(state_cd, ac_no, part_no, status,
                    started_at, attempts, claimed_by)
@@ -214,11 +313,141 @@ def claim_part(state_cd, ac_no, part_no):
             on conflict (state_cd, ac_no, part_no) do update set
               status='running', started_at=now(),
               attempts=old_parts.attempts+1, last_error=null,
-              claimed_by=excluded.claimed_by, updated_at=now()
+              claimed_by=excluded.claimed_by,
+              reserved_by=null, reserved_at=null, updated_at=now()
             where old_parts.status <> 'running'
+              and (old_parts.reserved_by is null
+                   or old_parts.reserved_by = %s
+                   or old_parts.reserved_at < now() -
+                      make_interval(secs => %s))
             returning state_cd""",
-         (state_cd, ac_no, part_no, WORKER_ID), fetch="one")
+         (state_cd, ac_no, part_no, WORKER_ID, DEVICE_TAG, reserve_ttl()),
+         fetch="one")
     return row is not None
+
+
+def hold_reason(state_cd, ac_no, part_no):
+    """Why a claim was refused, for the visible skip line. Runs only on a lost
+    claim, so the normal path still costs exactly one round trip."""
+    row = db.q("""select status, claimed_by, reserved_by,
+                        (reserved_by is not null and reserved_at is not null
+                         and reserved_at >= now() - make_interval(secs => %s))
+                          as held
+                 from old_parts where state_cd=%s and ac_no=%s and part_no=%s""",
+               (reserve_ttl(), state_cd, ac_no, part_no), fetch="one")
+    if row is None:
+        return "not in catalogue"
+    if row["status"] == "running":
+        return "already running on %s" % (row["claimed_by"] or "another device")
+    if row["held"]:
+        return "reserved by %s" % row["reserved_by"]
+    return "status changed to %s" % row["status"]
+
+
+# ------------------------------------------------------- reservation queue
+def reserve_count():
+    """How many usable parts this device is holding right now.
+
+    Live holds only: an expired one is no longer really held (any device may
+    take it, and take_reserved still offers it to us as a bonus) so it must not
+    count towards the queue depth - otherwise a stalled device would think its
+    queue was full and never top up again.
+    """
+    row = db.q("""select count(*) c from old_parts
+                 where reserved_by=%s and status in ('pending','error')
+                   and reserved_at >= now() - make_interval(secs => %s)""",
+               (DEVICE_TAG, reserve_ttl()), fetch="one")
+    return row["c"] if row else 0
+
+
+def reserve_parts(conn=None, state_cd=None, ac_no=None, n=None):
+    """Hold up to `n` upcoming parts for this device, cheapest way possible.
+
+    Two statements: the existing picker chooses the candidates - it already
+    skips every live hold on the fleet, so the candidates are parts nobody else
+    is holding - then ONE batch update stamps them. The stamp is the atomic
+    step: a candidate another device reserved in the meantime simply does not
+    match, so a lost race costs a missing row, not a wasted sweep, and the
+    caller's next turn tops up again.
+
+    Re-stamping this device's own live hold keeps its original `reserved_at`, so
+    re-selecting it cannot push it to the back of the queue; an expired hold of
+    this device is refreshed to now() (it genuinely is the newest).
+    """
+    if n is None:
+        n = reserve_n()
+    if n <= 0:
+        return []
+    need = n - reserve_count()
+    if need <= 0:
+        return []
+    ttl = reserve_ttl()
+    # Two spare candidates: losing one to a device that stamped it first is
+    # normal, and the next top-up picks up the difference.
+    cands = best_pending_parts(conn, state_cd, ac_no, limit=need + 2, fresh=True)
+    keys = [(c["state_cd"], c["ac_no"], c["part_no"]) for c in cands][:need]
+    if not keys:
+        return []
+    rows_txt = ",".join(["(%s,%s,%s)"] * len(keys))
+    params = []
+    for k in keys:
+        params.extend(k)
+    # Every driver placeholder is doubled: the candidate list is spliced in with
+    # a `%` formatting step, which would otherwise eat the psycopg `%s`s. The
+    # stamp takes a part that is free or whose hold has lapsed - including this
+    # device's own lapsed hold, which is refreshed to now() (it genuinely is the
+    # newest) - so a live hold is never stolen and never re-timestamped.
+    return db.q("""update old_parts set
+                    reserved_by = %%s, reserved_at = now()
+                 where (state_cd, ac_no, part_no) in (%s)
+                   and status in ('pending','error')
+                   and (reserved_by is null
+                        or reserved_at < now() - make_interval(secs => %%s))
+                 returning state_cd, ac_no, part_no, name""" % rows_txt,
+                 (DEVICE_TAG,) + tuple(params) + (ttl,), fetch="all")
+
+
+def take_reserved(n=1, conn=None):
+    """Move up to `n` of this device's held parts into `running`, oldest first.
+
+    This is the whole point of the reservation: the sub-select reads only this
+    device's handful of holds (partial index, a few rows) and the update is a
+    point write, so the next part costs about a millisecond instead of re-ranking
+    33k pending rows and racing the fleet for the same top one. FIFO on
+    `reserved_at` means a hold is never held past its turn, so the queue cannot
+    starve behind a part that keeps getting re-ranked to the front.
+
+    The returned parts are already claimed, so collect_part must be told
+    (`preclaimed=True`) or it would lose the race against its own take.
+    """
+    if n <= 0:
+        return []
+    return db.q("""update old_parts p set
+                    status='running', started_at=now(),
+                    attempts=p.attempts+1, last_error=null,
+                    claimed_by=%s, reserved_by=null, reserved_at=null,
+                    updated_at=now()
+                 where (p.state_cd, p.ac_no, p.part_no) in (
+                     select r.state_cd, r.ac_no, r.part_no from old_parts r
+                      where r.reserved_by=%s and r.status in ('pending','error')
+                      order by r.reserved_at, r.state_cd, r.ac_no, r.part_no
+                      limit %s)
+                   and p.status in ('pending','error') and p.reserved_by=%s
+                 returning p.state_cd, p.ac_no, p.part_no, p.name""",
+                 (WORKER_ID, DEVICE_TAG, int(n), DEVICE_TAG), fetch="all")
+
+
+def release_reservations():
+    """Give back every unused hold of this device; returns how many were freed.
+
+    Called on a clean stop and when a device stops working on parts, so a
+    stopped collector does not hide five parts from the fleet for the whole TTL.
+    The expiry predicate is what covers a crash - this is the polite path.
+    """
+    rows = db.q("""update old_parts set reserved_by=null, reserved_at=null
+                   where reserved_by=%s and status in ('pending','error')
+                   returning state_cd""", (DEVICE_TAG,), fetch="all")
+    return len(rows or [])
 
 
 # --------------------------------------------------------------------- catalog
@@ -436,7 +665,8 @@ def _row_tuple(rec, state, ac, part):
             age(rec.get("bloMappedPartNo")), rec.get("bloMappedEpicNo"))
 
 
-def collect_part(conn, job_id, state_cd, ac_no, part_no, force=False, width=1):
+def collect_part(conn, job_id, state_cd, ac_no, part_no, force=False, width=1,
+                 preclaimed=False):
     """Claim + sweep + finalise, with the failure hand-back in one place.
 
     `width` parts are being collected in parallel by this worker; the shared
@@ -444,6 +674,11 @@ def collect_part(conn, job_id, state_cd, ac_no, part_no, force=False, width=1):
     concurrency as a sequential sweep - the parallel win is phase overlap, not
     more requests. conn=None runs every statement through the shared pool (the
     pipeline calls it this way; psycopg connections are not thread-safe).
+
+    `preclaimed=True` means the caller already took the part out of this
+    device's reservation queue (take_reserved), so the part is already running
+    under this device - claiming again would fail against our own claim and
+    skip every queued part.
     """
     row = db.q("select * from old_parts where state_cd=%s and ac_no=%s and part_no=%s",
                (state_cd, ac_no, part_no), fetch="one")
@@ -451,10 +686,10 @@ def collect_part(conn, job_id, state_cd, ac_no, part_no, force=False, width=1):
         return {"skipped": True, "reason": "already done",
                 "records": row["records"], "epics": row["epics"]}
 
-    if not claim_part(state_cd, ac_no, part_no):
-        # Another PC process, phone or Colab holds this part right now: visible
-        # skip instead of a silent duplicate sweep.
-        return {"skipped": True, "reason": "already running elsewhere"}
+    if not preclaimed and not claim_part(state_cd, ac_no, part_no):
+        # Another PC process, phone or Colab holds this part right now (or holds
+        # a reservation on it): visible skip instead of a silent duplicate sweep.
+        return {"skipped": True, "reason": hold_reason(state_cd, ac_no, part_no)}
 
     try:
         return _collect_part_impl(conn, job_id, state_cd, ac_no, part_no,
@@ -593,15 +828,26 @@ def _collect_part_impl(conn, job_id, state_cd, ac_no, part_no, width=1):
             cur_part_mode = Counter(parts).most_common(1)[0][0]
 
     status = "pending" if cancelled else "done"
+    last_error = None
+    if status == "done" and stats["records"] == 0 and stats["errors"] > 0:
+        # WAF challenges and rate-limit storms answer 200 with no parsable rows,
+        # so a sweep can "succeed" with 0 records and the part would be lost as
+        # done forever (the live DB had 63 such parts, all with the degraded
+        # roll_end=30 fingerprint). Fetch errors are evidence of transport
+        # trouble, so hand the part back to the retry path; a genuinely empty
+        # part misses cleanly (errors == 0) and stays done in one pass.
+        status = "error"
+        last_error = "suspicious: 0 records with %d fetch errors" % stats["errors"]
     db.q("""update old_parts set status=%s, finished_at=now(), claimed_by=null,
-            records=%s, epics=%s,
+            reserved_by=null, reserved_at=null,
+            records=%s, epics=%s, last_error=%s,
             unmapped=%s, roll_end=%s, mapping_offset=%s, cur_part_mode=%s,
             old_state_name=coalesce(%s, old_state_name),
             old_dist_no=coalesce(%s, old_dist_no),
             old_dist_name=coalesce(%s, old_dist_name),
             old_ac_name=coalesce(%s, old_ac_name), updated_at=now()
             where state_cd=%s and ac_no=%s and part_no=%s""",
-         (status, stats["records"], stats["epics"],
+         (status, stats["records"], stats["epics"], last_error,
           stats["records"] - stats["epics"], roll_end, offset, cur_part_mode,
           meta.get("old_state_name"), meta.get("old_dist_no"),
           meta.get("old_dist_name"), meta.get("old_ac_name"),
@@ -622,7 +868,8 @@ def _pipeline_one(pick, force):
     are not thread-safe). Failures surface via the future - collect_part hands
     the part back to the queue either way."""
     return collect_part(None, None, pick["state_cd"], pick["ac_no"],
-                        pick["part_no"], force=force)
+                        pick["part_no"], force=force,
+                        preclaimed=bool(pick.get("preclaimed")))
 
 
 def collect_pipeline(conn, job_id, state_cd=None, ac_no=None, width=None,
@@ -632,15 +879,28 @@ def collect_pipeline(conn, job_id, state_cd=None, ac_no=None, width=None,
     The win is phase overlap: while one part sits in its roll-end probe head,
     its calibration tail or its final DB flush, another is already sweeping.
     Each part still runs `workers // width` serial threads, so the gateway sees
-    the same total concurrency as before, just never idle. Claims are atomic
-    (claim_part), so overlapping with other PC processes, phones and Colab is
-    safe: losers get a visible skip.
+    the same total concurrency as before, just never idle.
+
+    A freed slot is refilled from THIS device's reservation queue first (one
+    indexed point update, see reserve_parts/take_reserved) and only falls back
+    to the shared picker when the queue is short. So the ~5s full-backlog
+    ranking runs once per (n_res - low) parts instead of once per part, the
+    per-part decision is made ahead of time, and two devices no longer rank the
+    same part. Claims stay atomic, so overlapping with other devices is safe
+    either way: losers get a visible skip.
     """
     if width is None:
         width = max(1, int(db.setting("parts_parallel", ("parts_parallel", 2),
                                       tag=DEVICE_TAG)))
+    # Force mode walks already-done parts, which a reservation can never cover.
+    n_res = 0 if force else reserve_n()
+    # Low-water mark: keep at least one spare per slot, so a refill lagging
+    # behind the sweeps can never leave a slot without a queued part. Both ends
+    # shrink for a small queue (n_res=1 works out to 'top up whenever empty').
+    low = max(0, n_res - max(1, min(width, n_res)) - 1) if n_res else 0
 
     done = []
+    yielded = False
 
     def record(pick, res):
         done.append({"state_cd": pick["state_cd"], "ac_no": pick["ac_no"],
@@ -649,18 +909,63 @@ def collect_pipeline(conn, job_id, state_cd=None, ac_no=None, width=None,
         progress(conn, job_id, {"phase": "auto", "finished": len(done),
                                 "last": done[-1]})
 
+    def top_up():
+        """Refill this device's queue when it runs low. One candidate query
+        plus one batch stamp; a stamp lost to another device is normal and just
+        means the next turn tops up again."""
+        if not n_res:
+            return 0
+        held = reserve_count()
+        STATE["reserved"] = held
+        if held > low:
+            return held
+        got = reserve_parts(conn, state_cd, ac_no, n=n_res)
+        STATE["reserved"] = held + len(got or [])
+        return STATE["reserved"]
+
+    def take(room):
+        """Up to `room` parts out of this device's own queue, oldest first."""
+        if not (n_res and room > 0):
+            return []
+        picks = take_reserved(room)
+        if picks:
+            STATE["reserved"] = max(0, STATE.get("reserved", 0) - len(picks))
+        return picks
+
+    def give_back():
+        """Hand back unused holds when this device stops working on parts -
+        otherwise a phone yielding to a job would hide five parts from the
+        fleet for the whole TTL."""
+        if not n_res:
+            return 0
+        n = release_reservations()
+        STATE["reserved"] = 0
+        if n:
+            db.event("worker", "released %d unused part reservation(s)" % n)
+        return n
+
     if width <= 1:
         while max_parts is None or len(done) < max_parts:
             if job_id is not None and job_cancelled(conn, job_id):
                 break
-            nxt = best_pending_part(conn, state_cd, ac_no)
-            if not nxt:
-                break
-            pick = {"state_cd": nxt["state_cd"], "ac_no": nxt["ac_no"],
-                    "part_no": nxt["part_no"]}
+            top_up()
+            held = take(1)
+            if held:
+                pick = {"state_cd": held[0]["state_cd"],
+                        "ac_no": held[0]["ac_no"],
+                        "part_no": held[0]["part_no"], "preclaimed": True}
+            else:
+                nxt = best_pending_part(conn, state_cd, ac_no)
+                if not nxt:
+                    break
+                pick = {"state_cd": nxt["state_cd"], "ac_no": nxt["ac_no"],
+                        "part_no": nxt["part_no"]}
             record(pick, collect_part(conn, job_id, pick["state_cd"],
                                       pick["ac_no"], pick["part_no"],
-                                      force=force))
+                                      force=force,
+                                      preclaimed=bool(pick.get("preclaimed"))))
+        if not done:
+            give_back()
         return {"parts": len(done), "done": done}
 
     attempted = set()
@@ -680,26 +985,49 @@ def collect_pipeline(conn, job_id, state_cd=None, ac_no=None, width=None,
                               "and (device is null or device = %s) limit 1",
                               (DEVICE_TAG,), fetch="one")
                 if queued:
+                    yielded = True
                     break
             free = width - len(inflight)
             if free > 0 and (max_parts is None
                              or len(done) + len(inflight) < max_parts):
-                picks = best_pending_parts(conn, state_cd, ac_no,
-                                           limit=free + width)
-                for nxt in picks:
-                    if free <= 0:
-                        break
-                    if max_parts is not None and \
-                            len(done) + len(inflight) >= max_parts:
-                        break
+                room = free if max_parts is None else min(
+                    free, max_parts - len(done) - len(inflight))
+                # 1) This device's own queue first: one indexed point update,
+                #    oldest hold first, and the parts come back already claimed.
+                for nxt in take(room):
                     pick = {"state_cd": nxt["state_cd"], "ac_no": nxt["ac_no"],
-                            "part_no": nxt["part_no"]}
+                            "part_no": nxt["part_no"], "preclaimed": True}
                     key = (pick["state_cd"], pick["ac_no"], pick["part_no"])
-                    if key in attempted:
+                    if key in attempted:   # unreachable: taking clears the hold
                         continue
                     attempted.add(key)
                     inflight[ex.submit(_pipeline_one, pick, force)] = pick
-                    free -= 1
+                    room -= 1
+                # 2) Queue could not fill every slot (cold start, a device that
+                #    just lost stamps, or n_res=0): fall back to the shared
+                #    picker, which skips live holds so a lost pick is rare
+                #    rather than the norm. The claim still decides.
+                if room > 0:
+                    picks = best_pending_parts(conn, state_cd, ac_no,
+                                               limit=room + width)
+                    for nxt in picks:
+                        if room <= 0:
+                            break
+                        if max_parts is not None and \
+                                len(done) + len(inflight) >= max_parts:
+                            break
+                        pick = {"state_cd": nxt["state_cd"],
+                                "ac_no": nxt["ac_no"],
+                                "part_no": nxt["part_no"]}
+                        key = (pick["state_cd"], pick["ac_no"], pick["part_no"])
+                        if key in attempted:
+                            continue
+                        attempted.add(key)
+                        inflight[ex.submit(_pipeline_one, pick, force)] = pick
+                        room -= 1
+            # Refill AFTER the slots are dispatched, so the picker's ranking
+            # overlaps the sweeps instead of delaying them.
+            top_up()
             if not inflight:
                 break   # nothing pending left (or everything is held elsewhere)
             finished, _ = wait(list(inflight), timeout=5,
@@ -711,6 +1039,8 @@ def collect_pipeline(conn, job_id, state_cd=None, ac_no=None, width=None,
                 except Exception as exc:  # noqa: BLE001 - recorded, loop goes on
                     res = {"error": "%s: %s" % (type(exc).__name__, exc)}
                 record(pick, res)
+    if yielded or not done:
+        give_back()
     return {"parts": len(done), "done": done}
 
 
@@ -836,7 +1166,7 @@ def run_forever(poll=2.0):
             if job:
                 run_job(conn, job)
                 continue
-            if db.setting("auto_enabled", False):  # global-only knob
+            if db.setting("auto_enabled", False):   # per-device knob
                 nxt = best_pending_part(conn)
                 if nxt:
                     STATE["note"] = "auto pipeline x%s: %s AC %s part %s" % (
@@ -850,6 +1180,16 @@ def run_forever(poll=2.0):
                 else:
                     # Nothing left to pick: don't keep advertising the last part.
                     STATE["note"] = "idle - nothing pending"
+            elif STATE.get("reserved"):
+                # Auto is off and this device holds parts it is not going to
+                # collect: hand them back now instead of hiding them from the
+                # fleet until the reservation TTL. Guarded by the cached count,
+                # so an idle loop does not run a query every poll.
+                n = release_reservations()
+                STATE["reserved"] = 0
+                if n:
+                    db.event("worker", "released %d unused part reservation(s) "
+                             "(auto off)" % n)
             conn.commit()
         except Exception as exc:  # noqa: BLE001
             STATE["error"] = "%s: %s" % (type(exc).__name__, exc)
@@ -862,6 +1202,15 @@ def run_forever(poll=2.0):
             time.sleep(poll)
         time.sleep(poll)
     STATE["running"] = False
+    # A device that stops must not keep its queue hidden from the fleet; the
+    # expiry predicate covers a kill, this covers a clean stop.
+    try:
+        n = release_reservations()
+        if n:
+            db.event("worker", "released %d part reservation(s) on stop" % n)
+    except Exception:  # noqa: BLE001 - stopping anyway
+        pass
+    STATE["reserved"] = 0
     db.event("worker", "worker stopped")
 
 

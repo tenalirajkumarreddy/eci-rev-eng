@@ -34,8 +34,17 @@ is also the migration. Requires `psycopg`, `psycopg_pool`, `fastapi`, `uvicorn`,
 | `current_parts` | cached today-roll part list per AC |
 | `epic_lookups` | EPIC-processor results (mapped columns + raw 85-field record) |
 | `jobs`, `events` | work log and audit trail |
-| `settings` | `auto_enabled`, `workers`, `discover_max_part`, `calibrate_offset`, `collect_serial_cap` |
+| `settings` | `auto_enabled`, `workers`, `parts_parallel`, `discover_max_part`, `calibrate_offset`, `collect_serial_cap`, `part_reserve_n`, `part_reserve_ttl` |
 | `v_overall`, `v_ac_progress` | progress views |
+
+**Reservations.** `old_parts.reserved_by` / `reserved_at` hold the next
+`part_reserve_n` (default 5) parts for one device, so two devices stop ranking
+the same part: the pickers skip another device's live hold, `claim_part` refuses
+one, taking a held part is a single indexed point update (`take_reserved`)
+instead of a full-backlog scan, and a hold expires after `part_reserve_ttl`
+(default 900 s) **as a time predicate in the SQL** - a stopped or killed device
+frees its own queue with no reaper running. The atomic claim still decides who
+sweeps; `android/VERIFICATION.md` has the measurements.
 
 Rerun prevention: `collect_part` checks `status` first and returns
 `{"skipped": true, "reason": "already done"} `— no network traffic. Send

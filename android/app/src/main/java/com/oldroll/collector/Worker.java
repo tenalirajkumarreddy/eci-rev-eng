@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.concurrent.CompletionService;
 import java.util.concurrent.ExecutorCompletionService;
 import java.util.concurrent.ExecutorService;
@@ -64,6 +65,38 @@ public final class Worker {
     // Part sweeps beat the heartbeat: collect_part bumps tick every 200 serials.
     static final long STALE_AFTER_MS = 90_000;
 
+    // ------------------------------------------------------ reservations
+    // Two devices that rank the same part both pay a pick and one loses the
+    // claim: the loser wasted the pick (a full-backlog ranking - seconds now
+    // that the backlog is 30k+) and a sweep's worth of attention. A reservation
+    // moves that competition onto a cheap hold: `reserved_by` hides an upcoming
+    // part from every other picker, so this phone's next part is already decided
+    // and taking it is one indexed point update (takeReserved). Advisory only -
+    // the atomic claim (claimPart) is still what guarantees a part is swept
+    // once, and it refuses a live hold held by another device.
+    static final int RESERVE_N = 5;        // upcoming parts held per device
+    /** How long an unused hold survives. Must comfortably exceed N x part
+     *  duration (a part is ~5-60s, so the tail of a 5-deep queue is read ~5
+     *  minutes after it was held), or a device would lose the back of its own
+     *  queue. Expiry is a time predicate in the SQL, so a stopped or killed
+     *  device frees its own queue with no reaper involved. */
+    static final double RESERVE_TTL = 900.0;
+    /** How many parts this device is holding, mirrored for the UI. */
+    public static volatile int reservedHeld;
+
+    static double reserveTtl() {
+        return Math.max(60.0, (double) Db.intSetting("part_reserve_ttl",
+                (int) RESERVE_TTL));
+    }
+
+    static int reserveN() {
+        try {
+            return Math.max(0, Db.intSetting("part_reserve_n", RESERVE_N));
+        } catch (Throwable t) {
+            return RESERVE_N;
+        }
+    }
+
     static final int PART_CHUNK = 200;
     static final int PART_HARD_CAP = 3000;
 
@@ -102,6 +135,8 @@ public final class Worker {
         m.put("job_id", jobId == 0 ? null : jobId);
         m.put("note", note);
         m.put("error", lastError);
+        // How many upcoming parts this device is holding (the reservation queue).
+        m.put("reserved", reservedHeld);
         long age = tickAt == 0 ? -1 : (System.currentTimeMillis() - tickAt) / 1000;
         m.put("tick_age", age < 0 ? null : Math.round(age * 10.0) / 10.0);
         boolean alive = running && age >= 0 && age * 1000 < STALE_AFTER_MS;
@@ -183,6 +218,22 @@ public final class Worker {
                         + "and (discover_started_at is null or "
                         + "discover_started_at < now() - interval '30 minutes') "
                         + "returning state_cd, ac_no");
+        // Expired holds: a device killed while holding a queue. Hygiene rather
+        // than the thing that frees the part (the picker and the claim already
+        // ignore an expired hold) - it keeps the partial index tiny and makes
+        // the release visible. Never touches this device's own holds, nor a
+        // hold that is still live.
+        List<Map<String, Object>> holds = Db.updReturning(
+                "with stale as (select state_cd, ac_no, part_no, reserved_by "
+                        + "from old_parts where reserved_by is not null "
+                        + "and reserved_by <> ? and status in ('pending','error') "
+                        + "and reserved_at < now() - make_interval(secs => ?)) "
+                        + "update old_parts p set reserved_by=null, "
+                        + "reserved_at=null from stale s where "
+                        + "(p.state_cd, p.ac_no, p.part_no) = "
+                        + "(s.state_cd, s.ac_no, s.part_no) "
+                        + "returning s.reserved_by",
+                Db.myTag(), reserveTtl());
         if (!parts.isEmpty()) {
             StringBuilder sb = new StringBuilder();
             for (Map<String, Object> p : parts) {
@@ -211,6 +262,14 @@ public final class Worker {
             Db.event("worker", "requeued " + acs.size()
                     + " stale AC discovery/discoveries: " + sb);
         }
+        if (!holds.isEmpty()) {
+            Set<Object> who = new TreeSet<>();
+            for (Map<String, Object> h : holds) {
+                who.add(String.valueOf(h.get("reserved_by")));
+            }
+            Db.event("worker", "freed " + holds.size()
+                    + " expired part reservation(s) (" + who + ")", "warn");
+        }
     }
 
     // ------------------------------------------------------- best pending part
@@ -225,6 +284,13 @@ public final class Worker {
           + "           and abs(d.part_no - p.part_no) <= 2), 0) as neighbour_yield\n"
           + "from old_parts p\n"
           + "where p.status in ('pending','error') and coalesce(p.exists_, true)\n"
+            // Per-device reservations (see reserveParts): a part another device
+            // holds is invisible here, which is what stops two devices from
+            // ranking the same part at all. An expired hold is free again, and
+            // this device's own holds stay visible so its queue can be drained.
+          + "  and (p.reserved_by is null\n"
+          + "       or p.reserved_by = ?\n"
+          + "       or p.reserved_at < now() - make_interval(secs => ?))\n"
           + "  %s\n"
             // Per-device tie-break (mirror of worker.py BEST_PART_SQL): the
             // fully deterministic ranking made every device pick the same top
@@ -250,17 +316,36 @@ public final class Worker {
             filters.append(" and p.ac_no = ?");
             params.add(acNo);
         }
+        // Bind order follows the SQL text: reservation predicate, filters, md5.
+        List<Object> all = new ArrayList<>();
+        all.add(Db.myTag());
+        all.add(reserveTtl());
+        all.addAll(params);
         // Tie-break binds this device's id (see BEST_PART_SQL).
-        params.add(WORKER_ID);
+        all.add(WORKER_ID);
         return Db.q1(String.format(BEST_PART_SQL, filters, 1),
-                params.toArray(new Object[0]));
+                all.toArray(new Object[0]));
     }
 
     /** Best `limit` collectable parts. Picking is advisory - the atomic claim
      *  (claimPart) is what reserves a part, so overlapping picks across devices
-     *  resolve to visible skips, never duplicate sweeps. */
+     *  resolve to visible skips, never duplicate sweeps. Reservations are
+     *  skipped too (see reserveParts). */
     public static List<Map<String, Object>> bestPendingParts(String stateCd,
                                                              Integer acNo, int limit)
+            throws SQLException {
+        return bestPendingParts(stateCd, acNo, limit, false);
+    }
+
+    /** `fresh = true` also skips THIS device's own live holds. The reservation
+     *  top-up needs that: its own holds rank top for its own tag (they were
+     *  chosen by this same ranking a moment ago), so without it the candidate
+     *  list fills with parts it already has and the queue starves. Expired
+     *  holds - anyone's - are still candidates, which is how a device recovers a
+     *  part it let lapse. */
+    public static List<Map<String, Object>> bestPendingParts(String stateCd,
+                                                             Integer acNo, int limit,
+                                                             boolean fresh)
             throws SQLException {
         StringBuilder filters = new StringBuilder();
         List<Object> params = new ArrayList<>();
@@ -272,12 +357,22 @@ public final class Worker {
             filters.append(" and p.ac_no = ?");
             params.add(acNo);
         }
+        if (fresh) {
+            filters.append(" and (p.reserved_by is null or p.reserved_at < now()")
+                    .append(" - make_interval(secs => ?))");
+            params.add(reserveTtl());
+        }
+        // Bind order follows the SQL text: reservation predicate, filters, md5.
+        List<Object> all = new ArrayList<>();
+        all.add(Db.myTag());
+        all.add(reserveTtl());
+        all.addAll(params);
         // Tie-break binds this device's id (see bestPendingPart).
-        params.add(WORKER_ID);
+        all.add(WORKER_ID);
         // `limit` is an internal int (free + width), interpolated as a literal
         // so the parameter list stays exactly the bind placeholders.
         return Db.q(String.format(BEST_PART_SQL, filters, limit),
-                params.toArray(new Object[0]));
+                all.toArray(new Object[0]));
     }
 
     /** Atomically claim a part for collection; false when another device (or
@@ -292,10 +387,146 @@ public final class Worker {
                         + "on conflict (state_cd, ac_no, part_no) do update set "
                         + "status='running', started_at=now(), "
                         + "attempts=old_parts.attempts+1, last_error=null, "
-                        + "claimed_by=excluded.claimed_by, updated_at=now() "
-                        + "where old_parts.status <> 'running' returning state_cd",
-                stateCd, acNo, partNo, WORKER_ID);
+                        + "claimed_by=excluded.claimed_by, "
+                        + "reserved_by=null, reserved_at=null, updated_at=now() "
+                        // A live hold held by ANOTHER device blocks the claim, so
+                        // a pick made just before that device reserved the part
+                        // cannot steal it. This device's own hold always passes -
+                        // that is how its queue is drained (takeReserved).
+                        + "where old_parts.status <> 'running' "
+                        + "and (old_parts.reserved_by is null "
+                        + "     or old_parts.reserved_by = ? "
+                        + "     or old_parts.reserved_at < now() "
+                        + "        - make_interval(secs => ?)) returning state_cd",
+                stateCd, acNo, partNo, WORKER_ID, Db.myTag(), reserveTtl());
         return r != null;
+    }
+
+    /** Why a claim was refused, for the visible skip line. Runs only on a lost
+     *  claim, so the normal path still costs exactly one round trip. */
+    static String holdReason(String stateCd, int acNo, int partNo) throws SQLException {
+        Map<String, Object> row = Db.q1(
+                "select status, claimed_by, reserved_by, "
+                        + "(reserved_by is not null and reserved_at is not null "
+                        + " and reserved_at >= now() - make_interval(secs => ?)) "
+                        + "as held from old_parts where state_cd=? and ac_no=? "
+                        + "and part_no=?",
+                reserveTtl(), stateCd, acNo, partNo);
+        if (row == null) return "not in catalogue";
+        if ("running".equals(row.get("status"))) {
+            return "already running on " + (row.get("claimed_by") == null
+                    ? "another device" : row.get("claimed_by"));
+        }
+        if (Boolean.TRUE.equals(row.get("held"))) {
+            return "reserved by " + row.get("reserved_by");
+        }
+        return "status changed to " + row.get("status");
+    }
+
+    // --------------------------------------------------- reservation queue
+
+    /** How many usable parts this device is holding right now. Live holds only:
+     *  an expired one is no longer really held, so counting it would make a
+     *  stalled device think its queue was full and never top up again. */
+    public static int reserveCount() throws SQLException {
+        Map<String, Object> r = Db.q1("select count(*) c from old_parts "
+                        + "where reserved_by=? and status in ('pending','error') "
+                        + "and reserved_at >= now() - make_interval(secs => ?)",
+                Db.myTag(), reserveTtl());
+        return r == null ? 0 : ((Number) r.get("c")).intValue();
+    }
+
+    /** Hold up to `n` upcoming parts for this device, cheapest way possible.
+     *  Two statements: the existing picker chooses candidates - it already skips
+     *  every live hold on the fleet, and (`fresh`) this device's own - then ONE
+     *  batch update stamps them. The stamp is the atomic step: a candidate
+     *  another device reserved in the meantime simply does not match, so a lost
+     *  race costs a missing row, not a wasted sweep. Returns how many holds the
+     *  device has after the top-up. */
+    public static int reserveParts(String stateCd, Integer acNo, int n)
+            throws SQLException {
+        if (n <= 0) return reserveCount();
+        int need = n - reserveCount();
+        if (need <= 0) return n - need;
+        List<Map<String, Object>> cands = bestPendingParts(stateCd, acNo, need + 2, true);
+        StringBuilder tuples = new StringBuilder();
+        List<Object> params = new ArrayList<>();
+        int k = 0;
+        for (Map<String, Object> c : cands) {
+            if (k >= need) break;
+            if (k > 0) tuples.append(",");
+            tuples.append("(?,?,?)");
+            params.add(String.valueOf(c.get("state_cd")));
+            params.add(((Number) c.get("ac_no")).intValue());
+            params.add(((Number) c.get("part_no")).intValue());
+            k++;
+        }
+        if (k == 0) return reserveCount();
+        List<Object> all = new ArrayList<>();
+        all.add(Db.myTag());
+        all.addAll(params);
+        all.add(reserveTtl());
+        // Takes a part that is free or whose hold has lapsed - including this
+        // device's own lapsed hold, which is refreshed to now(). A live hold is
+        // never stolen and never re-timestamped.
+        Db.upd("update old_parts set reserved_by=?, reserved_at=now() "
+                        + "where (state_cd, ac_no, part_no) in (" + tuples + ") "
+                        + "and status in ('pending','error') "
+                        + "and (reserved_by is null or reserved_at < now() "
+                        + "     - make_interval(secs => ?))",
+                all.toArray(new Object[0]));
+        reservedHeld = reserveCount();
+        return reservedHeld;
+    }
+
+    /** Move up to `n` of this device's held parts into `running`, oldest first.
+     *  The whole point of the reservation: the sub-select reads only this
+     *  device's handful of holds (partial index) and the update is a point
+     *  write, so the next part costs about one round trip instead of a
+     *  full-backlog ranking race. FIFO on reserved_at keeps a hold from being
+     *  held past its turn. The returned parts are already claimed, so
+     *  collectPart must be told (preclaimed) or it would lose the race against
+     *  its own take. */
+    public static List<Map<String, Object>> takeReserved(int n) throws SQLException {
+        List<Map<String, Object>> out = new ArrayList<>();
+        if (n <= 0) return out;
+        List<Map<String, Object>> rows = Db.q(
+                "update old_parts p set status='running', started_at=now(), "
+                        + "attempts=p.attempts+1, last_error=null, claimed_by=?, "
+                        + "reserved_by=null, reserved_at=null, updated_at=now() "
+                        + "where (p.state_cd, p.ac_no, p.part_no) in ("
+                        + "    select r.state_cd, r.ac_no, r.part_no from old_parts r"
+                        + "     where r.reserved_by=? "
+                        + "       and r.status in ('pending','error') "
+                        + "     order by r.reserved_at, r.state_cd, r.ac_no, r.part_no"
+                        + "     limit ?) "
+                        + "and p.status in ('pending','error') and p.reserved_by=? "
+                        + "returning p.state_cd, p.ac_no, p.part_no, p.name",
+                WORKER_ID, Db.myTag(), n, Db.myTag());
+        if (rows != null) out = rows;
+        if (!out.isEmpty()) {
+            reservedHeld = Math.max(0, reservedHeld - out.size());
+        }
+        return out;
+    }
+
+    /** Give back every unused hold of this device; returns how many were freed.
+     *  Called on a clean stop and when this device stops working on parts, so a
+     *  stopped phone does not hide five parts from the fleet for the whole TTL
+     *  (the expiry predicate covers a kill). */
+    public static int releaseReservations() {
+        int n = 0;
+        try {
+            List<Map<String, Object>> rows = Db.q(
+                    "update old_parts set reserved_by=null, reserved_at=null "
+                            + "where reserved_by=? and status in ('pending','error') "
+                            + "returning state_cd", Db.myTag());
+            if (rows != null) n = rows.size();
+        } catch (Throwable ignored) {
+            // stopping anyway
+        }
+        reservedHeld = 0;
+        return n;
     }
 
     /** Hand a part back to the queue after a failure, error attached. Never
@@ -640,6 +871,17 @@ public final class Worker {
     public static Map<String, Object> collectPart(Long id, String stateCd, int acNo,
                                                   int partNo, boolean force, int width)
             throws SQLException, JSONException {
+        return collectPart(id, stateCd, acNo, partNo, force, width, false);
+    }
+
+    /** `preclaimed = true` means the caller already took the part out of this
+     *  device's reservation queue (takeReserved), so the part is already running
+     *  under this device - claiming again would fail against our own claim and
+     *  skip every queued part. */
+    public static Map<String, Object> collectPart(Long id, String stateCd, int acNo,
+                                                  int partNo, boolean force, int width,
+                                                  boolean preclaimed)
+            throws SQLException, JSONException {
         Map<String, Object> row = Db.q1("select * from old_parts where state_cd=? "
                 + "and ac_no=? and part_no=?", stateCd, acNo, partNo);
         if (row != null && "done".equals(row.get("status")) && !force) {
@@ -651,12 +893,12 @@ public final class Worker {
             return out;
         }
 
-        if (!claimPart(stateCd, acNo, partNo)) {
-            // Another PC process, phone or Colab holds this part right now:
-            // visible skip instead of a silent duplicate sweep.
+        if (!preclaimed && !claimPart(stateCd, acNo, partNo)) {
+            // Another PC process, phone or Colab holds this part right now (or
+            // holds a reservation on it): visible skip, not a duplicate sweep.
             Map<String, Object> out = new LinkedHashMap<>();
             out.put("skipped", true);
-            out.put("reason", "already running elsewhere");
+            out.put("reason", holdReason(stateCd, acNo, partNo));
             return out;
         }
 
@@ -821,15 +1063,27 @@ public final class Worker {
         }
 
         String status = cancelled ? "pending" : "done";
+        String lastError = null;
+        if (!cancelled && records == 0 && errors > 0) {
+            // WAF challenges and rate-limit storms answer 200 with no parsable
+            // rows: a sweep can "succeed" with 0 records and the part would be
+            // lost as done forever. Fetch errors are evidence of transport
+            // trouble, so hand the part back to the retry path; a genuinely
+            // empty part misses cleanly (errors == 0) and stays done.
+            status = "error";
+            lastError = "suspicious: 0 records with " + errors + " fetch errors";
+        }
         Db.upd("update old_parts set status=?, finished_at=now(), claimed_by=null, "
-                        + "records=?, epics=?, "
+                        + "reserved_by=null, reserved_at=null, "
+                        + "records=?, epics=?, last_error=?, "
                         + "unmapped=?, roll_end=?, mapping_offset=?, cur_part_mode=?, "
                         + "old_state_name=coalesce(?, old_state_name), "
                         + "old_dist_no=coalesce(?, old_dist_no), "
                         + "old_dist_name=coalesce(?, old_dist_name), "
                         + "old_ac_name=coalesce(?, old_ac_name), updated_at=now() "
                         + "where state_cd=? and ac_no=? and part_no=?",
-                status, records, epics, records - epics, rollEnd, offset, curPartMode,
+                status, records, epics, lastError, records - epics, rollEnd,
+                offset, curPartMode,
                 meta.get("old_state_name"), meta.get("old_dist_no"),
                 meta.get("old_dist_name"), meta.get("old_ac_name"),
                 stateCd, acNo, partNo);
@@ -861,8 +1115,9 @@ public final class Worker {
         String sc = String.valueOf(pick.get("state_cd"));
         int a = ((Number) pick.get("ac_no")).intValue();
         int p = ((Number) pick.get("part_no")).intValue();
+        boolean pre = Boolean.TRUE.equals(pick.get("preclaimed"));
         try {
-            return collectPart(id, sc, a, p, force, width);
+            return collectPart(id, sc, a, p, force, width, pre);
         } catch (Throwable t) {
             handback(sc, a, p, t.getClass().getSimpleName() + ": " + t.getMessage());
             if (t instanceof RuntimeException) throw (RuntimeException) t;
@@ -924,7 +1179,15 @@ public final class Worker {
                                                       boolean force)
             throws SQLException {
         int width = Math.max(1, Db.intSetting("parts_parallel", 2));
+        // Force mode walks already-done parts, which a reservation never covers.
+        int nRes = force ? 0 : reserveN();
+        // Low-water mark: keep at least one spare per slot, so a refill lagging
+        // behind the sweeps can never leave a slot without a queued part, while
+        // the full-backlog picker runs once per (nRes - low) parts, not per part.
+        int low = nRes == 0 ? 0
+                : Math.max(0, nRes - Math.max(1, Math.min(width, nRes)) - 1);
         List<Map<String, Object>> done = new ArrayList<>();
+        boolean yielded = false;
 
         if (width <= 1) {
             while (maxParts == null || done.size() < maxParts) {
@@ -933,19 +1196,36 @@ public final class Worker {
                 // when a queued job appears - otherwise the endless sweep
                 // starves the jobs queue (observed on the PC: discover buttons
                 // sat unclaimed for half an hour while auto collected).
-                // run_forever claims it on the next pass.
-                if (id == null && hasQueuedJob()) break;
-                Map<String, Object> nxt = bestPendingPart(stateCd, acNo);
-                if (nxt == null) break;
-                Map<String, Object> pick = new LinkedHashMap<>();
-                pick.put("state_cd", nxt.get("state_cd"));
-                pick.put("ac_no", nxt.get("ac_no"));
-                pick.put("part_no", nxt.get("part_no"));
+                // runForever claims it on the next pass.
+                if (id == null && hasQueuedJob()) {
+                    yielded = true;
+                    break;
+                }
+                if (nRes > 0) topUpQueue(stateCd, acNo, nRes, low);
+                List<Map<String, Object>> held = nRes > 0 ? takeReserved(1)
+                        : new ArrayList<>();
+                Map<String, Object> pick;
+                boolean pre = false;
+                if (!held.isEmpty()) {
+                    Map<String, Object> nxt = held.get(0);
+                    pick = new LinkedHashMap<>();
+                    pick.put("state_cd", nxt.get("state_cd"));
+                    pick.put("ac_no", nxt.get("ac_no"));
+                    pick.put("part_no", nxt.get("part_no"));
+                    pre = true;
+                } else {
+                    Map<String, Object> nxt = bestPendingPart(stateCd, acNo);
+                    if (nxt == null) break;
+                    pick = new LinkedHashMap<>();
+                    pick.put("state_cd", nxt.get("state_cd"));
+                    pick.put("ac_no", nxt.get("ac_no"));
+                    pick.put("part_no", nxt.get("part_no"));
+                }
                 Map<String, Object> res;
                 try {
                     res = collectPart(id, String.valueOf(pick.get("state_cd")),
                             ((Number) pick.get("ac_no")).intValue(),
-                            ((Number) pick.get("part_no")).intValue(), force, 1);
+                            ((Number) pick.get("part_no")).intValue(), force, 1, pre);
                 } catch (Throwable t) {
                     handback(String.valueOf(pick.get("state_cd")),
                             ((Number) pick.get("ac_no")).intValue(),
@@ -956,6 +1236,7 @@ public final class Worker {
                 }
                 recordPipeline(done, id, pick, res);
             }
+            if (yielded || done.isEmpty()) givenBack(nRes);
             return pipelineOut(done);
         }
 
@@ -968,18 +1249,22 @@ public final class Worker {
                 if (jobCancelled(id)) break;
                 if (maxParts != null && done.size() >= maxParts) break;
                 // Same jobs-queue yield as the sequential branch: an open-
-                // ended auto pipeline must let run_forever claim a queued job
+                // ended auto pipeline must let runForever claim a queued job
                 // instead of sweeping pending parts forever.
-                if (id == null && hasQueuedJob()) break;
+                if (id == null && hasQueuedJob()) {
+                    yielded = true;
+                    break;
+                }
                 int free = width - inflight.size();
                 if (free > 0 && (maxParts == null
                         || done.size() + inflight.size() < maxParts)) {
-                    List<Map<String, Object>> picks =
-                            bestPendingParts(stateCd, acNo, free + width);
-                    for (Map<String, Object> nxt : picks) {
-                        if (free <= 0) break;
-                        if (maxParts != null
-                                && done.size() + inflight.size() >= maxParts) break;
+                    int room = maxParts == null ? free
+                            : Math.min(free, maxParts - done.size() - inflight.size());
+                    if (nRes > 0) topUpQueue(stateCd, acNo, nRes, low);
+                    // 1) This device's own queue first: one indexed point update,
+                    //    oldest hold first, parts come back already claimed.
+                    for (Map<String, Object> nxt : (nRes > 0 ? takeReserved(room)
+                            : new ArrayList<Map<String, Object>>())) {
                         String key = nxt.get("state_cd") + ":" + nxt.get("ac_no")
                                 + ":" + nxt.get("part_no");
                         if (attempted.contains(key)) continue;
@@ -988,11 +1273,38 @@ public final class Worker {
                         pick.put("state_cd", nxt.get("state_cd"));
                         pick.put("ac_no", nxt.get("ac_no"));
                         pick.put("part_no", nxt.get("part_no"));
+                        pick.put("preclaimed", true);
                         final Long jid = id;
                         final Map<String, Object> pk = pick;
                         inflight.put(ex.submit(() -> pipelineOne(jid, pk, force, width)),
                                 pick);
-                        free--;
+                        room--;
+                    }
+                    // 2) Queue could not fill every slot (cold start, a device
+                    //    that just lost stamps, or nRes = 0): the shared picker,
+                    //    which skips live holds, so a lost pick is rare rather
+                    //    than the norm. The claim still decides.
+                    if (room > 0) {
+                        List<Map<String, Object>> picks =
+                                bestPendingParts(stateCd, acNo, room + width);
+                        for (Map<String, Object> nxt : picks) {
+                            if (room <= 0) break;
+                            if (maxParts != null
+                                    && done.size() + inflight.size() >= maxParts) break;
+                            String key = nxt.get("state_cd") + ":" + nxt.get("ac_no")
+                                    + ":" + nxt.get("part_no");
+                            if (attempted.contains(key)) continue;
+                            attempted.add(key);
+                            Map<String, Object> pick = new LinkedHashMap<>();
+                            pick.put("state_cd", nxt.get("state_cd"));
+                            pick.put("ac_no", nxt.get("ac_no"));
+                            pick.put("part_no", nxt.get("part_no"));
+                            final Long jid = id;
+                            final Map<String, Object> pk = pick;
+                            inflight.put(ex.submit(() -> pipelineOne(jid, pk, force, width)),
+                                    pick);
+                            room--;
+                        }
                     }
                 }
                 if (inflight.isEmpty()) break;   // nothing pending (or all held elsewhere)
@@ -1019,7 +1331,29 @@ public final class Worker {
             try { ex.awaitTermination(2, TimeUnit.SECONDS); }
             catch (InterruptedException ignored) { }
         }
+        if (yielded || done.isEmpty()) givenBack(nRes);
         return pipelineOut(done);
+    }
+
+    /** Refill this device's queue when it runs low, from inside the pipeline.
+     *  A stamp lost to another device is normal - the next call tops up again. */
+    static void topUpQueue(String stateCd, Integer acNo, int n, int low)
+            throws SQLException {
+        int held = reserveCount();
+        reservedHeld = held;
+        if (held > low) return;
+        reservedHeld = reserveParts(stateCd, acNo, n);
+    }
+
+    /** Hand back unused holds when this device stops working on parts: a phone
+     *  that yields to a job, or finds nothing left, must not keep five parts
+     *  hidden from the fleet until the TTL expires. */
+    static void givenBack(int nRes) {
+        if (nRes <= 0) return;
+        int n = releaseReservations();
+        if (n > 0) {
+            Db.event("worker", "released " + n + " unused part reservation(s)");
+        }
     }
 
     public static Map<String, Object> collectAuto(Long id, String stateCd, Integer acNo,
@@ -1210,6 +1544,17 @@ public final class Worker {
                         note = "idle - nothing pending";
                     }
                 } else {
+                    if (reservedHeld > 0) {
+                        // Auto is off and this device holds parts it is not going
+                        // to collect: hand them back now instead of hiding them
+                        // from the fleet until the reservation TTL. Guarded by
+                        // the cached count, so the idle loop runs no query.
+                        int n = releaseReservations();
+                        if (n > 0) {
+                            Db.event("worker", "released " + n
+                                    + " unused part reservation(s) (auto off)");
+                        }
+                    }
                     note = "idle";
                 }
             } catch (Throwable e) {
@@ -1226,6 +1571,12 @@ public final class Worker {
             } catch (InterruptedException ignored) { }
         }
         running = false;
+        // A device that stops must not keep its queue hidden from the fleet; the
+        // expiry predicate covers a kill, this covers a clean stop.
+        int back = releaseReservations();
+        if (back > 0) {
+            Db.event("worker", "released " + back + " part reservation(s) on stop");
+        }
         Db.event("worker", "worker stopped");
     }
 }
